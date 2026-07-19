@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>La Mar Bonita — Chiringuito en La Carihuela, Torremolinos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --foam:#F8F4E9;
+  --foam-2:#FDFBF4;
+  --ink:#0B2733;
+  --ink-2:#0E3242;
+  --ink-3:#123A4C;
+  --gold:#B9862B;
+  --gold-bright:#E2A93B;
+  --gold-pale:#F0E3C8;
+  --sea:#2F6E7C;
+  --text:#1A3440;
+  --muted:#5B6E77;
+  --line:rgba(11,39,51,.16);
+  --line-gold:rgba(185,134,43,.4);
+  --ribbon-h:38px;
+  --header-h:60px;
+  --serif:"Bodoni Moda", Didot, "Times New Roman", serif;
+  --sans:"Albert Sans", "Helvetica Neue", sans-serif;
+  --shadow-soft:0 18px 50px -18px rgba(11,39,51,.28);
+  --ease:cubic-bezier(.22,.75,.25,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  color:var(--text);
+  background:var(--foam);
+  line-height:1.6;
+  font-size:16px;
+  padding-top:calc(var(--ribbon-h));
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+section{scroll-margin-top:calc(var(--ribbon-h) + var(--header-h) + 8px)}
+
+/* ---------- grain + wave atmosphere ---------- */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.05 0 0 0 0 0.13 0 0 0 0 0.16 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+main,header.site,footer{position:relative;z-index:1}
+
+/* ---------- demo ribbon ---------- */
+.demo-ribbon{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  height:var(--ribbon-h);
+  background:var(--ink);
+  color:var(--foam);
+  display:flex;align-items:center;justify-content:center;
+  gap:.6em;
+  font-size:.72rem;letter-spacing:.04em;
+  padding:0 12px;text-align:center;
+  border-bottom:1px solid rgba(226,169,59,.35);
+}
+.demo-ribbon .dot{width:6px;height:6px;border-radius:50%;background:var(--gold-bright);flex:none;animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.demo-ribbon a{
+  color:var(--gold-bright);font-weight:600;text-decoration:none;
+  border-bottom:1px solid rgba(226,169,59,.5);white-space:nowrap;flex:none;
+}
+.demo-ribbon > span:not(.dot){
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:0 1 auto;
+}
+@media(max-width:480px){.demo-ribbon{font-size:.64rem;gap:.45em}}
+
+/* ---------- header ---------- */
+header.site{
+  position:sticky;top:var(--ribbon-h);z-index:50;
+  height:var(--header-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(16px,4vw,48px);
+  background:color-mix(in srgb,var(--foam) 88%,transparent);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.wordmark{
+  font-family:var(--serif);font-style:italic;font-weight:600;
+  font-size:1.25rem;letter-spacing:.01em;color:var(--ink);
+  text-decoration:none;white-space:nowrap;
+}
+.wordmark .tilde{color:var(--gold)}
+nav.main{display:none;gap:clamp(14px,2.5vw,30px)}
+nav.main a{
+  text-decoration:none;font-size:.8rem;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  transition:color .2s;
+}
+nav.main a:hover{color:var(--gold)}
+@media(min-width:820px){nav.main{display:flex}}
+.lang-toggle{
+  display:flex;border:1px solid var(--line);border-radius:99px;overflow:hidden;
+  font-size:.72rem;font-weight:600;letter-spacing:.08em;background:var(--foam-2);
+}
+.lang-toggle button{
+  border:0;background:none;padding:.45em 1em;color:var(--muted);
+  letter-spacing:inherit;font-size:inherit;font-weight:inherit;
+  transition:all .25s;
+}
+.lang-toggle button.active{background:var(--ink);color:var(--foam)}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  min-height:calc(100svh - var(--ribbon-h));
+  display:flex;flex-direction:column;justify-content:flex-end;
+  color:var(--foam);
+  isolation:isolate;
+  margin-top:calc(-1 * var(--header-h));
+  padding:calc(var(--header-h) + 8vh) clamp(20px,5vw,64px) clamp(56px,8vh,96px);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background:url("assets/8346b879b2c.webp") center 40%/cover no-repeat, var(--ink);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(178deg, rgba(11,39,51,.52) 0%, rgba(11,39,51,.30) 30%, rgba(9,32,42,.72) 58%, rgba(7,26,35,.96) 100%);
+}
+.hero-eyebrow{
+  font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--gold-bright);font-weight:600;margin-bottom:1.1rem;
+  display:flex;align-items:center;gap:.9em;
+}
+.hero-eyebrow::before{content:"";width:34px;height:1px;background:var(--gold-bright);flex:none}
+.hero h1{
+  font-family:var(--serif);font-weight:500;
+  font-size:clamp(3.4rem,15vw,6rem);
+  line-height:.98;letter-spacing:0;
+}
+@media(min-width:900px){.hero h1 .mob-br{display:none}}
+.hero .tagline{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(1.25rem,4.4vw,1.9rem);
+  color:var(--gold-pale);
+  margin-top:1rem;max-width:30ch;line-height:1.3;
+}
+.hero .place{
+  margin-top:1.2rem;font-size:.82rem;letter-spacing:.06em;color:rgba(248,244,233,.82);
+}
+.hero-badges{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:1.4rem;
+}
+.badge{
+  font-size:.7rem;font-weight:600;letter-spacing:.06em;
+  border:1px solid rgba(248,244,233,.35);border-radius:99px;
+  padding:.42em 1em;background:rgba(7,26,35,.35);backdrop-filter:blur(4px);
+  display:inline-flex;align-items:center;gap:.5em;white-space:nowrap;
+}
+.badge .star{color:var(--gold-bright)}
+.badge.gold{border-color:rgba(226,169,59,.65);color:var(--gold-bright)}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:2rem}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.55em;
+  padding:.95em 1.9em;border-radius:99px;
+  font-size:.82rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  text-decoration:none;border:1px solid transparent;
+  transition:transform .25s var(--ease), box-shadow .25s, background .25s, color .25s;
+}
+.btn:active{transform:scale(.97)}
+.btn-gold{background:var(--gold-bright);color:var(--ink);box-shadow:0 10px 30px -10px rgba(226,169,59,.55)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 36px -12px rgba(226,169,59,.7)}
+.btn-ghost{border-color:rgba(248,244,233,.5);color:var(--foam)}
+.btn-ghost:hover{background:rgba(248,244,233,.12)}
+.hero-scroll{
+  position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+  font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(248,244,233,.55);
+}
+
+/* hero load-in */
+.hero .lift{opacity:0;transform:translateY(26px);animation:lift 1s var(--ease) forwards}
+@keyframes lift{to{opacity:1;transform:none}}
+.hero .lift:nth-child(1){animation-delay:.15s}
+.hero .lift:nth-child(2){animation-delay:.3s}
+.hero .lift:nth-child(3){animation-delay:.5s}
+.hero .lift:nth-child(4){animation-delay:.65s}
+.hero .lift:nth-child(5){animation-delay:.8s}
+.hero .lift:nth-child(6){animation-delay:.95s}
+
+/* ---------- awards strip ---------- */
+.awards{
+  background:var(--ink);color:var(--foam);
+  padding:18px clamp(16px,4vw,48px);
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+  gap:10px 26px;
+  font-size:.74rem;letter-spacing:.08em;
+  border-top:1px solid rgba(226,169,59,.3);
+}
+.awards b{color:var(--gold-bright);font-weight:700}
+.awards .sep{color:rgba(248,244,233,.25)}
+
+/* ---------- shared section chrome ---------- */
+.section{padding:clamp(64px,10vh,120px) clamp(20px,5vw,64px)}
+.shell{max-width:1160px;margin:0 auto}
+.eyebrow{
+  font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;margin-bottom:.9rem;
+  display:flex;align-items:center;gap:.8em;
+}
+.eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+h2.display{
+  font-family:var(--serif);font-weight:500;
+  font-size:clamp(2.2rem,7vw,3.8rem);line-height:1.05;color:var(--ink);
+  text-wrap:balance;
+}
+.dark h2.display{color:var(--foam)}
+.lede{margin-top:1.1rem;font-size:1.02rem;color:var(--muted);max-width:56ch}
+.dark .lede{color:rgba(248,244,233,.75)}
+
+/* wave divider */
+.wave{display:block;width:100%;height:44px;color:var(--ink)}
+.wave.flip{transform:scaleY(-1)}
+
+/* ---------- signature (dark) ---------- */
+.dark{background:var(--ink);color:var(--foam)}
+.sig-grid{display:grid;gap:clamp(28px,5vw,64px);align-items:start}
+@media(min-width:900px){.sig-grid{grid-template-columns:1.1fr .9fr}}
+.pull{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(1.35rem,4vw,1.9rem);line-height:1.35;
+  color:var(--gold-pale);
+  border-left:2px solid var(--gold-bright);
+  padding-left:clamp(16px,3vw,28px);
+  margin:1.8rem 0 .8rem;
+  text-wrap:balance;
+}
+.pull-source{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(248,244,233,.6);padding-left:clamp(18px,3vw,30px)}
+.sig-body{margin-top:1.6rem;color:rgba(248,244,233,.82);font-size:.98rem;max-width:58ch}
+.sig-body + .sig-body{margin-top:1rem}
+.sig-photo{position:relative}
+.sig-photo img{border-radius:6px;box-shadow:var(--shadow-soft);width:100%;aspect-ratio:4/3;object-fit:cover}
+.sig-photo figcaption{
+  margin-top:.8rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(248,244,233,.55);display:flex;gap:.7em;align-items:center;
+}
+.sig-photo figcaption::before{content:"";width:22px;height:1px;background:var(--gold-bright)}
+.sig-photo .stamp{
+  position:absolute;top:-26px;right:6px;width:96px;height:96px;
+  animation:spin 26s linear infinite;
+}
+@media(min-width:900px){.sig-photo .stamp{right:-14px}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.facts{
+  margin-top:clamp(28px,5vh,48px);
+  display:grid;gap:1px;background:rgba(248,244,233,.14);
+  border:1px solid rgba(248,244,233,.14);border-radius:8px;overflow:hidden;
+}
+@media(min-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.facts{grid-template-columns:repeat(4,1fr)}}
+.fact{background:var(--ink-2);padding:22px 20px}
+.fact b{
+  display:block;font-family:var(--serif);font-weight:500;font-size:1.7rem;
+  color:var(--gold-bright);line-height:1.1;margin-bottom:.35rem;
+}
+.fact span{font-size:.8rem;color:rgba(248,244,233,.72);line-height:1.45;display:block}
+
+/* espeto divider */
+.espeto-divider{display:flex;justify-content:center;padding:clamp(10px,2vh,20px) 0 0}
+.espeto-divider svg{width:min(340px,72vw);height:auto;color:var(--gold-bright);opacity:.85}
+
+/* ---------- carta ---------- */
+.carta{background:var(--foam)}
+.carta-note{
+  display:inline-flex;align-items:center;gap:.6em;
+  margin-top:1.2rem;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);border:1px dashed var(--line-gold);border-radius:99px;padding:.5em 1.1em;
+}
+.cat-nav{
+  position:sticky;top:calc(var(--ribbon-h) + var(--header-h));z-index:5;
+  display:flex;gap:8px;overflow-x:auto;
+  padding:14px 2px;margin-top:1.6rem;
+  scrollbar-width:none;
+  background:var(--foam);
+  box-shadow:0 10px 14px -12px rgba(11,39,51,.25);
+  -webkit-mask-image:linear-gradient(90deg,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,#000 92%,transparent);
+}
+.cat-nav::-webkit-scrollbar{display:none}
+.cat-nav a{
+  flex:none;text-decoration:none;font-size:.72rem;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);
+  border:1px solid var(--line);border-radius:99px;padding:.5em 1.05em;
+  background:var(--foam-2);transition:all .2s;white-space:nowrap;
+}
+.cat-nav a:hover{border-color:var(--gold);color:var(--gold)}
+.menu-cols{margin-top:1.6rem}
+@media(min-width:920px){.menu-cols{columns:2;column-gap:clamp(40px,6vw,84px)}}
+.menu-cat{break-inside:avoid;padding:1.7rem 0 .4rem;scroll-margin-top:calc(var(--ribbon-h) + var(--header-h) + 64px)}
+.menu-cat-head{display:flex;align-items:baseline;gap:.8em;border-bottom:1px solid var(--ink);padding-bottom:.55rem;margin-bottom:1.1rem}
+.menu-cat-head .num{font-size:.68rem;font-weight:700;letter-spacing:.18em;color:var(--gold)}
+.menu-cat-head h3{
+  font-family:var(--serif);font-weight:600;font-size:1.35rem;color:var(--ink);letter-spacing:.01em;
+}
+.menu-cat-head .en-note{margin-left:auto;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.dish{padding:.55rem 0}
+.dish-row{display:flex;align-items:baseline;gap:.6em}
+.dish-name{font-family:var(--serif);font-weight:600;font-size:1.02rem;color:var(--ink);letter-spacing:.01em}
+.dish-lead{flex:1;border-bottom:1px dotted rgba(11,39,51,.35);transform:translateY(-4px);min-width:18px}
+.dish-price{font-family:var(--serif);font-weight:600;font-size:1rem;color:var(--gold);white-space:nowrap}
+.dish-desc{font-size:.83rem;color:var(--muted);margin-top:.15rem;max-width:52ch;line-height:1.5}
+.menu-cat.highlight{
+  background:linear-gradient(160deg,#F4EBD5, #F8F1DD 70%);
+  border:1px solid var(--line-gold);border-radius:10px;
+  padding:1.6rem clamp(16px,3vw,26px) 1.2rem;
+  box-shadow:0 14px 34px -22px rgba(185,134,43,.5);
+}
+.menu-cat.highlight .menu-cat-head{border-color:var(--gold)}
+.bodega{
+  margin-top:1.8rem;border-top:1px solid var(--line);padding-top:1.4rem;
+  font-size:.85rem;color:var(--muted);max-width:64ch;
+}
+.bodega b{color:var(--ink)}
+
+/* ---------- reviews ---------- */
+.reviews{background:var(--foam-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.review-grid{display:grid;gap:16px;margin-top:2.2rem}
+@media(min-width:760px){.review-grid{grid-template-columns:repeat(2,1fr)}}
+.review{
+  background:var(--foam);border:1px solid var(--line);border-radius:8px;
+  padding:clamp(20px,3vw,30px);position:relative;
+  display:flex;flex-direction:column;gap:.9rem;
+}
+.review::before{
+  content:"“";font-family:var(--serif);font-size:3.4rem;line-height:0;
+  color:var(--gold-bright);position:absolute;top:34px;left:22px;opacity:.9;
+}
+.review blockquote{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:1.12rem;line-height:1.45;color:var(--ink);
+  padding-left:34px;text-wrap:pretty;
+}
+.review cite{
+  font-style:normal;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);padding-left:34px;margin-top:auto;
+}
+.review .stars{color:var(--gold);letter-spacing:.15em;padding-left:34px;font-size:.8rem}
+.rating-summary{
+  margin-top:2rem;display:flex;flex-wrap:wrap;gap:8px 22px;
+  font-size:.78rem;letter-spacing:.05em;color:var(--muted);align-items:center;
+}
+.rating-summary b{color:var(--ink);font-weight:700}
+.rating-summary .star{color:var(--gold)}
+
+/* ---------- order demo ---------- */
+.order{background:var(--foam)}
+.order-tag{
+  display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  background:var(--ink);color:var(--gold-bright);border-radius:4px;padding:.4em .9em;margin-bottom:1rem;
+}
+.order-grid{display:grid;gap:18px;margin-top:2.2rem}
+@media(min-width:720px){.order-grid{grid-template-columns:repeat(3,1fr)}}
+.order-card{
+  background:var(--foam-2);border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:transform .3s var(--ease), box-shadow .3s;
+}
+.order-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-soft)}
+.order-card img{aspect-ratio:3/2;object-fit:cover;width:100%}
+.order-card .body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.order-card h3{font-family:var(--serif);font-weight:600;font-size:1.15rem;color:var(--ink)}
+.order-card p{font-size:.8rem;color:var(--muted);line-height:1.5}
+.order-card .row{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:.7rem}
+.order-card .price{font-family:var(--serif);font-weight:700;font-size:1.2rem;color:var(--ink)}
+.add-btn{
+  border:1px solid var(--ink);background:var(--ink);color:var(--foam);
+  border-radius:99px;padding:.55em 1.4em;font-size:.74rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  transition:all .25s var(--ease);
+}
+.add-btn:hover{background:var(--gold-bright);border-color:var(--gold-bright);color:var(--ink)}
+.add-btn:active{transform:scale(.94)}
+.add-btn.added{background:var(--gold-bright);border-color:var(--gold-bright);color:var(--ink)}
+
+/* cart FAB */
+.cart-fab{
+  position:fixed;right:16px;bottom:16px;z-index:55;
+  display:flex;align-items:center;gap:.7em;
+  background:var(--ink);color:var(--foam);border:1px solid rgba(226,169,59,.5);
+  border-radius:99px;padding:.85em 1.5em;
+  font-size:.8rem;font-weight:700;letter-spacing:.08em;
+  box-shadow:0 16px 40px -12px rgba(7,26,35,.6);
+  transform:translateY(120%);transition:transform .4s var(--ease);
+}
+.cart-fab.visible{transform:none}
+.cart-fab .count{
+  background:var(--gold-bright);color:var(--ink);border-radius:99px;
+  min-width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;
+  font-size:.72rem;padding:0 6px;
+}
+.cart-fab .count.bump{animation:bump .4s var(--ease)}
+@keyframes bump{40%{transform:scale(1.35)}}
+
+/* drawer */
+.drawer-scrim{
+  position:fixed;inset:0;background:rgba(7,26,35,.5);backdrop-filter:blur(2px);
+  z-index:70;opacity:0;pointer-events:none;transition:opacity .35s;
+}
+.drawer-scrim.open{opacity:1;pointer-events:auto}
+.drawer{
+  position:fixed;left:0;right:0;bottom:0;z-index:71;
+  background:var(--foam-2);border-radius:18px 18px 0 0;
+  max-height:86svh;overflow:auto;
+  transform:translateY(105%);transition:transform .45s var(--ease);
+  box-shadow:0 -20px 60px rgba(7,26,35,.4);
+}
+.drawer.open{transform:none}
+@media(min-width:720px){
+  .drawer{left:auto;right:24px;bottom:0;width:420px;border-radius:18px 18px 0 0}
+}
+.drawer-inner{padding:22px 22px 30px}
+.drawer-handle{width:44px;height:4px;border-radius:99px;background:var(--line);margin:0 auto 16px}
+.drawer h3{font-family:var(--serif);font-weight:600;font-size:1.35rem;color:var(--ink);margin-bottom:.3rem}
+.drawer .demo-note{
+  font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.1rem;
+}
+.cart-lines{border-top:1px solid var(--line);margin-top:.4rem}
+.cart-line{display:flex;align-items:center;gap:12px;padding:.9rem 0;border-bottom:1px solid var(--line)}
+.cart-line .nm{flex:1;font-size:.88rem;font-weight:600;color:var(--ink);line-height:1.3}
+.cart-line .qty{display:flex;align-items:center;gap:10px}
+.qty button{
+  width:26px;height:26px;border-radius:50%;border:1px solid var(--line);
+  background:var(--foam);color:var(--ink);font-size:.9rem;line-height:1;font-weight:600;
+  transition:all .2s;
+}
+.qty button:hover{border-color:var(--gold);color:var(--gold)}
+.qty span{min-width:16px;text-align:center;font-weight:700;font-size:.88rem}
+.cart-line .ln-price{font-family:var(--serif);font-weight:600;color:var(--ink);min-width:64px;text-align:right;font-size:.95rem}
+.cart-empty{padding:1.6rem 0;color:var(--muted);font-size:.9rem;text-align:center}
+.cart-total{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:1.1rem 0 .4rem;font-weight:700;color:var(--ink);
+}
+.cart-total .amt{font-family:var(--serif);font-size:1.5rem}
+.drawer .btn{width:100%;margin-top:.9rem}
+.btn-ink{background:var(--ink);color:var(--foam)}
+.btn-ink:hover{background:var(--ink-3)}
+.btn[disabled]{opacity:.55;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+
+/* checkout mock step */
+.checkout{display:none}
+.drawer.step2 .cart-view{display:none}
+.drawer.step2 .checkout{display:block}
+.checkout .back{
+  background:none;border:0;color:var(--muted);font-size:.74rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem;display:inline-flex;gap:.5em;align-items:center;
+}
+.checkout .demo-banner{
+  background:linear-gradient(120deg,#F4EBD5,#F8F1DD);
+  border:1px solid var(--line-gold);border-radius:8px;
+  padding:12px 16px;font-size:.78rem;color:#6B5313;font-weight:600;
+  margin-bottom:1.1rem;line-height:1.45;
+}
+.fake-field{margin-bottom:.8rem}
+.fake-field label{display:block;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem}
+.fake-field input{
+  width:100%;border:1px solid var(--line);border-radius:8px;background:var(--foam);
+  padding:.75em 1em;font-family:inherit;font-size:.9rem;color:var(--muted);
+}
+.pick-row{display:flex;gap:8px;margin-bottom:1rem}
+.pick-row button{
+  flex:1;border:1px solid var(--line);background:var(--foam);border-radius:8px;
+  padding:.7em;font-size:.78rem;font-weight:600;color:var(--muted);transition:all .2s;
+}
+.pick-row button.on{border-color:var(--ink);background:var(--ink);color:var(--foam)}
+
+/* ---------- hours & location ---------- */
+.where{background:var(--ink);color:var(--foam)}
+.where-grid{display:grid;gap:clamp(30px,5vw,60px);margin-top:2.4rem}
+@media(min-width:860px){.where-grid{grid-template-columns:1.1fr .9fr}}
+.where h3{
+  font-family:var(--serif);font-weight:600;font-size:1.2rem;color:var(--gold-bright);
+  margin-bottom:.7rem;
+}
+.where-block + .where-block{margin-top:1.8rem}
+.where p, .where address{font-style:normal;font-size:.95rem;color:rgba(248,244,233,.85);line-height:1.7}
+.where a{color:var(--gold-pale);text-decoration:none;border-bottom:1px solid rgba(240,227,200,.4)}
+.where a:hover{color:var(--gold-bright)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:.8rem}
+.chip{
+  font-size:.72rem;letter-spacing:.05em;border:1px solid rgba(248,244,233,.3);
+  border-radius:99px;padding:.4em 1em;color:rgba(248,244,233,.85);
+}
+.map-card{
+  border:1px solid rgba(248,244,233,.2);border-radius:10px;overflow:hidden;
+  background:var(--ink-2);display:flex;flex-direction:column;
+}
+.map-art{position:relative;aspect-ratio:16/10;overflow:hidden}
+.map-art svg{position:absolute;inset:0;width:100%;height:100%}
+.map-card .body{padding:20px}
+.map-card .body p{font-size:.85rem;color:rgba(248,244,233,.75);margin-bottom:1rem}
+
+/* ---------- footer ---------- */
+footer{
+  background:#081E28;color:rgba(248,244,233,.6);
+  padding:40px clamp(20px,5vw,64px) calc(40px + 54px);
+  font-size:.78rem;line-height:1.8;
+}
+footer .shell{display:flex;flex-direction:column;gap:1.2rem}
+@media(min-width:760px){footer .shell{flex-direction:row;justify-content:space-between;align-items:flex-end}}
+footer .wordmark{color:var(--foam);font-size:1.4rem}
+footer .fine{max-width:52ch}
+footer a{color:var(--gold-pale);text-decoration:none}
+
+/* ---------- reveals ---------- */
+html.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+html.js .reveal.in{opacity:1;transform:none}
+html.js .reveal.d1{transition-delay:.08s}
+html.js .reveal.d2{transition-delay:.16s}
+html.js .reveal.d3{transition-delay:.24s}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  html.js .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- DEMO ribbon -->
+<div class="demo-ribbon">
+  <span class="dot" aria-hidden="true"></span>
+  <span data-en="Demo built by Zach for La Mar Bonita">DEMO hecha por Zach para La Mar Bonita</span>
+  <a href="https://wa.me/447543455889?text=Hola%20Zach%2C%20vi%20la%20demo%20de%20mi%20restaurante" target="_blank" rel="noopener" data-en="Want it? WhatsApp &rarr;">&iquest;La quieres? WhatsApp &rarr;</a>
+</div>
+
+<header class="site">
+  <a class="wordmark" href="#top">La Mar B<span class="tilde">o</span>nita</a>
+  <nav class="main" aria-label="Secciones">
+    <a href="#carta" data-en="Menu">La carta</a>
+    <a href="#espetos" data-en="The espeto">El espeto</a>
+    <a href="#resenas" data-en="Reviews">Rese&ntilde;as</a>
+    <a href="#pedir" data-en="Order">Pedir</a>
+    <a href="#contacto" data-en="Find us">C&oacute;mo llegar</a>
+  </nav>
+  <div class="lang-toggle" role="group" aria-label="Idioma">
+    <button id="btn-es" class="active" aria-pressed="true">ES</button>
+    <button id="btn-en" aria-pressed="false">EN</button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <p class="hero-eyebrow lift" data-en="Beach restaurant &middot; La Carihuela, Torremolinos">Chiringuito &middot; La Carihuela, Torremolinos</p>
+  <h1 class="lift">La Mar <br class="mob-br">Bonita</h1>
+  <p class="tagline lift" data-en="A taste of the sea in every bite">Sabor a mar en cada bocado</p>
+  <p class="place lift" data-en="On the sand of La Carihuela beach &middot; Paseo Mar&iacute;timo, module K-14">Sobre la arena de La Carihuela &middot; Paseo Mar&iacute;timo, m&oacute;dulo K-14</p>
+  <div class="hero-badges lift">
+    <span class="badge gold">&#9679; Solete &middot; Gu&iacute;a Repsol</span>
+    <span class="badge"><span class="star">&#9733;</span> 4,6 TripAdvisor &middot; Travelers&rsquo; Choice 2025</span>
+    <span class="badge"><span class="star">&#9733;</span> 4,4 Google &middot; 1.884 <span data-en="reviews">opiniones</span></span>
+  </div>
+  <div class="hero-ctas lift">
+    <a class="btn btn-gold" href="#carta" data-en="See the menu">Ver la carta</a>
+    <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=La%20Mar%20Bonita%2C%20Paseo%20Mar%C3%ADtimo%20La%20Carihuela%2C%2029620%20Torremolinos" target="_blank" rel="noopener" data-en="Directions">C&oacute;mo llegar</a>
+  </div>
+  <span class="hero-scroll" aria-hidden="true" data-en="Scroll">Desliza</span>
+</section>
+
+<!-- ============ AWARDS STRIP ============ -->
+<div class="awards" aria-label="Reconocimientos">
+  <span><b>Solete</b> Gu&iacute;a Repsol</span><span class="sep">&#124;</span>
+  <span><b>Travelers&rsquo; Choice 2025</b> TripAdvisor</span><span class="sep">&#124;</span>
+  <span><b>4,6&#9733;</b> TripAdvisor &middot; 449</span><span class="sep">&#124;</span>
+  <span><b>4,4&#9733;</b> Google &middot; 1.884</span><span class="sep">&#124;</span>
+  <span><b>4,8&#9733;</b> Facebook &middot; 51</span>
+</div>
+
+<!-- ============ SIGNATURE / ESPETOS ============ -->
+<section id="espetos" class="section dark">
+  <div class="shell">
+    <div class="sig-grid">
+      <div>
+        <p class="eyebrow reveal" data-en="The house specialty">La casa del espeto</p>
+        <h2 class="display reveal" data-en="Fire, cane &amp; the sea">Brasa, ca&ntilde;a y mar</h2>
+        <blockquote class="pull reveal">&laquo;Uno de los mejores espeteros de M&aacute;laga, Miguel Le&oacute;n, dirige este establecimiento sobre la arena de esa playa m&iacute;tica que enamor&oacute; a Brigitte Bardot, La Carihuela.&raquo;</blockquote>
+        <p class="pull-source reveal" data-en="Gu&iacute;a Repsol &middot; Solete listing, verbatim">Gu&iacute;a Repsol &middot; ficha Solete, textual</p>
+        <p class="sig-body reveal" data-en="More than 50 years of the &ldquo;Los Leones&rdquo; family devoted to the art of the chiringuito. Sardines roasted on cane skewers over open flame; sea bass, sea bream, national octopus and squid straight onto the coals. Gu&iacute;a Repsol&rsquo;s own recommendation: the charcoal-grilled fish, the M&aacute;laga coquinas, the white-prawn ensaladilla and the mussels.">M&aacute;s de 50 a&ntilde;os de la familia &laquo;Los Leones&raquo; dedicados al arte del chiringuito. Sardinas asadas en ca&ntilde;a sobre la llama; lubina, dorada, pulpo nacional y calamar de potera directos a la brasa. La recomendaci&oacute;n de la propia Gu&iacute;a Repsol: los pescados a la brasa, las coquinas de M&aacute;laga, la ensaladilla de gamba blanca y los mejillones.</p>
+        <p class="sig-body reveal" data-en="&ldquo;La Mar Bonita is SEA, and we want to make it a beautiful place.&rdquo; That is how the family describes it &mdash; and the menu says the same: the gazpacho follows the grandparents&rsquo; 60-year-old recipe, the marinated anchovies are made at home by their father, and the squid is always Spanish &mdash; never imported.">&laquo;La Mar Bonita es MAR, y queremos hacer de ella un lugar bonito.&raquo; As&iacute; lo cuenta la familia &mdash; y la carta lo confirma: el gazpacho sigue la receta de los abuelos con 60 a&ntilde;os de historia, los boquerones en vinagre los hace su padre en casa, y el calamar es siempre nacional &mdash; nada de importaci&oacute;n.</p>
+      </div>
+      <figure class="sig-photo reveal d2">
+        <img src="assets/0ac1ce5522c.webp" alt="Boquerones gordos de Málaga al espeto" width="828" height="552" loading="lazy">
+        <figcaption data-en="Fat M&aacute;laga anchovies, straight off the skewer">Boquerones gordos de M&aacute;laga, reci&eacute;n salidos del espeto</figcaption>
+        <svg class="stamp" viewBox="0 0 100 100" aria-hidden="true">
+          <defs><path id="circ" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
+          <circle cx="50" cy="50" r="49" fill="#0B2733" stroke="#E2A93B" stroke-width="1.5"/>
+          <text fill="#E2A93B" font-size="10.5" letter-spacing="2.5" font-family="Albert Sans, sans-serif" font-weight="600">
+            <textPath href="#circ">SOLETE &middot; GU&Iacute;A REPSOL &middot; </textPath>
+          </text>
+          <text x="50" y="56" text-anchor="middle" fill="#F8F4E9" font-size="17" font-family="Bodoni Moda, serif" font-style="italic">Sol</text>
+        </svg>
+      </figure>
+    </div>
+
+    <div class="facts reveal">
+      <div class="fact"><b>+50</b><span data-en="years of the Los Leones family on the sand of La Carihuela">a&ntilde;os de la familia Los Leones sobre la arena de La Carihuela</span></div>
+      <div class="fact"><b>60</b><span data-en="years of history behind the grandparents&rsquo; gazpacho recipe, made daily">a&ntilde;os de historia de la receta del gazpacho de los abuelos, hecho a diario</span></div>
+      <div class="fact"><b>100%</b><span data-en="Spanish squid &mdash; &ldquo;no Indian squid, no imitation&rdquo;, in their own words">calamar nacional &mdash; &laquo;nada de calamares indios ni potas&raquo;, palabra de la casa</span></div>
+      <div class="fact"><b>#6</b><span data-en="of 1,319 restaurants in Torremolinos on Restaurant Guru">de 1.319 restaurantes de Torremolinos seg&uacute;n Restaurant Guru</span></div>
+    </div>
+
+    <div class="espeto-divider reveal" aria-hidden="true">
+      <svg viewBox="0 0 340 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <line x1="4" y1="20" x2="336" y2="20"/>
+        <path d="M70 20 C80 12, 100 12, 110 20 C100 28, 80 28, 70 20 Z"/>
+        <line x1="70" y1="20" x2="63" y2="14"/><line x1="70" y1="20" x2="63" y2="26"/>
+        <path d="M150 20 C160 12, 180 12, 190 20 C180 28, 160 28, 150 20 Z"/>
+        <line x1="150" y1="20" x2="143" y2="14"/><line x1="150" y1="20" x2="143" y2="26"/>
+        <path d="M230 20 C240 12, 260 12, 270 20 C260 28, 240 28, 230 20 Z"/>
+        <line x1="230" y1="20" x2="223" y2="14"/><line x1="230" y1="20" x2="223" y2="26"/>
+        <circle cx="105" cy="18" r="1"/><circle cx="185" cy="18" r="1"/><circle cx="265" cy="18" r="1"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LA CARTA ============ -->
+<section id="carta" class="section carta">
+  <div class="shell">
+    <p class="eyebrow reveal" data-en="From the boat &amp; the fire">Del barco y de la brasa</p>
+    <h2 class="display reveal" data-en="The menu">La carta</h2>
+    <p class="lede reveal" data-en="Fresh fish on the skewer, national seafood and family recipes. Around 130 references on the full menu &mdash; here is the heart of it.">Pescado fresco al espeto, marisco nacional y recetas de familia. Unas 130 referencias en la carta completa &mdash; aqu&iacute;, lo esencial.</p>
+    <p class="carta-note reveal" data-en="Demo menu &mdash; indicative prices">Carta de demostraci&oacute;n &mdash; precios orientativos</p>
+
+    <nav class="cat-nav reveal" aria-label="Categorías de la carta">
+      <a href="#c-sugerencias" data-en="Today&rsquo;s picks">Sugerencias</a>
+      <a href="#c-entrantes" data-en="Starters">Entrantes</a>
+      <a href="#c-ensaladas" data-en="Salads">Ensaladas</a>
+      <a href="#c-mariscos" data-en="Seafood">Mariscos</a>
+      <a href="#c-espetos" data-en="Espetos">Espetos</a>
+      <a href="#c-plancha" data-en="Grill">Plancha</a>
+      <a href="#c-fritos-mar" data-en="Fried &middot; sea">Fritos del mar</a>
+      <a href="#c-fritos-tierra" data-en="Fried &middot; land">Fritos de la tierra</a>
+      <a href="#c-arroces" data-en="Rice">Arroces</a>
+      <a href="#c-carnes" data-en="Meat">Carnes</a>
+      <a href="#c-postres" data-en="Desserts">Postres</a>
+      <a href="#c-cocteles" data-en="Cocktails">Coctelería</a>
+    </nav>
+
+    <div class="menu-cols">
+
+      <div class="menu-cat highlight reveal" id="c-sugerencias">
+        <div class="menu-cat-head"><span class="num">01</span><h3 data-en="Today&rsquo;s picks">Sugerencias del d&iacute;a</h3></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Grilled red prawns">Gambas rojas a la plancha</span><span class="dish-lead"></span><span class="dish-price">35&nbsp;&euro;</span></div><p class="dish-desc" data-en="250 g">250 g</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Bluefin tuna belly">Ventresca de at&uacute;n rojo</span><span class="dish-lead"></span><span class="dish-price">27,50&nbsp;&euro;</span></div></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Red mullet on the skewer">Salmonetes al espeto</span><span class="dish-lead"></span><span class="dish-price">18&nbsp;&euro;</span></div><p class="dish-desc" data-en="3 pcs">3 uds</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Grilled Sanl&uacute;car tiger prawns">Langostinos tigres de Sanl&uacute;car a la plancha</span><span class="dish-lead"></span><span class="dish-price">32&nbsp;&euro;</span></div><p class="dish-desc" data-en="250 g">250 g</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Fresh grilled black sole">Lenguado negro fresco a la plancha</span><span class="dish-lead"></span><span class="dish-price">18&nbsp;&euro;</span></div><p class="dish-desc" data-en="200 g">200 g</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Carril clams">Almejas de Carril</span><span class="dish-lead"></span><span class="dish-price">22&nbsp;&euro;</span></div></div>
+      </div>
+
+      <div class="menu-cat reveal" id="c-entrantes">
+        <div class="menu-cat-head"><span class="num">02</span><h3 data-en="Starters">Entrantes</h3></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Natural gazpacho">Gazpacho natural</span><span class="dish-lead"></span><span class="dish-price">7,50&nbsp;&euro;</span></div><p class="dish-desc" data-en="Made daily with the grandparents&rsquo; original recipe &mdash; 60 years of history">Hecho a diario con la receta original de los abuelos, con 60 a&ntilde;os de historia</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Prawn ensaladilla rusa">Ensaladilla rusa de gambas</span><span class="dish-lead"></span><span class="dish-price">16&nbsp;&euro;</span></div><p class="dish-desc" data-en="With fresh cooked white prawns, tuna and salmon roe">Con gambas blancas frescas cocidas, at&uacute;n y huevas de salm&oacute;n</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Galician-style Spanish octopus with guacamole">Pulpo nacional a la gallega con guacamole</span><span class="dish-lead"></span><span class="dish-price">20&nbsp;&euro;</span></div><p class="dish-desc" data-en="On homemade guacamole with paprika and olive oil">Sobre guacamole casero con piment&oacute;n y AOVE</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Bluefin tuna tartare">Tartar de at&uacute;n rojo</span><span class="dish-lead"></span><span class="dish-price">22&nbsp;&euro;</span></div><p class="dish-desc" data-en="Japanese-style seasoning, on homemade guacamole">Ali&ntilde;ado al estilo japon&eacute;s sobre guacamole casero</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Bluefin tuna tataki">Tataki de at&uacute;n rojo</span><span class="dish-lead"></span><span class="dish-price">22&nbsp;&euro;</span></div><p class="dish-desc" data-en="Loin marinated in 3 oils, on wakame seaweed">Lomo macerado en 3 aceites sobre alga wakame</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Wild Huelva prawns pil-pil">Pilpil de langostinos salvajes de Huelva</span><span class="dish-lead"></span><span class="dish-price">14,50&nbsp;&euro;</span></div><p class="dish-desc" data-en="In a hot casserole with oil, garlic, chilli and parsley">En cazuela con aceite caliente, ajo, guindilla y perejil</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Artichokes with clams">Alcachofas con almejas</span><span class="dish-lead"></span><span class="dish-price">18&nbsp;&euro;</span></div><p class="dish-desc" data-en="Clams saut&eacute;ed with garlic and white wine over grilled artichokes">Almejas salteadas con ajo y vino blanco sobre alcachofas a la plancha</p></div>
+      </div>
+
+      <div class="menu-cat reveal" id="c-ensaladas">
+        <div class="menu-cat-head"><span class="num">03</span><h3 data-en="Salads">Ensaladas</h3></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="La Mar Bonita salad">Ensalada La Mar Bonita</span><span class="dish-lead"></span><span class="dish-price">18&nbsp;&euro;</span></div><p class="dish-desc" data-en="Mixed leaves, walnuts, dates, bacon, Manchego cheese, Pedro Xim&eacute;nez &amp; honey-mustard vinaigrettes">Lechugas variadas, nueces, d&aacute;tiles, bacon, queso manchego y vinagretas de Pedro Xim&eacute;nez y miel-mostaza</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Tomato, avocado &amp; prawn salad">Ensalada de tomate, aguacate y gambas</span><span class="dish-lead"></span><span class="dish-price">20&nbsp;&euro;</span></div><p class="dish-desc" data-en="Axarqu&iacute;a avocado and fresh white prawns">Aguacate de la Axarqu&iacute;a y gambas blancas frescas</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Tomato with marinated anchovies">Tomate con boquerones en vinagre</span><span class="dish-lead"></span><span class="dish-price">16,50&nbsp;&euro;</span></div><p class="dish-desc" data-en="Anchovies in vinegar, homemade by our father">Boquerones en vinagre caseros hechos por nuestro padre</p></div>
+      </div>
+
+      <div class="menu-cat reveal" id="c-mariscos">
+        <div class="menu-cat-head"><span class="num">04</span><h3 data-en="Seafood">Mariscos</h3></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Fresh grilled white prawns">Gambas blancas frescas a la plancha</span><span class="dish-lead"></span><span class="dish-price">28&nbsp;&euro;</span></div></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Steamed mussels">Mejillones al vapor</span><span class="dish-lead"></span><span class="dish-price">14,50&nbsp;&euro;</span></div></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Clams">Almejas</span><span class="dish-lead"></span><span class="dish-price">18&nbsp;&euro;</span></div><p class="dish-desc" data-en="Saut&eacute;ed with garlic, white wine and parsley">Salteadas con ajo, vino blanco y perejil</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Grilled scallop with baby prawns">Vieira a la plancha con gambitas</span><span class="dish-lead"></span><span class="dish-price">8,90&nbsp;&euro;</span></div></div>
+      </div>
+
+      <div class="menu-cat reveal" id="c-espetos">
+        <div class="menu-cat-head"><span class="num">05</span><h3 data-en="The sea over coals &mdash; espetos">La mar a la brasa &mdash; espetos</h3></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Sardines on the skewer">Sardinas al espeto</span><span class="dish-lead"></span><span class="dish-price">9&nbsp;&euro;</span></div><p class="dish-desc" data-en="The icon of the house: sardines roasted over coals on a cane skewer, intense and saline">El icono de la casa: sardina asada a la brasa sobre ca&ntilde;a, sabor intenso y salino</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Estuary sea bass on the skewer">Lubina de estero al espeto</span><span class="dish-lead"></span><span class="dish-price">27,50&nbsp;&euro;</span></div><p class="dish-desc" data-en="600 g over coals, with patatas a lo pobre">600 g a la brasa con patatas a lo pobre</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Estuary sea bream on the skewer">Dorada de estero al espeto</span><span class="dish-lead"></span><span class="dish-price">27,50&nbsp;&euro;</span></div><p class="dish-desc" data-en="600 g over coals, with patatas a lo pobre">600 g a la brasa con patatas a lo pobre</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Spanish octopus leg on the skewer">Pata de pulpo nacional al espeto</span><span class="dish-lead"></span><span class="dish-price">25,50&nbsp;&euro;</span></div><p class="dish-desc" data-en="Over coals, with patatas a lo pobre">A la brasa con patatas a lo pobre</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Line-caught Spanish squid on the skewer">Calamar nacional de potera al espeto</span><span class="dish-lead"></span><span class="dish-price">26&nbsp;&euro;</span></div><p class="dish-desc" data-en="Over coals, with patatas a lo pobre">A la brasa con patatas a lo pobre</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Fat M&aacute;laga anchovies on the skewer">Boquerones gordos de M&aacute;laga al espeto</span><span class="dish-lead"></span><span class="dish-price">16,50&nbsp;&euro;</span></div><p class="dish-desc" data-en="Served with their pico de gallo">Servidos con su pico de gallo</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="King prawns on the skewer">Gambones al espeto</span><span class="dish-lead"></span><span class="dish-price">18&nbsp;&euro;</span></div></div>
+      </div>
+
+      <div class="menu-cat reveal" id="c-plancha">
+        <div class="menu-cat-head"><span class="num">06</span><h3 data-en="The sea on the grill">La mar a la plancha</h3></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Grilled squid">Calamar a la plancha</span><span class="dish-lead"></span><span class="dish-price">26&nbsp;&euro;</span></div><p class="dish-desc" data-en="Line-caught Spanish squid, with patatas a lo pobre">Calamar nacional de potera con patatas a lo pobre</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Grilled rosada">Rosada a la plancha</span><span class="dish-lead"></span><span class="dish-price">22&nbsp;&euro;</span></div><p class="dish-desc" data-en="With patatas a lo pobre">Con patatas a lo pobre</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Grilled salmon">Salm&oacute;n a la plancha</span><span class="dish-lead"></span><span class="dish-price">19,50&nbsp;&euro;</span></div><p class="dish-desc" data-en="With a side of patatas a lo pobre">Con guarnici&oacute;n de patatas a lo pobre</p></div>
+      </div>
+
+      <div class="menu-cat reveal" id="c-fritos-mar">
+        <div class="menu-cat-head"><span class="num">07</span><h3 data-en="Fried, from the sea">Fritos del mar</h3></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Mixed fried fish">Fritura variada</span><span class="dish-lead"></span><span class="dish-price">32&nbsp;&euro;</span></div><p class="dish-desc" data-en="Anchovies, squid, rosada, whitebait, horse mackerel, prawns&hellip;">Boquerones, calamares, rosada, chanquetes, jureles, langostinos&hellip;</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Fried squid">Calamares fritos</span><span class="dish-lead"></span><span class="dish-price">17,50&nbsp;&euro;</span></div><p class="dish-desc" data-en="Nothing imported: Spanish squid, cut and fried">Nada de importaci&oacute;n: calamar nacional troceado y frito</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="M&aacute;laga anchovies">Boquerones de M&aacute;laga</span><span class="dish-lead"></span><span class="dish-price">14&nbsp;&euro;</span></div><p class="dish-desc" data-en="Fried whole">Fritos enteros</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Fried wild Huelva prawns with mint aioli">Langostinos salvajes de Huelva fritos con alioli de hierbabuena</span><span class="dish-lead"></span><span class="dish-price">15,50&nbsp;&euro;</span></div></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Fried rosada">Rosada frita</span><span class="dish-lead"></span><span class="dish-price">17,50&nbsp;&euro;</span></div><p class="dish-desc" data-en="Battered in egg and wheat flour">Rebozada en huevo y harina de trigo</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Whitebait (silver fish)">Chanquetes (pez plata)</span><span class="dish-lead"></span><span class="dish-price">14&nbsp;&euro;</span></div></div>
+      </div>
+
+      <div class="menu-cat reveal" id="c-fritos-tierra">
+        <div class="menu-cat-head"><span class="num">08</span><h3 data-en="Fried, from the land">Fritos de la tierra</h3></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Natural round potatoes">Patatas redondas naturales</span><span class="dish-lead"></span><span class="dish-price">8,50&nbsp;&euro;</span></div><p class="dish-desc" data-en="Chip-style; one of the chiringuito&rsquo;s most emblematic dishes">Tipo chip; uno de los platos m&aacute;s emblem&aacute;ticos del chiringuito</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Fried aubergines">Berenjenas fritas</span><span class="dish-lead"></span><span class="dish-price">9&nbsp;&euro;</span></div><p class="dish-desc" data-en="With cane honey, if you like">Con miel de ca&ntilde;a si lo prefieres</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="&ldquo;Matrimonio&rdquo;: onion &amp; aubergine">Matrimonio: cebolla y berenjena</span><span class="dish-lead"></span><span class="dish-price">10,50&nbsp;&euro;</span></div><p class="dish-desc" data-en="Floured and fried mix">Mix enharinado y frito</p></div>
+      </div>
+
+      <div class="menu-cat reveal" id="c-arroces">
+        <div class="menu-cat-head"><span class="num">09</span><h3 data-en="Rice dishes">Arroces</h3></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Seafood &amp; fish paella">Paella de marisco y pescado</span><span class="dish-lead"></span><span class="dish-price">39,50&nbsp;&euro;</span></div><p class="dish-desc" data-en="For 2 people">Para 2 personas</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Soupy rice with carabinero prawns">Arroz caldoso con carabineros</span><span class="dish-lead"></span><span class="dish-price">58&nbsp;&euro;</span></div><p class="dish-desc" data-en="For 2 people">Para 2 personas</p></div>
+      </div>
+
+      <div class="menu-cat reveal" id="c-carnes">
+        <div class="menu-cat-head"><span class="num">10</span><h3 data-en="Meat">Carnes</h3></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Beef entrec&ocirc;te">Entrecot de ternera</span><span class="dish-lead"></span><span class="dish-price">28&nbsp;&euro;</span></div><p class="dish-desc" data-en="With homemade fries">Con patatas fritas caseras</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Homemade beef burger">Hamburguesa de ternera casera</span><span class="dish-lead"></span><span class="dish-price">16&nbsp;&euro;</span></div><p class="dish-desc" data-en="100% beef, with homemade fries">100% ternera, con patatas fritas caseras</p></div>
+      </div>
+
+      <div class="menu-cat reveal" id="c-postres">
+        <div class="menu-cat-head"><span class="num">11</span><h3 data-en="Desserts">Postres</h3></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Cheesecake">Tarta de queso</span><span class="dish-lead"></span><span class="dish-price">7&nbsp;&euro;</span></div><p class="dish-desc" data-en="Baked, with natural red-berry jam">Al horno con mermelada natural de frutos rojos</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Chocolate cake">Tarta de chocolate</span><span class="dish-lead"></span><span class="dish-price">7,50&nbsp;&euro;</span></div><p class="dish-desc" data-en="Homemade sponge bathed in milk chocolate">Bizcocho casero ba&ntilde;ado en chocolate con leche</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Cheese flan">Flan de queso</span><span class="dish-lead"></span><span class="dish-price">7&nbsp;&euro;</span></div><p class="dish-desc" data-en="Panna cotta style, with homemade red-berry jam">Estilo panna cotta con mermelada casera de frutos rojos</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Brownie with vanilla ice cream">Brownie con helado de vainilla</span><span class="dish-lead"></span><span class="dish-price">7&nbsp;&euro;</span></div></div>
+      </div>
+
+      <div class="menu-cat reveal" id="c-cocteles">
+        <div class="menu-cat-head"><span class="num">12</span><h3 data-en="Cocktails">Cocteler&iacute;a</h3></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name">La Mar Bonita Spritz</span><span class="dish-lead"></span><span class="dish-price">10&nbsp;&euro;</span></div><p class="dish-desc" data-en="Fig liqueur, Japanese yuzu, prosecco and soda">Licor de higo, yuzu japon&eacute;s, prosecco y soda</p></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name">Espresso Martini</span><span class="dish-lead"></span><span class="dish-price">10&nbsp;&euro;</span></div></div>
+        <div class="dish"><div class="dish-row"><span class="dish-name" data-en="Glass of original sangr&iacute;a">Copa de sangr&iacute;a original</span><span class="dish-lead"></span><span class="dish-price">5,80&nbsp;&euro;</span></div><p class="dish-desc">50 cl</p></div>
+      </div>
+
+    </div>
+
+    <p class="bodega reveal" data-en="Plus a cellar of 40+ wines by the bottle &mdash; R&iacute;as Baixas, Rueda, Rioja, Sierras de M&aacute;laga &mdash; and champagnes from Veuve Clicquot and Mo&euml;t. Gluten-free and vegetarian options available."><b data-en="And to drink:">Y para beber:</b> m&aacute;s de 40 vinos por botella &mdash; R&iacute;as Baixas, Rueda, Rioja, Sierras de M&aacute;laga &mdash; y champagnes de Veuve Clicquot y Mo&euml;t. Opciones sin gluten y vegetarianas disponibles.</p>
+  </div>
+</section>
+
+<!-- ============ RESEÑAS ============ -->
+<section id="resenas" class="section reviews">
+  <div class="shell">
+    <p class="eyebrow reveal" data-en="What people say">Lo que dice la gente</p>
+    <h2 class="display reveal" data-en="Word travels along the shore">Rese&ntilde;as que llegan con la marea</h2>
+
+    <div class="review-grid">
+      <article class="review reveal">
+        <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <blockquote>Tienen a Miguel Le&oacute;n, el mejor espetero de la Costa del Sol&hellip; Incre&iacute;ble chiringuito.</blockquote>
+        <cite data-en="Verified diner &middot; digital menu reviews">Cliente verificado &middot; rese&ntilde;as del men&uacute; digital</cite>
+      </article>
+      <article class="review reveal d1">
+        <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <blockquote>Est&aacute;n especializados en pescados a las brasas, los mejores que he probado en mi vida. Chiringuito de 10.</blockquote>
+        <cite data-en="Digital menu reviews">Rese&ntilde;as del men&uacute; digital</cite>
+      </article>
+      <article class="review reveal d2">
+        <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <blockquote>Absolutely fabulous fish and prawns, extremely fresh and cooked to perfection.</blockquote>
+        <cite>TripAdvisor &middot; jul 2026</cite>
+      </article>
+      <article class="review reveal d3">
+        <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <blockquote>The skewers are the best I have eaten in Torremolinos.</blockquote>
+        <cite>TripAdvisor &middot; jul 2026</cite>
+      </article>
+    </div>
+
+    <p class="rating-summary reveal">
+      <span><span class="star">&#9733;</span> <b>4,6</b> TripAdvisor &middot; 449 <span data-en="reviews">opiniones</span></span>
+      <span><span class="star">&#9733;</span> <b>4,4</b> Google &middot; 1.884</span>
+      <span><span class="star">&#9733;</span> <b>4,8</b> Facebook &middot; 51</span>
+      <span><b>Travelers&rsquo; Choice 2025</b></span>
+      <span><b>Solete</b> Gu&iacute;a Repsol</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ PEDIDOS DEMO ============ -->
+<section id="pedir" class="section order">
+  <div class="shell">
+    <span class="order-tag" data-en="Demo &mdash; this is how your customers would order">DEMO &mdash; as&iacute; pedir&iacute;an tus clientes</span>
+    <h2 class="display reveal" data-en="Order without flagging down a waiter">Pedir sin levantar la mano</h2>
+    <p class="lede reveal" data-en="Scan, choose, pay. From the sunbed or the table &mdash; the order goes straight to the kitchen. Try it: everything works except the payment.">Escanear, elegir, pagar. Desde la hamaca o la mesa &mdash; el pedido llega directo a cocina. Pru&eacute;balo: todo funciona menos el pago.</p>
+
+    <div class="order-grid">
+      <article class="order-card reveal">
+        <img src="assets/e710cb2aa2c.webp" alt="Gambas rojas con sal gruesa" width="828" height="552" loading="lazy">
+        <div class="body">
+          <h3 data-en="Grilled red prawns">Gambas rojas a la plancha</h3>
+          <p data-en="250 g &middot; today&rsquo;s pick, straight from the market">250 g &middot; sugerencia del d&iacute;a, directas de lonja</p>
+          <div class="row"><span class="price">35,00&nbsp;&euro;</span><button class="add-btn" data-id="gambas" data-name="Gambas rojas a la plancha" data-name-en="Grilled red prawns" data-price="35" data-en="Add">A&ntilde;adir</button></div>
+        </div>
+      </article>
+      <article class="order-card reveal d1">
+        <img src="assets/fcf9821422c.webp" alt="Paella de marisco y pescado" width="828" height="552" loading="lazy">
+        <div class="body">
+          <h3 data-en="Seafood &amp; fish paella">Paella de marisco y pescado</h3>
+          <p data-en="For 2 people &middot; mussels, prawns, squid">Para 2 personas &middot; mejillones, gambas, calamar</p>
+          <div class="row"><span class="price">39,50&nbsp;&euro;</span><button class="add-btn" data-id="paella" data-name="Paella de marisco y pescado" data-name-en="Seafood &amp; fish paella" data-price="39.5" data-en="Add">A&ntilde;adir</button></div>
+        </div>
+      </article>
+      <article class="order-card reveal d2">
+        <img src="assets/01bdc033f2c.webp" alt="Fritura variada de pescado" width="828" height="552" loading="lazy">
+        <div class="body">
+          <h3 data-en="Mixed fried fish">Fritura variada</h3>
+          <p data-en="Anchovies, squid, rosada, whitebait, prawns&hellip;">Boquerones, calamares, rosada, chanquetes, langostinos&hellip;</p>
+          <div class="row"><span class="price">32,00&nbsp;&euro;</span><button class="add-btn" data-id="fritura" data-name="Fritura variada" data-name-en="Mixed fried fish" data-price="32" data-en="Add">A&ntilde;adir</button></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HORARIOS & UBICACIÓN ============ -->
+<section id="contacto" class="section where dark">
+  <div class="shell">
+    <p class="eyebrow reveal" data-en="Hours &amp; how to find us">Horarios y ubicaci&oacute;n</p>
+    <h2 class="display reveal" data-en="On the sand, module K-14">Sobre la arena, m&oacute;dulo K-14</h2>
+
+    <div class="where-grid">
+      <div class="reveal">
+        <div class="where-block">
+          <h3 data-en="Hours">Horario</h3>
+          <p data-en="Open daily from 11:00 &middot; check seasonal hours">Abierto a diario desde las 11:00 &middot; consultar horario de temporada</p>
+        </div>
+        <div class="where-block">
+          <h3 data-en="Address">Direcci&oacute;n</h3>
+          <address>Paseo Mar&iacute;timo La Carihuela (m&oacute;dulo K-14)<br>29620 Torremolinos, M&aacute;laga</address>
+        </div>
+        <div class="where-block">
+          <h3 data-en="Contact">Contacto</h3>
+          <p>
+            <a href="tel:+34633171220">+34 633 171 220</a><br>
+            Instagram &middot; <a href="https://instagram.com/lamarbonita" target="_blank" rel="noopener">@lamarbonita</a><br>
+            <span data-en="Bookings via CoverManager">Reservas v&iacute;a CoverManager</span>
+          </p>
+        </div>
+        <div class="where-block">
+          <h3 data-en="Good to know">A tener en cuenta</h3>
+          <div class="chips">
+            <span class="chip" data-en="Terrace on the sand">Terraza sobre la arena</span>
+            <span class="chip" data-en="Gluten-free options">Opciones sin gluten</span>
+            <span class="chip" data-en="Vegetarian options">Opciones vegetarianas</span>
+            <span class="chip" data-en="Pets welcome">Admite mascotas</span>
+            <span class="chip" data-en="Accessible">Accesible</span>
+            <span class="chip" data-en="Avg. 20&ndash;30&euro; per person">Precio medio 20&ndash;30&euro;</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-card reveal d2">
+        <div class="map-art" aria-hidden="true">
+          <svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice">
+            <rect width="480" height="300" fill="#0E3242"/>
+            <path d="M0,190 C80,168 160,206 240,188 C320,170 400,204 480,184 L480,300 L0,300 Z" fill="#12455A"/>
+            <path d="M0,214 C90,196 170,228 250,212 C330,196 410,226 480,210 L480,300 L0,300 Z" fill="#1A5B74"/>
+            <path d="M0,240 C100,224 180,252 260,238 C340,224 420,250 480,236 L480,300 L0,300 Z" fill="#E9DDBC"/>
+            <path d="M0,196 C80,176 160,212 240,194 C320,176 400,210 480,190" fill="none" stroke="#F8F4E9" stroke-opacity=".35" stroke-width="1.6" stroke-dasharray="1 7" stroke-linecap="round"/>
+            <path d="M0,222 C90,204 170,234 250,218 C330,202 410,232 480,216" fill="none" stroke="#F8F4E9" stroke-opacity=".25" stroke-width="1.4" stroke-dasharray="1 7" stroke-linecap="round"/>
+            <g transform="translate(240,150)">
+              <circle r="26" fill="#E2A93B" opacity=".16"><animate attributeName="r" values="20;30;20" dur="3.5s" repeatCount="indefinite"/></circle>
+              <path d="M0,-16 C9,-16 15,-9 15,-1 C15,9 0,22 0,22 C0,22 -15,9 -15,-1 C-15,-9 -9,-16 0,-16 Z" fill="#E2A93B"/>
+              <circle cy="-2" r="5" fill="#0B2733"/>
+            </g>
+            <text x="240" y="120" text-anchor="middle" fill="#F0E3C8" font-family="Bodoni Moda, serif" font-style="italic" font-size="17">La Carihuela &middot; K-14</text>
+            <circle cx="60" cy="60" r="18" fill="none" stroke="#E2A93B" stroke-opacity=".5"/>
+            <circle cx="60" cy="60" r="10" fill="#E2A93B" opacity=".85"/>
+            <g stroke="#E2A93B" stroke-opacity=".5"><line x1="60" y1="34" x2="60" y2="42"/><line x1="60" y1="78" x2="60" y2="86"/><line x1="34" y1="60" x2="42" y2="60"/><line x1="78" y1="60" x2="86" y2="60"/></g>
+          </svg>
+        </div>
+        <div class="body">
+          <p data-en="Between the sea and the promenade &mdash; the beach that made Brigitte Bardot fall in love, according to Gu&iacute;a Repsol.">Entre el mar y el paseo &mdash; la playa que enamor&oacute; a Brigitte Bardot, seg&uacute;n la Gu&iacute;a Repsol.</p>
+          <a class="btn btn-gold" href="https://www.google.com/maps/dir/?api=1&amp;destination=La%20Mar%20Bonita%2C%20Paseo%20Mar%C3%ADtimo%20La%20Carihuela%2C%2029620%20Torremolinos" target="_blank" rel="noopener" data-en="Directions in Google Maps">C&oacute;mo llegar en Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="shell">
+    <div>
+      <span class="wordmark">La Mar B<span class="tilde">o</span>nita</span>
+      <p data-en="Paseo Mar&iacute;timo La Carihuela (module K-14) &middot; 29620 Torremolinos &middot; +34 633 171 220">Paseo Mar&iacute;timo La Carihuela (m&oacute;dulo K-14) &middot; 29620 Torremolinos &middot; +34 633 171 220</p>
+    </div>
+    <p class="fine"><span data-en="Demonstration site built by Zach &mdash; this is not the restaurant&rsquo;s official website. Menu and prices are indicative. Want it live, in 4 languages, with real online ordering?">Sitio de demostraci&oacute;n creado por Zach &mdash; no es la web oficial del restaurante. Carta y precios orientativos. &iquest;La quieres publicada, en 4 idiomas y con pedidos online reales?</span> <a href="https://wa.me/447543455889?text=Hola%20Zach%2C%20vi%20la%20demo%20de%20mi%20restaurante" target="_blank" rel="noopener">WhatsApp &rarr;</a></p>
+  </div>
+</footer>
+
+<!-- cart FAB -->
+<button class="cart-fab" id="cartFab" aria-label="Ver pedido">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 7h12l-1.5 12h-9L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg>
+  <span data-en="Your order">Tu pedido</span>
+  <span class="count" id="cartCount">0</span>
+</button>
+
+<!-- cart drawer -->
+<div class="drawer-scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Pedido de demostración">
+  <div class="drawer-inner">
+    <div class="drawer-handle" aria-hidden="true"></div>
+
+    <div class="cart-view">
+      <h3 data-en="Your order">Tu pedido</h3>
+      <p class="demo-note" data-en="Demo &mdash; no real payments">Demo &mdash; sin pagos reales</p>
+      <div class="cart-lines" id="cartLines"></div>
+      <p class="cart-empty" id="cartEmpty" data-en="Your order is empty &mdash; add a dish to try it.">Tu pedido est&aacute; vac&iacute;o &mdash; a&ntilde;ade un plato para probar.</p>
+      <div class="cart-total" id="cartTotalRow" hidden><span>Total</span><span class="amt" id="cartTotal">0,00&nbsp;&euro;</span></div>
+      <button class="btn btn-ink" id="toCheckout" hidden data-en="Continue &mdash; demo checkout">Continuar &mdash; pago de prueba</button>
+    </div>
+
+    <div class="checkout">
+      <button class="back" id="backToCart">&larr; <span data-en="Back to order">Volver al pedido</span></button>
+      <h3 data-en="Demo checkout">Pago de prueba</h3>
+      <p class="demo-banner" data-en="DEMO &mdash; this is how your customers would order. In the real version this screen charges by card (Apple Pay / Google Pay included) and the order prints in the kitchen.">DEMO &mdash; as&iacute; pedir&iacute;an tus clientes. En la versi&oacute;n real esta pantalla cobra con tarjeta (Apple Pay / Google Pay incluidos) y el pedido sale impreso en cocina.</p>
+      <div class="pick-row">
+        <button class="on" data-en="At the table">En mesa</button>
+        <button data-en="On the sunbed">En hamaca</button>
+        <button data-en="Pick-up">Recogida</button>
+      </div>
+      <div class="fake-field"><label data-en="Name">Nombre</label><input type="text" value="Miguel" disabled></div>
+      <div class="fake-field"><label data-en="Card">Tarjeta</label><input type="text" value="&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 4242" disabled></div>
+      <div class="cart-total"><span>Total</span><span class="amt" id="checkoutTotal">0,00&nbsp;&euro;</span></div>
+      <button class="btn btn-gold" disabled data-en="Pay &mdash; disabled in the demo">Pagar &mdash; desactivado en la demo</button>
+    </div>
+  </div>
+</aside>
+
+<script>
+document.documentElement.classList.add('js');
+
+/* ---------------- i18n ---------------- */
+(function(){
+  var els = document.querySelectorAll('[data-en]');
+  els.forEach(function(el){ el.dataset.esHtml = el.innerHTML; });
+  var btnEs = document.getElementById('btn-es'), btnEn = document.getElementById('btn-en');
+  function setLang(lang){
+    els.forEach(function(el){
+      el.innerHTML = (lang === 'en') ? el.getAttribute('data-en') : el.dataset.esHtml;
+    });
+    document.documentElement.lang = lang;
+    btnEs.classList.toggle('active', lang==='es'); btnEn.classList.toggle('active', lang==='en');
+    btnEs.setAttribute('aria-pressed', lang==='es'); btnEn.setAttribute('aria-pressed', lang==='en');
+    window.__lang = lang;
+    if (window.__renderCart) window.__renderCart();
+  }
+  btnEs.addEventListener('click', function(){ setLang('es'); });
+  btnEn.addEventListener('click', function(){ setLang('en'); });
+  window.__lang = 'es';
+})();
+
+/* ---------------- scroll reveals + rescue ---------------- */
+(function(){
+  var els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+    els.forEach(function(el){ io.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('in'); });
+  }
+  /* rescue: nothing may stay hidden */
+  setTimeout(function(){
+    document.querySelectorAll('.reveal:not(.in)').forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight) el.classList.add('in');
+    });
+  }, 1800);
+  setTimeout(function(){
+    document.querySelectorAll('.reveal:not(.in)').forEach(function(el){ el.classList.add('in'); });
+  }, 4000);
+})();
+
+/* ---------------- cart demo ---------------- */
+(function(){
+  var cart = {}; /* id -> {name, nameEn, price, qty} */
+  var fab = document.getElementById('cartFab');
+  var count = document.getElementById('cartCount');
+  var drawer = document.getElementById('drawer');
+  var scrim = document.getElementById('scrim');
+  var lines = document.getElementById('cartLines');
+  var empty = document.getElementById('cartEmpty');
+  var totalRow = document.getElementById('cartTotalRow');
+  var totalEl = document.getElementById('cartTotal');
+  var checkoutTotalEl = document.getElementById('checkoutTotal');
+  var toCheckout = document.getElementById('toCheckout');
+  var backToCart = document.getElementById('backToCart');
+
+  function fmt(n){ return n.toFixed(2).replace('.', ',') + ' €'; }
+
+  function render(){
+    var ids = Object.keys(cart), n = 0, total = 0;
+    lines.innerHTML = '';
+    ids.forEach(function(id){
+      var it = cart[id]; n += it.qty; total += it.qty * it.price;
+      var row = document.createElement('div');
+      row.className = 'cart-line';
+      var nm = (window.__lang === 'en') ? it.nameEn : it.name;
+      row.innerHTML =
+        '<span class="nm">' + nm + '</span>' +
+        '<span class="qty"><button data-act="minus" data-id="'+id+'" aria-label="Quitar uno">&minus;</button>' +
+        '<span>'+it.qty+'</span>' +
+        '<button data-act="plus" data-id="'+id+'" aria-label="A&ntilde;adir uno">+</button></span>' +
+        '<span class="ln-price">' + fmt(it.qty * it.price) + '</span>';
+      lines.appendChild(row);
+    });
+    count.textContent = n;
+    empty.style.display = ids.length ? 'none' : '';
+    totalRow.hidden = !ids.length;
+    toCheckout.hidden = !ids.length;
+    totalEl.innerHTML = fmt(total);
+    checkoutTotalEl.innerHTML = fmt(total);
+    fab.classList.toggle('visible', n > 0);
+    if (!ids.length) drawer.classList.remove('step2');
+  }
+  window.__renderCart = render;
+
+  document.querySelectorAll('.add-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var id = btn.dataset.id;
+      if (!cart[id]) cart[id] = {name: btn.dataset.name, nameEn: btn.dataset.nameEn, price: parseFloat(btn.dataset.price), qty: 0};
+      cart[id].qty++;
+      render();
+      count.classList.remove('bump'); void count.offsetWidth; count.classList.add('bump');
+      btn.classList.add('added');
+      var prev = btn.innerHTML;
+      btn.innerHTML = (window.__lang === 'en') ? 'Added ✓' : 'Añadido ✓';
+      setTimeout(function(){
+        btn.classList.remove('added');
+        btn.innerHTML = (window.__lang === 'en') ? btn.getAttribute('data-en') : btn.dataset.esHtml || prev;
+      }, 900);
+    });
+  });
+
+  lines.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (!b) return;
+    var it = cart[b.dataset.id]; if (!it) return;
+    if (b.dataset.act === 'plus') it.qty++;
+    else { it.qty--; if (it.qty <= 0) delete cart[b.dataset.id]; }
+    render();
+  });
+
+  function openDrawer(){ drawer.classList.add('open'); scrim.classList.add('open'); }
+  function closeDrawer(){ drawer.classList.remove('open'); scrim.classList.remove('open'); }
+  fab.addEventListener('click', openDrawer);
+  scrim.addEventListener('click', closeDrawer);
+  toCheckout.addEventListener('click', function(){ drawer.classList.add('step2'); });
+  backToCart.addEventListener('click', function(){ drawer.classList.remove('step2'); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeDrawer(); });
+
+  /* pick-row toggle (visual only) */
+  document.querySelectorAll('.pick-row button').forEach(function(b){
+    b.addEventListener('click', function(){
+      b.parentElement.querySelectorAll('button').forEach(function(x){ x.classList.remove('on'); });
+      b.classList.add('on');
+    });
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

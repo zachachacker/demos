@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Chiringuito El Lele — La Carihuela, Torremolinos · Desde 1983</title>
+<meta name="description" content="Espetos a la brasa, pescaíto frito y mariscos a pie de playa. Tres generaciones en el Paseo Marítimo de La Carihuela.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 6c4 10-8 14-6 24 1 6 6 8 6 8s-14-2-14 12c0 8 7 12 14 12s16-5 16-16C48 30 28 24 32 6z' fill='%23E1571F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&family=Alegreya+Sans:wght@400;500;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --sand:#F2E9D8;
+  --sand-2:#E9DCC2;
+  --sand-3:#DECBA6;
+  --foam:#FBF7EE;
+  --navy:#14283A;
+  --navy-deep:#0C1B2A;
+  --ink:#22303C;
+  --drift:#8C7358;
+  --drift-soft:#B49A78;
+  --fire:#E1571F;
+  --fire-deep:#C24312;
+  --ember:#EFA03C;
+  --sea:#33617A;
+  --ribbon-h:38px;
+  --disp:'Yeseva One',serif;
+  --body:'Alegreya',serif;
+  --sans:'Alegreya Sans',sans-serif;
+  --hand:'Caveat',cursive;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+body{
+  font-family:var(--body);
+  background:var(--sand);
+  color:var(--ink);
+  line-height:1.6;
+  padding-top:var(--ribbon-h);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+::selection{background:var(--fire);color:var(--foam)}
+
+/* grain overlay */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:4;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+}
+
+/* ============ DEMO RIBBON ============ */
+.ribbon{
+  position:fixed;top:0;left:0;right:0;height:var(--ribbon-h);z-index:60;
+  background:var(--navy-deep);color:var(--sand);
+  display:flex;align-items:center;justify-content:center;gap:.6em;
+  font-family:var(--sans);font-size:.78rem;letter-spacing:.02em;
+  padding:0 10px;text-align:center;
+}
+.ribbon strong{color:var(--ember);font-weight:700}
+.ribbon a{
+  color:var(--navy-deep);background:var(--ember);text-decoration:none;font-weight:800;
+  padding:3px 12px;border-radius:99px;white-space:nowrap;transition:transform .15s ease,background .15s ease;
+}
+.ribbon a:hover{background:var(--foam);transform:translateY(-1px)}
+@media(max-width:520px){.ribbon{font-size:.7rem;gap:.45em}.ribbon .rb-hide{display:none}}
+
+/* ============ HEADER ============ */
+header.site{
+  position:sticky;top:var(--ribbon-h);z-index:50;
+  background:color-mix(in srgb,var(--sand) 88%,transparent);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid color-mix(in srgb,var(--drift) 30%,transparent);
+}
+.nav-in{
+  max-width:1200px;margin:0 auto;padding:10px 20px;
+  display:flex;align-items:center;gap:18px;
+}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
+.brand img{height:40px;width:auto}
+nav.main{display:flex;gap:22px;font-family:var(--sans);font-weight:700;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase}
+nav.main a{text-decoration:none;color:var(--ink);position:relative;padding:4px 0}
+nav.main a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--fire);transition:width .25s ease}
+nav.main a:hover::after{width:100%}
+@media(max-width:860px){nav.main{display:none}}
+.lang{
+  display:flex;border:2px solid var(--navy);border-radius:99px;overflow:hidden;
+  font-family:var(--sans);font-weight:800;font-size:.78rem;
+}
+.lang button{
+  border:0;background:transparent;color:var(--navy);padding:5px 13px;letter-spacing:.05em;
+  transition:background .2s,color .2s;
+}
+.lang button[aria-pressed="true"]{background:var(--navy);color:var(--sand)}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;min-height:calc(100svh - var(--ribbon-h) - 61px);
+  display:flex;align-items:flex-end;color:var(--foam);
+  isolation:isolate;overflow:hidden;
+}
+.hero-img{position:absolute;inset:0;z-index:-2}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:60% 45%}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(178deg,rgba(12,27,42,.18) 0%,rgba(12,27,42,.05) 34%,rgba(12,27,42,.52) 68%,rgba(12,27,42,.9) 100%);
+}
+.hero-in{max-width:1200px;margin:0 auto;width:100%;padding:110px 20px 46px}
+.hero .kicker{
+  font-family:var(--sans);font-weight:800;letter-spacing:.34em;text-transform:uppercase;
+  font-size:.72rem;color:var(--ember);display:flex;align-items:center;gap:12px;
+}
+.hero .kicker::before{content:"";width:34px;height:2px;background:var(--ember);display:inline-block}
+.hero h1{
+  font-family:var(--disp);font-weight:400;
+  font-size:clamp(3.1rem,11vw,7.2rem);
+  line-height:.98;margin:.18em 0 .12em;letter-spacing:.01em;
+  text-shadow:0 3px 26px rgba(0,0,0,.45);
+}
+.hero h1 .thin{display:block;font-size:.34em;font-family:var(--sans);font-weight:500;letter-spacing:.42em;text-transform:uppercase;opacity:.92;margin-bottom:.35em}
+.hero .tagline{
+  font-family:var(--hand);font-size:clamp(1.35rem,4vw,1.9rem);color:var(--sand-2);
+  margin-bottom:.65em;max-width:22ch;line-height:1.25;
+  text-shadow:0 2px 14px rgba(12,27,42,.85),0 1px 3px rgba(12,27,42,.7);
+}
+.hero .kicker{text-shadow:0 1px 8px rgba(12,27,42,.8)}
+.hero .locline{font-family:var(--sans);font-size:.92rem;opacity:.95;text-shadow:0 1px 8px rgba(12,27,42,.85)}
+.hero .locline svg{display:inline-block;vertical-align:-2px;margin-right:6px}
+.badge-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:20px 0 26px}
+.rating-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(251,247,238,.12);border:1px solid rgba(251,247,238,.35);
+  backdrop-filter:blur(6px);border-radius:12px;padding:9px 14px;
+  font-family:var(--sans);font-size:.85rem;
+}
+.rating-badge b{font-size:1.15rem;color:var(--ember);font-weight:800}
+.rating-badge .sep{opacity:.4}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+  font-family:var(--sans);font-weight:800;letter-spacing:.05em;font-size:.92rem;
+  padding:14px 26px;border-radius:99px;border:2px solid transparent;
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease,color .18s ease;
+}
+.btn:active{transform:scale(.97)}
+.btn-fire{background:var(--fire);color:var(--foam);box-shadow:0 8px 24px rgba(225,87,31,.38)}
+.btn-fire:hover{background:var(--fire-deep);transform:translateY(-2px)}
+.btn-ghost{border-color:rgba(251,247,238,.6);color:var(--foam)}
+.btn-ghost:hover{background:rgba(251,247,238,.14);transform:translateY(-2px)}
+
+/* hero load-in */
+.js .hro{opacity:0;transform:translateY(26px);animation:rise .8s cubic-bezier(.2,.65,.25,1) forwards}
+.js .hro.d1{animation-delay:.08s}.js .hro.d2{animation-delay:.2s}.js .hro.d3{animation-delay:.34s}
+.js .hro.d4{animation-delay:.48s}.js .hro.d5{animation-delay:.62s}
+@keyframes rise{to{opacity:1;transform:none}}
+.js .hero-img img{transform:scale(1.07);animation:heroZoom 2.4s cubic-bezier(.2,.6,.3,1) forwards}
+@keyframes heroZoom{to{transform:scale(1)}}
+
+/* ============ MARQUEE ============ */
+.marquee{
+  background:var(--navy);color:var(--sand);overflow:hidden;white-space:nowrap;
+  padding:13px 0;font-family:var(--sans);font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;font-size:.8rem;position:relative;
+}
+.marquee .track{display:inline-block;animation:slide 36s linear infinite}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee span{margin:0 1.4em}
+.marquee .fl{color:var(--ember)}
+
+/* ============ SECTION SHELL ============ */
+section{position:relative}
+section[id],main[id]{scroll-margin-top:calc(var(--ribbon-h) + 72px)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.sec-head{margin-bottom:42px}
+.eyebrow{
+  font-family:var(--sans);font-weight:800;letter-spacing:.32em;text-transform:uppercase;
+  font-size:.72rem;color:var(--fire);display:flex;align-items:center;gap:12px;margin-bottom:14px;
+}
+.eyebrow::before{content:"";width:30px;height:2px;background:var(--fire)}
+h2{font-family:var(--disp);font-weight:400;font-size:clamp(2rem,5.4vw,3.4rem);line-height:1.06;color:var(--navy)}
+.on-dark h2{color:var(--foam)}
+.on-dark .eyebrow{color:var(--ember)}
+.on-dark .eyebrow::before{background:var(--ember)}
+
+/* reveal */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.65,.25,1)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv.dl1{transition-delay:.1s}.js .rv.dl2{transition-delay:.2s}.js .rv.dl3{transition-delay:.3s}
+
+/* ============ HISTORIA ============ */
+.historia{padding:88px 0 74px;background:var(--sand);overflow:hidden}
+.hist-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+@media(max-width:900px){.hist-grid{grid-template-columns:1fr;gap:40px}}
+.hist-copy p{font-size:1.08rem;margin-bottom:1.1em;max-width:56ch}
+.hist-copy .lede{font-size:1.3rem;font-weight:500;color:var(--navy)}
+.hist-copy p.grito{
+  font-family:var(--hand);font-size:clamp(2.1rem,6vw,2.9rem);color:var(--fire);
+  line-height:1.15;margin:26px 0;transform:rotate(-2deg);display:inline-block;
+}
+.grito small{display:block;font-family:var(--sans);font-size:.72rem;color:var(--drift);letter-spacing:.14em;text-transform:uppercase;transform:none;margin-top:6px}
+.hist-photos{position:relative;min-height:420px}
+.hist-photos figure{position:absolute;border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(20,40,58,.28);background:var(--foam)}
+.hist-photos figure img{width:100%;height:100%;object-fit:cover}
+.ph-a{width:72%;aspect-ratio:4/3;top:0;left:0;transform:rotate(-2.5deg);z-index:1}
+.ph-b{width:56%;aspect-ratio:1/1;bottom:0;right:0;transform:rotate(2deg);z-index:2;border:6px solid var(--foam)}
+.hist-photos .stamp{
+  position:absolute;z-index:3;top:56%;left:4%;width:104px;height:104px;border-radius:50%;
+  background:var(--fire);color:var(--foam);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:var(--disp);transform:rotate(-9deg);box-shadow:0 10px 30px rgba(194,67,18,.4);
+  text-align:center;line-height:1;
+}
+.hist-photos .stamp b{font-size:1.65rem;font-weight:400}
+.hist-photos .stamp span{font-family:var(--sans);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;margin-top:5px;font-weight:700}
+@media(max-width:900px){.hist-photos{min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:14px;padding-top:6px}
+ .hist-photos figure{position:static;transform:none;width:auto}
+ .ph-a{aspect-ratio:4/3}.ph-b{aspect-ratio:4/3;border:0}
+ .hist-photos .stamp{top:auto;bottom:-18px;left:calc(50% - 52px);transform:rotate(-8deg)}
+}
+
+/* timeline */
+.timeline{margin-top:70px;border-top:1px solid var(--sand-3);padding-top:48px}
+.tl-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:26px}
+@media(max-width:1000px){.tl-grid{grid-template-columns:repeat(2,1fr);gap:30px 22px}}
+@media(max-width:520px){.tl-grid{grid-template-columns:1fr}}
+.tl-item{position:relative;padding-top:16px}
+.tl-item::before{content:"";position:absolute;top:0;left:0;width:44px;height:3px;background:var(--fire)}
+.tl-item .yr{font-family:var(--disp);font-size:1.5rem;color:var(--navy);margin-bottom:6px}
+.tl-item p{font-size:.92rem;font-family:var(--sans);color:#4c5a66;line-height:1.55}
+
+/* ============ SIGNATURE / ESPETOS ============ */
+.espetos{background:var(--navy);color:var(--sand);padding:0 0 90px;position:relative;overflow:hidden}
+.espetos .wave-top{display:block;width:100%;height:70px;margin-bottom:60px;color:var(--sand)}
+.esp-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+@media(max-width:900px){.esp-grid{grid-template-columns:1fr;gap:40px}}
+.esp-copy p{font-size:1.06rem;color:#C9D2D9;margin-bottom:1.1em;max-width:54ch}
+.esp-copy p strong{color:var(--ember);font-weight:700}
+.fish-list{display:flex;flex-wrap:wrap;gap:9px;margin:22px 0 4px;padding:0;list-style:none}
+.fish-list li{
+  font-family:var(--sans);font-weight:700;font-size:.82rem;letter-spacing:.05em;
+  border:1px solid rgba(239,160,60,.5);color:var(--ember);border-radius:99px;padding:6px 14px;
+}
+.esp-photo{position:relative}
+.esp-photo img{border-radius:16px;box-shadow:0 24px 70px rgba(0,0,0,.5);aspect-ratio:4/3.4;object-fit:cover;width:100%}
+.esp-photo::after{
+  content:"";position:absolute;inset:14px -14px -14px 14px;border:2px solid var(--ember);
+  border-radius:16px;z-index:-1;opacity:.5;
+}
+.esp-skewer{width:min(340px,70%);margin:0 auto 8px;display:block;color:var(--ember)}
+.esp-note{
+  font-family:var(--hand);font-size:1.5rem;color:var(--sand-2);transform:rotate(-1.5deg);
+  display:inline-block;margin-top:18px;
+}
+
+/* ============ CARTA ============ */
+.carta{padding:90px 0;background:var(--foam);position:relative;overflow:hidden}
+.carta::before{
+  content:"LA CARTA";position:absolute;top:34px;right:-30px;
+  font-family:var(--disp);font-size:clamp(5rem,14vw,11rem);color:var(--sand-2);
+  z-index:0;letter-spacing:.02em;pointer-events:none;line-height:1;
+}
+.carta .wrap{position:relative;z-index:1}
+.carta-note{
+  display:inline-flex;align-items:center;gap:9px;background:var(--sand);border:1px dashed var(--drift-soft);
+  border-radius:10px;padding:8px 16px;font-family:var(--sans);font-size:.82rem;color:var(--drift);
+  margin-top:16px;
+}
+.menu-cols{columns:2;column-gap:60px;margin-top:48px}
+@media(max-width:820px){.menu-cols{columns:1}}
+.mcat{break-inside:avoid;margin-bottom:46px}
+.mcat h3{
+  font-family:var(--disp);font-size:1.55rem;color:var(--navy);font-weight:400;
+  display:flex;align-items:baseline;gap:12px;margin-bottom:6px;
+}
+.mcat h3 .cat-ico{color:var(--fire);flex:none;transform:translateY(2px)}
+.mcat .cat-sub{font-family:var(--hand);color:var(--fire);font-size:1.15rem;margin-bottom:14px}
+.mcat ul{list-style:none}
+.mcat li{padding:8px 0;border-bottom:1px solid transparent}
+.mi{display:flex;align-items:baseline;gap:10px}
+.mi .nm{font-weight:500;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:1}
+.mi .dots{flex:1;border-bottom:2px dotted var(--sand-3);transform:translateY(-4px);min-width:24px}
+.mi .pr{font-family:var(--sans);font-weight:800;color:var(--navy);font-variant-numeric:tabular-nums;white-space:nowrap}
+.mi-desc{font-size:.86rem;font-family:var(--sans);color:var(--drift);margin-top:2px;font-style:italic}
+.langs-strip{
+  margin-top:26px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  background:var(--navy);color:var(--sand);border-radius:14px;padding:18px 22px;
+}
+.langs-strip .flag-dots{display:flex;gap:6px}
+.langs-strip .flag-dots i{width:10px;height:10px;border-radius:50%;background:var(--ember);display:block;opacity:.85}
+.langs-strip p{font-family:var(--sans);font-size:.92rem}
+.langs-strip b{color:var(--ember)}
+
+/* ============ PEDIDOS DEMO ============ */
+.pedidos{padding:90px 0;background:var(--sand-2);position:relative;overflow:hidden}
+.demo-chip{
+  display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:var(--ember);
+  font-family:var(--sans);font-weight:800;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;
+  border-radius:99px;padding:7px 16px;margin-bottom:18px;
+}
+.demo-chip::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ember);animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.25}}
+.dish-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px}
+@media(max-width:860px){.dish-grid{grid-template-columns:1fr;max-width:440px}}
+.dish{
+  background:var(--foam);border-radius:18px;overflow:hidden;
+  box-shadow:0 10px 34px rgba(20,40,58,.14);display:flex;flex-direction:column;
+  transition:transform .22s ease,box-shadow .22s ease;
+}
+.dish:hover{transform:translateY(-5px);box-shadow:0 20px 48px rgba(20,40,58,.2)}
+.dish .im{aspect-ratio:16/10;overflow:hidden}
+.dish .im img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.dish:hover .im img{transform:scale(1.05)}
+.dish .bd{padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.dish h3{font-family:var(--disp);font-weight:400;font-size:1.25rem;color:var(--navy)}
+.dish .ds{font-family:var(--sans);font-size:.88rem;color:var(--drift);flex:1}
+.dish .rw{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.dish .pr{font-family:var(--sans);font-weight:800;font-size:1.2rem;color:var(--navy)}
+.add-btn{
+  border:0;background:var(--fire);color:var(--foam);font-weight:800;font-family:var(--sans);
+  font-size:.88rem;letter-spacing:.04em;border-radius:99px;padding:10px 22px;
+  transition:background .18s,transform .18s;display:inline-flex;align-items:center;gap:7px;
+}
+.add-btn:hover{background:var(--fire-deep);transform:translateY(-1px)}
+.add-btn:active{transform:scale(.94)}
+.add-btn.added{background:var(--navy)}
+
+/* cart bar + drawer */
+.cart-bar{
+  position:fixed;left:14px;right:14px;bottom:14px;z-index:70;
+  background:var(--navy);color:var(--sand);border-radius:16px;
+  display:flex;align-items:center;gap:14px;padding:13px 18px;
+  box-shadow:0 16px 46px rgba(12,27,42,.45);
+  transform:translateY(130%);transition:transform .35s cubic-bezier(.2,.7,.3,1);
+  font-family:var(--sans);max-width:560px;margin:0 auto;
+}
+.cart-bar.show{transform:none}
+.cart-bar .ct{display:flex;align-items:center;gap:10px;font-weight:700}
+.cart-bar .count{
+  background:var(--fire);color:var(--foam);border-radius:50%;width:26px;height:26px;
+  display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:800;
+}
+.cart-bar .tot{margin-left:auto;font-weight:800;font-size:1.05rem;color:var(--ember)}
+.cart-bar button{
+  border:0;background:var(--fire);color:var(--foam);font-weight:800;border-radius:99px;
+  padding:9px 18px;font-size:.85rem;font-family:var(--sans);
+}
+.scrim{position:fixed;inset:0;background:rgba(12,27,42,.55);z-index:80;opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.show{opacity:1;pointer-events:auto}
+.drawer{
+  position:fixed;left:0;right:0;bottom:0;z-index:90;background:var(--foam);
+  border-radius:22px 22px 0 0;max-width:560px;margin:0 auto;
+  transform:translateY(105%);transition:transform .4s cubic-bezier(.2,.7,.25,1);
+  max-height:86svh;display:flex;flex-direction:column;font-family:var(--sans);
+  box-shadow:0 -20px 60px rgba(12,27,42,.35);
+}
+.drawer.open{transform:none}
+.drawer-h{padding:18px 22px 12px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--sand-2)}
+.drawer-h h3{font-family:var(--disp);font-weight:400;color:var(--navy);font-size:1.3rem;margin-right:auto}
+.drawer-h .demo-tag{font-size:.68rem;font-weight:800;letter-spacing:.14em;color:var(--fire);border:1.5px solid var(--fire);border-radius:6px;padding:3px 8px;text-transform:uppercase}
+.x-btn{border:0;background:var(--sand);width:34px;height:34px;border-radius:50%;font-size:1rem;color:var(--navy);font-weight:800}
+.drawer-b{padding:10px 22px;overflow-y:auto;flex:1}
+.cline{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--sand-2)}
+.cline .nm{font-weight:700;color:var(--ink)}
+.cline .up{font-size:.78rem;color:var(--drift)}
+.qty{display:flex;align-items:center;gap:10px;margin-left:auto}
+.qty button{
+  width:30px;height:30px;border-radius:50%;border:1.5px solid var(--navy);background:transparent;
+  color:var(--navy);font-weight:800;font-size:1rem;line-height:1;
+}
+.qty button:hover{background:var(--navy);color:var(--foam)}
+.qty .q{min-width:18px;text-align:center;font-weight:800}
+.cline .lp{font-weight:800;color:var(--navy);min-width:64px;text-align:right;font-variant-numeric:tabular-nums}
+.drawer-f{padding:16px 22px 22px;border-top:1px solid var(--sand-2);background:var(--foam);border-radius:0 0 0 0}
+.sumrow{display:flex;justify-content:space-between;font-weight:700;margin-bottom:6px;font-size:.92rem;color:var(--drift)}
+.sumrow.total{font-size:1.25rem;color:var(--navy);font-weight:800;margin:10px 0 16px}
+.checkout-btn{
+  width:100%;border:0;background:var(--fire);color:var(--foam);font-weight:800;font-size:1rem;
+  padding:15px;border-radius:14px;letter-spacing:.03em;font-family:var(--sans);
+  transition:background .2s;
+}
+.checkout-btn:hover{background:var(--fire-deep)}
+.empty-msg{text-align:center;color:var(--drift);padding:34px 0;font-style:italic;font-family:var(--body)}
+/* checkout step */
+.chk{display:none}
+.drawer.step-chk .cart-view{display:none}
+.drawer.step-chk .chk{display:block}
+.chk-banner{
+  background:var(--navy);color:var(--ember);border-radius:12px;padding:13px 16px;text-align:center;
+  font-weight:800;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;
+}
+.chk-fields{display:grid;gap:10px;margin-bottom:16px}
+.chk-fields input{
+  font-family:var(--sans);font-size:.95rem;padding:13px 15px;border-radius:11px;
+  border:1.5px solid var(--sand-3);background:var(--sand);color:var(--drift);
+}
+.chk-fields input:focus{outline:2px solid var(--ember)}
+.pay-btn{
+  width:100%;border:0;background:var(--drift-soft);color:var(--foam);font-weight:800;font-size:1rem;
+  padding:15px;border-radius:14px;font-family:var(--sans);cursor:not-allowed;opacity:.75;
+  display:flex;align-items:center;justify-content:center;gap:9px;
+}
+.back-lnk{background:none;border:0;color:var(--drift);font-size:.85rem;text-decoration:underline;margin-top:12px;display:block;text-align:center;width:100%;font-family:var(--sans)}
+.toast{
+  position:fixed;bottom:90px;left:50%;transform:translate(-50%,20px);z-index:95;
+  background:var(--navy);color:var(--sand);font-family:var(--sans);font-weight:700;font-size:.85rem;
+  padding:10px 20px;border-radius:99px;opacity:0;pointer-events:none;transition:.3s;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ============ RESEÑAS ============ */
+.resenas{background:var(--navy-deep);color:var(--sand);padding:0 0 90px}
+.resenas .wave-top{display:block;width:100%;height:70px;margin-bottom:60px;color:var(--sand-2)}
+.rating-summary{display:flex;gap:14px;flex-wrap:wrap;margin:26px 0 46px}
+.rs-chip{
+  background:rgba(251,247,238,.07);border:1px solid rgba(251,247,238,.18);border-radius:14px;
+  padding:14px 20px;font-family:var(--sans);
+}
+.rs-chip b{display:block;font-size:1.5rem;color:var(--ember);font-weight:800;line-height:1.1}
+.rs-chip span{font-size:.78rem;opacity:.75;letter-spacing:.06em}
+.quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+@media(max-width:820px){.quotes{grid-template-columns:1fr}}
+.qcard{
+  background:rgba(251,247,238,.05);border:1px solid rgba(251,247,238,.12);border-radius:18px;
+  padding:28px 26px 22px;position:relative;
+}
+.qcard::before{
+  content:"“";font-family:var(--disp);font-size:4.6rem;color:var(--fire);position:absolute;
+  top:-8px;left:18px;line-height:1;opacity:.9;
+}
+.qcard blockquote{font-size:1.13rem;font-style:italic;color:#DCE3E8;padding-top:26px;line-height:1.55}
+.qcard cite{
+  display:block;margin-top:16px;font-style:normal;font-family:var(--sans);font-size:.76rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ember);font-weight:700;
+}
+.stars{color:var(--ember);letter-spacing:2px;font-size:.9rem;margin-top:8px;display:inline-block}
+
+/* ============ HORARIOS / UBICACIÓN ============ */
+.contacto{padding:90px 0;background:var(--sand)}
+.con-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:44px}
+@media(max-width:820px){.con-grid{grid-template-columns:1fr}}
+.con-card{
+  background:var(--foam);border-radius:20px;padding:34px 32px;
+  box-shadow:0 10px 36px rgba(20,40,58,.1);position:relative;overflow:hidden;
+}
+.con-card h3{font-family:var(--disp);font-weight:400;color:var(--navy);font-size:1.5rem;margin-bottom:18px;display:flex;align-items:center;gap:11px}
+.con-card h3 svg{color:var(--fire)}
+.con-card p{margin-bottom:10px;font-size:1.02rem}
+.con-card .big{font-family:var(--sans);font-weight:800;font-size:1.5rem;color:var(--navy)}
+.con-card .muted{font-family:var(--sans);font-size:.85rem;color:var(--drift);font-style:italic}
+.con-card a.tel{color:var(--fire);text-decoration:none;font-weight:700}
+.con-card a.tel:hover{text-decoration:underline}
+.con-card .btn{margin-top:14px}
+.btn-navy{background:var(--navy);color:var(--foam);box-shadow:0 8px 22px rgba(20,40,58,.3)}
+.btn-navy:hover{background:var(--navy-deep);transform:translateY(-2px)}
+.hours-line{display:flex;justify-content:space-between;border-bottom:1px dotted var(--sand-3);padding:9px 0;font-family:var(--sans)}
+.hours-line b{color:var(--navy)}
+.con-card .sun{position:absolute;right:-34px;top:-34px;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,var(--ember) 0%,transparent 70%);opacity:.28}
+
+/* ============ FOOTER ============ */
+footer{background:var(--navy-deep);color:#8FA0AE;padding:52px 0 110px;font-family:var(--sans);font-size:.85rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:26px;align-items:center;justify-content:space-between}
+footer img.flogo{height:52px;width:auto;filter:invert(1) opacity(.9)}
+footer .fx{max-width:44ch;line-height:1.6}
+footer a{color:var(--sand-2)}
+
+/* wave svg helper */
+.wave-svg{display:block;width:100%}
+</style>
+</head>
+<body>
+
+<!-- DEMO RIBBON -->
+<div class="ribbon" role="note">
+  <span><strong>DEMO</strong> <span data-en="made by Zach for Chiringuito El Lele.">hecha por Zach para Chiringuito El Lele.</span> <span class="rb-hide" data-en="Want it live?">¿La quieres?</span></span>
+  <a href="https://wa.me/447543455889?text=Hola%20Zach%2C%20vi%20la%20demo%20de%20mi%20restaurante" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<!-- HEADER -->
+<header class="site">
+  <div class="nav-in">
+    <a class="brand" href="#top" aria-label="Chiringuito El Lele">
+      <img src="assets/Logo-Lele-1.png" alt="Chiringuito El Lele" width="683" height="336">
+    </a>
+    <nav class="main" aria-label="principal">
+      <a href="#historia" data-en="Our story">Historia</a>
+      <a href="#carta" data-en="Menu">La Carta</a>
+      <a href="#pedidos" data-en="Order">Pedidos</a>
+      <a href="#resenas" data-en="Reviews">Reseñas</a>
+      <a href="#contacto" data-en="Find us">Ubicación</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" id="btn-es" aria-pressed="true" onclick="setLang('es')">ES</button>
+      <button type="button" id="btn-en" aria-pressed="false" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-img"><img src="assets/SDG_5963-scaled.jpg" alt="Espetos de sardinas y pulpo asándose a la brasa sobre la arena de La Carihuela" fetchpriority="high"></div>
+  <div class="hero-in">
+    <p class="kicker hro d1" data-en="On the beach since 1983">A pie de playa desde 1983</p>
+    <h1 class="hro d2"><span class="thin">Chiringuito</span>El Lele</h1>
+    <p class="tagline hro d3" data-en="Where tradition and flavour meet by the sea">Donde la tradición y el sabor se encuentran junto al mar</p>
+    <p class="locline hro d3">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+      <span data-en="Paseo Marítimo de La Carihuela · Torremolinos · Beachfront">Paseo Marítimo de La Carihuela · Torremolinos · Primera línea de playa</span>
+    </p>
+    <div class="badge-row hro d4">
+      <div class="rating-badge">
+        <b>4,1★</b> <span data-en="Google · 1,386 reviews">Google · 1.386 reseñas</span>
+        <span class="sep">|</span>
+        <b>4,9★</b> <span>Facebook</span>
+      </div>
+    </div>
+    <div class="cta-row hro d5">
+      <a class="btn btn-fire" href="#carta" data-en="See the menu">Ver la carta</a>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=Chiringuito+El+Lele%2C+Paseo+Mar%C3%ADtimo+La+Carihuela%2C+29620+Torremolinos" target="_blank" rel="noopener" data-en="Directions">Cómo llegar</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Espetos a la brasa</span><span class="fl">✦</span><span>Pescaíto frito</span><span class="fl">✦</span><span>Mariscos</span><span class="fl">✦</span><span>Fritura malagueña</span><span class="fl">✦</span><span>Almejas de Carril</span><span class="fl">✦</span><span>Tres generaciones</span><span class="fl">✦</span>
+    <span>Espetos a la brasa</span><span class="fl">✦</span><span>Pescaíto frito</span><span class="fl">✦</span><span>Mariscos</span><span class="fl">✦</span><span>Fritura malagueña</span><span class="fl">✦</span><span>Almejas de Carril</span><span class="fl">✦</span><span>Tres generaciones</span><span class="fl">✦</span>
+  </div>
+</div>
+
+<!-- ============ HISTORIA ============ -->
+<section class="historia" id="historia">
+  <div class="wrap">
+    <div class="hist-grid">
+      <div class="hist-copy">
+        <p class="eyebrow rv" data-en="Our story">Quiénes somos</p>
+        <h2 class="rv" data-en="The ice-cream man who became a legend of La Carihuela">El heladero que se hizo leyenda de La Carihuela</h2>
+        <p class="lede rv" style="margin-top:22px" data-en="José Sánchez Lorente was born in Coín (Málaga) in 1937. As a young man he cycled 36 km every day, his bicycle loaded with sandwiches, tortas and almonds to sell in Torremolinos.">José Sánchez Lorente nació en Coín (Málaga) en 1937. De joven recorría 36 km diarios en bicicleta, cargada de bocadillos, tortas y almendras, para venderlos en Torremolinos.</p>
+        <p class="rv" data-en="Later he walked the sand of La Carihuela selling ice cream with a cry the whole beach knew by heart — the cry that gave him his nickname and gave this house its palm-tree-and-music-notes logo:">Después caminaba por la arena de La Carihuela vendiendo helados con un pregón que toda la playa se sabía de memoria — el pregón que le dio su apodo y a esta casa su logo de palmeras y notas musicales:</p>
+        <p class="grito rv">«¡Hay el leleeeelado rico!»
+          <small data-en="The founder's ice-cream cry, origin of the name">El pregón del fundador, origen del nombre</small>
+        </p>
+        <p class="rv" data-en="In 1983, 'El Lele' and his family took over this chiringuito on La Carihuela beach. He passed away in January 2019 at the age of 81 — and today the third generation of the family keeps the same fires burning, in the same spot on the sand.">En 1983, «El Lele» y su familia adquirieron este chiringuito en la playa de La Carihuela. Falleció en enero de 2019 a los 81 años — y hoy la tercera generación de la familia mantiene encendidas las mismas brasas, en el mismo rincón de la arena.</p>
+      </div>
+      <div class="hist-photos rv dl1">
+        <figure class="ph-a"><img src="assets/SDG_5805-768x512.jpg" alt="Dorada a la brasa servida sobre la mesa del chiringuito con la playa al fondo" loading="lazy" width="768" height="512"></figure>
+        <figure class="ph-b"><img src="assets/SDG_5921-scaled.jpg" alt="Pulpo a la gallega sobre la mesa con el logo de El Lele" loading="lazy" width="2560" height="1707"></figure>
+        <div class="stamp"><b>1983</b><span data-en="Same family<br>same beach">Misma familia<br>misma playa</span></div>
+      </div>
+    </div>
+
+    <div class="timeline rv">
+      <div class="tl-grid">
+        <div class="tl-item"><div class="yr">1937</div><p data-en="José Sánchez Lorente is born in Coín, Málaga.">Nace José Sánchez Lorente en Coín, Málaga.</p></div>
+        <div class="tl-item"><div class="yr" data-en="The bicycle">La bicicleta</div><p data-en="36 km a day pedalling to Torremolinos, loaded with sandwiches, tortas and almonds.">36 km diarios pedaleando hasta Torremolinos, cargado de bocadillos, tortas y almendras.</p></div>
+        <div class="tl-item"><div class="yr" data-en="The ice-cream man">El heladero</div><p data-en="He walks the sand of La Carihuela singing his famous cry. The beach christens him 'El Lele'.">Recorre la arena de La Carihuela cantando su famoso pregón. La playa lo bautiza «El Lele».</p></div>
+        <div class="tl-item"><div class="yr">1983</div><p data-en="The family takes over the chiringuito on La Carihuela beach.">La familia adquiere el chiringuito en la playa de La Carihuela.</p></div>
+        <div class="tl-item"><div class="yr" data-en="Today">Hoy</div><p data-en="The third generation runs the house. Same fires, same sea.">La tercera generación lleva la casa. Las mismas brasas, el mismo mar.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ESPETOS / SIGNATURE ============ -->
+<section class="espetos on-dark" id="espetos">
+  <svg class="wave-top" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v18c-120 22-260 34-420 34-220 0-320-30-540-30C300 22 140 34 0 52V0z" fill="currentColor"/></svg>
+  <div class="wrap">
+    <div class="esp-grid">
+      <div class="esp-photo rv">
+        <img src="assets/SDG_5963-scaled.jpg" alt="Espeto de sardinas y espeto de pulpo clavados en la arena junto a las brasas" loading="lazy" width="2560" height="1707">
+      </div>
+      <div class="esp-copy">
+        <p class="eyebrow rv" data-en="The house specialty">La especialidad de la casa</p>
+        <h2 class="rv" data-en="Espetos over the coals, the way La Carihuela demands">Espetos a la brasa, como manda La Carihuela</h2>
+        <p class="rv" style="margin-top:22px" data-en="A cane skewer, sea salt, olive wood embers dug into the sand. That is the whole recipe — and it has not changed since 1983. Alongside the espetos: the classic fritura malagueña and shellfish straight from the market.">Una caña, sal gorda y brasas de leña clavadas en la arena. Esa es toda la receta — y no ha cambiado desde 1983. Junto a los espetos: la clásica <strong>fritura malagueña</strong> y mariscos como las <strong>coquinas</strong>, las <strong>conchas finas</strong> y las <strong>almejas de Carril</strong>.</p>
+        <svg class="esp-skewer rv" viewBox="0 0 340 40" fill="none" aria-hidden="true">
+          <line x1="4" y1="20" x2="336" y2="20" stroke="currentColor" stroke-width="2"/>
+          <path d="M330 20l8-6v12z" fill="currentColor"/>
+          <g fill="currentColor">
+            <path d="M60 20c10-9 24-9 32 0-8 9-22 9-32 0zm32 0l9-7v14z" opacity=".95"/>
+            <path d="M140 20c10-9 24-9 32 0-8 9-22 9-32 0zm32 0l9-7v14z" opacity=".95"/>
+            <path d="M220 20c10-9 24-9 32 0-8 9-22 9-32 0zm32 0l9-7v14z" opacity=".95"/>
+          </g>
+        </svg>
+        <ul class="fish-list rv" aria-label="Pescados al espeto">
+          <li>Sardinas</li><li>Lubina</li><li>Dorada</li><li>Calamar</li><li>Voraz</li><li>Salmonete</li><li>Rodaballo</li>
+        </ul>
+        <span class="esp-note rv" data-en="Fresh fish, generous plates, honest beach prices — that's what the regulars say.">Pescado fresco, raciones abundantes y precios razonables a pie de playa — lo dicen los habituales.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CARTA ============ -->
+<section class="carta" id="carta">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow rv" data-en="The menu">La carta</p>
+      <h2 class="rv" data-en="From the coals and from the bay">De la brasa y de la bahía</h2>
+      <div class="carta-note rv">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16.5v.01"/></svg>
+        <span data-en="Demo menu — indicative prices, VAT included (official 2024 menu)">Carta de demostración — precios orientativos, IVA incluido (carta oficial 2024)</span>
+      </div>
+    </div>
+
+    <div class="menu-cols">
+
+      <div class="mcat rv">
+        <h3><svg class="cat-ico" width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Tapas</h3>
+        <p class="cat-sub" data-en="the printed tapas menu comes in 5 languages">la carta de tapas, impresa en 5 idiomas</p>
+        <ul>
+          <li><div class="mi"><span class="nm">Ensaladilla malagueña</span><span class="dots"></span><span class="pr">2,40€</span></div></li>
+          <li><div class="mi"><span class="nm">Gambas rebozadas</span><span class="dots"></span><span class="pr">2,40€</span></div></li>
+          <li><div class="mi"><span class="nm">Cocktail de gambas</span><span class="dots"></span><span class="pr">2,40€</span></div></li>
+          <li><div class="mi"><span class="nm">Aguacate relleno</span><span class="dots"></span><span class="pr">3,80€</span></div><p class="mi-desc" data-en="Avocado with prawn cocktail">Aguacate con cocktail de gambas</p></li>
+          <li><div class="mi"><span class="nm">Pinchito de gambas</span><span class="dots"></span><span class="pr">3,80€</span></div></li>
+          <li><div class="mi"><span class="nm">Tortillita de camarones</span><span class="dots"></span><span class="pr">2,50€</span></div></li>
+          <li><div class="mi"><span class="nm">Boquerones en vinagre</span><span class="dots"></span><span class="pr">2,80€</span></div></li>
+        </ul>
+      </div>
+
+      <div class="mcat rv">
+        <h3><svg class="cat-ico" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20c4-2 4-14 8-14s4 12 8 14"/><path d="M8 10h8"/></svg>Ensaladas</h3>
+        <ul>
+          <li><div class="mi"><span class="nm">Ensalada Lele</span><span class="dots"></span><span class="pr">10,00€</span></div><p class="mi-desc" data-en="The house salad">La ensalada de la casa</p></li>
+          <li><div class="mi"><span class="nm">Ensalada Malagueña</span><span class="dots"></span><span class="pr">8,00€</span></div></li>
+          <li><div class="mi"><span class="nm">Ensalada Mixta</span><span class="dots"></span><span class="pr">7,00€</span></div></li>
+          <li><div class="mi"><span class="nm">Aguacate con cocktail de gambas</span><span class="dots"></span><span class="pr">9,80€</span></div></li>
+          <li><div class="mi"><span class="nm">Gazpacho</span><span class="dots"></span><span class="pr">3,50€</span></div><p class="mi-desc" data-en="Glass; with garnish €4.50">Vaso; con guarnición 4,50€</p></li>
+        </ul>
+      </div>
+
+      <div class="mcat rv">
+        <h3><svg class="cat-ico" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12a7 7 0 0 1 14 0"/><path d="M3 12h18M8 16h8"/></svg>Entrantes</h3>
+        <ul>
+          <li><div class="mi"><span class="nm">Gambas al pil pil</span><span class="dots"></span><span class="pr">9,50€</span></div></li>
+          <li><div class="mi"><span class="nm">Boquerones en vinagre</span><span class="dots"></span><span class="pr">9,50€</span></div></li>
+          <li><div class="mi"><span class="nm">Pulpo a la gallega</span><span class="dots"></span><span class="pr">18,00€</span></div></li>
+          <li><div class="mi"><span class="nm">Sopa de marisco</span><span class="dots"></span><span class="pr">9,90€</span></div></li>
+          <li><div class="mi"><span class="nm">Jamón serrano</span><span class="dots"></span><span class="pr">10,00€</span></div></li>
+          <li><div class="mi"><span class="nm">Croquetas de pollo</span><span class="dots"></span><span class="pr">10,00€</span></div></li>
+        </ul>
+      </div>
+
+      <div class="mcat rv">
+        <h3><svg class="cat-ico" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3c3 3 8 4 8 10a8 8 0 0 1-16 0c0-6 5-7 8-10z"/></svg>Mariscos</h3>
+        <ul>
+          <li><div class="mi"><span class="nm">Coquinas</span><span class="dots"></span><span class="pr">16,00€</span></div></li>
+          <li><div class="mi"><span class="nm">Almejas de Carril</span><span class="dots"></span><span class="pr">16,00€</span></div></li>
+          <li><div class="mi"><span class="nm">Conchas finas</span><span class="dots"></span><span class="pr">3,50€/ud</span></div><p class="mi-desc" data-en="Medium €3.50 · large €4.00 each">Mediana 3,50€ · grande 4,00€ la unidad</p></li>
+          <li><div class="mi"><span class="nm">Mejillones al vapor</span><span class="dots"></span><span class="pr">8,00€</span></div></li>
+          <li><div class="mi"><span class="nm">Navajas</span><span class="dots"></span><span class="pr">12,00€</span></div></li>
+          <li><div class="mi"><span class="nm">Gambas a la plancha</span><span class="dots"></span><span class="pr">19,00€</span></div></li>
+          <li><div class="mi"><span class="nm">Carabineros</span><span class="dots"></span><span class="pr">140,00€/kg</span></div></li>
+        </ul>
+      </div>
+
+      <div class="mcat rv">
+        <h3><svg class="cat-ico" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 5V2M9 2h6"/></svg>Frituras</h3>
+        <ul>
+          <li><div class="mi"><span class="nm">Fritura malagueña</span><span class="dots"></span><span class="pr">28,00€</span></div><p class="mi-desc" data-en="The classic fried-fish platter">El clásico surtido de pescaíto frito</p></li>
+          <li><div class="mi"><span class="nm">Boquerones fritos</span><span class="dots"></span><span class="pr">12,00€</span></div></li>
+          <li><div class="mi"><span class="nm">Calamares fritos</span><span class="dots"></span><span class="pr">14,80€</span></div></li>
+          <li><div class="mi"><span class="nm">Pez plata «El Lele»</span><span class="dots"></span><span class="pr">15,00€</span></div><p class="mi-desc" data-en="Chanquete-style, with fried eggs — house specialty">Estilo chanquete, con huevos fritos — especialidad de la casa</p></li>
+          <li><div class="mi"><span class="nm">Rosada en adobo</span><span class="dots"></span><span class="pr">13,00€</span></div></li>
+          <li><div class="mi"><span class="nm">Pulpo frito</span><span class="dots"></span><span class="pr">15,00€</span></div></li>
+          <li><div class="mi"><span class="nm">Salmonetitos</span><span class="dots"></span><span class="pr">13,00€</span></div></li>
+        </ul>
+      </div>
+
+      <div class="mcat rv">
+        <h3><svg class="cat-ico" width="19" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 12c4-5 12-5 15 0-3 5-11 5-15 0zm15 0l5-4v8z"/></svg><span data-en="Espetos &amp; grilled fish">Espetos y pescados</span></h3>
+        <p class="cat-sub" data-en="over olive-wood embers">a la brasa de leña</p>
+        <ul>
+          <li><div class="mi"><span class="nm">Espeto de sardinas</span><span class="dots"></span><span class="pr">7,00€</span></div><p class="mi-desc" data-en="Over the coals, the way La Carihuela demands">A la brasa, como manda La Carihuela</p></li>
+          <li><div class="mi"><span class="nm">Lubina</span><span class="dots"></span><span class="pr">19,00€</span></div></li>
+          <li><div class="mi"><span class="nm">Dorada</span><span class="dots"></span><span class="pr">19,00€</span></div></li>
+          <li><div class="mi"><span class="nm">Pez espada</span><span class="dots"></span><span class="pr">16,50€</span></div></li>
+          <li><div class="mi"><span class="nm">Atún rojo de almadraba</span><span class="dots"></span><span class="pr">22,00€</span></div></li>
+          <li><div class="mi"><span class="nm">Lenguado</span><span class="dots"></span><span class="pr">19,00€</span></div></li>
+          <li><div class="mi"><span class="nm">Rodaballo</span><span class="dots"></span><span class="pr">45,00€/kg</span></div></li>
+        </ul>
+      </div>
+
+      <div class="mcat rv">
+        <h3><svg class="cat-ico" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 17l4-10 4 6 3-4 5 8z"/><path d="M2 20h20"/></svg>Carnes</h3>
+        <ul>
+          <li><div class="mi"><span class="nm">Entrecot</span><span class="dots"></span><span class="pr">19,00€</span></div></li>
+          <li><div class="mi"><span class="nm">Chuletón de ternera</span><span class="dots"></span><span class="pr">20,50€</span></div></li>
+          <li><div class="mi"><span class="nm">Chuletitas de cordero</span><span class="dots"></span><span class="pr">19,00€</span></div></li>
+          <li><div class="mi"><span class="nm">Brocheta de pollo</span><span class="dots"></span><span class="pr">17,50€</span></div></li>
+        </ul>
+      </div>
+
+      <div class="mcat rv">
+        <h3><svg class="cat-ico" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 3h8l-1 9a3 3 0 0 1-6 0z"/><path d="M12 15v6M8 21h8"/></svg>Bebidas</h3>
+        <ul>
+          <li><div class="mi"><span class="nm">Tinto de verano</span><span class="dots"></span><span class="pr">2,50€</span></div></li>
+          <li><div class="mi"><span class="nm">Tubo de sangría</span><span class="dots"></span><span class="pr">3,50€</span></div></li>
+          <li><div class="mi"><span class="nm">Jarra de sangría 1L</span><span class="dots"></span><span class="pr">14,00€</span></div></li>
+          <li><div class="mi"><span class="nm">Copa de Rioja</span><span class="dots"></span><span class="pr">2,50€</span></div></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="langs-strip rv">
+      <div class="flag-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <p data-en="<b>Menu in 5 languages.</b> The printed tapas menu comes in Spanish, English, French, German and Dutch — this demo already switches ES/EN up top."><b>Carta en 5 idiomas.</b> La carta de tapas impresa está en español, inglés, francés, alemán y neerlandés — esta demo ya cambia ES/EN arriba.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PEDIDOS DEMO ============ -->
+<section class="pedidos" id="pedidos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="demo-chip rv" data-en="Demo — this is how your customers would order">Demo — así pedirían tus clientes</span>
+      <p class="eyebrow rv" data-en="Online ordering">Pedidos online</p>
+      <h2 class="rv" data-en="From the sunbed to your kitchen, in three taps">De la hamaca a tu cocina, en tres toques</h2>
+      <p class="rv" style="margin-top:16px;max-width:58ch;font-size:1.05rem" data-en="Try it: add a couple of dishes and open the order. Everything works except the payment — that part gets connected when the real site goes live.">Pruébalo: añade un par de platos y abre el pedido. Todo funciona menos el pago — esa parte se conecta cuando la web esté en marcha.</p>
+    </div>
+    <div class="dish-grid">
+      <article class="dish rv">
+        <div class="im"><img src="assets/SDG_5963-scaled.jpg" alt="Espeto de sardinas a la brasa" loading="lazy" width="2560" height="1707"></div>
+        <div class="bd">
+          <h3>Espeto de sardinas</h3>
+          <p class="ds" data-en="Over the coals, the way La Carihuela demands">A la brasa, como manda La Carihuela</p>
+          <div class="rw"><span class="pr">7,00€</span><button class="add-btn" data-id="espeto" type="button" data-en="Add">Añadir</button></div>
+        </div>
+      </article>
+      <article class="dish rv dl1">
+        <div class="im"><img src="assets/SDG_5921-scaled.jpg" alt="Pulpo a la gallega" loading="lazy" width="2560" height="1707"></div>
+        <div class="bd">
+          <h3>Pulpo a la gallega</h3>
+          <p class="ds" data-en="With potato and paprika, a house favourite">Con patata y pimentón, favorito de la casa</p>
+          <div class="rw"><span class="pr">18,00€</span><button class="add-btn" data-id="pulpo" type="button" data-en="Add">Añadir</button></div>
+        </div>
+      </article>
+      <article class="dish rv dl2">
+        <div class="im"><img src="assets/SDG_5805-768x512.jpg" alt="Dorada a la brasa" loading="lazy" width="768" height="512"></div>
+        <div class="bd">
+          <h3>Dorada</h3>
+          <p class="ds" data-en="Whole, from the embers, with salad">Entera, de la brasa, con su ensalada</p>
+          <div class="rw"><span class="pr">19,00€</span><button class="add-btn" data-id="dorada" type="button" data-en="Add">Añadir</button></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESEÑAS ============ -->
+<section class="resenas on-dark" id="resenas">
+  <svg class="wave-top" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v18c-120 22-260 34-420 34-220 0-320-30-540-30C300 22 140 34 0 52V0z" fill="currentColor"/></svg>
+  <div class="wrap">
+    <p class="eyebrow rv" data-en="What people say">Lo que dice la gente</p>
+    <h2 class="rv" data-en="Reviews written on a full stomach">Reseñas escritas con el estómago lleno</h2>
+    <div class="rating-summary rv">
+      <div class="rs-chip"><b>4,1★</b><span data-en="Google · 1,386 reviews">Google · 1.386 reseñas</span></div>
+      <div class="rs-chip"><b>4,9★</b><span data-en="Facebook · 30 reviews">Facebook · 30 reseñas</span></div>
+      <div class="rs-chip"><b>7/10</b><span>Foursquare</span></div>
+    </div>
+    <div class="quotes">
+      <div class="qcard rv">
+        <blockquote data-en="“Delicious food. The best boquerones and chanquetes I have ever eaten.”">«La comida riquísima. Los mejores boquerones y chanquetes que me he comido nunca.»</blockquote>
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <cite data-en="Google / TripAdvisor review, via Sluurpy">Reseña de Google/TripAdvisor, vía Sluurpy</cite>
+      </div>
+      <div class="qcard rv dl1">
+        <blockquote data-en="“The espetos are superb, so are the almejas de Carril, and the fried octopus is exquisite.”">«Los espetos buenísimos, las almejas de Carril también y el pulpo frito exquisito.»</blockquote>
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <cite data-en="Aggregated review, via Pidemesa">Reseña agregada, vía Pidemesa</cite>
+      </div>
+      <div class="qcard rv dl2">
+        <blockquote data-en="“Wonderful place, the food is fantastic and the service could not be better.”">«Maravilloso sitio, la comida buenísima y el trato inmejorable.»</blockquote>
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <cite data-en="Aggregated review, via Sluurpy">Reseña agregada, vía Sluurpy</cite>
+      </div>
+      <div class="qcard rv dl3">
+        <blockquote data-en="“You eat wonderfully — everything very good, fresh, and generous portions.”">«Se come fenomenal, todo muy bueno, fresco y en buena cantidad.»</blockquote>
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <cite data-en="Aggregated review, via Sluurpy">Reseña agregada, vía Sluurpy</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HORARIOS & UBICACIÓN ============ -->
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow rv" data-en="Hours &amp; location">Horarios y ubicación</p>
+      <h2 class="rv" data-en="On the sand, every day">En la arena, todos los días</h2>
+    </div>
+    <div class="con-grid">
+      <div class="con-card rv">
+        <div class="sun" aria-hidden="true"></div>
+        <h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><span data-en="Hours">Horario</span></h3>
+        <div class="hours-line"><span data-en="Monday – Sunday">Lunes – Domingo</span><b>10:00 – 23:30</b></div>
+        <p class="muted" style="margin-top:14px" data-en="Open daily. Seasonal hours — call ahead to confirm.">Abierto a diario. Horario de temporada — llama para confirmar.</p>
+        <p style="margin-top:16px"><a class="tel" href="tel:+34952372033">+34 952 37 20 33</a></p>
+        <p><a class="tel" href="mailto:info@chiringuitoellele.es">info@chiringuitoellele.es</a></p>
+      </div>
+      <div class="con-card rv dl1">
+        <h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg><span data-en="Where we are">Dónde estamos</span></h3>
+        <p class="big">Paseo Marítimo de La Carihuela, s/n</p>
+        <p>29620 Torremolinos, Málaga</p>
+        <p class="muted" data-en="Beachfront — you'll smell the coals before you see us.">Primera línea de playa — olerás las brasas antes de vernos.</p>
+        <a class="btn btn-navy" href="https://www.google.com/maps/dir/?api=1&destination=Chiringuito+El+Lele%2C+Paseo+Mar%C3%ADtimo+La+Carihuela%2C+29620+Torremolinos" target="_blank" rel="noopener" data-en="Directions in Google Maps">Cómo llegar en Google Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <img class="flogo" src="assets/Logo-Lele-1.png" alt="Chiringuito El Lele">
+    <p class="fx" data-en="Chiringuito El Lele · La Carihuela, Torremolinos · Since 1983. Demo site created by Zach — this is not the official website. Photos © Chiringuito El Lele.">Chiringuito El Lele · La Carihuela, Torremolinos · Desde 1983. Sitio de demostración creado por Zach — no es la web oficial. Fotos © Chiringuito El Lele.</p>
+    <p><a href="tel:+34952372033">+34 952 37 20 33</a></p>
+  </div>
+</footer>
+
+<!-- CART -->
+<div class="cart-bar" id="cartBar" role="region" aria-label="Pedido">
+  <div class="ct"><span class="count" id="cbCount">0</span><span data-en="Your order">Tu pedido</span></div>
+  <span class="tot" id="cbTotal">0,00€</span>
+  <button type="button" onclick="openDrawer()" data-en="View order">Ver pedido</button>
+</div>
+<div class="scrim" id="scrim" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Tu pedido">
+  <div class="drawer-h">
+    <h3 data-en="Your order">Tu pedido</h3>
+    <span class="demo-tag">Demo</span>
+    <button class="x-btn" type="button" onclick="closeDrawer()" aria-label="Cerrar">✕</button>
+  </div>
+  <div class="cart-view">
+    <div class="drawer-b" id="cartLines"></div>
+    <div class="drawer-f">
+      <div class="sumrow"><span data-en="Subtotal">Subtotal</span><span id="sumSub">0,00€</span></div>
+      <div class="sumrow total"><span>Total</span><span id="sumTot">0,00€</span></div>
+      <button class="checkout-btn" type="button" onclick="goCheckout()" data-en="Continue — checkout (demo)">Continuar — tramitar pedido (demo)</button>
+    </div>
+  </div>
+  <div class="chk">
+    <div class="drawer-b">
+      <div class="chk-banner" data-en="Demo — this is how your customers would order">DEMO — así pedirían tus clientes</div>
+      <div class="chk-fields">
+        <input type="text" placeholder="Nombre" aria-label="Nombre" data-ph-en="Name">
+        <input type="tel" placeholder="Teléfono" aria-label="Teléfono" data-ph-en="Phone">
+        <input type="text" placeholder="Hora de recogida" aria-label="Hora de recogida" data-ph-en="Pickup time">
+      </div>
+      <div class="sumrow total"><span>Total</span><span id="sumTot2">0,00€</span></div>
+      <button class="pay-btn" type="button" disabled aria-disabled="true">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        <span data-en="Pay — activated on the real site">Pagar — se activa en la web real</span>
+      </button>
+      <button class="back-lnk" type="button" onclick="backToCart()" data-en="← Back to order">← Volver al pedido</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+document.documentElement.classList.add('js');
+
+/* ===== i18n: data-en attribute swap ===== */
+var LANG='es';
+/* capture Spanish originals at load, before any interaction can mutate them */
+document.querySelectorAll('[data-en]').forEach(function(el){ el.setAttribute('data-es-orig', el.innerHTML); });
+document.querySelectorAll('[data-ph-en]').forEach(function(el){ el.setAttribute('data-ph-es', el.placeholder); });
+function setLang(l){
+  LANG=l;
+  document.querySelectorAll('[data-en]').forEach(function(el){
+    if(!el.hasAttribute('data-es-orig')) el.setAttribute('data-es-orig', el.innerHTML);
+    el.innerHTML = (l==='en') ? el.getAttribute('data-en') : el.getAttribute('data-es-orig');
+  });
+  document.querySelectorAll('[data-ph-en]').forEach(function(el){
+    if(!el.hasAttribute('data-ph-es')) el.setAttribute('data-ph-es', el.placeholder);
+    el.placeholder = (l==='en') ? el.getAttribute('data-ph-en') : el.getAttribute('data-ph-es');
+  });
+  document.documentElement.lang = l;
+  document.getElementById('btn-es').setAttribute('aria-pressed', l==='es');
+  document.getElementById('btn-en').setAttribute('aria-pressed', l==='en');
+  renderCart();
+}
+
+/* ===== scroll reveals with rescue ===== */
+(function(){
+  var els = document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){ io.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('in'); });
+  }
+  /* rescue: nothing may stay hidden */
+  setTimeout(function(){
+    document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); });
+  }, 3000);
+})();
+
+/* ===== cart demo ===== */
+var DISHES={
+  espeto:{es:'Espeto de sardinas',en:'Sardine espeto',price:7.00},
+  pulpo:{es:'Pulpo a la gallega',en:'Galician-style octopus',price:18.00},
+  dorada:{es:'Dorada',en:'Sea bream',price:19.00}
+};
+var cart={};
+function fmt(n){return n.toFixed(2).replace('.',',')+'€';}
+function cartCount(){var c=0;for(var k in cart)c+=cart[k];return c;}
+function cartTotal(){var t=0;for(var k in cart)t+=cart[k]*DISHES[k].price;return t;}
+function addItem(id){
+  cart[id]=(cart[id]||0)+1;
+  renderCart();
+  var t=document.getElementById('toast');
+  t.textContent=(LANG==='en'?'Added: ':'Añadido: ')+(LANG==='en'?DISHES[id].en:DISHES[id].es);
+  t.classList.add('show');
+  clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('show');},1600);
+}
+function changeQty(id,d){
+  cart[id]=(cart[id]||0)+d;
+  if(cart[id]<=0) delete cart[id];
+  renderCart();
+  if(cartCount()===0) closeDrawer();
+}
+function renderCart(){
+  var bar=document.getElementById('cartBar');
+  var n=cartCount(), tot=cartTotal();
+  document.getElementById('cbCount').textContent=n;
+  document.getElementById('cbTotal').textContent=fmt(tot);
+  document.getElementById('sumSub').textContent=fmt(tot);
+  document.getElementById('sumTot').textContent=fmt(tot);
+  document.getElementById('sumTot2').textContent=fmt(tot);
+  bar.classList.toggle('show', n>0 && !document.getElementById('drawer').classList.contains('open'));
+  var box=document.getElementById('cartLines'); box.innerHTML='';
+  if(n===0){
+    box.innerHTML='<p class="empty-msg">'+(LANG==='en'?'Your order is empty — add something tasty.':'Tu pedido está vacío — añade algo rico.')+'</p>';
+    return;
+  }
+  for(var k in cart){
+    var d=DISHES[k];
+    var row=document.createElement('div'); row.className='cline';
+    row.innerHTML='<div><div class="nm">'+(LANG==='en'?d.en:d.es)+'</div><div class="up">'+fmt(d.price)+' / ud</div></div>'+
+      '<div class="qty"><button type="button" aria-label="menos" onclick="changeQty(\''+k+'\',-1)">−</button><span class="q">'+cart[k]+'</span><button type="button" aria-label="más" onclick="changeQty(\''+k+'\',1)">+</button></div>'+
+      '<div class="lp">'+fmt(d.price*cart[k])+'</div>';
+    box.appendChild(row);
+  }
+}
+document.querySelectorAll('.add-btn').forEach(function(b){
+  b.addEventListener('click',function(){
+    addItem(b.dataset.id);
+    b.classList.add('added');
+    var orig=b.textContent;
+    b.textContent=(LANG==='en'?'Added ✓':'Añadido ✓');
+    setTimeout(function(){ b.classList.remove('added'); b.textContent=(LANG==='en'?'Add':'Añadir'); },900);
+  });
+});
+function openDrawer(){
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('scrim').classList.add('show');
+  document.getElementById('cartBar').classList.remove('show');
+  document.body.style.overflow='hidden';
+}
+function closeDrawer(){
+  var dr=document.getElementById('drawer');
+  dr.classList.remove('open','step-chk');
+  document.getElementById('scrim').classList.remove('show');
+  document.body.style.overflow='';
+  renderCart();
+}
+function goCheckout(){
+  if(cartCount()===0) return;
+  document.getElementById('drawer').classList.add('step-chk');
+}
+function backToCart(){
+  document.getElementById('drawer').classList.remove('step-chk');
+}
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeDrawer(); });
+renderCart();
+</script>
+</body>
+</html>
