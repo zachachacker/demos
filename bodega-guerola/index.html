@@ -407,6 +407,7 @@ html.js [data-reveal][data-d="2"]{transition-delay:.16s}
 .hours-table{width:100%;border-collapse:collapse;font-size:16px}
 .hours-table td{padding:9px 0;border-bottom:1px dashed var(--line-cream);color:var(--cream-dim)}
 .hours-table td:last-child{text-align:right;color:var(--cream);font-family:var(--sans);font-weight:500}
+.hours-table tr.closed td{color:var(--ambar-soft)}
 .hours-note{margin-top:14px;font-family:var(--sans);font-size:12.5px;color:var(--cream-dim);opacity:.85}
 .addr{font-size:17px;color:var(--cream-dim);line-height:1.8}
 .addr b{color:var(--cream)}
@@ -475,7 +476,6 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(205,191,164,.6);let
     <div class="badges" data-load="5">
       <span class="badge"><span class="st">★</span><b>4,5</b><span class="l-es">Google · 1.803 reseñas</span><span class="l-en">Google · 1,803 reviews</span></span>
       <span class="badge"><span class="st">★</span><b>4,2</b>TripAdvisor · 364</span>
-      <span class="badge"><b>7,6</b>/10 Foursquare</span>
     </div>
     <div class="cta-row" data-load="5">
       <a class="btn btn-rojo" href="#carta"><span class="l-es">Ver la carta</span><span class="l-en">See the menu</span></a>
@@ -561,8 +561,8 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(205,191,164,.6);let
         <div>
           <p class="story-num">04</p>
           <h3><span class="l-es">Del aperitivo a la cena</span><span class="l-en">From aperitivo to dinner</span></h3>
-          <p><span class="l-es">Aperitivo en la barra, comidas de grupo, cenas con amigos — la casa lo dice así en su propia web, y la cocina no para de 12:00 a 23:00.</span>
-          <span class="l-en">Aperitivo at the bar, group lunches, dinners with friends — the house says it in its own words, and the kitchen runs non-stop from 12:00 to 23:00.</span></p>
+          <p><span class="l-es">Aperitivo en la barra, comidas de grupo, cenas con amigos — la casa lo dice así en su propia web, y la cocina no para en todo el servicio.</span>
+          <span class="l-en">Aperitivo at the bar, group lunches, dinners with friends — the house says it in its own words, and the kitchen doesn't stop through service.</span></p>
           <p><span class="l-es">Cerveza de grifo, vino de la tierra y, para rematar, un limoncello.</span>
           <span class="l-en">Draught beer, local wine and — to finish — a limoncello.</span></p>
         </div>
@@ -675,7 +675,6 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(205,191,164,.6);let
     <p class="res-summary" data-reveal>
       <span><b>4,5★</b> Google · 1.803</span>
       <span><b>4,2★</b> TripAdvisor · 364</span>
-      <span><b>7,6</b>/10 Foursquare</span>
       <span><span class="l-es"><b>N.º 34</b> de 612 marisquerías · Restaurant Guru</span><span class="l-en"><b>No. 34</b> of 612 seafood spots · Restaurant Guru</span></span>
     </p>
   </div>
@@ -753,9 +752,11 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(205,191,164,.6);let
       <div class="loc-card grain" data-reveal>
         <h3><span class="l-es">Horarios</span><span class="l-en">Opening hours</span></h3>
         <table class="hours-table">
-          <tr><td><span class="l-es">Cocina, sin descanso</span><span class="l-en">Kitchen, non-stop</span></td><td><span class="hrs">12:00–23:00</span></td></tr>
+          <tr><td><span class="l-es">Martes a sábado</span><span class="l-en">Tuesday to Saturday</span></td><td><span class="hrs">12:00–23:00</span></td></tr>
+          <tr><td><span class="l-es">Domingo — solo almuerzo</span><span class="l-en">Sunday — lunch only</span></td><td><span class="hrs">12:00–16:00</span></td></tr>
+          <tr class="closed"><td><span class="l-es">Lunes</span><span class="l-en">Monday</span></td><td><span class="l-es">Cerrado — descansamos</span><span class="l-en">Closed — rest day</span></td></tr>
         </table>
-        <p class="hours-note"><span class="l-es">Horario de su web actual («cocina non stop»). Algunos directorios indican lunes cerrado — día de descanso a confirmar por la casa.</span><span class="l-en">Hours from their current website ("kitchen non-stop"). Some directories list Mondays closed — rest day to be confirmed by the house.</span></p>
+        <p class="hours-note"><span class="l-es">Horario según su web y su ficha de Google (jul 2026). Cocina sin descanso dentro del servicio.</span><span class="l-en">Hours per their website and Google listing (Jul 2026). Kitchen non-stop through service.</span></p>
       </div>
       <div class="loc-card grain" data-reveal data-d="1">
         <h3><span class="l-es">Dónde estamos</span><span class="l-en">Where we are</span></h3>
