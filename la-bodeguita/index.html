@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>La Bodeguita — Marisquería y tapas en Calle San Miguel, Torremolinos</title>
+<meta name="description" content="Demo privada — La Bodeguita (antes Bar La Bodega), Calle San Miguel 40, Torremolinos.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231F4396'/%3E%3Cpath d='M50 18 L58 42 L82 50 L58 58 L50 82 L42 58 L18 50 L42 42 Z' fill='%23F7F3EA'/%3E%3Ccircle cx='50' cy='50' r='7' fill='%23D9A441'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Work+Sans:ital,wght@0,400..800;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============ RESET & TOKENS ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cal:#F7F3EA;          /* encalado */
+  --cal2:#EFE8D8;
+  --anil:#1F4396;         /* añil */
+  --anil-deep:#142C66;
+  --anil-night:#0F2150;
+  --anil-bright:#3D66D4;
+  --albero:#D9A441;
+  --albero-deep:#B5822A;
+  --coral:#D95A33;
+  --ink:#1B2233;
+  --ink-soft:#4C5468;
+  --cream:#F7F3EA;
+  --cream-dim:#C9CFE2;
+  --line:rgba(27,34,51,.22);
+  --line-cream:rgba(247,243,234,.22);
+  --ribbon-h:36px;
+  --disp:'Fraunces',Georgia,serif;
+  --sans:'Work Sans','Trebuchet MS',sans-serif;
+}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  font-family:var(--sans);
+  background:var(--cal);
+  color:var(--ink);
+  line-height:1.6;
+  padding-top:var(--ribbon-h);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,svg{max-width:100%}
+a{color:inherit}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+
+/* language swap */
+html[data-lang="es"] .l-en{display:none!important}
+html[data-lang="en"] .l-es{display:none!important}
+
+/* azulejo lattice — original pattern, two tints */
+.tiles-dark, .tiles-paper{position:relative}
+.tiles-dark::before, .tiles-paper::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%23F7F3EA' stroke-width='1.1'%3E%3Cpath d='M28 6 L33 23 L50 28 L33 33 L28 50 L23 33 L6 28 L23 23 Z'/%3E%3Ccircle cx='28' cy='28' r='3'/%3E%3Ccircle cx='0' cy='0' r='4'/%3E%3Ccircle cx='56' cy='0' r='4'/%3E%3Ccircle cx='0' cy='56' r='4'/%3E%3Ccircle cx='56' cy='56' r='4'/%3E%3C/g%3E%3C/svg%3E");
+  opacity:.07;
+}
+.tiles-paper::before{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%231F4396' stroke-width='1.1'%3E%3Cpath d='M28 6 L33 23 L50 28 L33 33 L28 50 L23 33 L6 28 L23 23 Z'/%3E%3Ccircle cx='28' cy='28' r='3'/%3E%3Ccircle cx='0' cy='0' r='4'/%3E%3Ccircle cx='56' cy='0' r='4'/%3E%3Ccircle cx='0' cy='56' r='4'/%3E%3Ccircle cx='56' cy='56' r='4'/%3E%3C/g%3E%3C/svg%3E");
+  opacity:.05;
+}
+.tiles-dark>*,.tiles-paper>*{position:relative;z-index:1}
+
+/* ============ DEMO RIBBON ============ */
+.ribbon{
+  position:fixed;top:0;left:0;right:0;z-index:90;height:var(--ribbon-h);
+  display:flex;align-items:center;justify-content:center;gap:.6em;
+  background:linear-gradient(90deg,var(--anil-deep),var(--anil) 55%,var(--anil-deep));
+  color:var(--cream);text-decoration:none;
+  font-family:var(--sans);font-size:12.5px;font-weight:700;letter-spacing:.04em;
+  padding:0 12px;white-space:nowrap;overflow:hidden;
+}
+.ribbon:hover{filter:brightness(1.1)}
+.ribbon .wa{
+  display:inline-flex;align-items:center;gap:.35em;
+  background:rgba(217,164,65,.25);border:1px solid rgba(217,164,65,.65);
+  border-radius:99px;padding:2px 10px;font-size:11.5px;color:#F5E3BE;
+}
+@media(max-width:560px){.ribbon{font-size:11px}.ribbon .hide-xs{display:none}}
+
+/* ============ HEADER ============ */
+header.site{
+  position:sticky;top:var(--ribbon-h);z-index:80;
+  background:rgba(247,243,234,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+/* toldo scallop under header */
+header.site::after{
+  content:"";position:absolute;left:0;right:0;top:100%;height:9px;pointer-events:none;
+  background:radial-gradient(circle at 50% 0, var(--anil) 0 8px, transparent 9px);
+  background-size:22px 9px;background-position:11px 0;opacity:.9;
+}
+.nav{display:flex;align-items:center;gap:18px;height:58px}
+.brand{font-family:var(--disp);font-weight:700;font-size:21px;letter-spacing:.01em;text-decoration:none;line-height:1;display:flex;align-items:baseline;gap:8px;white-space:nowrap;color:var(--anil-deep)}
+.brand small{font-family:var(--sans);font-weight:500;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft)}
+@media(max-width:520px){.brand small{display:none}}
+.nav-links{display:flex;gap:22px;margin-left:auto;font-size:14.5px;font-weight:500;letter-spacing:.03em}
+.nav-links a{text-decoration:none;color:var(--ink-soft);transition:color .2s}
+.nav-links a:hover{color:var(--anil)}
+.lang{display:flex;border:1px solid var(--line);border-radius:99px;overflow:hidden;margin-left:14px;font-size:12px;font-weight:700;letter-spacing:.06em}
+.lang button{padding:5px 11px;color:var(--ink-soft);transition:.2s}
+html[data-lang="es"] .lang [data-set="es"],
+html[data-lang="en"] .lang [data-set="en"]{background:var(--anil);color:var(--cream)}
+@media(max-width:660px){.nav-links{display:none}.lang{margin-left:auto}}
+
+/* ============ HERO ============ */
+.hero{background:var(--cal);padding:58px 0 0;position:relative}
+.kicker{
+  font-size:12.5px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--albero-deep);display:flex;align-items:center;gap:14px;margin-bottom:18px;
+}
+.kicker::before{content:"";width:34px;height:2px;background:var(--albero)}
+.hero .over{
+  font-family:var(--sans);font-weight:600;font-size:clamp(12px,2.6vw,15px);
+  letter-spacing:.32em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;
+}
+h1.title{
+  font-family:var(--disp);font-weight:900;
+  font-size:clamp(52px,13vw,118px);
+  line-height:.94;letter-spacing:-.015em;color:var(--anil-deep);
+}
+h1.title .dot{color:var(--albero)}
+.was{
+  display:inline-flex;align-items:center;gap:10px;margin-top:16px;
+  font-size:13.5px;font-weight:600;color:var(--ink-soft);
+  border:1.5px dashed rgba(31,67,150,.4);border-radius:99px;padding:6px 16px;background:rgba(31,67,150,.05);
+}
+.was s{opacity:.75}
+.was b{color:var(--anil);font-weight:700}
+.hero-sub{max-width:34em;font-size:clamp(16.5px,2.4vw,19.5px);color:var(--ink-soft);margin:20px 0 24px}
+.hero-sub em{font-family:var(--disp);font-style:italic;color:var(--anil);font-weight:500}
+.badges{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:26px}
+.badge{
+  display:inline-flex;align-items:center;gap:6px;
+  border:1px solid var(--line);border-radius:99px;padding:6px 13px;
+  font-size:12.5px;font-weight:500;letter-spacing:.02em;color:var(--ink-soft);
+  background:#FFFDF6;
+}
+.badge b{color:var(--ink);font-weight:800}
+.badge .st{color:var(--albero-deep)}
+.badge.tc{border-color:rgba(181,130,42,.55);background:rgba(217,164,65,.12);color:var(--albero-deep)}
+.cta-row{display:flex;flex-wrap:wrap;gap:13px;margin-bottom:44px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-weight:800;font-size:15px;letter-spacing:.05em;text-transform:uppercase;
+  padding:15px 28px;border-radius:3px;text-decoration:none;transition:.22s;
+}
+.btn-azul{background:var(--anil);color:var(--cream);box-shadow:0 8px 30px rgba(31,67,150,.3)}
+.btn-azul:hover{background:var(--anil-bright);transform:translateY(-2px)}
+.btn-ghost{border:1.5px solid rgba(27,34,51,.4);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--anil);color:var(--anil);background:rgba(31,67,150,.05)}
+/* hero art band — school of fish over añil */
+.hero-art{
+  background:linear-gradient(180deg,var(--anil-deep),var(--anil-night));
+  border-top:3px solid var(--albero);
+  padding:34px 0 30px;overflow:hidden;
+}
+.hero-art svg{display:block;width:100%;height:auto;color:var(--cream)}
+.hero-art .cap{
+  margin-top:14px;text-align:center;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--cream-dim);
+}
+/* hero load-in */
+.hero [data-load]{opacity:0;transform:translateY(26px);animation:rise .9s cubic-bezier(.2,.7,.25,1) forwards}
+.hero [data-load="1"]{animation-delay:.12s}.hero [data-load="2"]{animation-delay:.24s}
+.hero [data-load="3"]{animation-delay:.36s}.hero [data-load="4"]{animation-delay:.5s}
+.hero [data-load="5"]{animation-delay:.64s}.hero [data-load="6"]{animation-delay:.78s}
+@keyframes rise{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.hero [data-load]{animation:none;opacity:1;transform:none}}
+
+/* ============ SECTION BASICS ============ */
+section{position:relative}
+.sec-head{margin-bottom:34px}
+.sec-kicker{font-size:12px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--albero-deep);display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.sec-kicker::before{content:"";width:26px;height:2px;background:currentColor}
+.sec-title{font-family:var(--disp);font-weight:700;font-size:clamp(30px,6vw,52px);line-height:1.04;letter-spacing:-.01em}
+html.js [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.25,1)}
+html.js [data-reveal].in{opacity:1;transform:none}
+html.js [data-reveal][data-d="1"]{transition-delay:.08s}
+html.js [data-reveal][data-d="2"]{transition-delay:.16s}
+@media (prefers-reduced-motion:reduce){html.js [data-reveal]{opacity:1;transform:none;transition:none}}
+
+/* ============ LA NUEVA ETAPA ============ */
+.etapa{background:var(--anil-night);color:var(--cream);padding:78px 0 40px}
+.etapa .sec-title{color:var(--cream)}
+.etapa .sec-kicker{color:var(--albero)}
+.etapa-lead{max-width:37em;font-size:clamp(16.5px,2.2vw,19px);color:var(--cream-dim);margin-top:14px}
+.etapa-lead strong{color:var(--albero);font-weight:700}
+.story{display:grid;grid-template-columns:1fr;gap:0;margin-top:44px}
+.story-block{
+  display:grid;grid-template-columns:1fr;gap:26px;align-items:center;
+  padding:44px 0;border-top:1px solid var(--line-cream);
+}
+.story-block:first-child{border-top:none;padding-top:8px}
+.story-num{
+  font-family:var(--disp);font-weight:800;font-size:14px;color:var(--anil-night);
+  letter-spacing:.05em;margin-bottom:14px;display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;background:var(--albero);border-radius:4px;
+  box-shadow:3px 3px 0 rgba(247,243,234,.25);
+}
+.story-block h3{font-family:var(--disp);font-weight:700;font-size:clamp(24px,4.4vw,33px);line-height:1.12;margin-bottom:12px}
+.story-block p{color:var(--cream-dim);font-size:16.5px;max-width:34em}
+.story-block p+p{margin-top:10px}
+.story-block p b{color:var(--cream)}
+.story-art{display:flex;justify-content:center;padding:6px 0}
+.story-art svg{width:min(300px,66vw);height:auto;color:var(--albero)}
+.story-art figcaption{display:none}
+@media(min-width:820px){
+  .story-block{grid-template-columns:1fr 1fr;gap:56px;padding:56px 0}
+  .story-block:nth-child(even) .story-art{order:-1}
+}
+
+/* ============ LA VITRINA ============ */
+.vitrina{background:var(--cal);padding:70px 0}
+.vit-board{
+  border:2px solid rgba(31,67,150,.25);outline:6px solid var(--cal2);
+  border-radius:6px;background:#FFFDF6;
+  padding:clamp(26px,5vw,50px);text-align:center;
+  box-shadow:0 20px 50px rgba(27,34,51,.1);
+}
+.vit-title{font-family:var(--disp);font-weight:600;font-size:clamp(24px,5vw,36px);color:var(--anil-deep);margin-bottom:6px}
+.vit-sub{font-size:12.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--albero-deep);margin-bottom:26px}
+.vit-list{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 14px;max-width:680px;margin:0 auto}
+.vit-list li{
+  font-family:var(--disp);font-style:italic;font-size:16.5px;color:var(--ink-soft);
+  padding:7px 16px;border:1px dashed rgba(31,67,150,.35);border-radius:99px;
+}
+.vit-list li.hot{color:var(--anil-deep);border-color:rgba(217,164,65,.8);background:rgba(217,164,65,.1)}
+.vit-note{margin-top:26px;font-size:13px;color:var(--ink-soft)}
+
+/* ============ LA CARTA ============ */
+.carta{background:var(--cal2);padding:82px 0}
+.carta-note{
+  margin-top:14px;display:inline-flex;align-items:center;gap:8px;
+  font-size:12.5px;font-weight:700;letter-spacing:.06em;
+  color:var(--anil-deep);background:rgba(31,67,150,.08);
+  border:1px solid rgba(31,67,150,.3);border-radius:2px;padding:7px 13px;
+}
+.menu-grid{display:grid;grid-template-columns:1fr;gap:44px 64px;margin-top:46px}
+@media(min-width:820px){.menu-grid{grid-template-columns:1fr 1fr}}
+.mcat h3{
+  font-family:var(--disp);font-weight:700;font-size:23px;color:var(--ink);
+  display:flex;align-items:center;gap:14px;margin-bottom:18px;
+}
+.mcat h3::after{content:"";flex:1;height:1.5px;background:linear-gradient(90deg,var(--albero) 0,var(--line) 60%,transparent)}
+.mcat ul{list-style:none}
+.mi{padding:8px 0}
+.mi-line{display:flex;align-items:baseline;gap:10px}
+.mi-name{font-weight:700;font-size:16.5px;color:var(--ink)}
+.mi-name .tag{
+  font-weight:800;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--anil);border:1px solid rgba(31,67,150,.45);border-radius:2px;
+  padding:1.5px 5px;margin-left:7px;vertical-align:2px;white-space:nowrap;
+}
+.mi-dots{flex:1;min-width:20px;border-bottom:2px dotted rgba(27,34,51,.3);transform:translateY(-4px)}
+.mi-price{font-family:var(--disp);font-weight:700;font-size:16px;color:var(--anil-deep);white-space:nowrap}
+.mi-price.sm{font-family:var(--sans);font-weight:500;font-size:12.5px;color:var(--ink-soft);letter-spacing:.04em}
+.mi-desc{font-size:14px;font-style:italic;color:var(--ink-soft);margin-top:1px;max-width:34em}
+.carta-legend{
+  margin-top:44px;padding-top:22px;border-top:1px solid var(--line);
+  font-size:13px;color:var(--ink-soft);
+  display:flex;flex-wrap:wrap;gap:8px 26px;
+}
+.carta-legend span b{color:var(--anil-deep)}
+
+/* ============ RESEÑAS ============ */
+.res{background:var(--anil-night);color:var(--cream);padding:84px 0}
+.res .sec-title{color:var(--cream)}
+.res .sec-kicker{color:var(--albero)}
+.res-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:44px}
+@media(min-width:760px){.res-grid{grid-template-columns:1fr 1fr}}
+.quote{
+  border:1px solid var(--line-cream);border-radius:4px;padding:28px 26px 22px;
+  background:linear-gradient(160deg,rgba(31,67,150,.35),rgba(15,33,80,.15));
+  display:flex;flex-direction:column;gap:16px;
+}
+.quote .qmark{font-family:var(--disp);font-size:44px;line-height:.6;color:var(--albero);height:18px}
+.quote p{font-family:var(--disp);font-size:17.5px;font-style:italic;color:#E8E4D6;flex:1;line-height:1.5}
+.quote footer{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-dim);display:flex;align-items:center;gap:10px}
+.quote footer::before{content:"";width:18px;height:1.5px;background:var(--albero)}
+.res-summary{
+  margin-top:34px;display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;
+  font-size:13.5px;color:var(--cream-dim);
+}
+.res-summary span{display:inline-flex;align-items:center;gap:6px;border-bottom:1px solid var(--line-cream);padding-bottom:3px}
+.res-summary b{color:var(--albero);font-weight:800}
+
+/* ============ PEDIDOS DEMO ============ */
+.pedidos{background:var(--cal);padding:84px 0 92px}
+.demo-flag{
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;
+  font-weight:800;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cream);background:var(--anil-deep);border-radius:99px;padding:7px 15px;
+}
+.demo-flag i{width:7px;height:7px;border-radius:50%;background:var(--albero);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.dish-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-top:40px}
+@media(min-width:720px){.dish-grid{grid-template-columns:repeat(3,1fr)}}
+.dish{
+  background:#FFFDF6;border:1px solid var(--line);border-radius:6px;overflow:hidden;
+  display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s;
+}
+.dish:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(27,34,51,.14)}
+.dish-img{aspect-ratio:4/3;overflow:hidden;position:relative;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(160deg,var(--anil-deep),var(--anil-night));}
+.dish-img svg{width:60%;height:auto;color:var(--albero)}
+.dish-body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.dish-body h4{font-family:var(--disp);font-weight:700;font-size:20px}
+.dish-body .d-desc{font-size:14px;font-style:italic;color:var(--ink-soft);flex:1}
+.dish-foot{display:flex;align-items:center;justify-content:space-between;margin-top:12px;gap:8px}
+.d-price{font-family:var(--disp);font-weight:800;font-size:21px;color:var(--anil-deep);line-height:1.1}
+.d-price small{display:block;font-family:var(--sans);font-weight:600;font-size:9.5px;color:var(--albero-deep);letter-spacing:.1em;text-transform:uppercase}
+.add-btn{
+  font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--anil);color:var(--cream);border-radius:3px;padding:10px 18px;transition:.2s;
+}
+.add-btn:hover{background:var(--anil-bright)}
+.add-btn.added{background:var(--albero-deep)}
+.pedidos-note{margin-top:30px;font-size:13.5px;color:var(--ink-soft);max-width:44em}
+
+/* cart FAB */
+.cart-fab{
+  position:fixed;right:18px;bottom:18px;z-index:85;
+  display:flex;align-items:center;gap:10px;
+  background:var(--anil-deep);color:var(--cream);border-radius:99px;padding:14px 20px;
+  font-weight:800;font-size:14px;letter-spacing:.05em;
+  box-shadow:0 12px 34px rgba(15,33,80,.4);
+  transform:translateY(120px);opacity:0;transition:.35s cubic-bezier(.2,.7,.25,1);
+}
+.cart-fab.show{transform:none;opacity:1}
+.cart-fab .cnt{
+  background:var(--albero);color:var(--anil-night);border-radius:99px;min-width:24px;height:24px;
+  display:inline-flex;align-items:center;justify-content:center;font-size:13px;
+}
+.cart-fab:hover{background:var(--anil)}
+.cart-fab.bump .cnt{animation:bump .4s}
+@keyframes bump{40%{transform:scale(1.35)}}
+
+/* drawer */
+.scrim{position:fixed;inset:0;z-index:94;background:rgba(11,20,44,.62);opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{
+  position:fixed;left:0;right:0;bottom:0;z-index:95;
+  background:var(--cal);color:var(--ink);border-radius:16px 16px 0 0;
+  max-height:86svh;display:flex;flex-direction:column;
+  transform:translateY(105%);transition:transform .4s cubic-bezier(.2,.75,.25,1);
+  box-shadow:0 -18px 60px rgba(11,20,44,.5);
+}
+.drawer.open{transform:none}
+@media(min-width:760px){
+  .drawer{left:auto;right:24px;bottom:24px;width:420px;border-radius:10px;max-height:80vh;
+    transform:translateY(30px) scale(.97);opacity:0;pointer-events:none}
+  .drawer.open{transform:none;opacity:1;pointer-events:auto}
+}
+.drawer-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 22px 14px;border-bottom:1px solid var(--line);
+}
+.drawer-head h4{font-family:var(--disp);font-size:21px;font-weight:700}
+.drawer-head .close{font-size:24px;line-height:1;color:var(--ink-soft);padding:4px 8px}
+.drawer-demo-tag{
+  font-weight:800;font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--cream);background:var(--anil);border-radius:2px;padding:3px 8px;margin-left:10px;vertical-align:3px;
+}
+.drawer-body{overflow-y:auto;padding:10px 22px;flex:1}
+.cart-empty{padding:34px 0;text-align:center;color:var(--ink-soft);font-style:italic}
+.cart-row{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px dashed var(--line)}
+.cart-row:last-child{border-bottom:none}
+.cart-row .nm{flex:1;font-weight:700;font-size:15.5px}
+.cart-row .nm small{display:block;font-weight:400;font-size:11.5px;color:var(--ink-soft)}
+.qty{display:flex;align-items:center;gap:2px;border:1px solid var(--line);border-radius:99px}
+.qty button{width:30px;height:30px;font-weight:800;font-size:16px;color:var(--anil-deep)}
+.qty span{min-width:22px;text-align:center;font-weight:700;font-size:14px}
+.cart-row .ln{font-family:var(--disp);font-weight:700;font-size:15.5px;min-width:58px;text-align:right}
+.drawer-foot{padding:16px 22px 22px;border-top:1px solid var(--line);background:var(--cal2);border-radius:0 0 10px 10px}
+.total-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.total-row .lbl{font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.total-row .amt{font-family:var(--disp);font-weight:800;font-size:26px;color:var(--anil-deep)}
+.ej-note{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--albero-deep);margin-bottom:12px}
+.btn-full{width:100%;border-radius:4px}
+.chk{display:none}
+.drawer[data-step="chk"] .cart-view{display:none}
+.drawer[data-step="chk"] .chk{display:block}
+.chk-back{font-weight:700;font-size:13px;color:var(--ink-soft);margin:14px 0 4px;display:inline-flex;gap:6px;align-items:center}
+.chk-card{border:1px solid var(--line);border-radius:6px;background:#FFFDF6;padding:16px;margin:12px 0;font-size:14px}
+.chk-card .row{display:flex;justify-content:space-between;padding:5px 0;color:var(--ink-soft)}
+.chk-card .row b{color:var(--ink)}
+.fake-field{
+  border:1.5px dashed rgba(27,34,51,.32);border-radius:4px;padding:11px 13px;margin-top:8px;
+  font-size:13.5px;color:var(--ink-soft);letter-spacing:.1em;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.fake-field .chip{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--anil)}
+.btn-disabled{
+  width:100%;border-radius:4px;background:repeating-linear-gradient(-45deg,var(--anil-deep),var(--anil-deep) 12px,var(--anil-night) 12px,var(--anil-night) 24px);
+  color:var(--cream-dim);cursor:not-allowed;opacity:.92;
+}
+.chk-note{margin-top:12px;text-align:center;font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--anil-deep)}
+
+/* ============ HORARIOS & UBICACIÓN ============ */
+.loc{background:var(--anil-night);color:var(--cream);padding:78px 0 88px}
+.loc .sec-title{color:var(--cream)}
+.loc .sec-kicker{color:var(--albero)}
+.loc-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-top:40px}
+@media(min-width:820px){.loc-grid{grid-template-columns:1.1fr .9fr}}
+.loc-card{
+  background:rgba(31,67,150,.22);border:1px solid var(--line-cream);border-radius:6px;padding:30px 28px;
+}
+.loc-card h3{font-family:var(--disp);font-weight:700;font-size:24px;margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.loc-card h3::after{content:"";flex:1;height:1.5px;background:linear-gradient(90deg,var(--albero),transparent)}
+.hours-table{width:100%;border-collapse:collapse;font-size:16px}
+.hours-table td{padding:9px 0;border-bottom:1px dashed var(--line-cream);color:var(--cream-dim)}
+.hours-table td:last-child{text-align:right;color:var(--cream);font-weight:500}
+.hours-note{margin-top:14px;font-size:12.5px;color:var(--cream-dim);opacity:.85}
+.addr{font-size:17px;color:var(--cream-dim);line-height:1.8}
+.addr b{color:var(--cream)}
+.addr a{color:var(--albero);text-decoration:none;border-bottom:1px solid rgba(217,164,65,.4)}
+.addr a:hover{color:#EFC981}
+.loc-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.mini-facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;font-size:12px;letter-spacing:.04em}
+.mini-facts span{border:1px solid var(--line-cream);border-radius:99px;padding:5px 12px;color:var(--cream-dim)}
+
+/* ============ FOOTER ============ */
+footer.site{
+  background:#0B1734;border-top:1px solid var(--line-cream);
+  padding:40px 0 110px;text-align:center;color:var(--cream-dim);
+}
+footer.site .fbrand{font-family:var(--disp);font-weight:700;font-size:24px;margin-bottom:8px;color:var(--cream)}
+footer.site p{font-size:13px}
+.dom{
+  display:inline-flex;align-items:center;gap:8px;margin:16px 0 4px;
+  font-size:12.5px;font-weight:700;letter-spacing:.04em;color:var(--albero);
+  border:1px dashed rgba(217,164,65,.5);border-radius:99px;padding:7px 16px;
+}
+footer.site .legal{margin-top:16px;font-size:11px;color:rgba(201,207,226,.6);letter-spacing:.04em;max-width:44em;margin-left:auto;margin-right:auto;line-height:1.7}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+
+<!-- DEMO RIBBON -->
+<a class="ribbon" href="https://wa.me/447543455889?text=Hola%20Zach%2C%20vi%20la%20demo%20de%20La%20Bodeguita." target="_blank" rel="noopener">
+  <span class="l-es">DEMO hecha por Zach para La Bodeguita<span class="hide-xs"> — ¿La quieres?</span></span>
+  <span class="l-en">DEMO built by Zach for La Bodeguita<span class="hide-xs"> — Want it?</span></span>
+  <span class="wa">WhatsApp ↗</span>
+</a>
+
+<!-- HEADER -->
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#top">La Bodeguita <small class="l-es">Marisquería · Torremolinos</small><small class="l-en">Marisquería · Torremolinos</small></a>
+    <nav class="nav-links">
+      <a href="#carta"><span class="l-es">La carta</span><span class="l-en">Menu</span></a>
+      <a href="#etapa"><span class="l-es">La casa</span><span class="l-en">The house</span></a>
+      <a href="#resenas"><span class="l-es">Reseñas</span><span class="l-en">Reviews</span></a>
+      <a href="#pedidos"><span class="l-es">Pedidos</span><span class="l-en">Ordering</span></a>
+      <a href="#ubicacion"><span class="l-es">Ubicación</span><span class="l-en">Find us</span></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button data-set="es" onclick="setLang('es')">ES</button>
+      <button data-set="en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <p class="kicker" data-load="1">Calle San Miguel, 40 · Torremolinos</p>
+    <p class="over" data-load="2"><span class="l-es">La casa de siempre · El nombre de ahora</span><span class="l-en">The house you know · The name it goes by now</span></p>
+    <h1 class="title" data-load="3">La Bodeguita<span class="dot">.</span></h1>
+    <p data-load="4"><span class="was"><span class="l-es"><s>Bar La Bodega</s> ahora es <b>La Bodeguita</b></span><span class="l-en"><s>Bar La Bodega</s> is now <b>La Bodeguita</b></span></span></p>
+    <p class="hero-sub" data-load="5">
+      <span class="l-es">Marisquería y tapas en plena calle San Miguel: <em>género al peso</em>, fritura malagueña y terraza al sol, a un paso de todo.</span>
+      <span class="l-en">Seafood bar &amp; tapas right on Calle San Miguel: <em>seafood by weight</em>, Málaga-style fried fish and a terrace in the sun, a step from everything.</span>
+    </p>
+    <div class="badges" data-load="6">
+      <span class="badge"><span class="st">★</span><b>4,2</b><span class="l-es">Google · 2.382 reseñas</span><span class="l-en">Google · 2,382 reviews</span></span>
+      <span class="badge"><span class="st">★</span><b>4,0</b>TripAdvisor · 482</span>
+      <span class="badge tc"><span class="l-es">Travelers' Choice 2025</span><span class="l-en">Travelers' Choice 2025</span></span>
+      <span class="badge"><span class="st">★</span><b>4,8</b>Facebook · 463</span>
+    </div>
+    <div class="cta-row" data-load="6">
+      <a class="btn btn-azul" href="#carta"><span class="l-es">Ver la carta</span><span class="l-en">See the menu</span></a>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=La%20Bodega%2C%20Calle%20San%20Miguel%2040%2C%2029620%20Torremolinos" target="_blank" rel="noopener"><span class="l-es">Cómo llegar</span><span class="l-en">Directions</span></a>
+    </div>
+  </div>
+  <div class="hero-art">
+    <div class="wrap">
+      <!-- original line art: school of fish, shell & lemon -->
+      <svg viewBox="0 0 900 190" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <!-- fish 1 -->
+        <g opacity=".95">
+          <path d="M60 84 C 120 44, 240 40, 300 78 L 348 52 L 338 84 L 348 116 L 300 90 C 240 128, 120 124, 60 84 Z"/>
+          <circle cx="108" cy="78" r="4" fill="currentColor" stroke="none"/>
+          <path d="M196 60 C 204 72, 204 96, 196 108" opacity=".55"/>
+        </g>
+        <!-- fish 2, albero -->
+        <g stroke="#D9A441" opacity=".95">
+          <path d="M420 120 C 468 92, 560 88, 608 116 L 646 96 L 638 120 L 646 144 L 608 124 C 560 152, 468 148, 420 120 Z"/>
+          <circle cx="458" cy="114" r="3.5" fill="#D9A441" stroke="none"/>
+        </g>
+        <!-- fish 3 small -->
+        <g opacity=".8">
+          <path d="M540 44 C 570 28, 626 26, 656 44 L 680 32 L 675 46 L 680 60 L 656 48 C 626 66, 570 64, 540 44 Z" stroke-width="2.6"/>
+          <circle cx="564" cy="42" r="2.8" fill="currentColor" stroke="none"/>
+        </g>
+        <!-- scallop shell -->
+        <g stroke="#D9A441" stroke-width="2.8" opacity=".9">
+          <path d="M760 150 L 736 108 A 30 30 0 0 1 784 108 Z"/>
+          <path d="M760 150 L 748 112 M760 150 L 760 106 M760 150 L 772 112"/>
+        </g>
+        <!-- lemon slice -->
+        <g opacity=".85" stroke-width="2.6">
+          <circle cx="846" cy="72" r="26"/>
+          <path d="M846 46 v52 M820 72 h52 M828 54 l36 36 M864 54 l-36 36"/>
+        </g>
+        <!-- water line -->
+        <path d="M40 170 q 30 -12 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0" stroke-width="2" opacity=".35"/>
+      </svg>
+      <p class="cap"><span class="l-es">Ilustración de la demo — sus fotos reales irán aquí</span><span class="l-en">Demo illustration — your real photos go here</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- LA NUEVA ETAPA -->
+<section class="etapa tiles-dark" id="etapa">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="sec-kicker"><span class="l-es">La nueva etapa</span><span class="l-en">The new chapter</span></p>
+      <h2 class="sec-title">
+        <span class="l-es">Mismo mostrador. Nombre nuevo.</span>
+        <span class="l-en">Same counter. New name.</span>
+      </h2>
+      <p class="etapa-lead">
+        <span class="l-es">La casa ya firma <strong>La Bodeguita</strong> en Facebook y en Instagram. Solo falta el sitio donde ese nombre viva en internet — esta página es esa pieza.</span>
+        <span class="l-en">The house already signs as <strong>La Bodeguita</strong> on Facebook and Instagram. All that's missing is the place where that name lives online — this page is that piece.</span>
+      </p>
+    </div>
+
+    <div class="story">
+      <div class="story-block" data-reveal>
+        <div>
+          <p class="story-num">01</p>
+          <h3><span class="l-es">Un nombre que ya es vuestro</span><span class="l-en">A name that's already yours</span></h3>
+          <p><span class="l-es">Los clientes llevan años diciéndolo en pequeñito. Las redes ya lo dicen en grande. La nueva etapa merece una web con el nombre nuevo en la puerta — no un botón que abre Facebook.</span>
+          <span class="l-en">Guests have been saying it the small way for years. The socials now say it the big way. The new chapter deserves a website with the new name over the door — not a button that opens Facebook.</span></p>
+          <p><span class="l-es"><b>labodegatorremolinos.com</b> está libre a día de hoy. El dominio de la nueva etapa, esperando.</span>
+          <span class="l-en"><b>labodegatorremolinos.com</b> is unregistered as of today. The new chapter's domain, waiting.</span></p>
+        </div>
+        <figure class="story-art" aria-hidden="true">
+          <!-- tile with new name art -->
+          <svg viewBox="0 0 260 220" fill="none" stroke="currentColor" stroke-width="3">
+            <rect x="30" y="30" width="200" height="160" rx="6"/>
+            <rect x="44" y="44" width="172" height="132" rx="3" stroke-width="2" opacity=".5"/>
+            <path d="M130 66 L138 92 L164 100 L138 108 L130 134 L122 108 L96 100 L122 92 Z" stroke-width="2.6"/>
+            <path d="M74 158 h112" stroke-width="2.6"/>
+            <path d="M92 170 h76" stroke-width="2" opacity=".6"/>
+          </svg>
+        </figure>
+      </div>
+
+      <div class="story-block" data-reveal>
+        <div>
+          <p class="story-num">02</p>
+          <h3><span class="l-es">El género, al peso</span><span class="l-en">Seafood, by weight</span></h3>
+          <p><span class="l-es">Conchas finas, almejas, lo que entra ese día — se elige en la vitrina y se paga al peso, como debe ser en una marisquería. Las jornadas del atún salen con nombre propio en las reseñas.</span>
+          <span class="l-en">Fine clams, whatever lands that day — you pick at the counter and pay by weight, the way a proper marisquería works. The tuna season gets name-checked in the reviews.</span></p>
+          <p><span class="l-es">De la fritura, los boquerones. De la barra, la ensaladilla. Y la manzanilla, fría.</span>
+          <span class="l-en">From the fryer, the anchovies. From the bar, the ensaladilla. And the manzanilla, cold.</span></p>
+        </div>
+        <figure class="story-art" aria-hidden="true">
+          <!-- scale line art -->
+          <svg viewBox="0 0 260 220" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+            <path d="M130 34 v96"/>
+            <path d="M62 60 h136"/>
+            <path d="M62 60 l-20 44 h40 z M198 60 l-20 44 h40 z" stroke-width="2.6"/>
+            <path d="M42 104 a 20 20 0 0 0 40 0 M178 104 a 20 20 0 0 0 40 0" stroke-width="2.6"/>
+            <path d="M96 130 h68 l10 44 H86 z"/>
+            <path d="M104 186 h52" stroke-width="2" opacity=".6"/>
+            <circle cx="130" cy="30" r="6"/>
+          </svg>
+        </figure>
+      </div>
+
+      <div class="story-block" data-reveal>
+        <div>
+          <p class="story-num">03</p>
+          <h3><span class="l-es">En la calle que nunca para</span><span class="l-en">On the street that never stops</span></h3>
+          <p><span class="l-es">Calle San Miguel: la peatonal por la que pasa todo Torremolinos. Terraza al sol, mesas que giran, y el <b>n.º 35 de 612 marisquerías</b> de la ciudad según Restaurant Guru.</span>
+          <span class="l-en">Calle San Miguel: the pedestrian street all of Torremolinos walks down. A terrace in the sun, tables that turn, and <b>no. 35 of 612 seafood spots</b> in town per Restaurant Guru.</span></p>
+          <p><span class="l-es">Para llevar, tarjetas, reserva — la casa ya trabaja así. Solo faltaba contarlo.</span>
+          <span class="l-en">Takeaway, cards, bookings — the house already works this way. It just wasn't being told.</span></p>
+        </div>
+        <figure class="story-art" aria-hidden="true">
+          <!-- street lamp + bunting -->
+          <svg viewBox="0 0 260 220" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M60 196 h140"/>
+            <path d="M96 196 V64"/>
+            <path d="M96 64 q -18 -4 -22 -22 h44 q -4 18 -22 22 z" stroke-width="2.6"/>
+            <circle cx="96" cy="34" r="6"/>
+            <path d="M96 74 C 140 96, 180 96, 224 74" stroke-width="2"/>
+            <path d="M122 84 l7 12 l7 -14 M152 90 l7 12 l7 -14 M182 86 l7 12 l7 -14" stroke-width="2.4"/>
+            <path d="M150 196 v-36 h36 v36" stroke-width="2.6"/>
+            <path d="M144 160 h48" stroke-width="2.6"/>
+          </svg>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LA VITRINA -->
+<section class="vitrina tiles-paper">
+  <div class="wrap">
+    <div class="vit-board" data-reveal>
+      <h3 class="vit-title"><span class="l-es">Lo que dice la vitrina</span><span class="l-en">What the counter says</span></h3>
+      <p class="vit-sub"><span class="l-es">Visto en el mostrador y citado en las reseñas</span><span class="l-en">Seen at the counter &amp; cited in reviews</span></p>
+      <ul class="vit-list">
+        <li class="hot"><span class="l-es">Conchas finas</span><span class="l-en">Fine clams</span></li>
+        <li><span class="l-es">Almejas</span><span class="l-en">Clams</span></li>
+        <li><span class="l-es">Boquerones fritos</span><span class="l-en">Fried anchovies</span></li>
+        <li class="hot"><span class="l-es">Jornadas del atún</span><span class="l-en">Tuna season</span></li>
+        <li><span class="l-es">Ensaladilla rusa</span><span class="l-en">Ensaladilla rusa</span></li>
+        <li><span class="l-es">Puntillitas</span><span class="l-en">Baby squid, crisp</span></li>
+        <li><span class="l-es">Gambas al pil pil</span><span class="l-en">Sizzling garlic prawns</span></li>
+        <li class="hot"><span class="l-es">Género al peso</span><span class="l-en">Seafood by weight</span></li>
+      </ul>
+      <p class="vit-note"><span class="l-es">Lo del día, en la vitrina — como siempre.</span><span class="l-en">The day's catch, at the counter — as always.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- LA CARTA -->
+<section class="carta" id="carta">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="sec-kicker"><span class="l-es">La carta</span><span class="l-en">The menu</span></p>
+      <h2 class="sec-title"><span class="l-es">De la vitrina y de la freidora</span><span class="l-en">From the counter &amp; the fryer</span></h2>
+      <p><span class="carta-note">◆ <span class="l-es">Carta de muestra — la carta definitiva la escribe la casa</span><span class="l-en">Sample menu — the final menu is the house's to write</span></span></p>
+    </div>
+
+    <div class="menu-grid">
+      <div class="mcat" data-reveal>
+        <h3><span class="l-es">La vitrina, al peso</span><span class="l-en">The counter, by weight</span></h3>
+        <ul>
+          <li class="mi"><div class="mi-line"><span class="mi-name"><span class="l-es">Conchas finas</span><span class="l-en">Conchas finas</span><span class="tag"><span class="l-es">de la casa</span><span class="l-en">house call</span></span></span><span class="mi-dots"></span><span class="mi-price sm">s/m</span></div>
+            <p class="mi-desc"><span class="l-es">Las que citan las reseñas, abiertas al momento</span><span class="l-en">The ones the reviews talk about, opened to order</span></p></li>
+          <li class="mi"><div class="mi-line"><span class="mi-name">Almejas</span><span class="mi-dots"></span><span class="mi-price sm">s/m</span></div>
+            <p class="mi-desc l-en">Clams, plancha or marinera</p></li>
+          <li class="mi"><div class="mi-line"><span class="mi-name"><span class="l-es">Atún — en jornadas</span><span class="l-en">Tuna — in season</span></span><span class="mi-dots"></span><span class="mi-price sm">s/m</span></div>
+            <p class="mi-desc"><span class="l-es">Cuando hay jornadas del atún, manda el atún</span><span class="l-en">When tuna season is on, tuna runs the kitchen</span></p></li>
+          <li class="mi"><div class="mi-line"><span class="mi-name"><span class="l-es">Gambas al pil pil</span><span class="l-en">Gambas al pil pil</span></span><span class="mi-dots"></span><span class="mi-price sm">s/m</span></div>
+            <p class="mi-desc l-en">Sizzling garlic-chilli prawns, clay dish</p></li>
+        </ul>
+      </div>
+
+      <div class="mcat" data-reveal data-d="1">
+        <h3><span class="l-es">Fritura malagueña</span><span class="l-en">Málaga fried fish</span></h3>
+        <ul>
+          <li class="mi"><div class="mi-line"><span class="mi-name"><span class="l-es">Boquerones fritos</span><span class="l-en">Fried anchovies</span></span><span class="mi-dots"></span><span class="mi-price sm">s/m</span></div>
+            <p class="mi-desc l-en">The Málaga classic, crisp and light</p></li>
+          <li class="mi"><div class="mi-line"><span class="mi-name">Puntillitas</span><span class="mi-dots"></span><span class="mi-price sm">s/m</span></div>
+            <p class="mi-desc"><span class="l-es">Chopitos fritos con su limón</span><span class="l-en">Crisp baby squid with lemon</span></p></li>
+          <li class="mi"><div class="mi-line"><span class="mi-name"><span class="l-es">Fritura variada</span><span class="l-en">Mixed fry</span></span><span class="mi-dots"></span><span class="mi-price sm">s/m</span></div>
+            <p class="mi-desc"><span class="l-es">Lo del día, rebozado fino</span><span class="l-en">The day's fish, light batter</span></p></li>
+        </ul>
+      </div>
+
+      <div class="mcat" data-reveal>
+        <h3><span class="l-es">Tapas y barra</span><span class="l-en">Tapas &amp; the bar</span></h3>
+        <ul>
+          <li class="mi"><div class="mi-line"><span class="mi-name">Ensaladilla rusa</span><span class="mi-dots"></span><span class="mi-price sm">s/m</span></div>
+            <p class="mi-desc l-en">The bar-top ensaladilla</p></li>
+          <li class="mi"><div class="mi-line"><span class="mi-name"><span class="l-es">Montadito de anchoa</span><span class="l-en">Anchovy montadito</span></span><span class="mi-dots"></span><span class="mi-price sm">s/m</span></div>
+            <p class="mi-desc"><span class="l-es">Con su tomate, como en la barra</span><span class="l-en">With tomato, straight off the bar</span></p></li>
+          <li class="mi"><div class="mi-line"><span class="mi-name">Aceitunas</span><span class="mi-dots"></span><span class="mi-price sm">s/m</span></div>
+            <p class="mi-desc l-en">Olives, the proper starter</p></li>
+        </ul>
+      </div>
+
+      <div class="mcat" data-reveal data-d="1">
+        <h3><span class="l-es">Arroces y para beber</span><span class="l-en">Rice &amp; drinks</span></h3>
+        <ul>
+          <li class="mi"><div class="mi-line"><span class="mi-name">Paella marinera</span><span class="mi-dots"></span><span class="mi-price sm">s/m</span></div>
+            <p class="mi-desc l-en">Seafood paella</p></li>
+          <li class="mi"><div class="mi-line"><span class="mi-name"><span class="l-es">Manzanilla, fría</span><span class="l-en">Manzanilla, cold</span></span><span class="mi-dots"></span><span class="mi-price sm">s/m</span></div>
+            <p class="mi-desc l-en">Dry sherry, the marisquería pour</p></li>
+          <li class="mi"><div class="mi-line"><span class="mi-name"><span class="l-es">Vino de la casa · Sangría</span><span class="l-en">House wine · Sangría</span></span><span class="mi-dots"></span><span class="mi-price sm">s/m</span></div></li>
+          <li class="mi"><div class="mi-line"><span class="mi-name"><span class="l-es">Limonada</span><span class="l-en">Lemonade</span></span><span class="mi-dots"></span><span class="mi-price sm">s/m</span></div>
+            <p class="mi-desc"><span class="l-es">La que elogian las reseñas</span><span class="l-en">The one the reviews rave about</span></p></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="carta-legend" data-reveal>
+      <span><b>s/m</b> — <span class="l-es">según mercado y vitrina · consultar en el local</span><span class="l-en">market &amp; counter price · ask in house</span></span>
+      <span><span class="l-es">Terraza · para llevar · tarjetas</span><span class="l-en">Terrace · takeaway · cards</span></span>
+      <span><span class="l-es">≈ 20–30 € por persona, según directorios</span><span class="l-en">≈ €20–30 per person, per public directories</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="res tiles-dark" id="resenas">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="sec-kicker"><span class="l-es">Reseñas</span><span class="l-en">Reviews</span></p>
+      <h2 class="sec-title"><span class="l-es">Lo que dicen al salir</span><span class="l-en">What they say on the way out</span></h2>
+    </div>
+    <div class="res-grid">
+      <blockquote class="quote" data-reveal>
+        <div class="qmark">“</div>
+        <p><span class="l-es">Buenos productos, muy bueno y rico todo, precio justo y un servicio excelente.</span><span class="l-en">Great produce, everything delicious, a fair price and excellent service.</span></p>
+        <footer>Lupe S · Google · jul 2026</footer>
+      </blockquote>
+      <blockquote class="quote" data-reveal data-d="1">
+        <div class="qmark">“</div>
+        <p><span class="l-es">La comida ha sido simplemente espectacular — excelente producto y un sabor increíble.</span><span class="l-en">The food was simply spectacular — excellent produce and incredible flavour.</span></p>
+        <footer>Maricarmen A · Google · jul 2026</footer>
+      </blockquote>
+    </div>
+    <p class="res-summary" data-reveal>
+      <span><b>4,2★</b> Google · 2.382</span>
+      <span><b>4,0★</b> TripAdvisor · 482</span>
+      <span><b>4,8★</b> Facebook · 463</span>
+      <span><b>8</b>/10 Foursquare</span>
+      <span><span class="l-es"><b>N.º 35</b> de 612 marisquerías · Restaurant Guru</span><span class="l-en"><b>No. 35</b> of 612 seafood spots · Restaurant Guru</span></span>
+    </p>
+  </div>
+</section>
+
+<!-- PEDIDOS DEMO -->
+<section class="pedidos tiles-paper" id="pedidos">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="demo-flag"><i></i><span class="l-es">Demo interactiva</span><span class="l-en">Interactive demo</span></p>
+      <p class="sec-kicker"><span class="l-es">Pedidos para llevar</span><span class="l-en">Takeaway ordering</span></p>
+      <h2 class="sec-title"><span class="l-es">Así pedirían tus clientes</span><span class="l-en">This is how your guests would order</span></h2>
+      <p class="hero-sub" style="margin-bottom:0"><span class="l-es">Toca «Añadir» y mira el carrito. Sin pagos reales — una maqueta con <b>precios de ejemplo</b> de cómo funcionaría el pedido online para llevar.</span><span class="l-en">Tap “Add” and watch the cart. No real payments — a mock-up with <b>sample prices</b> of how online takeaway ordering would work.</span></p>
+    </div>
+
+    <div class="dish-grid">
+      <article class="dish" data-reveal>
+        <div class="dish-img" aria-hidden="true">
+          <!-- paella pan art -->
+          <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round">
+            <ellipse cx="110" cy="82" rx="72" ry="40"/>
+            <ellipse cx="110" cy="82" rx="56" ry="29" opacity=".55"/>
+            <path d="M38 82 h-26 M182 82 h26" stroke-width="4"/>
+            <circle cx="88" cy="74" r="6"/><circle cx="126" cy="92" r="6"/>
+            <path d="M104 64 a10 6 0 0 1 20 0"/><path d="M132 74 a10 6 0 0 1 20 0" opacity=".7"/>
+            <path d="M70 96 q8 -8 16 0" opacity=".7"/>
+          </svg>
+        </div>
+        <div class="dish-body">
+          <h4>Paella marinera</h4>
+          <p class="d-desc"><span class="l-es">La de la vitrina al arroz. Ilustración — su foto irá aquí.</span><span class="l-en">The counter, turned into rice. Illustration — your photo goes here.</span></p>
+          <div class="dish-foot">
+            <div class="d-price">16&nbsp;€ <small><span class="l-es">precio de ejemplo</span><span class="l-en">sample price</span></small></div>
+            <button class="add-btn" data-add="paella"><span class="l-es">Añadir</span><span class="l-en">Add</span></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="dish" data-reveal data-d="1">
+        <div class="dish-img" aria-hidden="true">
+          <!-- fried fish cone art -->
+          <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M80 26 L140 26 L118 124 L102 124 Z"/>
+            <path d="M84 40 l52 0" opacity=".5"/>
+            <path d="M92 22 q6 -12 16 -6 q4 -10 14 -4 q8 -8 14 2" stroke-width="2.6"/>
+            <circle cx="86" cy="12" r="3" fill="currentColor" stroke="none" opacity=".8"/>
+            <circle cx="146" cy="16" r="2.5" fill="currentColor" stroke="none" opacity=".8"/>
+            <path d="M158 108 a20 20 0 1 1 0.01 0 M158 88 v40 M138 108 h40" stroke-width="2.4" opacity=".8"/>
+          </svg>
+        </div>
+        <div class="dish-body">
+          <h4><span class="l-es">Fritura de la casa</span><span class="l-en">House fried fish</span></h4>
+          <p class="d-desc"><span class="l-es">Boquerones, puntillitas, lo del día — con su limón.</span><span class="l-en">Anchovies, baby squid, the day's catch — with lemon.</span></p>
+          <div class="dish-foot">
+            <div class="d-price">12&nbsp;€ <small><span class="l-es">precio de ejemplo</span><span class="l-en">sample price</span></small></div>
+            <button class="add-btn" data-add="fritura"><span class="l-es">Añadir</span><span class="l-en">Add</span></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="dish" data-reveal data-d="2">
+        <div class="dish-img" aria-hidden="true">
+          <!-- ensaladilla bowl art -->
+          <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round">
+            <path d="M56 74 h108 a54 34 0 0 1 -108 0 z"/>
+            <path d="M70 74 q10 -18 26 -10 q6 -14 22 -8 q14 -10 24 2 q12 -4 14 16" stroke-width="2.6"/>
+            <path d="M96 60 v-10 M124 54 v-12" stroke-width="2.2" opacity=".6"/>
+            <path d="M84 118 h52" stroke-width="2.4" opacity=".6"/>
+          </svg>
+        </div>
+        <div class="dish-body">
+          <h4>Ensaladilla rusa</h4>
+          <p class="d-desc"><span class="l-es">La de la barra, para llevar a casa.</span><span class="l-en">The bar-top classic, boxed for home.</span></p>
+          <div class="dish-foot">
+            <div class="d-price">6&nbsp;€ <small><span class="l-es">precio de ejemplo</span><span class="l-en">sample price</span></small></div>
+            <button class="add-btn" data-add="ensaladilla"><span class="l-es">Añadir</span><span class="l-en">Add</span></button>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <p class="pedidos-note" data-reveal>
+      <span class="l-es">◆ En la versión real: carta completa con los precios de la casa, pago con tarjeta o Bizum, aviso a cocina al instante y hora de recogida. Canal propio, sin comisiones por pedido.</span>
+      <span class="l-en">◆ In the real version: the full menu at the house's prices, card or Bizum payment, instant kitchen notification and a pickup time. Your own channel, no per-order commissions.</span>
+    </p>
+  </div>
+</section>
+
+<!-- HORARIOS & UBICACIÓN -->
+<section class="loc tiles-dark" id="ubicacion">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="sec-kicker"><span class="l-es">Horarios y ubicación</span><span class="l-en">Hours &amp; location</span></p>
+      <h2 class="sec-title"><span class="l-es">En plena San Miguel</span><span class="l-en">Right on San Miguel</span></h2>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-card" data-reveal>
+        <h3><span class="l-es">Horarios</span><span class="l-en">Opening hours</span></h3>
+        <table class="hours-table">
+          <tr><td><span class="l-es">Lunes a domingo</span><span class="l-en">Monday to Sunday</span></td><td><span class="hrs">12:00–23:30</span></td></tr>
+        </table>
+        <p class="hours-note"><span class="l-es">Horario según directorios públicos (jul 2026) — a confirmar por la casa.</span><span class="l-en">Hours per public directories (Jul 2026) — to be confirmed by the house.</span></p>
+      </div>
+      <div class="loc-card" data-reveal data-d="1">
+        <h3><span class="l-es">Dónde estamos</span><span class="l-en">Where we are</span></h3>
+        <p class="addr">
+          <b>Calle San Miguel, 40</b><br>
+          Centro · 29620 Torremolinos<br>
+          <span class="l-es">En la calle peatonal, entre la plaza y el mar.</span>
+          <span class="l-en">On the pedestrian street, between the square and the sea.</span><br>
+          <a href="tel:+34952387337">+34 952 38 73 37</a>
+        </p>
+        <div class="loc-ctas">
+          <a class="btn btn-azul" href="https://www.google.com/maps/dir/?api=1&destination=La%20Bodega%2C%20Calle%20San%20Miguel%2040%2C%2029620%20Torremolinos" target="_blank" rel="noopener"><span class="l-es">Cómo llegar</span><span class="l-en">Directions</span></a>
+          <a class="btn btn-ghost" style="border-color:rgba(247,243,234,.5);color:var(--cream)" href="tel:+34952387337"><span class="l-es">Llamar</span><span class="l-en">Call us</span></a>
+        </div>
+        <div class="mini-facts">
+          <span><span class="l-es">Terraza</span><span class="l-en">Terrace</span></span>
+          <span><span class="l-es">Para llevar</span><span class="l-en">Takeaway</span></span>
+          <span><span class="l-es">Tarjetas</span><span class="l-en">Cards accepted</span></span>
+          <span><span class="l-es">Reserva</span><span class="l-en">Bookings</span></span>
+          <span><span class="l-es">Accesible</span><span class="l-en">Wheelchair accessible</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site">
+  <div class="wrap">
+    <p class="fbrand">La Bodeguita<span style="color:var(--albero)">.</span></p>
+    <p><span class="l-es">Antes Bar La Bodega · Calle San Miguel 40, Torremolinos</span><span class="l-en">Formerly Bar La Bodega · Calle San Miguel 40, Torremolinos</span></p>
+    <p style="margin-top:8px"><a href="mailto:labodegadetorremolinos@gmail.com" style="color:var(--cream-dim)">labodegadetorremolinos@gmail.com</a></p>
+    <p><span class="dom"><span class="l-es">labodegatorremolinos.com — libre a 27/07/2026, listo para la nueva etapa</span><span class="l-en">labodegatorremolinos.com — unregistered as of 27 Jul 2026, ready for the new chapter</span></span></p>
+    <p class="legal">
+      <span class="l-es">Demo privada no indexada · Sin fotografías: todas las imágenes son ilustraciones originales de la demo · Valoraciones, horario y datos de contacto tomados de directorios públicos (jul 2026) y de las redes del local · Carta de muestra y precios de ejemplo — todo a confirmar por la casa</span>
+      <span class="l-en">Private, non-indexed demo · No photography: all imagery is original demo illustration · Ratings, hours and contact details from public directories (Jul 2026) and the house's social pages · Sample menu and sample prices — everything to be confirmed by the house</span>
+    </p>
+  </div>
+</footer>
+
+<!-- CART FAB -->
+<button class="cart-fab" id="cartFab" aria-label="Ver pedido">
+  <span class="cnt" id="cartCnt">0</span>
+  <span class="l-es">Ver pedido</span><span class="l-en">View order</span>
+  · <span id="fabTotal">0,00&nbsp;€</span>
+</button>
+
+<!-- CART DRAWER -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" data-step="cart" aria-label="Pedido demo">
+  <div class="drawer-head">
+    <h4><span class="l-es">Tu pedido</span><span class="l-en">Your order</span><span class="drawer-demo-tag">demo</span></h4>
+    <button class="close" id="drawerClose" aria-label="Cerrar">×</button>
+  </div>
+
+  <div class="drawer-body">
+    <div class="cart-view">
+      <div id="cartRows"></div>
+      <p class="cart-empty" id="cartEmpty"><span class="l-es">Todavía no has añadido nada.</span><span class="l-en">Nothing added yet.</span></p>
+    </div>
+    <div class="chk">
+      <button class="chk-back" id="chkBack">← <span class="l-es">Volver al pedido</span><span class="l-en">Back to order</span></button>
+      <div class="chk-card">
+        <div class="row"><span class="l-es">Recogida en</span><span class="l-en">Pickup at</span><b>Calle San Miguel, 40</b></div>
+        <div class="row"><span class="l-es">Listo en</span><span class="l-en">Ready in</span><b>~20 min</b></div>
+        <div class="row"><span class="l-es">Total</span><span class="l-en">Total</span><b id="chkTotal">0,00 €</b></div>
+      </div>
+      <div class="fake-field"><span>•••• •••• •••• ••••</span><span class="chip"><span class="l-es">tarjeta / Bizum</span><span class="l-en">card / Bizum</span></span></div>
+      <div class="fake-field"><span class="l-es">Nombre para la recogida</span><span class="l-en">Name for pickup</span><span class="chip">demo</span></div>
+    </div>
+  </div>
+
+  <div class="drawer-foot">
+    <div class="total-row">
+      <span class="lbl">Total</span>
+      <span class="amt" id="cartTotal">0,00&nbsp;€</span>
+    </div>
+    <p class="ej-note"><span class="l-es">Precios de ejemplo — demo</span><span class="l-en">Sample prices — demo</span></p>
+    <div class="cart-view">
+      <button class="btn btn-azul btn-full" id="toChk"><span class="l-es">Continuar</span><span class="l-en">Continue</span></button>
+    </div>
+    <div class="chk">
+      <button class="btn btn-disabled btn-full" disabled aria-disabled="true">
+        <span class="l-es">Pagar — desactivado en demo</span><span class="l-en">Pay — disabled in demo</span>
+      </button>
+      <p class="chk-note"><span class="l-es">Demo — así pedirían tus clientes. Sin pagos reales.</span><span class="l-en">Demo — this is how your guests would order. No real payments.</span></p>
+    </div>
+  </div>
+</aside>
+
+<script>
+/* ---------- language ---------- */
+function setLang(l){
+  document.documentElement.dataset.lang = l;
+  document.documentElement.lang = l;
+  try{localStorage.setItem('lb-lang', l);}catch(e){}
+}
+try{
+  var saved = localStorage.getItem('lb-lang');
+  if(saved === 'en' || saved === 'es') setLang(saved);
+}catch(e){}
+
+/* ---------- scroll reveal, with rescue ---------- */
+(function(){
+  var els = [].slice.call(document.querySelectorAll('[data-reveal]'));
+  function showAll(){ els.forEach(function(el){ el.classList.add('in'); }); }
+  if('IntersectionObserver' in window){
+    try{
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+      },{threshold:.12, rootMargin:'0px 0px -6% 0px'});
+      els.forEach(function(el){ io.observe(el); });
+    }catch(e){ showAll(); }
+  } else { showAll(); }
+  setTimeout(showAll, 2500);
+})();
+
+/* ---------- demo cart (sample prices, flagged in UI) ---------- */
+(function(){
+  var MENU = {
+    paella:{es:'Paella marinera', en:'Paella marinera', note_es:'precio de ejemplo', note_en:'sample price', price:16},
+    fritura:{es:'Fritura de la casa', en:'House fried fish', note_es:'precio de ejemplo', note_en:'sample price', price:12},
+    ensaladilla:{es:'Ensaladilla rusa', en:'Ensaladilla rusa', note_es:'precio de ejemplo', note_en:'sample price', price:6}
+  };
+  var cart = {};
+  var fab = document.getElementById('cartFab'),
+      cnt = document.getElementById('cartCnt'),
+      fabTotal = document.getElementById('fabTotal'),
+      drawer = document.getElementById('drawer'),
+      scrim = document.getElementById('scrim'),
+      rowsEl = document.getElementById('cartRows'),
+      emptyEl = document.getElementById('cartEmpty'),
+      totalEl = document.getElementById('cartTotal'),
+      chkTotalEl = document.getElementById('chkTotal');
+
+  function eur(n){ return n.toFixed(2).replace('.',',') + ' €'; }
+  function lang(){ return document.documentElement.dataset.lang || 'es'; }
+
+  function render(){
+    var ids = Object.keys(cart), count = 0, total = 0;
+    rowsEl.innerHTML = '';
+    ids.forEach(function(id){
+      var q = cart[id], it = MENU[id];
+      count += q; total += q * it.price;
+      var row = document.createElement('div');
+      row.className = 'cart-row';
+      var note = lang()==='en' ? it.note_en : it.note_es;
+      row.innerHTML =
+        '<div class="nm">' + (lang()==='en' ? it.en : it.es) + (note ? '<small>' + note + '</small>' : '') + '</div>' +
+        '<div class="qty">' +
+          '<button data-q="-1" aria-label="menos">−</button>' +
+          '<span>' + q + '</span>' +
+          '<button data-q="1" aria-label="más">+</button>' +
+        '</div>' +
+        '<div class="ln">' + eur(q * it.price) + '</div>';
+      row.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click', function(){ change(id, parseInt(b.dataset.q,10)); });
+      });
+      rowsEl.appendChild(row);
+    });
+    emptyEl.style.display = ids.length ? 'none' : 'block';
+    cnt.textContent = count;
+    var t = eur(total);
+    fabTotal.textContent = t; totalEl.textContent = t; chkTotalEl.textContent = t;
+    fab.classList.toggle('show', count > 0);
+    if(!count){ closeDrawer(); }
+  }
+
+  function change(id, d){
+    cart[id] = (cart[id] || 0) + d;
+    if(cart[id] <= 0) delete cart[id];
+    render();
+  }
+
+  document.querySelectorAll('[data-add]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      change(btn.dataset.add, 1);
+      btn.classList.add('added');
+      setTimeout(function(){ btn.classList.remove('added'); }, 500);
+      fab.classList.add('bump');
+      setTimeout(function(){ fab.classList.remove('bump'); }, 450);
+    });
+  });
+
+  function openDrawer(){
+    drawer.dataset.step = 'cart';
+    drawer.classList.add('open'); scrim.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer(){
+    drawer.classList.remove('open'); scrim.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  fab.addEventListener('click', openDrawer);
+  scrim.addEventListener('click', closeDrawer);
+  document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+  document.getElementById('toChk').addEventListener('click', function(){ drawer.dataset.step = 'chk'; });
+  document.getElementById('chkBack').addEventListener('click', function(){ drawer.dataset.step = 'cart'; });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeDrawer(); });
+
+  render();
+})();
+</script>
+</body>
+</html>
