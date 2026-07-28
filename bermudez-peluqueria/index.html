@@ -208,16 +208,19 @@ html[data-lang="en"] .day.today .dn::after{content:"today"}
 .serv-photo img{width:100%;max-height:420px;object-fit:cover;border-radius:6px;
   box-shadow:14px 14px 0 -4px var(--crema);border:1px solid var(--line)}
 .serv-photo figcaption{margin-top:12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
-.serv-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:28px}
-@media(min-width:720px){.serv-grid{grid-template-columns:1fr 1fr}}
-.svc{
-  display:flex;gap:16px;align-items:flex-start;
-  background:#FCFAF6;border:1px solid var(--line);border-radius:6px;padding:20px 20px 18px;
+.price-hero{
+  margin-top:28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+  background:var(--plum);color:var(--cream);border-radius:8px;padding:24px 26px;
 }
-.svc svg{flex:0 0 42px;width:42px;height:42px;color:var(--cobre-deep)}
-.svc h4{font-family:var(--disp);font-weight:700;font-size:18px;margin-bottom:4px}
-.svc p{font-size:14px;color:var(--ink-soft)}
-.svc .pr{display:inline-block;margin-top:8px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--cobre-deep);border:1px dashed rgba(169,107,65,.5);border-radius:2px;padding:3px 8px}
+.price-hero .svc-name{font-family:var(--disp);font-weight:700;font-size:clamp(22px,4.6vw,30px)}
+.price-hero .svc-price{font-family:var(--disp);font-weight:800;font-size:clamp(34px,8vw,52px);color:var(--cobre);margin-left:auto}
+.price-hero .svc-src{flex-basis:100%;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-dim)}
+.svc-chips{list-style:none;display:flex;flex-wrap:wrap;gap:10px 12px;margin-top:22px}
+.svc-chips li{
+  font-family:var(--disp);font-style:italic;font-size:16.5px;color:var(--ink-soft);
+  padding:7px 16px;border:1px dashed rgba(169,107,65,.45);border-radius:99px;background:#FCFAF6;
+}
+.svc-more{margin-top:18px;font-size:14.5px;color:var(--ink-soft);max-width:40em}
 
 /* ============ RESERVA (booking demo) ============ */
 .book{background:var(--crema);padding:80px 0 88px}
@@ -382,7 +385,7 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(203,184,196,.6);let
     <div class="sec-head" data-reveal>
       <p class="sec-kicker"><span class="l-es">Servicios</span><span class="l-en">Services</span></p>
       <h2 class="sec-title"><span class="l-es">Caballero, señora y peques</span><span class="l-en">Him, her &amp; the little ones</span></h2>
-      <p><span class="serv-note">◆ <span class="l-es">Servicios según el cartel del propio salón — el precio, al pedir tu cita</span><span class="l-en">Services as posted on the salon's own board — prices when you book</span></span></p>
+      <p><span class="serv-note">◆ <span class="l-es">Servicios y precios: los del cartel del propio salón</span><span class="l-en">Services and prices: the salon's own board</span></span></p>
     </div>
 
     <figure class="serv-photo" data-reveal>
@@ -390,40 +393,27 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(203,184,196,.6);let
       <figcaption><span class="l-es">El salón · foto de su ficha de Google</span><span class="l-en">The salon · photo from their Google listing</span></figcaption>
     </figure>
 
-    <div class="serv-grid">
-      <div class="svc" data-reveal>
-        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="34" r="6"/><circle cx="32" cy="34" r="6"/><path d="M20 29 L38 8 M28 29 L10 8"/></svg>
-        <div>
-          <h4><span class="l-es">Corte</span><span class="l-en">Cuts</span></h4>
-          <p><span class="l-es">Caballero, señora y niños — a tijera o máquina.</span><span class="l-en">Men, women and kids — scissors or clippers.</span></p>
-          <span class="pr"><span class="l-es">Precios en el salón</span><span class="l-en">Prices at the salon</span></span>
-        </div>
-      </div>
-      <div class="svc" data-reveal data-d="1">
-        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M14 8 q10 8 0 16 q-10 8 0 16 M24 8 q10 8 0 16 q-10 8 0 16 M34 8 q10 8 0 16 q-10 8 0 16"/></svg>
-        <div>
-          <h4><span class="l-es">Color y mechas</span><span class="l-en">Colour &amp; highlights</span></h4>
-          <p><span class="l-es">Tinte, mechas, matices — con su diagnóstico previo.</span><span class="l-en">Tint, highlights, toning — consultation first.</span></p>
-          <span class="pr"><span class="l-es">Precios en el salón</span><span class="l-en">Prices at the salon</span></span>
-        </div>
-      </div>
-      <div class="svc" data-reveal>
-        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 38 q14 -10 28 0 M12 30 a12 12 0 0 1 24 0 M24 10 v8 M18 12 l3 6 M30 12 l-3 6"/></svg>
-        <div>
-          <h4><span class="l-es">Permanentes y peinados</span><span class="l-en">Perms &amp; styling</span></h4>
-          <p><span class="l-es">Permanentes, tratamientos, secado y peinados.</span><span class="l-en">Perms, treatments, blow-dry and styling.</span></p>
-          <span class="pr"><span class="l-es">Precios en el salón</span><span class="l-en">Prices at the salon</span></span>
-        </div>
-      </div>
-      <div class="svc" data-reveal data-d="1">
-        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8 l4 6 v22 a4 4 0 0 1 -8 0 V14 z M22 40 h14 M29 40 v-6 M26 30 h6 a4 4 0 0 0 4 -4 V16" /></svg>
-        <div>
-          <h4><span class="l-es">Manicura y esmaltado permanente</span><span class="l-en">Manicure &amp; gel polish</span></h4>
-          <p><span class="l-es">Manos cuidadas, esmaltado que dura.</span><span class="l-en">Tidy hands, polish that lasts.</span></p>
-          <span class="pr"><span class="l-es">Precios en el salón</span><span class="l-en">Prices at the salon</span></span>
-        </div>
-      </div>
+    <div class="price-hero" data-reveal>
+      <span class="svc-name"><span class="l-es">Corte caballero</span><span class="l-en">Men's cut</span></span>
+      <span class="svc-price">6€</span>
+      <span class="svc-src"><span class="l-es">Según el cartel de su escaparate (jul 2026)</span><span class="l-en">As posted in their own shop window (Jul 2026)</span></span>
     </div>
+
+    <ul class="svc-chips" data-reveal>
+      <li><span class="l-es">Cortes — señora y peques</span><span class="l-en">Cuts — women &amp; kids</span></li>
+      <li>Color</li>
+      <li>Mechas</li>
+      <li><span class="l-es">Permanentes</span><span class="l-en">Perms</span></li>
+      <li><span class="l-es">Peinados</span><span class="l-en">Styling</span></li>
+      <li><span class="l-es">Tratamientos</span><span class="l-en">Treatments</span></li>
+      <li>Manicura</li>
+      <li><span class="l-es">Esmaltado permanente</span><span class="l-en">Gel polish</span></li>
+    </ul>
+
+    <p class="svc-more" data-reveal>
+      <span class="l-es">La lista completa de precios está en el cartel de la puerta — y te la damos al momento al pedir tu cita.</span>
+      <span class="l-en">The full price list is on the board at the door — and we'll give it to you right away when you book.</span>
+    </p>
   </div>
 </section>
 
@@ -530,8 +520,8 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(203,184,196,.6);let
       <a href="tel:+34662076018">662 07 60 18</a>
     </div>
     <p class="legal">
-      <span class="l-es">Teléfono, horario y dirección según directorios del sector (jul 2026), a confirmar por el salón · Fotos: ficha de Google del salón · Servicios según el cartel del propio salón, precios en el salón</span>
-      <span class="l-en">Phone, hours and address per trade directories (Jul 2026), to be confirmed by the salon · Photos: the salon's Google listing · Services as posted on the salon's own board, prices at the salon</span>
+      <span class="l-es">Teléfono, horario y dirección según directorios del sector (jul 2026), a confirmar por el salón · Fotos: ficha de Google del salón · Servicios y precio del corte caballero según los carteles del propio salón (jul 2026)</span>
+      <span class="l-en">Phone, hours and address per trade directories (Jul 2026), to be confirmed by the salon · Photos: the salon's Google listing · Services and men's-cut price as posted on the salon's own boards (Jul 2026)</span>
     </p>
   </div>
 </footer>
