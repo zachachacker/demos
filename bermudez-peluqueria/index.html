@@ -88,21 +88,40 @@ html[data-lang="es"] .lang [data-set="es"],
 html[data-lang="en"] .lang [data-set="en"]{background:var(--plum);color:var(--cream)}
 @media(max-width:660px){.nav-links{display:none}.lang{margin-left:auto}}
 
-/* ============ HERO ============ */
-.hero{background:var(--crema);padding:56px 0 0}
+/* ============ HERO — full-bleed photo, la-tralla shape ============ */
+.hero{
+  position:relative;min-height:min(96svh,860px);display:flex;align-items:flex-end;
+  isolation:isolate;overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 35%;
+  animation:heroZoom 14s ease-out forwards}
+@keyframes heroZoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+.hero-veil{position:absolute;inset:0;z-index:-1;
+  background:
+    radial-gradient(120% 90% at 50% 108%, rgba(48,26,42,.96) 30%, rgba(48,26,42,.45) 62%, rgba(48,26,42,.16) 100%),
+    linear-gradient(180deg, rgba(48,26,42,.5) 0%, rgba(48,26,42,.1) 34%, rgba(48,26,42,.9) 88%);
+}
+.hero-inner{width:100%;padding-top:96px;padding-bottom:54px;color:var(--cream)}
 .kicker{
   font-size:12.5px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--cobre-deep);display:flex;align-items:center;gap:14px;margin-bottom:16px;
+  color:var(--cobre);display:flex;align-items:center;gap:14px;margin-bottom:16px;
 }
 .kicker::before{content:"";width:34px;height:2px;background:var(--cobre)}
 h1.title{
   font-family:var(--disp);font-weight:700;
   font-size:clamp(42px,10.5vw,96px);
-  line-height:1;letter-spacing:-.01em;color:var(--plum);
+  line-height:1;letter-spacing:-.01em;color:var(--cream);
+  text-shadow:0 2px 40px rgba(0,0,0,.45);
 }
-h1.title em{font-style:italic;color:var(--cobre-deep)}
-.hero-sub{max-width:34em;font-size:clamp(16.5px,2.4vw,19.5px);color:var(--ink-soft);margin:18px 0 22px}
-.hero-sub b{color:var(--ink)}
+h1.title em{font-style:italic;color:var(--cobre)}
+.hero-sub{max-width:34em;font-size:clamp(16.5px,2.4vw,19.5px);color:#F0E6EC;margin:18px 0 22px}
+.hero-sub b{color:#fff}
+.hero .badge{background:rgba(48,26,42,.5);border-color:var(--line-cream);color:var(--cream-dim)}
+.hero .badge b{color:var(--cream)}
+.hero .btn-ghost{border-color:rgba(247,242,236,.55);color:var(--cream)}
+.hero .btn-ghost:hover{border-color:var(--cream);background:rgba(247,242,236,.08)}
+.hero-credit{position:absolute;right:14px;bottom:10px;z-index:2;font-size:10px;letter-spacing:.08em;color:rgba(247,242,236,.6)}
 .badges{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:26px}
 .badge{
   display:inline-flex;align-items:center;gap:6px;
@@ -185,7 +204,11 @@ html[data-lang="en"] .day.today .dn::after{content:"today"}
   color:var(--cobre-deep);background:rgba(201,139,95,.12);
   border:1px solid rgba(169,107,65,.35);border-radius:2px;padding:7px 13px;
 }
-.serv-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:40px}
+.serv-photo{margin-top:36px}
+.serv-photo img{width:100%;max-height:420px;object-fit:cover;border-radius:6px;
+  box-shadow:14px 14px 0 -4px var(--crema);border:1px solid var(--line)}
+.serv-photo figcaption{margin-top:12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.serv-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:28px}
 @media(min-width:720px){.serv-grid{grid-template-columns:1fr 1fr}}
 .svc{
   display:flex;gap:16px;align-items:flex-start;
@@ -303,7 +326,9 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(203,184,196,.6);let
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <div class="wrap">
+  <div class="hero-bg"><img src="assets/fachada.jpg" alt="La fachada de Bermúdez's Peluquería, con su toldo morado, en la esquina de Periodista Sánchez Romero" fetchpriority="high"></div>
+  <div class="hero-veil"></div>
+  <div class="wrap hero-inner">
     <p class="kicker" data-load="1">C/ Periodista Sánchez Romero, 3 · Torremolinos</p>
     <h1 class="title" data-load="2">Bermudez's <em>Peluquería</em></h1>
     <p class="hero-sub" data-load="3">
@@ -315,13 +340,12 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(203,184,196,.6);let
       <span class="badge"><span class="l-es">Sábados por la mañana</span><span class="l-en">Open Saturday mornings</span></span>
       <span class="badge"><span class="l-es">Con cita</span><span class="l-en">By appointment</span></span>
     </div>
-    <div class="cta-row" data-load="5">
-      <a class="btn btn-plum" href="#reserva"><span class="l-es">Pedir cita</span><span class="l-en">Request an appointment</span></a>
+    <div class="cta-row" data-load="5" style="margin-bottom:0">
+      <a class="btn btn-cobre" href="#reserva"><span class="l-es">Pedir cita</span><span class="l-en">Request an appointment</span></a>
       <a class="btn btn-ghost" href="#horario"><span class="l-es">Ver horario</span><span class="l-en">See hours</span></a>
     </div>
   </div>
-  <!-- photo slot: assets/salon.jpg drops in here when the real shot lands -->
-  <div class="hero-art" id="heroPhoto"></div>
+  <p class="hero-credit"><span class="l-es">Foto: ficha de Google del salón</span><span class="l-en">Photo: the salon's Google listing</span></p>
 </section>
 
 <!-- HORARIO — centerpiece -->
@@ -358,8 +382,13 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(203,184,196,.6);let
     <div class="sec-head" data-reveal>
       <p class="sec-kicker"><span class="l-es">Servicios</span><span class="l-en">Services</span></p>
       <h2 class="sec-title"><span class="l-es">Caballero, señora y peques</span><span class="l-en">Him, her &amp; the little ones</span></h2>
-      <p><span class="serv-note">◆ <span class="l-es">El precio, en el salón y sin sorpresas — pregunta al pedir tu cita</span><span class="l-en">Prices at the salon, no surprises — just ask when you book</span></span></p>
+      <p><span class="serv-note">◆ <span class="l-es">Servicios según el cartel del propio salón — el precio, al pedir tu cita</span><span class="l-en">Services as posted on the salon's own board — prices when you book</span></span></p>
     </div>
+
+    <figure class="serv-photo" data-reveal>
+      <img src="assets/salon.jpg" alt="El interior del salón: dos tocadores con espejos, sillones y lavacabezas" loading="lazy">
+      <figcaption><span class="l-es">El salón · foto de su ficha de Google</span><span class="l-en">The salon · photo from their Google listing</span></figcaption>
+    </figure>
 
     <div class="serv-grid">
       <div class="svc" data-reveal>
@@ -381,16 +410,16 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(203,184,196,.6);let
       <div class="svc" data-reveal>
         <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 38 q14 -10 28 0 M12 30 a12 12 0 0 1 24 0 M24 10 v8 M18 12 l3 6 M30 12 l-3 6"/></svg>
         <div>
-          <h4><span class="l-es">Peinado y eventos</span><span class="l-en">Styling &amp; occasions</span></h4>
-          <p><span class="l-es">Secado, plancha, recogidos para el día señalado.</span><span class="l-en">Blow-dry, straightening, up-dos for the big day.</span></p>
+          <h4><span class="l-es">Permanentes y peinados</span><span class="l-en">Perms &amp; styling</span></h4>
+          <p><span class="l-es">Permanentes, tratamientos, secado y peinados.</span><span class="l-en">Perms, treatments, blow-dry and styling.</span></p>
           <span class="pr"><span class="l-es">Precios en el salón</span><span class="l-en">Prices at the salon</span></span>
         </div>
       </div>
       <div class="svc" data-reveal data-d="1">
-        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10 c0 8 -6 10 -6 18 a14 14 0 0 0 28 0 c0 -8 -6 -10 -6 -18 M16 10 h16"/><path d="M24 22 v10 M20 26 h8" stroke-width="2"/></svg>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8 l4 6 v22 a4 4 0 0 1 -8 0 V14 z M22 40 h14 M29 40 v-6 M26 30 h6 a4 4 0 0 0 4 -4 V16" /></svg>
         <div>
-          <h4><span class="l-es">Barba y arreglos</span><span class="l-en">Beard &amp; trims</span></h4>
-          <p><span class="l-es">Perfilado y arreglo de barba para el caballero.</span><span class="l-en">Beard shaping and tidy-ups for him.</span></p>
+          <h4><span class="l-es">Manicura y esmaltado permanente</span><span class="l-en">Manicure &amp; gel polish</span></h4>
+          <p><span class="l-es">Manos cuidadas, esmaltado que dura.</span><span class="l-en">Tidy hands, polish that lasts.</span></p>
           <span class="pr"><span class="l-es">Precios en el salón</span><span class="l-en">Prices at the salon</span></span>
         </div>
       </div>
@@ -501,8 +530,8 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(203,184,196,.6);let
       <a href="tel:+34662076018">662 07 60 18</a>
     </div>
     <p class="legal">
-      <span class="l-es">Teléfono, horario y dirección según directorios del sector (jul 2026), a confirmar por el salón · Carta de servicios orientativa, precios en el salón</span>
-      <span class="l-en">Phone, hours and address per trade directories (Jul 2026), to be confirmed by the salon · Indicative service list, prices at the salon</span>
+      <span class="l-es">Teléfono, horario y dirección según directorios del sector (jul 2026), a confirmar por el salón · Fotos: ficha de Google del salón · Servicios según el cartel del propio salón, precios en el salón</span>
+      <span class="l-en">Phone, hours and address per trade directories (Jul 2026), to be confirmed by the salon · Photos: the salon's Google listing · Services as posted on the salon's own board, prices at the salon</span>
     </p>
   </div>
 </footer>
