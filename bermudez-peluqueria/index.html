@@ -121,14 +121,15 @@ h1.title em{font-style:italic;color:var(--cobre-deep)}
 .btn-plum:hover{background:var(--plum3);transform:translateY(-2px)}
 .btn-ghost{border:1.5px solid rgba(51,32,45,.4);color:var(--ink)}
 .btn-ghost:hover{border-color:var(--cobre-deep);color:var(--cobre-deep)}
-/* hero art band — scissors & comb line art on plum */
+/* hero photo band — carries assets/salon.jpg when the real shot lands;
+   until then a confident plum band, no empty frame, no caption */
 .hero-art{
+  min-height:120px;
   background:linear-gradient(180deg,var(--plum),#301A2A);
+  background-size:cover;background-position:center;
   border-top:3px solid var(--cobre);
-  padding:30px 0 26px;overflow:hidden;
 }
-.hero-art svg{display:block;width:100%;height:auto;color:var(--cream)}
-.hero-art .cap{margin-top:12px;text-align:center;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--cream-dim)}
+@media(min-width:720px){.hero-art{min-height:180px}}
 .hero [data-load]{opacity:0;transform:translateY(26px);animation:rise .9s cubic-bezier(.2,.7,.25,1) forwards}
 .hero [data-load="1"]{animation-delay:.12s}.hero [data-load="2"]{animation-delay:.26s}
 .hero [data-load="3"]{animation-delay:.4s}.hero [data-load="4"]{animation-delay:.54s}
@@ -306,51 +307,21 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(203,184,196,.6);let
     <p class="kicker" data-load="1">C/ Periodista Sánchez Romero, 3 · Torremolinos</p>
     <h1 class="title" data-load="2">Bermudez's <em>Peluquería</em></h1>
     <p class="hero-sub" data-load="3">
-      <span class="l-es">Peluquería unisex en el centro de Torremolinos. <b>Con cita</b> — pide la tuya sin llamar en mitad de un corte.</span>
-      <span class="l-en">Unisex hair salon in central Torremolinos. <b>By appointment</b> — request yours without phoning mid-haircut.</span>
+      <span class="l-es">Peluquería unisex en el centro de Torremolinos. Corte, color y peinado para él y para ella — <b>con cita</b>, aquí abajo o por teléfono.</span>
+      <span class="l-en">Unisex hair salon in central Torremolinos. Cuts, colour and styling for him and for her — <b>by appointment</b>, right below or by phone.</span>
     </p>
     <div class="badges" data-load="4">
       <span class="badge"><span class="l-es"><b>Unisex</b> — caballero y señora</span><span class="l-en"><b>Unisex</b> — men &amp; women</span></span>
       <span class="badge"><span class="l-es">Sábados por la mañana</span><span class="l-en">Open Saturday mornings</span></span>
-      <span class="badge"><span class="l-es">Web en ES y EN</span><span class="l-en">Site in ES &amp; EN</span></span>
+      <span class="badge"><span class="l-es">Con cita</span><span class="l-en">By appointment</span></span>
     </div>
     <div class="cta-row" data-load="5">
       <a class="btn btn-plum" href="#reserva"><span class="l-es">Pedir cita</span><span class="l-en">Request an appointment</span></a>
       <a class="btn btn-ghost" href="#horario"><span class="l-es">Ver horario</span><span class="l-en">See hours</span></a>
     </div>
   </div>
-  <div class="hero-art">
-    <div class="wrap">
-      <!-- original line art: scissors, comb, mirror -->
-      <svg viewBox="0 0 900 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <!-- scissors -->
-        <g>
-          <circle cx="96" cy="118" r="16"/>
-          <circle cx="150" cy="118" r="16"/>
-          <path d="M106 106 L204 34 M140 106 L42 34" stroke-width="3.2"/>
-          <circle cx="123" cy="88" r="4" fill="currentColor" stroke="none"/>
-        </g>
-        <!-- comb, copper -->
-        <g stroke="#C98B5F">
-          <path d="M300 52 h190 v22 h-190 z" stroke-width="3"/>
-          <path d="M316 74 v34 M340 74 v30 M364 74 v34 M388 74 v30 M412 74 v34 M436 74 v30 M460 74 v34" stroke-width="2.6"/>
-        </g>
-        <!-- hand mirror -->
-        <g opacity=".95">
-          <circle cx="640" cy="72" r="40"/>
-          <circle cx="640" cy="72" r="31" opacity=".45" stroke-width="2"/>
-          <path d="M640 112 v34 M628 146 h24" stroke-width="3"/>
-        </g>
-        <!-- spray bottle, copper -->
-        <g stroke="#C98B5F" stroke-width="2.8" opacity=".95">
-          <path d="M800 70 h34 v56 a6 6 0 0 1 -6 6 h-22 a6 6 0 0 1 -6 -6 z"/>
-          <path d="M806 70 v-14 h16 v14 M810 48 h20 M836 52 l14 -6 M838 60 l16 0 M836 44 l14 6" stroke-width="2.4"/>
-        </g>
-        <path d="M40 152 h820" stroke-width="2" opacity=".25"/>
-      </svg>
-      <p class="cap"><span class="l-es">Ilustración de la demo — sus fotos reales irán aquí</span><span class="l-en">Demo illustration — your real photos go here</span></p>
-    </div>
-  </div>
+  <!-- photo slot: assets/salon.jpg drops in here when the real shot lands -->
+  <div class="hero-art" id="heroPhoto"></div>
 </section>
 
 <!-- HORARIO — centerpiece -->
@@ -387,7 +358,7 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(203,184,196,.6);let
     <div class="sec-head" data-reveal>
       <p class="sec-kicker"><span class="l-es">Servicios</span><span class="l-en">Services</span></p>
       <h2 class="sec-title"><span class="l-es">Caballero, señora y peques</span><span class="l-en">Him, her &amp; the little ones</span></h2>
-      <p><span class="serv-note">◆ <span class="l-es">Carta de servicios de muestra — la definitiva y sus precios los fija el salón</span><span class="l-en">Sample service list — the final one and its prices are the salon's to set</span></span></p>
+      <p><span class="serv-note">◆ <span class="l-es">El precio, en el salón y sin sorpresas — pregunta al pedir tu cita</span><span class="l-en">Prices at the salon, no surprises — just ask when you book</span></span></p>
     </div>
 
     <div class="serv-grid">
@@ -431,12 +402,11 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(203,184,196,.6);let
 <section class="book" id="reserva">
   <div class="wrap">
     <div class="sec-head" data-reveal>
-      <p class="demo-flag"><i></i><span class="l-es">Demo interactiva</span><span class="l-en">Interactive demo</span></p>
       <p class="sec-kicker"><span class="l-es">Pedir cita</span><span class="l-en">Request an appointment</span></p>
-      <h2 class="sec-title"><span class="l-es">Tu cita, sin interrumpir un corte</span><span class="l-en">Your appointment, without interrupting a haircut</span></h2>
+      <h2 class="sec-title"><span class="l-es">Tu cita, a tu hora</span><span class="l-en">Your appointment, on your time</span></h2>
       <p class="book-lead">
-        <span class="l-es">Hoy, cada cita es una llamada en horario de trabajo. Así entrarían solas: rellena la solicitud y compruébalo — todo funciona menos el envío.</span>
-        <span class="l-en">Today, every booking is a phone call during working hours. This is how they'd arrive on their own: fill in the request and try it — everything works except sending.</span>
+        <span class="l-es">Elige servicio, día y franja, y te confirmamos la hora exacta. Sin pagos online — se paga en el salón, como siempre.</span>
+        <span class="l-en">Pick a service, a day and a time of day, and we'll confirm your exact slot. No online payments — you pay at the salon, as always.</span>
       </p>
     </div>
 
@@ -482,15 +452,10 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(203,184,196,.6);let
         </div>
       </div>
       <button class="btn-disabled" disabled aria-disabled="true">
-        <span class="l-es">Enviar solicitud — se activa en la web real</span><span class="l-en">Send request — activates on the real site</span>
+        <span class="l-es">Enviar solicitud</span><span class="l-en">Send request</span>
       </button>
-      <p class="book-note"><span class="l-es">Demo — sin envío real</span><span class="l-en">Demo — nothing is sent</span></p>
+      <p class="book-note"><span class="l-es">El envío online se activa muy pronto — mientras tanto, llámanos: 662 07 60 18</span><span class="l-en">Online sending arrives very soon — for now, call us: 662 07 60 18</span></p>
     </form>
-
-    <p class="book-real" data-reveal>
-      <span class="l-es">◆ En la versión real: la solicitud llega al salón al momento (WhatsApp o correo, como prefieran), con confirmación al cliente en su idioma. Sin pagos online — se cobra en el salón, como siempre.</span>
-      <span class="l-en">◆ In the real version: the request reaches the salon instantly (WhatsApp or email, as they prefer), with a confirmation to the client in their language. No online payments — you pay at the salon, as always.</span>
-    </p>
   </div>
 </section>
 
@@ -520,7 +485,7 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(203,184,196,.6);let
         <h3><span class="l-es">Llámanos</span><span class="l-en">Call us</span></h3>
         <p class="addr"><span class="l-es">Para cita inmediata, mejor por teléfono:</span><span class="l-en">For a same-day appointment, phone is quickest:</span></p>
         <a class="tel-big" href="tel:+34662076018">662 07 60 18</a>
-        <p class="addr" style="margin-top:12px;font-size:13.5px"><span class="l-es">Y cuando la web esté en marcha, la solicitud de cita de arriba llega sola — sin interrumpir a nadie.</span><span class="l-en">And once the site is live, the booking request above arrives on its own — interrupting no one.</span></p>
+        <p class="addr" style="margin-top:12px;font-size:13.5px"><span class="l-es">Recuerda: los martes descansamos, y los sábados solo por la mañana.</span><span class="l-en">Remember: Tuesdays we rest, and Saturdays it's mornings only.</span></p>
       </div>
     </div>
   </div>
@@ -535,10 +500,9 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(203,184,196,.6);let
       <a href="https://facebook.com/Bermudezpeluqueriaunisex" target="_blank" rel="noopener">Facebook</a>
       <a href="tel:+34662076018">662 07 60 18</a>
     </div>
-    <p><span class="dom"><span class="l-es">bermudezpeluqueria.com — libre a 28/07/2026, esperando a su salón</span><span class="l-en">bermudezpeluqueria.com — unregistered as of 28 Jul 2026, waiting for its salon</span></span></p>
     <p class="legal">
-      <span class="l-es">Demo privada no indexada · Sin fotografías: todas las imágenes son ilustraciones originales de la demo · Teléfono, horario y dirección según directorios del sector (jul 2026), a confirmar por el salón · Carta de servicios de muestra, sin precios · Todo a confirmar por la casa</span>
-      <span class="l-en">Private, non-indexed demo · No photography: all imagery is original demo illustration · Phone, hours and address per trade directories (Jul 2026), to be confirmed by the salon · Sample service list, no prices · Everything to be confirmed by the house</span>
+      <span class="l-es">Teléfono, horario y dirección según directorios del sector (jul 2026), a confirmar por el salón · Carta de servicios orientativa, precios en el salón</span>
+      <span class="l-en">Phone, hours and address per trade directories (Jul 2026), to be confirmed by the salon · Indicative service list, prices at the salon</span>
     </p>
   </div>
 </footer>

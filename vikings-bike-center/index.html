@@ -130,14 +130,15 @@ h1.title .amber{color:var(--ambar-deep)}
 .btn-iron:hover{background:var(--iron3);transform:translateY(-2px)}
 .btn-ghost{border:1.5px solid rgba(35,40,48,.4);color:var(--ink)}
 .btn-ghost:hover{border-color:var(--ambar-deep);color:var(--ambar-deep)}
-/* hero art band — wheel + wrench line art on iron */
+/* hero photo band — carries assets/fachada.jpg when the real shot lands;
+   until then a confident iron band, no empty frame, no caption */
 .hero-art{
+  min-height:120px;
   background:linear-gradient(180deg,var(--iron),#1B202A);
+  background-size:cover;background-position:center;
   border-top:3px solid var(--ambar);
-  padding:32px 0 26px;overflow:hidden;
 }
-.hero-art svg{display:block;width:100%;height:auto;color:var(--cream)}
-.hero-art .cap{margin-top:12px;text-align:center;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--cream-dim)}
+@media(min-width:720px){.hero-art{min-height:180px}}
 .hero [data-load]{opacity:0;transform:translateY(26px);animation:rise .9s cubic-bezier(.2,.7,.25,1) forwards}
 .hero [data-load="1"]{animation-delay:.12s}.hero [data-load="2"]{animation-delay:.26s}
 .hero [data-load="3"]{animation-delay:.4s}.hero [data-load="4"]{animation-delay:.54s}
@@ -319,8 +320,8 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(185,192,204,.6);let
     <p class="kicker" data-load="1">C. Periodista Sánchez Romero, 3 · Torremolinos</p>
     <h1 class="title" data-load="2">Vikings<br>Bike <span class="amber">Center</span></h1>
     <p class="hero-sub" data-load="3">
-      <span class="l-es">Taller de bicicletas en el centro de Torremolinos. Averías, puestas a punto y revisiones — <b>para viajeros y locales</b>, como dicen sus reseñas.</span>
-      <span class="l-en">Bicycle repair workshop in central Torremolinos. Fixes, tune-ups and full services — <b>for travellers and locals alike</b>, as the reviews put it.</span>
+      <span class="l-es">Taller de bicicletas en el centro de Torremolinos. Pinchazos, frenos, cambios y puestas a punto — <b>para viajeros y locales</b>. Trae tu bici o pide cita.</span>
+      <span class="l-en">Bicycle repair workshop in central Torremolinos. Punctures, brakes, gears and tune-ups — <b>for travellers and locals</b>. Bring your bike in, or book ahead.</span>
     </p>
     <div class="badges" data-load="4">
       <span class="badge"><span class="st">★</span><b>5,0</b><span class="l-es">Google · 23 reseñas</span><span class="l-en">Google · 23 reviews</span></span>
@@ -332,38 +333,8 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(185,192,204,.6);let
       <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=Vikings%20Bike%20Center%2C%20Calle%20Periodista%20S%C3%A1nchez%20Romero%203%2C%2029620%20Torremolinos" target="_blank" rel="noopener"><span class="l-es">Cómo llegar</span><span class="l-en">Directions</span></a>
     </div>
   </div>
-  <div class="hero-art">
-    <div class="wrap">
-      <!-- original line art: wheel, wrench, pump -->
-      <svg viewBox="0 0 900 170" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <!-- wheel with spokes -->
-        <g>
-          <circle cx="150" cy="86" r="58"/>
-          <circle cx="150" cy="86" r="46" opacity=".4" stroke-width="2"/>
-          <circle cx="150" cy="86" r="8"/>
-          <path d="M150 28 v116 M92 86 h116 M110 46 l80 80 M190 46 l-80 80" stroke-width="2.4"/>
-        </g>
-        <!-- wrench, amber -->
-        <g stroke="#E8A13C">
-          <path d="M328 122 L432 58 M310 138 a20 20 0 1 1 34 -20 l-8 6 2 12 -12 2 z M450 42 a20 20 0 1 0 -34 20 l8 -6 -2 -12 12 -2 z" stroke-width="3.2"/>
-        </g>
-        <!-- chainring -->
-        <g opacity=".85">
-          <circle cx="560" cy="86" r="40"/>
-          <circle cx="560" cy="86" r="12"/>
-          <path d="M560 40 l5 10 M600 70 l-10 5 M600 102 l-10 -5 M560 132 l5 -10 M520 102 l10 -5 M520 70 l10 5" stroke-width="2.6"/>
-        </g>
-        <!-- pump -->
-        <g stroke="#E8A13C" opacity=".9" stroke-width="2.8">
-          <path d="M760 36 v72 M744 36 h32 M760 108 h-20 a8 8 0 0 0 -8 8 v14 M732 130 h56"/>
-          <path d="M786 130 v-40 q0 -10 10 -10 h14" stroke-width="2.4"/>
-        </g>
-        <!-- ground line -->
-        <path d="M40 156 h820" stroke-width="2" opacity=".3"/>
-      </svg>
-      <p class="cap"><span class="l-es">Ilustración de la demo — sus fotos reales irán aquí</span><span class="l-en">Demo illustration — your real photos go here</span></p>
-    </div>
-  </div>
+  <!-- photo slot: assets/fachada.jpg drops in here when the real shot lands -->
+  <div class="hero-art" id="heroPhoto"></div>
 </section>
 
 <!-- EL TALLER -->
@@ -376,8 +347,8 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(185,192,204,.6);let
         <span class="l-en">One workshop. One mechanic. Five stars.</span>
       </h2>
       <p class="taller-lead">
-        <span class="l-es">Sin web, sin humo — solo <strong>23 reseñas y todas de cinco estrellas</strong>. Esta página pone en internet lo que sus clientes ya saben.</span>
-        <span class="l-en">No website, no noise — just <strong>23 reviews, every one five stars</strong>. This page puts online what the customers already know.</span>
+        <span class="l-es">Pequeño a propósito: tu bici la mira siempre la misma persona, y se nota — <strong>23 reseñas en Google y todas de cinco estrellas</strong>.</span>
+        <span class="l-en">Small on purpose: your bike is always seen by the same person, and it shows — <strong>23 Google reviews, every one five stars</strong>.</span>
       </p>
     </div>
 
@@ -386,21 +357,10 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(185,192,204,.6);let
         <div>
           <p class="story-num">01</p>
           <h3><span class="l-es">Julio, con nombre propio</span><span class="l-en">Julio, known by name</span></h3>
-          <p><span class="l-es">Las reseñas no hablan de una empresa — hablan de <b>Julio</b>. «Don Julio», «el señor Julio»: calidad, rapidez, buen precio y un trato que la gente se molesta en escribir.</span>
-          <span class="l-en">The reviews don't talk about a company — they talk about <b>Julio</b>. "Don Julio", "señor Julio": quality, speed, fair prices and the kind of service people bother to write down.</span></p>
-          <p><span class="l-es">Eso no se compra ni se inventa. Solo se cuenta.</span>
-          <span class="l-en">You can't buy that or invent it. You can only tell it.</span></p>
-        </div>
-        <div class="story-art" aria-hidden="true">
-          <!-- workbench + wheel art -->
-          <svg viewBox="0 0 260 220" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M30 170 h200 M50 170 v24 M210 170 v24"/>
-            <circle cx="96" cy="120" r="44"/>
-            <circle cx="96" cy="120" r="6"/>
-            <path d="M96 76 v88 M52 120 h88 M66 90 l60 60 M126 90 l-60 60" stroke-width="2.2"/>
-            <path d="M170 152 l34 -50 M196 108 a14 14 0 1 1 16 -12 l-6 4 0 10 -10 0 z" stroke-width="2.6"/>
-            <path d="M150 170 v-14 M186 170 v-10" stroke-width="2.4" opacity=".6"/>
-          </svg>
+          <p><span class="l-es">Al frente está <b>Julio</b> — «Don Julio» para muchos clientes. Diagnóstico claro, arreglo rápido y precio justo: es lo que repiten quienes salen del taller pedaleando.</span>
+          <span class="l-en">At the bench is <b>Julio</b> — "Don Julio" to many of his customers. A straight diagnosis, a quick fix and a fair price: it's what people say as they pedal away.</span></p>
+          <p><span class="l-es">Aquí no dejas la bici en un mostrador — se la dejas a él.</span>
+          <span class="l-en">You're not leaving your bike at a counter — you're leaving it with him.</span></p>
         </div>
       </div>
 
@@ -409,39 +369,10 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(185,192,204,.6);let
           <p class="story-num">02</p>
           <h3><span class="l-es">La nota perfecta</span><span class="l-en">The perfect score</span></h3>
           <div class="stars-big"><span class="num">5,0</span><span class="st">★★★★★</span><small><span class="l-es">Google · 23 reseñas</span><span class="l-en">Google · 23 reviews</span></small></div>
-          <p><span class="l-es">Veintitrés opiniones, ni una sola por debajo de cinco. En un oficio donde cada arreglo se nota al primer pedal, la nota perfecta es la marca.</span>
-          <span class="l-en">Twenty-three reviews, not one below five. In a trade where every fix shows on the first pedal stroke, the perfect score is the brand.</span></p>
-        </div>
-        <div class="story-art" aria-hidden="true">
-          <!-- five stars art -->
-          <svg viewBox="0 0 260 220" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M130 34 l10 22 24 3 -17 17 4 24 -21 -11 -21 11 4 -24 -17 -17 24 -3 z"/>
-            <path d="M58 96 l7 15 17 2 -12 12 3 17 -15 -8 -15 8 3 -17 -12 -12 17 -2 z" stroke-width="2.6"/>
-            <path d="M202 96 l7 15 17 2 -12 12 3 17 -15 -8 -15 8 3 -17 -12 -12 17 -2 z" stroke-width="2.6"/>
-            <path d="M92 160 l6 13 14 2 -10 10 2 14 -12 -7 -12 7 2 -14 -10 -10 14 -2 z" stroke-width="2.4"/>
-            <path d="M168 160 l6 13 14 2 -10 10 2 14 -12 -7 -12 7 2 -14 -10 -10 14 -2 z" stroke-width="2.4"/>
-          </svg>
-        </div>
-      </div>
-
-      <div class="story-block" data-reveal>
-        <div>
-          <p class="story-num">03</p>
-          <h3><span class="l-es">El único del centro con web</span><span class="l-en">The only one in town with a website</span></h3>
-          <p><span class="l-es">Ningún taller de bicicletas de Torremolinos tiene página web — todos viven de directorios y de Facebook. El primero que la tenga se queda con cada turista que busca <b>«bike repair Torremolinos»</b>.</span>
-          <span class="l-en">Not one bike workshop in Torremolinos has a website — they all live off directories and Facebook. The first one to have it takes every tourist who searches <b>"bike repair Torremolinos"</b>.</span></p>
-          <p><span class="l-es">Esta demo es esa página, lista para ser suya.</span>
-          <span class="l-en">This demo is that page, ready to be theirs.</span></p>
-        </div>
-        <div class="story-art" aria-hidden="true">
-          <!-- map pin + bike art -->
-          <svg viewBox="0 0 260 220" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M130 30 a44 44 0 0 1 44 44 c0 32 -44 76 -44 76 s-44 -44 -44 -76 a44 44 0 0 1 44 -44 z"/>
-            <circle cx="130" cy="72" r="16" stroke-width="2.6"/>
-            <circle cx="86" cy="184" r="22" stroke-width="2.6"/>
-            <circle cx="174" cy="184" r="22" stroke-width="2.6"/>
-            <path d="M86 184 l26 -34 h36 l26 34 M112 150 l-10 -14 h20 M148 150 l10 34" stroke-width="2.4"/>
-          </svg>
+          <p><span class="l-es">Veintitrés opiniones, ni una sola por debajo de cinco. En un oficio donde cada arreglo se nota al primer pedal, eso lo dice todo.</span>
+          <span class="l-en">Twenty-three reviews, not one below five. In a trade where every fix shows on the first pedal stroke, that says it all.</span></p>
+          <p><span class="l-es">Y da igual de dónde vengas: nos escriben <b>viajeros y locales</b>, en su idioma.</span>
+          <span class="l-en">And it doesn't matter where you're from: <b>travellers and locals</b> write in, each in their own language.</span></p>
         </div>
       </div>
     </div>
@@ -453,8 +384,8 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(185,192,204,.6);let
   <div class="wrap">
     <div class="sec-head" data-reveal>
       <p class="sec-kicker"><span class="l-es">Servicios</span><span class="l-en">Services</span></p>
-      <h2 class="sec-title"><span class="l-es">Lo que entra por la puerta</span><span class="l-en">What comes through the door</span></h2>
-      <p><span class="serv-note">◆ <span class="l-es">Carta de servicios de muestra — la definitiva la fija el taller</span><span class="l-en">Sample service list — the final one is the workshop's to set</span></span></p>
+      <h2 class="sec-title"><span class="l-es">Lo que arreglamos</span><span class="l-en">What we fix</span></h2>
+      <p><span class="serv-note">◆ <span class="l-es">Cada bici es distinta — te damos precio en el momento, antes de tocar nada</span><span class="l-en">Every bike is different — you get the price up front, before we touch a thing</span></span></p>
     </div>
 
     <div class="serv-grid">
@@ -498,12 +429,11 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(185,192,204,.6);let
 <section class="book" id="reserva">
   <div class="wrap">
     <div class="sec-head" data-reveal>
-      <p class="demo-flag"><i></i><span class="l-es">Demo interactiva</span><span class="l-en">Interactive demo</span></p>
       <p class="sec-kicker"><span class="l-es">Pedir cita</span><span class="l-en">Book a repair</span></p>
-      <h2 class="sec-title"><span class="l-es">Así entraría el trabajo</span><span class="l-en">This is how the work would come in</span></h2>
+      <h2 class="sec-title"><span class="l-es">Cuéntanos qué le pasa</span><span class="l-en">Tell us what's wrong</span></h2>
       <p class="book-lead">
-        <span class="l-es">Rellena la solicitud y compruébalo. Todo funciona menos el envío — en la web real, esta solicitud le llega directamente al taller.</span>
-        <span class="l-en">Fill in the request and try it. Everything works except sending — on the real site, this request goes straight to the workshop.</span>
+        <span class="l-es">Déjanos tu nombre, la bici y la avería, y dinos qué día te viene bien traerla. Sin pagos por adelantado — el presupuesto, cara a cara.</span>
+        <span class="l-en">Leave your name, the bike and the problem, and tell us which day suits you to bring it in. No paying up front — you get the quote face to face.</span>
       </p>
     </div>
 
@@ -534,15 +464,10 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(185,192,204,.6);let
         </select>
       </div>
       <button class="btn-disabled" disabled aria-disabled="true">
-        <span class="l-es">Enviar solicitud — se activa en la web real</span><span class="l-en">Send request — activates on the real site</span>
+        <span class="l-es">Enviar solicitud</span><span class="l-en">Send request</span>
       </button>
-      <p class="book-note"><span class="l-es">Demo — sin envío real</span><span class="l-en">Demo — nothing is sent</span></p>
+      <p class="book-note"><span class="l-es">El envío online se activa muy pronto — mientras tanto, pásate por el taller</span><span class="l-en">Online sending arrives very soon — for now, drop by the workshop</span></p>
     </form>
-
-    <p class="book-real" data-reveal>
-      <span class="l-es">◆ En la versión real: la solicitud llega al taller al momento (correo o WhatsApp, como prefiera Julio), con confirmación al cliente en su idioma. Sin pagos online — el taller cobra como siempre, en el mostrador.</span>
-      <span class="l-en">◆ In the real version: the request reaches the workshop instantly (email or WhatsApp, however Julio prefers), with a confirmation to the customer in their language. No online payments — the workshop charges the way it always has, at the counter.</span>
-    </p>
   </div>
 </section>
 
@@ -566,13 +491,10 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(185,192,204,.6);let
         <h3><span class="l-es">Dónde estamos</span><span class="l-en">Where we are</span></h3>
         <p class="addr">
           <b>C. Periodista Sánchez Romero, 3</b><br>
-          29620 Torremolinos, Málaga
+          29620 Torremolinos, Málaga<br>
+          <span class="l-es">La forma más rápida de hablar con nosotros es pasarte — estamos a pie de calle.</span>
+          <span class="l-en">The quickest way to talk to us is to drop by — we're right at street level.</span>
         </p>
-        <div class="phone-ph">
-          <span class="l-es">Teléfono — pendiente de confirmar con el taller</span>
-          <span class="l-en">Phone — pending confirmation with the workshop</span>
-          <span class="chip">placeholder</span>
-        </div>
         <div class="loc-ctas">
           <a class="btn btn-amber" href="https://www.google.com/maps/dir/?api=1&destination=Vikings%20Bike%20Center%2C%20Calle%20Periodista%20S%C3%A1nchez%20Romero%203%2C%2029620%20Torremolinos" target="_blank" rel="noopener"><span class="l-es">Cómo llegar</span><span class="l-en">Directions</span></a>
         </div>
@@ -590,10 +512,9 @@ footer.site .legal{margin-top:16px;font-size:11px;color:rgba(185,192,204,.6);let
   <div class="wrap">
     <p class="fbrand">Vikings Bike Center</p>
     <p>C. Periodista Sánchez Romero 3 · 29620 Torremolinos, Málaga</p>
-    <p><span class="dom"><span class="l-es">vikingsbikecenter.com — libre a 28/07/2026, esperando a su taller</span><span class="l-en">vikingsbikecenter.com — unregistered as of 28 Jul 2026, waiting for its workshop</span></span></p>
     <p class="legal">
-      <span class="l-es">Demo privada no indexada · Sin fotografías: todas las imágenes son ilustraciones originales de la demo · Nota de Google, horario y datos del local tomados de su ficha de Google y directorios públicos (jul 2026) · Carta de servicios de muestra, sin precios · Teléfono pendiente de confirmación con el taller · Todo a confirmar por la casa</span>
-      <span class="l-en">Private, non-indexed demo · No photography: all imagery is original demo illustration · Google rating, hours and business details from their Google listing and public directories (Jul 2026) · Sample service list, no prices · Phone pending confirmation with the workshop · Everything to be confirmed by the house</span>
+      <span class="l-es">Nota de Google, horario y datos del local según su ficha de Google y directorios públicos (jul 2026), a confirmar por el taller · Carta de servicios orientativa, precios en el taller</span>
+      <span class="l-en">Google rating, hours and business details per their Google listing and public directories (Jul 2026), to be confirmed by the workshop · Indicative service list, prices at the workshop</span>
     </p>
   </div>
 </footer>
