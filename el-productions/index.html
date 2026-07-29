@@ -230,6 +230,28 @@ textarea{min-height:130px;resize:vertical}
   cursor:not-allowed;display:inline-flex;align-items:center;gap:10px;justify-self:start;
 }
 .submit::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--grey);opacity:.6}
+
+/* ---- booking summary + deposit (payment control never live) ---- */
+.summary{
+  background:var(--black);border:1px solid var(--line);border-radius:14px;
+  padding:22px 22px 24px;display:grid;gap:12px;
+}
+.sum-head{font-family:var(--disp);font-size:.7rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--grey)}
+.sum-row{display:flex;justify-content:space-between;gap:14px;font-size:.94rem}
+.sum-row .k{color:var(--grey)}
+.sum-row .v{text-align:right;font-weight:600}
+.sum-dep{
+  display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+  border-top:1px solid var(--line);padding-top:14px;margin-top:2px;
+}
+.sum-dep .k{font-family:var(--disp);font-weight:700}
+.dep-amt{font-family:var(--disp);font-weight:800;font-size:1.5rem;white-space:nowrap}
+.dep-tag{
+  display:inline-block;font-family:var(--disp);font-size:.62rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--rec);border:1px solid var(--rec);border-radius:99px;
+  padding:2px 9px;margin-left:8px;vertical-align:3px;
+}
+.dep-note{color:var(--grey);font-size:.83rem;max-width:38em}
 .book-note{
   font-family:var(--disp);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
   color:var(--grey);margin-top:2px;
@@ -360,12 +382,13 @@ footer a{color:var(--grey)}
         </div>
       </a>
 
-      <a class="wcard" href="https://www.instagram.com/reel/DbESNYlR9BY/" target="_blank" rel="noopener">
-        <div class="wposter"><img src="assets/ig-elio5-reel-DbESNYlR9BY-2026-07-21-people.jpg" alt="Street interview frame, subject speaking into a furry-topped mic" loading="lazy">
+      <!-- Relationship wording held until EL confirms client status — title is his published title -->
+      <a class="wcard" href="https://www.youtube.com/watch?v=0Jdek9KTjtg" target="_blank" rel="noopener">
+        <div class="wposter"><img src="assets/yt143-malo-gripsocks-2023.jpg" alt="Malo grip socks film thumbnail" loading="lazy">
           <span class="wplay">Watch</span></div>
         <div class="wmeta">
-          <p class="wtitle">Street interviews</p>
-          <p class="wrole">2026 · social series · on Instagram</p>
+          <p class="wtitle">Malo grip socks</p>
+          <p class="wrole">2023–2025 · three films · on YouTube</p>
         </div>
       </a>
 
@@ -452,41 +475,71 @@ footer a{color:var(--grey)}
   </div>
 </section>
 
-<!-- BOOKING — fields work, submit inert. A deposit step is intentionally not wired
-     in this demonstration. -->
+<!-- BOOKING — pick what you need, book a date, reserve with a deposit. Everything works
+     except the payment control, which is never live in this demonstration. Amounts are
+     example-labelled at the amount until real figures replace them (one-line swap). -->
 <section class="sec start" id="start">
   <div class="wrap">
-    <p class="slate">06 — Start a project</p>
-    <h2 class="sec-title">Tell us what you’re making.</h2>
+    <p class="slate">06 — Book a shoot</p>
+    <h2 class="sec-title">Pick it, date it, book it.</h2>
+    <p class="sec-lede">No back-and-forth: tell us what you’re making, choose a date, and reserve it with a deposit.</p>
 
-    <form autocomplete="off">
+    <form autocomplete="off" id="bookForm">
+      <label>What are we making?
+        <select name="type" id="bkType">
+          <option>A brand or business film</option>
+          <option>An advert</option>
+          <option>An event</option>
+          <option>A property or space</option>
+          <option>Something else</option>
+        </select>
+      </label>
+      <label>Ideal shoot date
+        <input type="date" name="date" id="bkDate">
+      </label>
       <label>Your name
         <input type="text" name="name" placeholder="Name">
       </label>
       <label>How do we reach you?
         <input type="text" name="contact" placeholder="Email or phone">
       </label>
-      <label>What is it?
-        <select name="type">
-          <option>A brand or business film</option>
-          <option>An event</option>
-          <option>A property or space</option>
-          <option>Music or performance</option>
-          <option>Something else</option>
-        </select>
-      </label>
-      <label>Ideal shoot date
-        <input type="date" name="date">
-      </label>
       <label>The idea
         <textarea name="idea" placeholder="What are we making, and where will it be seen?"></textarea>
       </label>
-      <button class="submit" type="button" disabled>Send the brief</button>
+
+      <div class="summary" aria-live="polite">
+        <p class="sum-head">Your booking</p>
+        <p class="sum-row"><span class="k">Project</span><span class="v" id="sumType">A brand or business film</span></p>
+        <p class="sum-row"><span class="k">Shoot date</span><span class="v" id="sumDate">Pick a date above</span></p>
+        <!-- Deposit amount: EXAMPLE until EL Productions supplies their real figure —
+             swap the number and delete the tag in one line -->
+        <p class="sum-dep"><span class="k">Booking deposit</span>
+          <span class="dep-amt">£100<span class="dep-tag">example amount</span></span></p>
+        <p class="dep-note">The deposit is a flat booking fee credited in full against your final invoice — your quote is confirmed before anything is charged.</p>
+      </div>
+
+      <button class="submit" type="button" disabled>Book the date · pay the deposit</button>
       <!-- @eliolepore1 = his stated business-enquiry channel -->
-      <p class="book-note">Sending isn’t live yet — everything else works. For now, DM @eliolepore1 on Instagram</p>
+      <p class="book-note">Payment isn’t live yet — everything else works. For now, DM @eliolepore1 on Instagram</p>
     </form>
   </div>
 </section>
+
+<script>
+(function(){
+  var t=document.getElementById('bkType'),d=document.getElementById('bkDate'),
+      st=document.getElementById('sumType'),sd=document.getElementById('sumDate');
+  function upd(){
+    st.textContent=t.value;
+    if(d.value){
+      var p=d.value.split('-');
+      sd.textContent=p[2]+'/'+p[1]+'/'+p[0];
+    }else{sd.textContent='Pick a date above';}
+  }
+  t.addEventListener('change',upd);d.addEventListener('change',upd);d.addEventListener('input',upd);
+  upd();
+})();
+</script>
 
 <!-- FOOTER -->
 <footer>
