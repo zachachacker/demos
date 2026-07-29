@@ -1,12 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Single-file demo. Imagery and embeds are EL Productions' / Elio Lepore's own
+     published work; swap slots (hero still/video, showreel ID, card poster+href
+     pairs) are each a one-line edit. -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>EL Productions — Film &amp; content production</title>
-<!-- GATED(dossier): confirm Bedford before push -->
-<meta name="description" content="Private demo — EL Productions, film and content production, Bedford UK.">
+<title>EL Productions — Film &amp; content production, Bedford</title>
+<meta name="description" content="Private demo — EL Productions Ltd, film and content production, Bedford UK.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='4' y='4' width='92' height='92' rx='20' fill='%230B0B0D'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23E5483F' stroke-width='7'/%3E%3Ccircle cx='50' cy='50' r='12' fill='%23E5483F'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +20,7 @@
    to this site per house rule.
    ============================================================ */
 :root{
+  color-scheme:dark;
   --ribbon-h:38px;
   --black:#0B0B0D;        /* room */
   --panel:#141417;        /* raised surface */
@@ -131,6 +134,39 @@ section[id]{scroll-margin-top:calc(var(--ribbon-h) + 66px)}
 .sec-title{font-family:var(--disp);font-weight:800;font-size:clamp(1.7rem,5vw,2.6rem);line-height:1.06;letter-spacing:-.01em;max-width:16em}
 .sec-lede{color:var(--grey);margin-top:14px;max-width:38em}
 
+/* ============ SHOWREEL & EMBEDS ============ */
+.reel-frame{
+  position:relative;aspect-ratio:16/9;margin-top:40px;border-radius:14px;overflow:hidden;
+  border:1px solid var(--line);background:#101013;
+}
+.reel-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.reel-cap{color:var(--grey);font-size:.78rem;margin-top:12px;letter-spacing:.04em}
+.reel-frame--vert{aspect-ratio:9/16;max-width:340px;margin-left:auto;margin-right:auto}
+.reel-link{display:block;position:absolute;inset:0}
+.reel-link img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
+.reel-link:hover img{transform:scale(1.02)}
+.reel-play{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(to top,rgba(11,11,13,.55),rgba(11,11,13,.15));
+}
+.reel-play span{
+  display:flex;align-items:center;gap:12px;font-family:var(--disp);font-weight:700;
+  font-size:.92rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;
+  background:rgba(11,11,13,.66);padding:14px 26px;border-radius:99px;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .15s ease;
+}
+.reel-link:hover .reel-play span{background:var(--rec)}
+.reel-play span::before{content:'';width:0;height:0;border-left:14px solid var(--rec);border-top:9px solid transparent;border-bottom:9px solid transparent}
+.reel-link:hover .reel-play span::before{border-left-color:#fff}
+
+/* ============ PRESS ============ */
+.press{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel)}
+.press-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:36px}
+.press-item{border-left:2px solid var(--rec);padding:4px 0 4px 18px}
+.press-src{font-family:var(--disp);font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--grey);margin-bottom:8px}
+.press-line{font-family:var(--disp);font-weight:700;font-size:1.15rem;line-height:1.3}
+.press-note{color:var(--grey);font-size:.8rem;margin-top:22px}
+
 /* ============ SELECTED WORK ============ */
 .work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;margin-top:44px}
 .wcard{
@@ -221,45 +257,89 @@ footer a{color:var(--grey)}
   <div class="hd">
     <a class="wordmark" href="#top">EL PRODUCTIONS<span class="dot">.</span></a>
     <nav>
+      <a href="#showreel">Showreel</a>
       <a href="#work">Work</a>
-      <a href="#approach">Approach</a>
       <a href="#about">About</a>
       <a class="cta" href="#start">Start a project</a>
     </nav>
   </div>
 </header>
 
-<!-- HERO — frame from his published reel (b&w bridge study, Jul 2026), provenance in filename -->
+<!-- HERO — still from published reel Da3pfE7txyM (Jul 2026) -->
 <section class="hero" id="top">
   <div class="hero-bg">
     <img src="assets/ig-elio5-reel-Da3pfE7txyM-2026-07-16-bw-boat-bridge.jpg" alt="Black-and-white frame of a rower passing under a suspension footbridge" fetchpriority="high">
   </div>
   <div class="hero-veil"></div>
   <div class="hero-inner">
-    <!-- GATED(dossier): confirm Bedford -->
-    <p class="kicker">EL Productions · Film &amp; content · Bedford</p>
+    <!-- Companies House #13849178 -->
+    <p class="kicker">EL Productions Ltd · Bedford · est. 2022</p>
     <h1>Make it look like a film.</h1>
-    <p class="hero-sub">EL Productions shoots brand films, events and spaces — directed, filmed and cut so it feels the way it felt to be there.</p>
+    <p class="hero-sub">Short films, adverts and events around Bedford — directed, filmed and cut so it feels the way it felt to be there.</p>
     <div class="hero-ctas">
-      <a class="btn btn-solid" href="#work">See the work</a>
+      <a class="btn btn-solid" href="#showreel">Watch the reel</a>
       <a class="btn btn-line" href="#start">Start a project</a>
     </div>
   </div>
-  <!-- GATED(dossier): add piece/handle once confirmed (banner shows @eliolepore1, Trace's tag says elio5 — unresolved) -->
+  <!-- Frame source: reel Da3pfE7txyM, 16 Jul 2026 -->
   <p class="frame-credit">Frame from Elio Lepore’s published work (Jul 2026)</p>
+</section>
+
+<!-- SHOWREEL -->
+<section class="sec" id="showreel">
+  <div class="wrap">
+    <p class="slate">01 — Showreel</p>
+    <h2 class="sec-title">Two minutes tells you everything.</h2>
+    <!-- YouTube blocks embedding for this video ("Video unavailable" in-frame, verified
+         30 Jul over http) — poster-link instead of a dead tile. A newer reel supplied as
+         a file becomes a native <video> here; a new YouTube ID: re-test embeddability
+         before switching back to an iframe. -->
+    <!-- Vertical reel, vertical stage: poster shows the sharp centre panel of YouTube's
+         tripled thumbnail for vertical uploads -->
+    <div class="reel-frame reel-frame--vert">
+      <a class="reel-link" href="https://www.youtube.com/watch?v=cA6GBzGorpc" target="_blank" rel="noopener" aria-label="Watch the EL Productions showreel on YouTube">
+        <img src="assets/yt143-showreel-2023.jpg" alt="EL Productions showreel opening frame" fetchpriority="high">
+        <span class="reel-play"><span>Watch the reel</span></span>
+      </a>
+    </div>
+    <p class="reel-cap" style="text-align:center">EL Productions — Showreel (2023). Plays on YouTube.</p>
+  </div>
 </section>
 
 <!-- SELECTED WORK -->
 <section class="sec" id="work">
   <div class="wrap">
-    <p class="slate">01 — Selected work</p>
+    <p class="slate">02 — Selected work</p>
     <h2 class="sec-title">The work speaks first.</h2>
-    <p class="sec-lede">Everything below is published. Tap through and watch it where it lives.</p>
+    <p class="sec-lede">Everything below is published. Play it here or watch it where it lives.</p>
+
+    <!-- "Goodbye" — the flagship: short film, premiere covered by the Bedford Independent (28 Oct 2024) -->
+    <div class="reel-frame">
+      <iframe src="https://www.youtube-nocookie.com/embed/uVuFJjhQppg" title="Goodbye — short film (2024)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+    <p class="reel-cap">“Goodbye” (2024) — short film, shot around Bedford; its premiere was covered by the Bedford Independent.</p>
 
     <div class="work-grid">
-      <!-- Cards: poster = still from HIS published reel, href = the live piece.
-           Labels are honest descriptors of what is visible/on-screen; GATED lines
-           await dossier titles/roles. -->
+      <!-- Cards: poster = his own published thumbnail/frame, href = the live piece.
+           Titles are his published titles or honest descriptors. Spec labeled spec. -->
+
+      <a class="wcard" href="https://www.youtube.com/watch?v=BIANyCxbwSA" target="_blank" rel="noopener">
+        <div class="wposter"><img src="assets/yt143-ferrari-purosangue-2024.jpg" alt="Ferrari Purosangue film thumbnail" loading="lazy">
+          <span class="wplay">Watch</span></div>
+        <div class="wmeta">
+          <p class="wtitle">Ferrari Purosangue</p>
+          <p class="wrole">2024 · car film · on YouTube</p>
+        </div>
+      </a>
+
+      <a class="wcard" href="https://www.youtube.com/watch?v=zoqDn5H3cCM" target="_blank" rel="noopener">
+        <div class="wposter"><img src="assets/yt143-redemption-2024.jpg" alt="Redemption short film thumbnail" loading="lazy">
+          <span class="wplay">Watch</span></div>
+        <div class="wmeta">
+          <p class="wtitle">Redemption</p>
+          <p class="wrole">2024 · short film · on YouTube</p>
+        </div>
+      </a>
 
       <!-- "The Renovation Project" — title is literal on-screen text in reel DX9wM4YtIp_ -->
       <a class="wcard" href="https://www.instagram.com/reel/DX9wM4YtIp_/" target="_blank" rel="noopener">
@@ -271,27 +351,6 @@ footer a{color:var(--grey)}
         </div>
       </a>
 
-      <!-- GATED(dossier): no sourced title — descriptor label until then -->
-      <a class="wcard" href="https://www.instagram.com/reel/C0_rnfBKFNA/" target="_blank" rel="noopener">
-        <div class="wposter"><img src="assets/ig-elprod-reel-C0_rnfBKFNA-2023-12-18.jpg" alt="Candle-lit dining room scene, woman writing at the table" loading="lazy">
-          <span class="wplay">Watch</span></div>
-        <div class="wmeta">
-          <p class="wtitle">Night interior — narrative work</p>
-          <p class="wrole">2023 · short-film work · on Instagram</p>
-        </div>
-      </a>
-
-      <!-- GATED(dossier): spec vs commissioned unresolved — "product study" implies no client -->
-      <a class="wcard" href="https://www.instagram.com/reel/CvFo0ToqWdm/" target="_blank" rel="noopener">
-        <div class="wposter"><img src="assets/ig-elprod-reel-CvFo0ToqWdm-2023-07-24.jpg" alt="Dark product shot of a drinks can with water droplets" loading="lazy">
-          <span class="wplay">Watch</span></div>
-        <div class="wmeta">
-          <p class="wtitle">Pepsi Max — product study</p>
-          <p class="wrole">2023 · product film · on Instagram</p>
-        </div>
-      </a>
-
-      <!-- GATED(dossier): confirm event name (river festival) -->
       <a class="wcard" href="https://www.instagram.com/reel/DbF81nYNN10/" target="_blank" rel="noopener">
         <div class="wposter"><img src="assets/ig-elio5-reel-DbF81nYNN10-2026-07-22-bridge.jpg" alt="Festival crowds crossing a white suspension footbridge over the river" loading="lazy">
           <span class="wplay">Watch</span></div>
@@ -310,25 +369,46 @@ footer a{color:var(--grey)}
         </div>
       </a>
 
-      <!-- GATED(dossier): context thin (Trace hint "pool-night" doesn't match visible scaffolded house) — first cut if Prism wants five -->
-      <a class="wcard" href="https://www.instagram.com/reel/DYRthMqtTGQ/" target="_blank" rel="noopener">
-        <div class="wposter"><img src="assets/ig-elprod-reel-DYRthMqtTGQ-2026-05-13-pool-night.jpg" alt="Drone night shot of a scaffolded house lit purple and teal through haze" loading="lazy">
+      <!-- Spec labeled spec: his own title is "Fan made JD Advert" -->
+      <a class="wcard" href="https://www.youtube.com/watch?v=Ga6EGWjrunQ" target="_blank" rel="noopener">
+        <div class="wposter"><img src="assets/yt143-jd-advert-spec-2024.jpg" alt="Spec JD advert thumbnail" loading="lazy">
           <span class="wplay">Watch</span></div>
         <div class="wmeta">
-          <p class="wtitle">After dark — night exteriors</p>
-          <p class="wrole">2026 · drone &amp; lighting · on Instagram</p>
+          <p class="wtitle">JD — spec advert</p>
+          <p class="wrole">2024 · self-initiated, not commissioned · on YouTube</p>
         </div>
       </a>
+
+      <!-- Further cards can drop in as poster+href pairs (see build notes). -->
     </div>
 
-    <p class="work-note">Every poster frame is a still from Elio Lepore’s and EL Productions’ own published Instagram work — each card opens the piece where it lives.</p>
+    <p class="work-note">Every frame above is from Elio Lepore’s and EL Productions’ own published channels — each card opens the piece where it lives. Spec work is labelled as spec.</p>
+  </div>
+</section>
+
+<!-- PRESS — headlines as published -->
+<section class="sec press" id="press">
+  <div class="wrap">
+    <p class="slate">03 — In the papers</p>
+    <h2 class="sec-title">Bedford has noticed.</h2>
+    <div class="press-grid">
+      <div class="press-item">
+        <p class="press-src">Bedford Today · 2023</p>
+        <p class="press-line">“15-Year-Old Bedford Filmmaker breaks into industry with Debut Short Film”</p>
+      </div>
+      <div class="press-item">
+        <p class="press-src">Bedford Independent · Oct 2024</p>
+        <p class="press-line">Covered the premiere of “Goodbye”, EL Productions’ short film shot around Bedford.</p>
+      </div>
+    </div>
+    <p class="press-note">Headlines as published by each paper.</p>
   </div>
 </section>
 
 <!-- APPROACH -->
 <section class="sec approach" id="approach">
   <div class="wrap">
-    <p class="slate">02 — How a project runs</p>
+    <p class="slate">04 — How a project runs</p>
     <h2 class="sec-title">Simple to hire. Serious on set.</h2>
 
     <div class="steps">
@@ -356,35 +436,27 @@ footer a{color:var(--grey)}
 <!-- ABOUT -->
 <section class="sec" id="about">
   <div class="wrap">
-    <p class="slate">03 — The filmmaker</p>
+    <p class="slate">05 — The filmmaker</p>
     <h2 class="sec-title">Behind the camera.</h2>
 
     <div class="about-grid">
       <div class="about-copy">
-        <!-- GATED(dossier): every sentence below needs dossier sourcing before push —
-             what he shoots (festival / renovation / studio content), the rig, the team.
-             Drop any line the dossier doesn't carry. -->
-        <p><strong>EL Productions is the production company of Elio Lepore</strong>, a filmmaker based in Bedford.</p>
-        <p>GATED — what he shoots, per dossier phrasing.</p>
-        <p>GATED — rig / crew line, only if dossier sources it.</p>
-        <!-- GATED(dossier): the 1M-views line is HIS claim from HIS own IG highlight —
-             printable only cited that way, with the handle. Else drop. -->
-        <p>GATED — “1M+ views” as his own posted claim, cited to his Instagram.</p>
-        <!-- GATED(dossier): EL Fitness = venture credit ONLY, one line, no dual-brand blur.
-             If Trace's dossier reverses the brand split, this whole page follows the dossier. -->
-        <p class="venture">GATED — EL Fitness venture-credit one-liner.</p>
+        <p><strong>EL Productions is the film production company of Elio Lepore</strong> — incorporated in 2022 and filming around Bedford ever since.</p>
+        <p>Short films, adverts and event coverage: a debut short that put a teenage director in the local papers, a 2024 premiere covered by the Bedford Independent, and a run of car films, brand pieces and documentary reels since.</p>
+        <p>The company is real and checkable — <strong>EL Productions Ltd, registered in England, company no. 13849178</strong>.</p>
+        <!-- Optional line — one-edit delete -->
+        <p class="venture">Away from client work he documents his own training at @ELFitness.5 — the discipline carries over.</p>
       </div>
-      <!-- GATED(dossier): pack has candidate frames (renovation walk-through, street mic)
-           but none confirmably identify Elio — restore a <figure class="about-photo"> only
-           if the dossier confirms who is in frame. Copy runs full-width until then. -->
+      <!-- A portrait/BTS still can restore <figure class="about-photo"> here. -->
     </div>
   </div>
 </section>
 
-<!-- ENQUIRY -->
+<!-- BOOKING — fields work, submit inert. A deposit step is intentionally not wired
+     in this demonstration. -->
 <section class="sec start" id="start">
   <div class="wrap">
-    <p class="slate">04 — Start a project</p>
+    <p class="slate">06 — Start a project</p>
     <h2 class="sec-title">Tell us what you’re making.</h2>
 
     <form autocomplete="off">
@@ -403,13 +475,15 @@ footer a{color:var(--grey)}
           <option>Something else</option>
         </select>
       </label>
+      <label>Ideal shoot date
+        <input type="date" name="date">
+      </label>
       <label>The idea
-        <textarea name="idea" placeholder="What are we making, and when does it need to exist?"></textarea>
+        <textarea name="idea" placeholder="What are we making, and where will it be seen?"></textarea>
       </label>
       <button class="submit" type="button" disabled>Send the brief</button>
-      <!-- GATED(dossier): his real public channel — IG handle expected. Register locked
-           per Prism 89cf1d9: state what works, promise nothing. -->
-      <p class="book-note">Sending isn’t live yet — everything else works. For now, message Elio directly: GATED-CHANNEL</p>
+      <!-- @eliolepore1 = his stated business-enquiry channel -->
+      <p class="book-note">Sending isn’t live yet — everything else works. For now, DM @eliolepore1 on Instagram</p>
     </form>
   </div>
 </section>
@@ -418,12 +492,12 @@ footer a{color:var(--grey)}
 <footer>
   <div class="wrap">
     <p class="fbrand">EL PRODUCTIONS<span class="dot">.</span></p>
-    <!-- GATED(dossier): confirm Bedford -->
-    <p>Bedford, United Kingdom</p>
+    <!-- Street address not printed by design; the company number is the trust anchor -->
+    <p>EL Productions Ltd · Bedford, United Kingdom · Company no. 13849178</p>
     <p class="legal">
       Built by Zach as a private demonstration for EL Productions — this is not their official site.
-      All frames are stills from Elio Lepore’s and EL Productions’ published Instagram work, shown to demonstrate what their site could look like.
-      Details to be confirmed by EL Productions ·
+      All frames, thumbnails and embedded videos are Elio Lepore’s and EL Productions’ own published work (Instagram · YouTube), shown to demonstrate what their site could look like.
+      Company details per Companies House; press items per each paper. Details to be confirmed by EL Productions ·
       <a href="https://wa.me/447543455889" target="_blank" rel="noopener">WhatsApp Zach</a>
     </p>
   </div>
