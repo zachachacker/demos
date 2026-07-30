@@ -149,6 +149,7 @@ section[id]{scroll-margin-top:calc(var(--ribbon-h) + 66px)}
 .venture{border-top:1px solid var(--line)}
 #productions.venture,#properties.venture{background:var(--panel)}
 .v-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.v-grid--3{grid-template-columns:repeat(3,1fr)}
 .v-grid img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/10;border-radius:10px;border:1px solid var(--line)}
 .v-grid-cap{font-size:.68rem;color:var(--grey);margin-top:8px;letter-spacing:.05em}
 .venture .wrap{display:grid;gap:34px;grid-template-columns:1fr}
@@ -340,33 +341,32 @@ footer a{color:var(--grey)}
   </div>
 </section>
 
-<!-- SOCIAL MEDIA — his latest list has "a social media section"; FITNESS IS ABSENT from
-     that list and this label is UNRESOLVED (rename vs new strand — Trace checking,
-     Zachary asking). Either answer must cost one label swap: content = describe + link
-     his real channels, sell nothing, invent no services. -->
+<!-- SOCIAL MEDIA — dossier §"Section-list fork": short-form content production FOR client
+     companies (his LinkedIn headline + Malo x3 / Nico's Art / Abarth receipts). HARD
+     BOUNDARY: content-making only, NEVER imply account-management (no "manage/run/grow").
+     Fitness is a DISTINCT stream, not this section renamed — final list is Elio's one-liner;
+     label + content swap in one edit. -->
 <section class="sec venture" id="social">
   <div class="wrap">
     <div class="v-copy">
       <p class="slate">03 — Social media</p>
-      <span class="v-badge">The journey, in public</span>
-      <h2 class="v-name">Documented daily.</h2>
+      <span class="v-badge">Content for companies</span>
+      <h2 class="v-name">Short-form, done properly.</h2>
       <!-- DROP-IN: Elio's own description replaces this draft — one edit -->
-      <p><strong>The story runs in public</strong> — filming, the renovation, the training log. Follow it where it’s posted.</p>
+      <p><strong>Video made for brands’ feeds</strong> — adverts, product films and behind-the-scenes, shot and cut for social. In his own words, a “multi-channel marketeer making content for a range of companies” — his LinkedIn headline.</p>
+      <p>The work is public — repeat pieces for the same brand across three years sit on the channel.</p>
       <div class="v-links">
+        <a class="btn btn-solid" href="productions/#start">Start a project</a>
         <a class="btn btn-line" href="https://www.instagram.com/eliolepore1/" target="_blank" rel="noopener">@eliolepore1</a>
-        <a class="btn btn-line" href="https://www.instagram.com/eliolep5/" target="_blank" rel="noopener">@eliolep5</a>
-        <a class="btn btn-line" href="https://www.tiktok.com/@elio_lepore" target="_blank" rel="noopener">TikTok</a>
-        <a class="btn btn-line" href="https://www.tiktok.com/@ELFitness.5" target="_blank" rel="noopener">@ELFitness.5</a>
       </div>
-      <!-- his caption verbatim, quoted with attribution -->
-      <p style="margin-top:16px;font-size:.9rem">“Come and train with me” — his open invitation, on the gym TikTok.</p>
     </div>
-    <!-- No frame is publicly pullable for this strand (video grids login-walled) — designed
-         brand tile (EL Fitness, one of the real strands here), swaps for a real frame the
-         moment EL's folders land -->
-    <div class="v-media v-media--elf" role="img" aria-label="EL Fitness — the journey, in public">
-      <p class="elf-word">EL<em>FITNESS</em></p>
-      <span class="elf-sub">The journey · in public</span>
+    <div>
+      <div class="v-grid v-grid--3">
+        <img src="assets/yt143-malo-gripsocks-2023.jpg" alt="Malo grip socks film thumbnail" loading="lazy">
+        <img src="assets/yt143-nicos-art-advert-2023.jpg" alt="Nico's Art advert thumbnail" loading="lazy">
+        <img src="assets/yt143-abarth-bts-2025.jpg" alt="Abarth behind-the-scenes thumbnail" loading="lazy">
+      </div>
+      <p class="v-grid-cap">His published short-form work, 2023–2025 — titles as posted on his channel</p>
     </div>
   </div>
 </section>
