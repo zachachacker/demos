@@ -176,11 +176,14 @@ section[id]{scroll-margin-top:calc(var(--ribbon-h) + 66px)}
 }
 
 .contact{background:var(--panel);border-top:1px solid var(--line)}
-.contact-lines{margin-top:30px;display:grid;gap:10px;max-width:34em}
-.contact-lines p{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:10px;font-size:.95rem}
-.contact-lines .k{color:var(--grey)}
-.contact-lines a{font-weight:600;text-decoration:none}
-.contact-lines a:hover{color:var(--rec)}
+.funnels{display:grid;gap:18px;margin-top:36px;grid-template-columns:1fr}
+@media(min-width:760px){.funnels{grid-template-columns:1fr 1fr}}
+.funnel{background:var(--black);border:1px solid var(--line);border-radius:14px;padding:28px 26px 30px}
+.funnel h3{font-family:var(--disp);font-weight:800;font-size:1.35rem;line-height:1.15;margin-bottom:10px}
+.funnel p{color:var(--grey);font-size:.92rem;margin-bottom:20px;max-width:28em}
+.contact-extra{margin-top:26px;color:var(--grey);font-size:.88rem}
+.contact-extra a{font-weight:600}
+.contact-extra a:hover{color:var(--rec)}
 
 footer{padding:56px 0 64px;border-top:1px solid var(--line)}
 .fbrand{font-family:var(--disp);font-weight:800;letter-spacing:.14em;margin-bottom:10px}
@@ -313,7 +316,10 @@ footer a{color:var(--grey)}
   </div>
 </section>
 
-<!-- EL PROPERTIES — PRE-LAUNCH: future tense only, no established/registered implications -->
+<!-- EL PROPERTIES — PRE-LAUNCH: future tense only, no established/registered implications.
+     Name PROVISIONAL per Elio ("we could always change the name") — label is his drop-in.
+     ALL renovation content consolidates HERE per his voice note; the per-section asset
+     folder he's sending populates this band. -->
 <section class="sec venture" id="properties">
   <div class="wrap">
     <div class="v-copy">
@@ -336,16 +342,25 @@ footer a{color:var(--grey)}
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT — two funnels per Elio's voice note: "client DMs" vs "people that want to get
+     involved in projects and help out and earn some money". Vocabulary from his words. -->
 <section class="sec contact" id="contact">
   <div class="wrap">
     <p class="slate">04 — Get in touch</p>
-    <h2 class="sec-title">One person answers all of it.</h2>
-    <div class="contact-lines">
-      <p><span class="k">Business &amp; filming</span><a href="https://www.instagram.com/eliolepore1/" target="_blank" rel="noopener">DM @eliolepore1</a></p>
-      <p><span class="k">Fitness</span><a href="https://www.tiktok.com/@ELFitness.5" target="_blank" rel="noopener">@ELFitness.5</a></p>
-      <p><span class="k">Book a shoot</span><a href="productions/#start">EL Productions booking</a></p>
+    <h2 class="sec-title">Two kinds of DM. One person answers both.</h2>
+    <div class="funnels">
+      <div class="funnel">
+        <h3>Want a video made?</h3>
+        <p>Brand films, adverts, events, spaces — tell him what you’re after and it gets quoted for your project.</p>
+        <a class="btn btn-solid" href="productions/#start">Start a project</a>
+      </div>
+      <div class="funnel">
+        <h3>Want to work on projects?</h3>
+        <p>Crew and collaborators — get involved in projects, help out and earn.</p>
+        <a class="btn btn-line" href="https://www.instagram.com/eliolepore1/" target="_blank" rel="noopener">DM @eliolepore1</a>
+      </div>
     </div>
+    <p class="contact-extra">Fitness lives on TikTok: <a href="https://www.tiktok.com/@ELFitness.5" target="_blank" rel="noopener">@ELFitness.5</a></p>
   </div>
 </section>
 
