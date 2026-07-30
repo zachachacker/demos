@@ -475,71 +475,42 @@ footer a{color:var(--grey)}
   </div>
 </section>
 
-<!-- BOOKING — pick what you need, book a date, reserve with a deposit. Everything works
-     except the payment control, which is never live in this demonstration. Amounts are
-     example-labelled at the amount until real figures replace them (one-line swap). -->
+<!-- ENQUIRY — enquiry-first: he charges per project, no packages exist. One-pass capture
+     so his reply can be the quote; the date is information, not a reservation. Deposit is
+     a described downstream step only — no upfront price surface. -->
 <section class="sec start" id="start">
   <div class="wrap">
-    <p class="slate">06 — Book a shoot</p>
-    <h2 class="sec-title">Pick it, date it, book it.</h2>
-    <p class="sec-lede">No back-and-forth: tell us what you’re making, choose a date, and reserve it with a deposit.</p>
+    <p class="slate">06 — Start a project</p>
+    <h2 class="sec-title">Tell him the project. His reply is your quote.</h2>
+    <p class="sec-lede">Every job is priced for what it is — one message with the details is all it takes.</p>
 
-    <form autocomplete="off" id="bookForm">
-      <label>What are we making?
-        <select name="type" id="bkType">
-          <option>A brand or business film</option>
-          <option>An advert</option>
-          <option>An event</option>
-          <option>A property or space</option>
-          <option>Something else</option>
-        </select>
-      </label>
-      <label>Ideal shoot date
-        <input type="date" name="date" id="bkDate">
-      </label>
+    <form autocomplete="off">
       <label>Your name
         <input type="text" name="name" placeholder="Name">
       </label>
       <label>How do we reach you?
         <input type="text" name="contact" placeholder="Email or phone">
       </label>
-      <label>The idea
-        <textarea name="idea" placeholder="What are we making, and where will it be seen?"></textarea>
+      <label>The project
+        <textarea name="idea" placeholder="What are we making, where, and where will it be seen?"></textarea>
+      </label>
+      <label>Ideal shoot date — helps the quote, doesn’t book anything
+        <input type="date" name="date">
       </label>
 
-      <div class="summary" aria-live="polite">
-        <p class="sum-head">Your booking</p>
-        <p class="sum-row"><span class="k">Project</span><span class="v" id="sumType">A brand or business film</span></p>
-        <p class="sum-row"><span class="k">Shoot date</span><span class="v" id="sumDate">Pick a date above</span></p>
-        <!-- Deposit amount: EXAMPLE until EL Productions supplies their real figure —
-             swap the number and delete the tag in one line -->
-        <p class="sum-dep"><span class="k">Booking deposit</span>
-          <span class="dep-amt">£100<span class="dep-tag">example amount</span></span></p>
-        <p class="dep-note">The deposit is a flat booking fee credited in full against your final invoice — your quote is confirmed before anything is charged.</p>
+      <div class="summary">
+        <p class="sum-head">How it works</p>
+        <p class="sum-row"><span class="k">1</span><span class="v">Send the project</span></p>
+        <p class="sum-row"><span class="k">2</span><span class="v">You get a quote, priced for your job</span></p>
+        <p class="sum-row"><span class="k">3</span><span class="v">Happy? Book the date with a deposit</span></p>
       </div>
 
-      <button class="submit" type="button" disabled>Book the date · pay the deposit</button>
+      <button class="submit" type="button" disabled>Send the brief</button>
       <!-- @eliolepore1 = his stated business-enquiry channel -->
-      <p class="book-note">Payment isn’t live yet — everything else works. For now, DM @eliolepore1 on Instagram</p>
+      <p class="book-note">Sending isn’t live yet — everything else works. For now, DM @eliolepore1 on Instagram</p>
     </form>
   </div>
 </section>
-
-<script>
-(function(){
-  var t=document.getElementById('bkType'),d=document.getElementById('bkDate'),
-      st=document.getElementById('sumType'),sd=document.getElementById('sumDate');
-  function upd(){
-    st.textContent=t.value;
-    if(d.value){
-      var p=d.value.split('-');
-      sd.textContent=p[2]+'/'+p[1]+'/'+p[0];
-    }else{sd.textContent='Pick a date above';}
-  }
-  t.addEventListener('change',upd);d.addEventListener('change',upd);d.addEventListener('input',upd);
-  upd();
-})();
-</script>
 
 <!-- FOOTER -->
 <footer>
