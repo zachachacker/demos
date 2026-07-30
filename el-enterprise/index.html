@@ -21,7 +21,7 @@
   color-scheme:dark;
   --ribbon-h:38px;
   --black:#0B0B0D;--panel:#141417;--panel-2:#1B1B20;--line:#2A2A31;
-  --white:#F2F0EC;--grey:#A7A5A0;--rec:#E5483F;--rec-deep:#B33028;
+  --white:#F2F0EC;--grey:#B3B1AC;--rec:#E5483F;--rec-deep:#B33028;
   --disp:'Bricolage Grotesque',sans-serif;--body:'Inter',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -73,9 +73,9 @@ nav a.cta:hover{background:var(--rec);color:#fff}
   content:'';position:absolute;inset:0;opacity:.16;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
 }
-.hero-veil{
+.hero-veil{ /* lighter veil — the festival frame is bright daylight; keep it alive */
   position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(to top,rgba(11,11,13,.95) 0%,rgba(11,11,13,.5) 45%,rgba(11,11,13,.3) 72%,rgba(11,11,13,.55) 100%);
+  background:linear-gradient(to top,rgba(11,11,13,.88) 0%,rgba(11,11,13,.34) 42%,rgba(11,11,13,.1) 72%,rgba(11,11,13,.38) 100%);
 }
 .hero-inner{width:100%;max-width:1200px;margin:0 auto;padding:0 20px 64px}
 .kicker{
@@ -116,8 +116,34 @@ section[id]{scroll-margin-top:calc(var(--ribbon-h) + 66px)}
 .sec-title{font-family:var(--disp);font-weight:800;font-size:clamp(1.7rem,5vw,2.6rem);line-height:1.06;letter-spacing:-.01em;max-width:16em}
 .sec-lede{color:var(--grey);margin-top:14px;max-width:38em}
 
+/* reel section — Goodbye embeds and PLAYS (verified); showreel is embed-blocked by
+   YouTube (rendered "Video unavailable" on both domains) so it stays a poster-link */
+.reel-grid{display:grid;gap:18px;margin-top:40px;grid-template-columns:1fr}
+@media(min-width:900px){.reel-grid{grid-template-columns:2fr 1fr;align-items:start}}
+.reel-frame{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#101013}
+.reel-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.reel-frame--vert{aspect-ratio:9/16;max-width:300px;margin:0 auto}
+.reel-link{display:block;position:absolute;inset:0}
+.reel-link img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
+.reel-link:hover img{transform:scale(1.02)}
+.reel-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(to top,rgba(11,11,13,.5),rgba(11,11,13,.12))}
+.reel-play span{
+  display:flex;align-items:center;gap:11px;font-family:var(--disp);font-weight:700;
+  font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;
+  background:rgba(11,11,13,.66);padding:12px 22px;border-radius:99px;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .15s ease;
+}
+.reel-link:hover .reel-play span{background:var(--rec)}
+.reel-play span::before{content:'';width:0;height:0;border-left:12px solid var(--rec);border-top:8px solid transparent;border-bottom:8px solid transparent}
+.reel-link:hover .reel-play span::before{border-left-color:#fff}
+.reel-cap{color:var(--grey);font-size:.78rem;margin-top:10px;letter-spacing:.04em}
+
 /* venture bands */
 .venture{border-top:1px solid var(--line)}
+#productions.venture,#properties.venture{background:var(--panel)}
+.v-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.v-grid img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/10;border-radius:10px;border:1px solid var(--line)}
+.v-grid-cap{font-size:.68rem;color:var(--grey);margin-top:8px;letter-spacing:.05em}
 .venture .wrap{display:grid;gap:34px;grid-template-columns:1fr}
 @media(min-width:900px){.venture .wrap{grid-template-columns:5fr 4fr;align-items:center}
   .venture--flip .wrap{grid-template-columns:4fr 5fr}
@@ -135,11 +161,19 @@ section[id]{scroll-margin-top:calc(var(--ribbon-h) + 66px)}
 .v-media{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#101013}
 .v-media img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
 .v-media figcaption{font-size:.68rem;color:var(--grey);padding:8px 12px;letter-spacing:.05em}
-.v-media--text{
-  aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,var(--panel) 0%,var(--panel-2) 100%);
+.v-media--elf{ /* designed brand tile — unmistakably intentional, swaps for a real frame */
+  aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  background:
+    repeating-linear-gradient(-45deg,rgba(255,255,255,.05) 0 14px,transparent 14px 28px),
+    linear-gradient(150deg,var(--rec) 0%,var(--rec-deep) 55%,#6E1D18 100%);
+  border:none;
 }
-.v-media--text span{font-family:var(--disp);font-weight:800;font-size:clamp(2.4rem,6vw,4rem);letter-spacing:.04em;color:var(--line)}
+.elf-word{font-family:var(--disp);font-weight:800;font-size:clamp(2.6rem,7vw,4.4rem);line-height:.92;letter-spacing:.02em;color:#fff;text-align:center}
+.elf-word em{font-style:normal;display:block;color:#0B0B0D}
+.elf-sub{
+  font-family:var(--disp);font-size:.66rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;
+  color:#fff;border:1px solid rgba(255,255,255,.55);border-radius:99px;padding:5px 14px;
+}
 
 .contact{background:var(--panel);border-top:1px solid var(--line)}
 .contact-lines{margin-top:30px;display:grid;gap:10px;max-width:34em}
@@ -177,10 +211,11 @@ footer a{color:var(--grey)}
   </div>
 </header>
 
-<!-- HERO — frame from his own published reel (night lighting rig, May 2026) -->
+<!-- HERO — festival colour frame (his published reel, Jul 2026): daylight, crowds, alive.
+     Fold test: stranger reads "he films things happening" before any copy. -->
 <section class="hero" id="top">
   <div class="hero-bg">
-    <img src="assets/ig-elprod-reel-DYRthMqtTGQ-2026-05-13-pool-night.jpg" alt="Night shot of a house lit purple and teal during a shoot" fetchpriority="high">
+    <img src="assets/ig-elio5-reel-DbF81nYNN10-2026-07-22-bridge.jpg" alt="Festival crowds crossing a white footbridge over the river on a bright day" fetchpriority="high">
   </div>
   <div class="hero-veil"></div>
   <div class="hero-inner">
@@ -188,27 +223,40 @@ footer a{color:var(--grey)}
     <h1>One name. Three ventures.</h1>
     <p class="hero-sub">EL is Elio Lepore: a film production company that’s real and registered, a fitness journey documented in public, and a property venture getting ready to launch. This is where it all lives.</p>
     <div class="hero-ctas">
-      <a class="btn btn-solid" href="#productions">The ventures</a>
+      <a class="btn btn-solid" href="#reel">Watch first</a>
       <a class="btn btn-line" href="productions/">EL Productions site</a>
     </div>
   </div>
-  <p class="frame-credit">Frame from EL Productions’ published work (May 2026)</p>
+  <p class="frame-credit">Frame from Elio Lepore’s published work (Jul 2026)</p>
 </section>
 
-<!-- CROSS-BRAND SHOWREEL — slot only, no dead tiles. When EL supply the cross-brand reel
-     (fitness · renovation · filming), it ships as a native <video> here:
+<!-- REEL — real motion above the bands. Goodbye EMBEDS AND PLAYS (render-verified);
+     the 2023 showreel is embed-blocked by YouTube (rendered "Video unavailable" on both
+     youtube.com and youtube-nocookie.com), so it stays a poster-link. When EL supply the
+     cross-brand reel as a FILE it takes the 16:9 slot as a native <video> — one swap. -->
 <section class="sec" id="reel">
   <div class="wrap">
-    <p class="slate">00 — Showreel</p>
-    <h2 class="sec-title">Everything EL, in one cut.</h2>
-    <div style="position:relative;aspect-ratio:16/9;margin-top:40px;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#101013">
-      <video controls playsinline poster="assets/POSTER.jpg" style="position:absolute;inset:0;width:100%;height:100%">
-        <source src="assets/el-reel.mp4" type="video/mp4">
-      </video>
+    <p class="slate">Watch first</p>
+    <h2 class="sec-title">See it before you read it.</h2>
+    <div class="reel-grid">
+      <div>
+        <div class="reel-frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/uVuFJjhQppg" title="Goodbye — short film (2024)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <p class="reel-cap">“Goodbye” (2024) — EL Productions’ short film, shot around Bedford. Plays right here.</p>
+      </div>
+      <div>
+        <div class="reel-frame reel-frame--vert">
+          <a class="reel-link" href="https://www.youtube.com/watch?v=cA6GBzGorpc" target="_blank" rel="noopener" aria-label="Watch the EL Productions showreel on YouTube">
+            <img src="assets/yt143-showreel-2023.jpg" alt="EL Productions showreel opening frame" loading="lazy">
+            <span class="reel-play"><span>The reel</span></span>
+          </a>
+        </div>
+        <p class="reel-cap" style="text-align:center">Showreel (2023) — plays on YouTube.</p>
+      </div>
     </div>
   </div>
 </section>
--->
 
 <!-- EL PRODUCTIONS -->
 <section class="sec venture" id="productions">
@@ -228,10 +276,15 @@ footer a{color:var(--grey)}
            Productions) — unscoped formula, zero financial language -->
       <p style="margin-top:16px;font-size:.9rem">Want to get involved? DM <a href="https://www.instagram.com/eliolepore1/" target="_blank" rel="noopener">@eliolepore1</a></p>
     </div>
-    <figure class="v-media">
-      <img src="assets/ig-elio5-reel-Da3pfE7txyM-2026-07-16-bw-boat-bridge.jpg" alt="Black-and-white frame of a rower passing under a suspension footbridge" loading="lazy">
-      <figcaption>From Elio Lepore’s published work (Jul 2026)</figcaption>
-    </figure>
+    <div>
+      <div class="v-grid">
+        <img src="assets/yt143-ferrari-purosangue-2024.jpg" alt="Ferrari Purosangue film thumbnail" loading="lazy">
+        <img src="assets/yt143-goodbye-shortfilm-2024.jpg" alt="Goodbye short film thumbnail" loading="lazy">
+        <img src="assets/ig-elio5-reel-Da3pfE7txyM-2026-07-16-bw-boat-bridge.jpg" alt="Black-and-white frame of a rower passing under a footbridge" loading="lazy">
+        <img src="assets/ig-elprod-reel-DYRthMqtTGQ-2026-05-13-pool-night.jpg" alt="Night shoot, house lit purple and teal" loading="lazy">
+      </div>
+      <p class="v-grid-cap">Frames and thumbnails from EL Productions’ published work</p>
+    </div>
   </div>
 </section>
 
@@ -251,9 +304,12 @@ footer a{color:var(--grey)}
       <!-- get-involved: his caption verbatim, quoted with attribution -->
       <p style="margin-top:16px;font-size:.9rem">“Come and train with me” — his open invitation, on the gym TikTok.</p>
     </div>
-    <!-- No fitness imagery is publicly pullable (video grid is login-walled) — text tile,
-         swaps to a real frame the moment EL supply one -->
-    <div class="v-media v-media--text" role="img" aria-label="EL Fitness"><span>EL·F</span></div>
+    <!-- No fitness imagery is publicly pullable (video grid is login-walled) — designed
+         brand tile, swaps to a real frame the moment EL supply one -->
+    <div class="v-media v-media--elf" role="img" aria-label="EL Fitness — the journey, in public">
+      <p class="elf-word">EL<em>FITNESS</em></p>
+      <span class="elf-sub">The journey · in public</span>
+    </div>
   </div>
 </section>
 
