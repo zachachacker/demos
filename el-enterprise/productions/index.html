@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Single-file demo. Imagery and embeds are EL Productions' / Elio Lepore's own
+     published work; swap slots (hero still/video, showreel ID, card poster+href
+     pairs) are each a one-line edit. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>EL Productions — Film &amp; content production, Bedford</title>
+<meta name="description" content="Private demo — EL Productions Ltd, film and content production, Bedford UK.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='4' y='4' width='92' height='92' rx='20' fill='%230B0B0D'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23E5483F' stroke-width='7'/%3E%3Ccircle cx='50' cy='50' r='12' fill='%23E5483F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:ital,wght@0,400..700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   EL PRODUCTIONS — screening-room skin
+   Bricolage Grotesque (display) + Inter (body) — pairing unique
+   to this site per house rule.
+   ============================================================ */
+:root{
+  color-scheme:dark;
+  --ribbon-h:38px;
+  --black:#0B0B0D;        /* room */
+  --panel:#141417;        /* raised surface */
+  --panel-2:#1B1B20;      /* hover surface */
+  --line:#2A2A31;         /* hairline */
+  --white:#F2F0EC;        /* screen white */
+  --grey:#A7A5A0;         /* supporting text */
+  --rec:#E5483F;          /* record red — accent, used sparingly */
+  --rec-deep:#B33028;
+  --disp:'Bricolage Grotesque',sans-serif;
+  --body:'Inter',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);background:var(--black);color:var(--white);
+  padding-top:var(--ribbon-h);line-height:1.6;font-size:16px;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+
+/* ============ DEMO RIBBON — the only meta copy on the page ============ */
+.ribbon{
+  position:fixed;top:0;left:0;right:0;height:var(--ribbon-h);z-index:60;
+  background:var(--rec-deep);color:#fff;
+  display:flex;align-items:center;justify-content:center;gap:.6em;
+  font-size:.78rem;letter-spacing:.02em;
+}
+.ribbon strong{font-weight:800;letter-spacing:.08em}
+.ribbon a{
+  color:var(--rec-deep);background:#fff;text-decoration:none;font-weight:800;
+  padding:3px 12px;border-radius:99px;white-space:nowrap;
+  transition:transform .15s ease,opacity .15s ease;
+}
+.ribbon a:hover{opacity:.88;transform:translateY(-1px)}
+@media(max-width:520px){.ribbon{font-size:.7rem;gap:.45em}.ribbon .rb-hide{display:none}}
+
+/* ============ HEADER ============ */
+header{
+  position:sticky;top:var(--ribbon-h);z-index:50;
+  background:color-mix(in srgb,var(--black) 86%,transparent);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.hd{max-width:1200px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.wordmark{font-family:var(--disp);font-weight:800;font-size:1.05rem;letter-spacing:.14em;text-decoration:none;white-space:nowrap}
+.wordmark .dot{color:var(--rec)}
+nav{display:flex;align-items:center;gap:22px;font-size:.85rem}
+nav a{text-decoration:none;color:var(--grey);transition:color .15s ease;white-space:nowrap}
+nav a:hover{color:var(--white)}
+nav a.cta{
+  color:var(--black);background:var(--white);font-weight:700;
+  padding:8px 16px;border-radius:99px;transition:background .15s ease;
+}
+nav a.cta:hover{background:var(--rec);color:#fff}
+@media(max-width:680px){nav a:not(.cta){display:none}}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;min-height:min(calc(100svh - var(--ribbon-h) - 57px),820px);
+  display:flex;align-items:flex-end;isolation:isolate;overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero-bg img,.hero-bg video{width:100%;height:100%;object-fit:cover;object-position:62% 45%}
+.hero-bg::after{ /* film grain — forgives the 720px source at full bleed */
+  content:'';position:absolute;inset:0;opacity:.16;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+.hero-veil{
+  position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to top,rgba(11,11,13,.94) 0%,rgba(11,11,13,.45) 42%,rgba(11,11,13,.25) 70%,rgba(11,11,13,.55) 100%);
+}
+.hero-inner{width:100%;max-width:1200px;margin:0 auto;padding:0 20px 64px}
+.kicker{
+  font-family:var(--disp);font-size:.72rem;font-weight:600;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--grey);display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+@media(max-width:520px){.kicker{font-size:.6rem;letter-spacing:.16em}}
+.kicker::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--rec);flex:none;animation:blink 2.4s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+h1{
+  font-family:var(--disp);font-weight:800;line-height:.98;letter-spacing:-.01em;
+  font-size:clamp(2.6rem,8.5vw,5.4rem);margin:18px 0 20px;max-width:11em;
+}
+.hero-sub{color:var(--grey);max-width:34em;font-size:clamp(.95rem,2.6vw,1.08rem)}
+.hero-ctas{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{
+  font-family:var(--disp);font-weight:700;font-size:.92rem;text-decoration:none;
+  padding:13px 26px;border-radius:99px;transition:transform .15s ease,background .15s ease,color .15s ease;
+}
+.btn-solid{background:var(--white);color:var(--black)}
+.btn-solid:hover{background:var(--rec);color:#fff;transform:translateY(-1px)}
+.btn-line{border:1px solid var(--line);color:var(--white)}
+.btn-line:hover{border-color:var(--white);transform:translateY(-1px)}
+.frame-credit{
+  position:absolute;right:14px;bottom:14px;font-size:.66rem;letter-spacing:.06em;
+  color:rgba(242,240,236,.55);background:rgba(11,11,13,.5);padding:4px 10px;border-radius:99px;
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+}
+
+/* ============ SHARED SECTION CHROME ============ */
+section[id]{scroll-margin-top:calc(var(--ribbon-h) + 66px)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.sec{padding:84px 0}
+.slate{
+  font-family:var(--disp);font-size:.7rem;font-weight:600;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--rec);display:flex;align-items:center;gap:14px;margin-bottom:16px;
+}
+.slate::after{content:'';height:1px;flex:1;background:var(--line)}
+.sec-title{font-family:var(--disp);font-weight:800;font-size:clamp(1.7rem,5vw,2.6rem);line-height:1.06;letter-spacing:-.01em;max-width:16em}
+.sec-lede{color:var(--grey);margin-top:14px;max-width:38em}
+
+/* ============ SHOWREEL & EMBEDS ============ */
+.reel-frame{
+  position:relative;aspect-ratio:16/9;margin-top:40px;border-radius:14px;overflow:hidden;
+  border:1px solid var(--line);background:#101013;
+}
+.reel-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.reel-cap{color:var(--grey);font-size:.78rem;margin-top:12px;letter-spacing:.04em}
+.reel-frame--vert{aspect-ratio:9/16;max-width:340px;margin-left:auto;margin-right:auto}
+.reel-link{display:block;position:absolute;inset:0}
+.reel-link img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
+.reel-link:hover img{transform:scale(1.02)}
+.reel-play{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(to top,rgba(11,11,13,.55),rgba(11,11,13,.15));
+}
+.reel-play span{
+  display:flex;align-items:center;gap:12px;font-family:var(--disp);font-weight:700;
+  font-size:.92rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;
+  background:rgba(11,11,13,.66);padding:14px 26px;border-radius:99px;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .15s ease;
+}
+.reel-link:hover .reel-play span{background:var(--rec)}
+.reel-play span::before{content:'';width:0;height:0;border-left:14px solid var(--rec);border-top:9px solid transparent;border-bottom:9px solid transparent}
+.reel-link:hover .reel-play span::before{border-left-color:#fff}
+
+/* ============ PRESS ============ */
+.press{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel)}
+.press-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:36px}
+.press-item{border-left:2px solid var(--rec);padding:4px 0 4px 18px}
+.press-src{font-family:var(--disp);font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--grey);margin-bottom:8px}
+.press-line{font-family:var(--disp);font-weight:700;font-size:1.15rem;line-height:1.3}
+.press-note{color:var(--grey);font-size:.8rem;margin-top:22px}
+
+/* ============ SELECTED WORK ============ */
+.work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;margin-top:44px}
+.wcard{
+  display:block;text-decoration:none;background:var(--panel);border:1px solid var(--line);
+  border-radius:14px;overflow:hidden;transition:transform .18s ease,border-color .18s ease,background .18s ease;
+}
+.wcard:hover{transform:translateY(-3px);border-color:#3a3a44;background:var(--panel-2)}
+.wposter{position:relative;aspect-ratio:16/10;overflow:hidden;background:#101013}
+.wposter img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
+.wcard:hover .wposter img{transform:scale(1.03)}
+.wplay{
+  position:absolute;left:12px;bottom:12px;display:flex;align-items:center;gap:8px;
+  font-family:var(--disp);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:#fff;background:rgba(11,11,13,.62);padding:6px 13px;border-radius:99px;
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+}
+.wplay::before{content:'';width:0;height:0;border-left:8px solid var(--rec);border-top:5px solid transparent;border-bottom:5px solid transparent}
+.wmeta{padding:16px 18px 18px}
+.wtitle{font-family:var(--disp);font-weight:700;font-size:1.06rem;line-height:1.2}
+.wrole{color:var(--grey);font-size:.8rem;margin-top:5px;letter-spacing:.03em}
+.work-note{color:var(--grey);font-size:.82rem;margin-top:26px;max-width:44em}
+
+/* ============ APPROACH ============ */
+.approach{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:44px}
+.step{background:var(--black);border:1px solid var(--line);border-radius:14px;padding:26px 24px 28px}
+.step-n{
+  font-family:var(--disp);font-weight:800;font-size:.78rem;letter-spacing:.2em;color:var(--rec);
+  display:inline-block;border:1px solid var(--line);border-radius:99px;padding:5px 13px;margin-bottom:16px;
+}
+.step h3{font-family:var(--disp);font-weight:700;font-size:1.2rem;margin-bottom:10px;line-height:1.2}
+.step p{color:var(--grey);font-size:.92rem}
+.quote-line{margin-top:34px;color:var(--white);font-size:.98rem;max-width:40em}
+.quote-line strong{color:var(--rec)}
+
+/* ============ ABOUT ============ */
+.about-grid{display:grid;grid-template-columns:1fr;gap:36px;margin-top:44px}
+@media(min-width:860px){.about-grid{grid-template-columns:5fr 4fr;align-items:start}}
+.about-photo{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#101013}
+.about-photo img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5}
+.about-photo figcaption{font-size:.68rem;color:var(--grey);padding:8px 12px;letter-spacing:.05em}
+.about-copy p{color:var(--grey);margin-bottom:16px;max-width:36em}
+.about-copy p strong{color:var(--white);font-weight:600}
+.venture{border-left:2px solid var(--rec);padding-left:16px;font-size:.9rem}
+
+/* ============ ENQUIRY ============ */
+.start{background:var(--panel);border-top:1px solid var(--line)}
+form{margin-top:40px;max-width:640px;display:grid;gap:16px}
+label{display:grid;gap:7px;font-family:var(--disp);font-size:.74rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--grey)}
+input,select,textarea{
+  font-family:var(--body);font-size:1rem;color:var(--white);
+  background:var(--black);border:1px solid var(--line);border-radius:10px;padding:13px 15px;
+  transition:border-color .15s ease;width:100%;
+}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--rec)}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23A7A5A0' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center}
+textarea{min-height:130px;resize:vertical}
+.submit{
+  font-family:var(--disp);font-weight:700;font-size:.95rem;letter-spacing:.04em;
+  background:var(--line);color:var(--grey);border:none;border-radius:99px;padding:15px 30px;
+  cursor:not-allowed;display:inline-flex;align-items:center;gap:10px;justify-self:start;
+}
+.submit::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--grey);opacity:.6}
+
+/* ---- booking summary + deposit (payment control never live) ---- */
+.summary{
+  background:var(--black);border:1px solid var(--line);border-radius:14px;
+  padding:22px 22px 24px;display:grid;gap:12px;
+}
+.sum-head{font-family:var(--disp);font-size:.7rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--grey)}
+.sum-row{display:flex;justify-content:space-between;gap:14px;font-size:.94rem}
+.sum-row .k{color:var(--grey)}
+.sum-row .v{text-align:right;font-weight:600}
+.sum-dep{
+  display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+  border-top:1px solid var(--line);padding-top:14px;margin-top:2px;
+}
+.sum-dep .k{font-family:var(--disp);font-weight:700}
+.dep-amt{font-family:var(--disp);font-weight:800;font-size:1.5rem;white-space:nowrap}
+.dep-tag{
+  display:inline-block;font-family:var(--disp);font-size:.62rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--rec);border:1px solid var(--rec);border-radius:99px;
+  padding:2px 9px;margin-left:8px;vertical-align:3px;
+}
+.dep-note{color:var(--grey);font-size:.83rem;max-width:38em}
+.book-note{
+  font-family:var(--disp);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--grey);margin-top:2px;
+}
+
+/* ============ FOOTER ============ */
+footer{padding:56px 0 64px;border-top:1px solid var(--line)}
+.fbrand{font-family:var(--disp);font-weight:800;letter-spacing:.14em;margin-bottom:10px}
+.fbrand .dot{color:var(--rec)}
+footer p{color:var(--grey);font-size:.82rem;max-width:56em}
+footer .legal{margin-top:14px;font-size:.72rem;line-height:1.7;color:#7c7a76}
+footer a{color:var(--grey)}
+</style>
+</head>
+<body>
+
+<!-- DEMO RIBBON -->
+<div class="ribbon" role="note">
+  <span><strong>DEMO</strong> made by Zach for EL Productions. <span class="rb-hide">Want it live?</span></span>
+  <a href="https://wa.me/447543455889?text=Hi%20Zach%2C%20saw%20the%20EL%20Productions%20demo" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="hd">
+    <a class="wordmark" href="#top">EL PRODUCTIONS<span class="dot">.</span></a>
+    <nav>
+      <a href="../">EL Enterprise</a>
+      <a href="#showreel">Showreel</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a class="cta" href="#start">Start a project</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO — still from published reel Da3pfE7txyM (Jul 2026) -->
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <img src="assets/ig-elio5-reel-Da3pfE7txyM-2026-07-16-bw-boat-bridge.jpg" alt="Black-and-white frame of a rower passing under a suspension footbridge" fetchpriority="high">
+  </div>
+  <div class="hero-veil"></div>
+  <div class="hero-inner">
+    <!-- Companies House #13849178 -->
+    <p class="kicker">EL Productions Ltd · Bedford · est. 2022</p>
+    <h1>Make it look like a film.</h1>
+    <p class="hero-sub">Short films, adverts and events around Bedford — directed, filmed and cut so it feels the way it felt to be there.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-solid" href="#showreel">Watch the reel</a>
+      <a class="btn btn-line" href="#start">Start a project</a>
+    </div>
+  </div>
+  <!-- Frame source: reel Da3pfE7txyM, 16 Jul 2026 -->
+  <p class="frame-credit">Frame from Elio Lepore’s published work (Jul 2026)</p>
+</section>
+
+<!-- SHOWREEL -->
+<section class="sec" id="showreel">
+  <div class="wrap">
+    <p class="slate">01 — Showreel</p>
+    <h2 class="sec-title">Two minutes tells you everything.</h2>
+    <!-- YouTube blocks embedding for this video ("Video unavailable" in-frame, verified
+         30 Jul over http) — poster-link instead of a dead tile. A newer reel supplied as
+         a file becomes a native <video> here; a new YouTube ID: re-test embeddability
+         before switching back to an iframe. -->
+    <!-- Vertical reel, vertical stage: poster shows the sharp centre panel of YouTube's
+         tripled thumbnail for vertical uploads -->
+    <div class="reel-frame reel-frame--vert">
+      <a class="reel-link" href="https://www.youtube.com/watch?v=cA6GBzGorpc" target="_blank" rel="noopener" aria-label="Watch the EL Productions showreel on YouTube">
+        <img src="assets/yt143-showreel-2023.jpg" alt="EL Productions showreel opening frame" fetchpriority="high">
+        <span class="reel-play"><span>Watch the reel</span></span>
+      </a>
+    </div>
+    <p class="reel-cap" style="text-align:center">EL Productions — Showreel (2023). Plays on YouTube.</p>
+  </div>
+</section>
+
+<!-- SELECTED WORK -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <p class="slate">02 — Selected work</p>
+    <h2 class="sec-title">The work speaks first.</h2>
+    <p class="sec-lede">Everything below is published. Play it here or watch it where it lives.</p>
+
+    <!-- "Goodbye" — the flagship: short film, premiere covered by the Bedford Independent (28 Oct 2024) -->
+    <div class="reel-frame">
+      <iframe src="https://www.youtube-nocookie.com/embed/uVuFJjhQppg" title="Goodbye — short film (2024)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+    <p class="reel-cap">“Goodbye” (2024) — short film, shot around Bedford; its premiere was covered by the Bedford Independent.</p>
+
+    <div class="work-grid">
+      <!-- Cards: poster = his own published thumbnail/frame, href = the live piece.
+           Titles are his published titles or honest descriptors. Spec labeled spec. -->
+
+      <a class="wcard" href="https://www.youtube.com/watch?v=BIANyCxbwSA" target="_blank" rel="noopener">
+        <div class="wposter"><img src="assets/yt143-ferrari-purosangue-2024.jpg" alt="Ferrari Purosangue film thumbnail" loading="lazy">
+          <span class="wplay">Watch</span></div>
+        <div class="wmeta">
+          <p class="wtitle">Ferrari Purosangue</p>
+          <p class="wrole">2024 · car film · on YouTube</p>
+        </div>
+      </a>
+
+      <a class="wcard" href="https://www.youtube.com/watch?v=zoqDn5H3cCM" target="_blank" rel="noopener">
+        <div class="wposter"><img src="assets/yt143-redemption-2024.jpg" alt="Redemption short film thumbnail" loading="lazy">
+          <span class="wplay">Watch</span></div>
+        <div class="wmeta">
+          <p class="wtitle">Redemption</p>
+          <p class="wrole">2024 · short film · on YouTube</p>
+        </div>
+      </a>
+
+      <!-- "The Renovation Project" — title is literal on-screen text in reel DX9wM4YtIp_ -->
+      <a class="wcard" href="https://www.instagram.com/reel/DX9wM4YtIp_/" target="_blank" rel="noopener">
+        <div class="wposter"><img src="assets/ig-elprod-reel-DW9nb2RDjyR-2026-04-10.jpg" alt="Walking through a stripped-back brick room, clipboard in hand" loading="lazy">
+          <span class="wplay">Watch</span></div>
+        <div class="wmeta">
+          <p class="wtitle">The Renovation Project</p>
+          <p class="wrole">2026 · documentary series · on Instagram</p>
+        </div>
+      </a>
+
+      <a class="wcard" href="https://www.instagram.com/reel/DbF81nYNN10/" target="_blank" rel="noopener">
+        <div class="wposter"><img src="assets/ig-elio5-reel-DbF81nYNN10-2026-07-22-bridge.jpg" alt="Festival crowds crossing a white suspension footbridge over the river" loading="lazy">
+          <span class="wplay">Watch</span></div>
+        <div class="wmeta">
+          <p class="wtitle">Festival on the river</p>
+          <p class="wrole">2026 · event coverage · on Instagram</p>
+        </div>
+      </a>
+
+      <!-- Relationship wording held until EL confirms client status — title is his published title -->
+      <a class="wcard" href="https://www.youtube.com/watch?v=0Jdek9KTjtg" target="_blank" rel="noopener">
+        <div class="wposter"><img src="assets/yt143-malo-gripsocks-2023.jpg" alt="Malo grip socks film thumbnail" loading="lazy">
+          <span class="wplay">Watch</span></div>
+        <div class="wmeta">
+          <p class="wtitle">Malo grip socks</p>
+          <p class="wrole">2023–2025 · three films · on YouTube</p>
+        </div>
+      </a>
+
+      <!-- Spec labeled spec: his own title is "Fan made JD Advert" -->
+      <a class="wcard" href="https://www.youtube.com/watch?v=Ga6EGWjrunQ" target="_blank" rel="noopener">
+        <div class="wposter"><img src="assets/yt143-jd-advert-spec-2024.jpg" alt="Spec JD advert thumbnail" loading="lazy">
+          <span class="wplay">Watch</span></div>
+        <div class="wmeta">
+          <p class="wtitle">JD — spec advert</p>
+          <p class="wrole">2024 · self-initiated, not commissioned · on YouTube</p>
+        </div>
+      </a>
+
+      <!-- Further cards can drop in as poster+href pairs (see build notes). -->
+    </div>
+
+    <p class="work-note">Every frame above is from Elio Lepore’s and EL Productions’ own published channels — each card opens the piece where it lives. Spec work is labelled as spec.</p>
+  </div>
+</section>
+
+<!-- PRESS — headlines as published -->
+<section class="sec press" id="press">
+  <div class="wrap">
+    <p class="slate">03 — In the papers</p>
+    <h2 class="sec-title">Bedford has noticed.</h2>
+    <div class="press-grid">
+      <div class="press-item">
+        <p class="press-src">Bedford Today · 2023</p>
+        <p class="press-line">“15-Year-Old Bedford Filmmaker breaks into industry with Debut Short Film”</p>
+      </div>
+      <div class="press-item">
+        <p class="press-src">Bedford Independent · Oct 2024</p>
+        <p class="press-line">Covered the premiere of “Goodbye”, EL Productions’ short film shot around Bedford.</p>
+      </div>
+    </div>
+    <p class="press-note">Headlines as published by each paper.</p>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="sec approach" id="approach">
+  <div class="wrap">
+    <p class="slate">04 — How a project runs</p>
+    <h2 class="sec-title">Simple to hire. Serious on set.</h2>
+
+    <div class="steps">
+      <div class="step">
+        <span class="step-n">STEP 1</span>
+        <h3>Tell us what you’re making</h3>
+        <p>Send the idea in a message — a launch, an event, a space, a film you can picture but can’t shoot. You get a straight answer on whether it’s a fit and what it would take.</p>
+      </div>
+      <div class="step">
+        <span class="step-n">STEP 2</span>
+        <h3>It gets planned properly</h3>
+        <p>Every project gets a treatment and a shot list before anyone touches a camera. You know what’s being made before the shoot day, not after.</p>
+      </div>
+      <div class="step">
+        <span class="step-n">STEP 3</span>
+        <h3>You get the film</h3>
+        <p>Delivered cut and graded, in the formats you’ll actually use — widescreen for the big screen, vertical for socials.</p>
+      </div>
+    </div>
+
+    <p class="quote-line"><strong>Every project is quoted on scope.</strong> Tell us what you’re making and you get a number for that job — not a rate card.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <p class="slate">05 — The filmmaker</p>
+    <h2 class="sec-title">Behind the camera.</h2>
+
+    <div class="about-grid">
+      <div class="about-copy">
+        <p><strong>EL Productions is the film production company of Elio Lepore</strong> — incorporated in 2022 and filming around Bedford ever since.</p>
+        <p>Short films, adverts and event coverage: a debut short that put a teenage director in the local papers, a 2024 premiere covered by the Bedford Independent, and a run of car films, brand pieces and documentary reels since.</p>
+        <p>The company is real and checkable — <strong>EL Productions Ltd, registered in England, company no. 13849178</strong>.</p>
+        <!-- Optional line — one-edit delete -->
+        <p class="venture">Away from client work he documents his own training at @ELFitness.5 — the discipline carries over.</p>
+      </div>
+      <!-- A portrait/BTS still can restore <figure class="about-photo"> here. -->
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING — pick what you need, book a date, reserve with a deposit. Everything works
+     except the payment control, which is never live in this demonstration. Amounts are
+     example-labelled at the amount until real figures replace them (one-line swap). -->
+<section class="sec start" id="start">
+  <div class="wrap">
+    <p class="slate">06 — Book a shoot</p>
+    <h2 class="sec-title">Pick it, date it, book it.</h2>
+    <p class="sec-lede">No back-and-forth: tell us what you’re making, choose a date, and reserve it with a deposit.</p>
+
+    <form autocomplete="off" id="bookForm">
+      <label>What are we making?
+        <select name="type" id="bkType">
+          <option>A brand or business film</option>
+          <option>An advert</option>
+          <option>An event</option>
+          <option>A property or space</option>
+          <option>Something else</option>
+        </select>
+      </label>
+      <label>Ideal shoot date
+        <input type="date" name="date" id="bkDate">
+      </label>
+      <label>Your name
+        <input type="text" name="name" placeholder="Name">
+      </label>
+      <label>How do we reach you?
+        <input type="text" name="contact" placeholder="Email or phone">
+      </label>
+      <label>The idea
+        <textarea name="idea" placeholder="What are we making, and where will it be seen?"></textarea>
+      </label>
+
+      <div class="summary" aria-live="polite">
+        <p class="sum-head">Your booking</p>
+        <p class="sum-row"><span class="k">Project</span><span class="v" id="sumType">A brand or business film</span></p>
+        <p class="sum-row"><span class="k">Shoot date</span><span class="v" id="sumDate">Pick a date above</span></p>
+        <!-- Deposit amount: EXAMPLE until EL Productions supplies their real figure —
+             swap the number and delete the tag in one line -->
+        <p class="sum-dep"><span class="k">Booking deposit</span>
+          <span class="dep-amt">£100<span class="dep-tag">example amount</span></span></p>
+        <p class="dep-note">The deposit is a flat booking fee credited in full against your final invoice — your quote is confirmed before anything is charged.</p>
+      </div>
+
+      <button class="submit" type="button" disabled>Book the date · pay the deposit</button>
+      <!-- @eliolepore1 = his stated business-enquiry channel -->
+      <p class="book-note">Payment isn’t live yet — everything else works. For now, DM @eliolepore1 on Instagram</p>
+    </form>
+  </div>
+</section>
+
+<script>
+(function(){
+  var t=document.getElementById('bkType'),d=document.getElementById('bkDate'),
+      st=document.getElementById('sumType'),sd=document.getElementById('sumDate');
+  function upd(){
+    st.textContent=t.value;
+    if(d.value){
+      var p=d.value.split('-');
+      sd.textContent=p[2]+'/'+p[1]+'/'+p[0];
+    }else{sd.textContent='Pick a date above';}
+  }
+  t.addEventListener('change',upd);d.addEventListener('change',upd);d.addEventListener('input',upd);
+  upd();
+})();
+</script>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <p class="fbrand">EL PRODUCTIONS<span class="dot">.</span></p>
+    <!-- Street address not printed by design; the company number is the trust anchor -->
+    <p>EL Productions Ltd · Bedford, United Kingdom · Company no. 13849178</p>
+    <p class="legal">
+      Built by Zach as a private demonstration for EL Productions — this is not their official site.
+      All frames, thumbnails and embedded videos are Elio Lepore’s and EL Productions’ own published work (Instagram · YouTube), shown to demonstrate what their site could look like.
+      Company details per Companies House; press items per each paper. Details to be confirmed by EL Productions ·
+      <a href="https://wa.me/447543455889" target="_blank" rel="noopener">WhatsApp Zach</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
