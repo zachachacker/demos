@@ -72,15 +72,15 @@ a{color:inherit}
   opacity:0;transition:opacity .8s ease;
 }
 .montage-video.live{opacity:1}
-.film-chip{
-  margin-top:22px;font-family:var(--disp);font-weight:700;font-size:.82rem;letter-spacing:.1em;
-  text-transform:uppercase;color:#fff;cursor:pointer;
-  background:rgba(15,15,15,.55);border:1px solid rgba(242,240,236,.28);border-radius:99px;
-  padding:11px 22px;display:inline-flex;align-items:center;gap:10px;
-  transition:border-color .15s ease,background .15s ease,transform .15s ease;
+.film-chip{ /* deliberately quiet — Zachary: "too big ruins it" */
+  margin-top:16px;font-family:var(--disp);font-weight:600;font-size:.62rem;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(242,240,236,.75);cursor:pointer;
+  background:none;border:1px solid rgba(242,240,236,.22);border-radius:99px;
+  padding:7px 14px;display:inline-flex;align-items:center;gap:7px;opacity:.85;
+  transition:border-color .15s ease,color .15s ease,opacity .15s ease;
 }
-.film-chip::before{content:'';width:0;height:0;border-left:10px solid var(--rec);border-top:6px solid transparent;border-bottom:6px solid transparent}
-.film-chip:hover{border-color:var(--rec);transform:translateY(-1px)}
+.film-chip::before{content:'';width:0;height:0;border-left:7px solid var(--rec);border-top:4px solid transparent;border-bottom:4px solid transparent}
+.film-chip:hover{border-color:var(--rec);color:#fff;opacity:1}
 .film-modal{
   position:fixed;inset:0;z-index:80;background:rgba(5,5,6,.94);
   display:none;align-items:center;justify-content:center;padding:20px;
