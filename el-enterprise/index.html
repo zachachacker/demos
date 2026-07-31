@@ -228,8 +228,10 @@ footer a{color:var(--grey)}
        JS matchMedia picks the src (source-media doesn't work in <video>), fetch after
        load, four guards, pause on block-open. -->
   <video class="montage-video" muted playsinline loop preload="none"
-    data-src-mobile="assets/bg-mobile.mp4" data-poster-mobile="assets/bg-poster-mobile.jpg"
-    data-src-desktop="assets/bg-desktop.mp4" data-poster-desktop="assets/bg-poster-desktop.jpg"
+    data-src-mobile="assets/bg-mobile.mp4" data-src-mobile-hevc="assets/bg-mobile-hevc.mp4"
+    data-poster-mobile="assets/bg-poster-mobile.jpg"
+    data-src-desktop="assets/bg-desktop.mp4" data-src-desktop-hevc="assets/bg-desktop-hevc.mp4"
+    data-poster-desktop="assets/bg-poster-desktop.jpg"
     aria-hidden="true"></video>
   <div class="stage-veil"></div>
 
@@ -348,7 +350,7 @@ footer a{color:var(--grey)}
 
 <!-- FILM MODAL — full 56s cut, his footage, sound on (user gesture); fetches on tap only -->
 <div class="film-modal" id="filmModal" role="dialog" aria-label="Elio Lepore — the film">
-  <video id="filmVideo" controls playsinline preload="none" poster="assets/film-poster.jpg" data-src="assets/elio-full.mp4"></video>
+  <video id="filmVideo" controls playsinline preload="none" poster="assets/film-poster.jpg" data-src="assets/elio-full.mp4" data-src-hevc="assets/elio-full-hevc.mp4"></video>
   <button class="film-close" type="button" id="filmClose" aria-label="Close">✕</button>
 </div>
 
@@ -366,9 +368,11 @@ footer a{color:var(--grey)}
 </footer>
 
 <script>
-/* landing background — HIS loop, mobile/desktop split via matchMedia (Weld v3).
-   Fetch after window load, four still-guards, one decoder ever. */
+/* landing background — HIS loop. Weld v3.1: dual-source, HEVC-HLG primary (iPhones render
+   his true HDR look), H.264 true-tagged fallback. matchMedia viewport split + canPlayType
+   codec pick; fetch after window load, four still-guards, one decoder ever. */
 var mv=document.querySelector('.montage-video'),mvWants=false;
+var HEVC=document.createElement('video').canPlayType('video/mp4; codecs="hvc1.2.4.L120.B0"')!=='';
 addEventListener('load',function(){
   if(!mv)return;
   var c=navigator.connection||{};
@@ -376,7 +380,8 @@ addEventListener('load',function(){
   if(c.saveData||/(^|-)2g|3g/.test(c.effectiveType||''))return;
   var d=matchMedia('(min-width: 900px)').matches;
   mv.poster=d?mv.dataset.posterDesktop:mv.dataset.posterMobile;
-  mv.src=d?mv.dataset.srcDesktop:mv.dataset.srcMobile;
+  mv.src=HEVC?(d?mv.dataset.srcDesktopHevc:mv.dataset.srcMobileHevc)
+             :(d?mv.dataset.srcDesktop:mv.dataset.srcMobile);
   mvWants=true;
   mv.play().then(function(){mv.classList.add('live')}).catch(function(){mvWants=false});
 });
@@ -384,7 +389,7 @@ addEventListener('load',function(){
 /* full film modal — fetch + sound only on tap; one decoder: bg pauses while open */
 var fm=document.getElementById('filmModal'),fv=document.getElementById('filmVideo');
 document.getElementById('filmOpen').addEventListener('click',function(){
-  if(!fv.src)fv.src=fv.dataset.src;
+  if(!fv.src)fv.src=HEVC?fv.dataset.srcHevc:fv.dataset.src;
   fm.classList.add('open');
   if(mv&&mvWants)mv.pause();
   fv.play().catch(function(){});
