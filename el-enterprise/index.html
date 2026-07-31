@@ -72,6 +72,27 @@ a{color:inherit}
   opacity:0;transition:opacity .8s ease;
 }
 .montage-video.live{opacity:1}
+.film-chip{
+  margin-top:22px;font-family:var(--disp);font-weight:700;font-size:.82rem;letter-spacing:.1em;
+  text-transform:uppercase;color:#fff;cursor:pointer;
+  background:rgba(15,15,15,.55);border:1px solid rgba(242,240,236,.28);border-radius:99px;
+  padding:11px 22px;display:inline-flex;align-items:center;gap:10px;
+  transition:border-color .15s ease,background .15s ease,transform .15s ease;
+}
+.film-chip::before{content:'';width:0;height:0;border-left:10px solid var(--rec);border-top:6px solid transparent;border-bottom:6px solid transparent}
+.film-chip:hover{border-color:var(--rec);transform:translateY(-1px)}
+.film-modal{
+  position:fixed;inset:0;z-index:80;background:rgba(5,5,6,.94);
+  display:none;align-items:center;justify-content:center;padding:20px;
+}
+.film-modal.open{display:flex}
+.film-modal video{max-height:calc(100svh - 80px);max-width:100%;border-radius:14px;background:#000}
+.film-close{
+  position:absolute;top:14px;right:14px;font-family:var(--disp);font-weight:800;font-size:1rem;
+  color:#fff;background:rgba(15,15,15,.7);border:1px solid rgba(242,240,236,.28);border-radius:99px;
+  width:44px;height:44px;cursor:pointer;
+}
+.film-close:hover{border-color:var(--rec)}
 .stage-veil{
   position:absolute;inset:0;z-index:-1;
   background:linear-gradient(to top,rgba(11,11,13,.96) 0%,rgba(11,11,13,.62) 45%,rgba(11,11,13,.44) 100%);
@@ -202,14 +223,20 @@ footer a{color:var(--grey)}
     <img src="assets/ig-elprod-reel-DW9nb2RDjyR-2026-04-10.jpg" alt="">
     <img src="assets/ig-elprod-reel-DYRthMqtTGQ-2026-05-13-pool-night.jpg" alt="">
   </div>
-  <!-- LIVE video layer (Elio round-5: background becomes video). data-src EMPTY until an
-       honest clip of HIS lands — fill it and the layer goes live; until then zero bytes,
-       stills show. Weld v2: fetch after load, four guards, pause on block-open. -->
-  <video class="montage-video" muted playsinline loop preload="none" data-src="" poster="assets/ig-elio5-reel-Da3pfE7txyM-2026-07-16-bw-boat-bridge.jpg" aria-hidden="true"></video>
+  <!-- LIVE background loops cut from HIS footage (elio-video-2026-07-31, sent by Elio for
+       this purpose). Weld v3: mobile 720x1280 portrait 1.42MB / desktop 1080 crop 4.29MB,
+       JS matchMedia picks the src (source-media doesn't work in <video>), fetch after
+       load, four guards, pause on block-open. -->
+  <video class="montage-video" muted playsinline loop preload="none"
+    data-src-mobile="assets/bg-mobile.mp4" data-poster-mobile="assets/bg-poster-mobile.jpg"
+    data-src-desktop="assets/bg-desktop.mp4" data-poster-desktop="assets/bg-poster-desktop.jpg"
+    aria-hidden="true"></video>
   <div class="stage-veil"></div>
 
   <div class="name">
     <h1>Elio Lepore<span class="dot">.</span></h1>
+    <!-- Full 56s film, click-to-play with sound (fetches only on tap) -->
+    <button class="film-chip" type="button" id="filmOpen">Watch the film · 56s</button>
   </div>
 
   <!-- BLOCKS — open set; add one = tile + panel -->
@@ -319,6 +346,12 @@ footer a{color:var(--grey)}
   </div>
 </main>
 
+<!-- FILM MODAL — full 56s cut, his footage, sound on (user gesture); fetches on tap only -->
+<div class="film-modal" id="filmModal" role="dialog" aria-label="Elio Lepore — the film">
+  <video id="filmVideo" controls playsinline preload="none" poster="assets/film-poster.jpg" data-src="assets/elio-full.mp4"></video>
+  <button class="film-close" type="button" id="filmClose" aria-label="Close">✕</button>
+</div>
+
 <!-- FOOTER — disclosure only -->
 <footer>
   <div class="wrap">
@@ -333,16 +366,32 @@ footer a{color:var(--grey)}
 </footer>
 
 <script>
-/* landing video layer — inert until data-src is filled with HIS clip.
-   Weld v2: fetch after window load, four still-guards, one decoder ever. */
+/* landing background — HIS loop, mobile/desktop split via matchMedia (Weld v3).
+   Fetch after window load, four still-guards, one decoder ever. */
 var mv=document.querySelector('.montage-video'),mvWants=false;
 addEventListener('load',function(){
-  if(!mv||!mv.dataset.src)return;
+  if(!mv)return;
   var c=navigator.connection||{};
   if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   if(c.saveData||/(^|-)2g|3g/.test(c.effectiveType||''))return;
-  mv.src=mv.dataset.src;mvWants=true;
+  var d=matchMedia('(min-width: 900px)').matches;
+  mv.poster=d?mv.dataset.posterDesktop:mv.dataset.posterMobile;
+  mv.src=d?mv.dataset.srcDesktop:mv.dataset.srcMobile;
+  mvWants=true;
   mv.play().then(function(){mv.classList.add('live')}).catch(function(){mvWants=false});
+});
+
+/* full film modal — fetch + sound only on tap; one decoder: bg pauses while open */
+var fm=document.getElementById('filmModal'),fv=document.getElementById('filmVideo');
+document.getElementById('filmOpen').addEventListener('click',function(){
+  if(!fv.src)fv.src=fv.dataset.src;
+  fm.classList.add('open');
+  if(mv&&mvWants)mv.pause();
+  fv.play().catch(function(){});
+});
+document.getElementById('filmClose').addEventListener('click',function(){
+  fv.pause();fm.classList.remove('open');
+  if(mv&&mvWants)mv.play().catch(function(){});
 });
 
 /* blocks open/close in place — one open at a time, "you come out of that";
