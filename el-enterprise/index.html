@@ -81,18 +81,6 @@ a{color:inherit}
 }
 .film-chip::before{content:'';width:0;height:0;border-left:7px solid var(--rec);border-top:4px solid transparent;border-bottom:4px solid transparent}
 .film-chip:hover{border-color:var(--rec);color:#fff;opacity:1}
-.film-modal{
-  position:fixed;inset:0;z-index:80;background:rgba(5,5,6,.94);
-  display:none;align-items:center;justify-content:center;padding:20px;
-}
-.film-modal.open{display:flex}
-.film-modal video{max-height:calc(100svh - 80px);max-width:100%;border-radius:14px;background:#000}
-.film-close{
-  position:absolute;top:14px;right:14px;font-family:var(--disp);font-weight:800;font-size:1rem;
-  color:#fff;background:rgba(15,15,15,.7);border:1px solid rgba(242,240,236,.28);border-radius:99px;
-  width:44px;height:44px;cursor:pointer;
-}
-.film-close:hover{border-color:var(--rec)}
 .stage-veil{
   position:absolute;inset:0;z-index:-1;
   background:linear-gradient(to top,rgba(11,11,13,.96) 0%,rgba(11,11,13,.62) 45%,rgba(11,11,13,.44) 100%);
@@ -237,8 +225,8 @@ footer a{color:var(--grey)}
 
   <div class="name">
     <h1>Elio Lepore<span class="dot">.</span></h1>
-    <!-- The background IS the film (muted); the chip adds the sound experience -->
-    <button class="film-chip" type="button" id="filmOpen">Sound on</button>
+    <!-- The background IS the film; this genuinely toggles its sound (muxed audio) -->
+    <button class="film-chip" type="button" id="soundToggle">Sound on</button>
   </div>
 
   <!-- BLOCKS — open set; add one = tile + panel -->
@@ -348,12 +336,6 @@ footer a{color:var(--grey)}
   </div>
 </main>
 
-<!-- FILM MODAL — full 56s cut, his footage, sound on (user gesture); fetches on tap only -->
-<div class="film-modal" id="filmModal" role="dialog" aria-label="Elio Lepore — the film">
-  <video id="filmVideo" controls playsinline preload="none" poster="assets/film-poster.jpg" data-src="assets/elio-full.mp4" data-src-hevc="assets/elio-full-hevc.mp4"></video>
-  <button class="film-close" type="button" id="filmClose" aria-label="Close">✕</button>
-</div>
-
 <!-- FOOTER — disclosure only -->
 <footer>
   <div class="wrap">
@@ -368,22 +350,38 @@ footer a{color:var(--grey)}
 </footer>
 
 <script>
-/* landing background — HIS loop. Weld v3.1: dual-source, HEVC-HLG primary (iPhones render
-   his true HDR look), H.264 true-tagged fallback. matchMedia viewport split + canPlayType
-   codec pick; fetch after window load, four still-guards, one decoder ever. */
+/* landing background — HIS full film (audio muxed, starts muted). Dual-source HEVC/H.264,
+   matchMedia viewport split, fetch after load, four still-guards, one decoder ever. */
 var mv=document.querySelector('.montage-video'),mvWants=false;
 var HEVC=document.createElement('video').canPlayType('video/mp4; codecs="hvc1.2.4.L120.B0"')!=='';
+function bgSrc(){
+  var d=matchMedia('(min-width: 900px)').matches;
+  mv.poster=d?mv.dataset.posterDesktop:mv.dataset.posterMobile;
+  mv.src=HEVC?(d?mv.dataset.srcDesktopHevc:mv.dataset.srcMobileHevc)
+             :(d?mv.dataset.srcDesktop:mv.dataset.srcMobile);
+}
 addEventListener('load',function(){
   if(!mv)return;
   var c=navigator.connection||{};
   if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   if(c.saveData||/(^|-)2g|3g/.test(c.effectiveType||''))return;
-  var d=matchMedia('(min-width: 900px)').matches;
-  mv.poster=d?mv.dataset.posterDesktop:mv.dataset.posterMobile;
-  mv.src=HEVC?(d?mv.dataset.srcDesktopHevc:mv.dataset.srcMobileHevc)
-             :(d?mv.dataset.srcDesktop:mv.dataset.srcMobile);
-  mvWants=true;
+  bgSrc();mvWants=true;
   mv.play().then(function(){mv.classList.add('live')}).catch(function(){mvWants=false});
+});
+
+/* sound toggle — genuinely unmutes the film in place. A tap is consent: if guards or a
+   stall left the film off, the same tap restarts it (guard-5 gesture resume). */
+var st=document.getElementById('soundToggle');
+st.addEventListener('click',function(){
+  if(!mv)return;
+  if(!mv.getAttribute('src')){
+    bgSrc();mvWants=true;mv.muted=false;
+    mv.play().then(function(){mv.classList.add('live')}).catch(function(){mvWants=false});
+  }else{
+    mv.muted=!mv.muted;
+    if(mv.paused&&mvWants)mv.play().catch(function(){});
+  }
+  st.childNodes[st.childNodes.length-1].textContent=mv.muted?'Sound on':'Sound off';
 });
 /* guard 5 (Weld v3.2): stall-to-still — a mid-film freeze is the one failure this site
    can't show. waiting/stalled with no recovery in 2s -> crossfade to poster, stop
@@ -404,18 +402,6 @@ if(mv){
   mv.addEventListener('timeupdate',function(){clearTimeout(stallT)});
 }
 
-/* full film modal — fetch + sound only on tap; one decoder: bg pauses while open */
-var fm=document.getElementById('filmModal'),fv=document.getElementById('filmVideo');
-document.getElementById('filmOpen').addEventListener('click',function(){
-  if(!fv.src)fv.src=HEVC?fv.dataset.srcHevc:fv.dataset.src;
-  fm.classList.add('open');
-  if(mv&&mvWants)mv.pause();
-  fv.play().catch(function(){});
-});
-document.getElementById('filmClose').addEventListener('click',function(){
-  fv.pause();fm.classList.remove('open');
-  if(mv&&mvWants)mv.play().catch(function(){});
-});
 
 /* blocks open/close in place — one open at a time, "you come out of that";
    opening pauses the montage (one decoder), closing all resumes it */
