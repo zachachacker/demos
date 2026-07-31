@@ -385,6 +385,24 @@ addEventListener('load',function(){
   mvWants=true;
   mv.play().then(function(){mv.classList.add('live')}).catch(function(){mvWants=false});
 });
+/* guard 5 (Weld v3.2): stall-to-still — a mid-film freeze is the one failure this site
+   can't show. waiting/stalled with no recovery in 2s -> crossfade to poster, stop
+   fetching, no auto-retry (motion stays available via the Sound-on chip, a gesture). */
+var stallT;
+function bgStall(){
+  clearTimeout(stallT);
+  stallT=setTimeout(function(){
+    mv.classList.remove('live');
+    try{mv.pause();mv.removeAttribute('src');mv.load();}catch(e){}
+    mvWants=false;
+  },2000);
+}
+if(mv){
+  mv.addEventListener('waiting',bgStall);
+  mv.addEventListener('stalled',bgStall);
+  mv.addEventListener('playing',function(){clearTimeout(stallT)});
+  mv.addEventListener('timeupdate',function(){clearTimeout(stallT)});
+}
 
 /* full film modal — fetch + sound only on tap; one decoder: bg pauses while open */
 var fm=document.getElementById('filmModal'),fv=document.getElementById('filmVideo');
