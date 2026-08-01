@@ -385,7 +385,10 @@ st.addEventListener('click',function(){
     mv.play().then(function(){mv.classList.add('live')}).catch(function(){mvWants=false});
   }else{
     mv.muted=!mv.muted;
-    if(mv.paused&&mvWants)mv.play().catch(function(){});
+    if(mv.paused){
+      mvWants=true;
+      mv.play().then(function(){mv.classList.add('live')}).catch(function(){});
+    }
   }
   st.classList.toggle('on',!mv.muted);
   st.setAttribute('aria-label',mv.muted?'Turn sound on':'Turn sound off');
