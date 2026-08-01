@@ -259,77 +259,33 @@ footer a{color:var(--grey)}
       <p class="b-tag">Multimedia company</p>
     </a>
 
-    <button class="block-btn" type="button" aria-expanded="false" aria-controls="p-prop" data-panel="p-prop">
-      <span class="b-x">+</span>
+    <a class="block-btn" href="properties/">
+      <span class="b-x">→</span>
       <span class="b-n">02</span>
       <p class="b-name">Renovations — EL Properties</p>
       <p class="b-tag">The next venture, filmed as it happens</p>
-    </button>
+    </a>
 
-    <button class="block-btn" type="button" aria-expanded="false" aria-controls="p-social" data-panel="p-social">
-      <span class="b-x">+</span>
+    <a class="block-btn" href="social/">
+      <span class="b-x">→</span>
       <span class="b-n">03</span>
       <p class="b-name">Social media</p>
       <p class="b-tag">Short-form content for companies</p>
-    </button>
+    </a>
 
-    <button class="block-btn" type="button" aria-expanded="false" aria-controls="p-inv" data-panel="p-inv">
-      <span class="b-x">+</span>
+    <a class="block-btn" href="involved/">
+      <span class="b-x">→</span>
       <span class="b-n">04</span>
       <p class="b-name">How do I get involved?</p>
       <p class="b-tag">Crew, collaborators, the teams</p>
-    </button>
+    </a>
     <!-- Fitness: unconfirmed — no block. Adding it later = one tile + one panel. -->
 
     <!-- ===== PANELS (open in place, below the grid) ===== -->
 
 
-    <!-- EL PROPERTIES — PRE-LAUNCH: future tense only; name provisional (his words) -->
-    <section class="panel" id="p-prop" hidden>
-      <div class="p-media">
-        <img src="assets/ig-elprod-reel-DW9nb2RDjyR-2026-04-10.jpg" alt="Walking through a stripped-back brick room, clipboard in hand" loading="lazy">
-      </div>
-      <p class="p-cap">The renovation project — from his published series (2026)</p>
-      <div class="p-body">
-        <h2>Renovations — EL Properties.</h2>
-        <!-- DROP-IN: his copy replaces this draft -->
-        <p><strong>Property is next</strong> — starting with the renovation project, already being filmed as it happens. It launches when it’s ready.</p>
-        <div class="p-cta">
-          <a class="btn btn-line" href="https://www.instagram.com/reel/DX9wM4YtIp_/" target="_blank" rel="noopener">Watch the renovation series</a>
-        </div>
-      </div>
-    </section>
 
-    <!-- SOCIAL MEDIA — content FOR companies; never account-management language -->
-    <section class="panel" id="p-social" hidden>
-      <div class="p-body">
-        <h2>Social media — different to the production company.</h2>
-        <!-- DROP-IN: his copy replaces this draft -->
-        <p><strong>Short-form content made for brands’ feeds</strong> — adverts, product films, behind-the-scenes. In his own words, a “multi-channel marketeer making content for a range of companies” — his LinkedIn headline.</p>
-        <p class="charge">Same model: per project, quoted after the brief.</p>
-        <div class="strip">
-          <img src="assets/yt143-malo-gripsocks-2023.jpg" alt="Malo grip socks film thumbnail" loading="lazy">
-          <img src="assets/yt143-nicos-art-advert-2023.jpg" alt="Nico's Art advert thumbnail" loading="lazy">
-          <img src="assets/yt143-abarth-bts-2025.jpg" alt="Abarth behind-the-scenes thumbnail" loading="lazy">
-        </div>
-        <p style="font-size:.68rem;color:var(--grey);letter-spacing:.05em">His published short-form work, 2023–2025 — titles as posted on his channel</p>
-      </div>
-    </section>
 
-    <!-- GET INVOLVED — crew funnel; his words; zero rates, zero investment language -->
-    <section class="panel" id="p-inv" hidden>
-      <div class="p-body">
-        <h2>How do I get involved?</h2>
-        <!-- DROP-IN: his copy replaces this draft -->
-        <p><strong>Crew and collaborators</strong> — get involved in projects, help out and earn. The renovation build takes hands too: say so.</p>
-        <!-- Honest slot (rough-build licence): team photos are in his incoming folders -->
-        <div class="slot">Photos of the teams — his folders land here</div>
-        <div class="p-cta">
-          <a class="btn btn-solid" href="https://www.instagram.com/eliolepore1/" target="_blank" rel="noopener">DM @eliolepore1</a>
-          <a class="btn btn-line" href="https://www.tiktok.com/@ELFitness.5" target="_blank" rel="noopener">Train with him — @ELFitness.5</a>
-        </div>
-      </div>
-    </section>
   </div>
 </main>
 
@@ -417,24 +373,6 @@ if(mv){
 }
 
 
-/* blocks open/close in place — one open at a time, "you come out of that";
-   opening pauses the montage (one decoder), closing all resumes it */
-document.querySelectorAll('.block-btn[data-panel]').forEach(function(b){
-  b.addEventListener('click',function(){
-    var target=document.getElementById(b.dataset.panel);
-    var isOpen=b.getAttribute('aria-expanded')==='true';
-    document.querySelectorAll('.block-btn').forEach(function(o){o.setAttribute('aria-expanded','false')});
-    document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('open');p.hidden=true});
-    if(!isOpen){
-      b.setAttribute('aria-expanded','true');
-      target.hidden=false;target.classList.add('open');
-      target.scrollIntoView({behavior:'smooth',block:'nearest'});
-      if(mv&&mvWants)mv.pause();
-    }else{
-      if(mv&&mvWants)mv.play().catch(function(){});
-    }
-  });
-});
 /* click-to-activate embeds — no player JS on page load */
 document.querySelectorAll('.reel-facade').forEach(function(b){
   b.addEventListener('click',function(e){
