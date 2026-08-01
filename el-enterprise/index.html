@@ -84,6 +84,12 @@ a{color:inherit}
 .snd .i-on{display:none}
 .snd.on .i-on{display:block}
 .snd.on .i-off{display:none}
+.snd-hint{ /* blocked-state only (Prism spec): quiet register, near the icon, never over the name */
+  position:absolute;top:60px;right:14px;z-index:5;text-align:right;
+  font-size:.66rem;letter-spacing:.06em;color:rgba(242,240,236,.55);
+  opacity:0;transition:opacity .6s ease;pointer-events:none;
+}
+.snd-hint.show{opacity:1}
 .stage-veil{
   position:absolute;inset:0;z-index:-1;
   background:linear-gradient(to top,rgba(11,11,13,.96) 0%,rgba(11,11,13,.62) 45%,rgba(11,11,13,.44) 100%);
@@ -239,6 +245,7 @@ footer a{color:var(--grey)}
     <svg class="i-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
     <svg class="i-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg>
   </button>
+  <p class="snd-hint" id="sndHint" hidden aria-hidden="true">Tap the speaker to play the film</p>
 
   <!-- BLOCKS — open set; add one = tile + panel -->
   <div class="blocks" id="blocks">
@@ -343,6 +350,17 @@ footer a{color:var(--grey)}
 /* landing background — HIS full film (audio muxed, starts muted). Dual-source HEVC/H.264,
    matchMedia viewport split, fetch after load, four still-guards, one decoder ever. */
 var mv=document.querySelector('.montage-video'),mvWants=false;
+/* blocked-state hint (Prism spec): appears only after a blocked state settles (~1s);
+   never on successful start; dies permanently on first tap or on playback */
+var hint=document.getElementById('sndHint'),hintDead=false;
+function hintCheck(){
+  setTimeout(function(){
+    if(hintDead||!mv)return;
+    if(mv.classList.contains('live')&&!mv.paused)return;
+    hint.hidden=false;setTimeout(function(){hint.classList.add('show')},30);
+  },1100);
+}
+function hintKill(){hintDead=true;if(hint){hint.classList.remove('show');hint.hidden=true;}}
 var HEVC=document.createElement('video').canPlayType('video/mp4; codecs="hvc1.2.4.L120.B0"')!=='';
 function bgSrc(){
   var d=matchMedia('(min-width: 900px)').matches;
@@ -353,20 +371,22 @@ function bgSrc(){
 addEventListener('load',function(){
   if(!mv)return;
   var c=navigator.connection||{};
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  if(c.saveData||/(^|-)2g|3g/.test(c.effectiveType||''))return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return hintCheck();
+  if(c.saveData||/(^|-)2g|3g/.test(c.effectiveType||''))return hintCheck();
   bgSrc();mvWants=true;
-  mv.play().then(function(){mv.classList.add('live')}).catch(function(){mvWants=false});
+  mv.play().then(function(){mv.classList.add('live');hintKill();})
+           .catch(function(){mvWants=false;hintCheck();});
 });
 
 /* sound toggle — genuinely unmutes the film in place. A tap is consent: if guards or a
    stall left the film off, the same tap restarts it (guard-5 gesture resume). */
 var st=document.getElementById('soundToggle');
 st.addEventListener('click',function(){
+  hintKill();
   if(!mv)return;
   if(!mv.getAttribute('src')){
     bgSrc();mvWants=true;mv.muted=false;
-    mv.play().then(function(){mv.classList.add('live')}).catch(function(){mvWants=false});
+    mv.play().then(function(){mv.classList.add('live');hintKill();}).catch(function(){mvWants=false});
   }else{
     mv.muted=!mv.muted;
     if(mv.paused){
@@ -386,7 +406,7 @@ function bgStall(){
   stallT=setTimeout(function(){
     mv.classList.remove('live');
     try{mv.pause();mv.removeAttribute('src');mv.load();}catch(e){}
-    mvWants=false;
+    mvWants=false;hintCheck();
   },2000);
 }
 if(mv){
