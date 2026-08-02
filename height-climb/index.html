@@ -185,6 +185,7 @@ h1 .plus{color:var(--sun)}
 }
 .code-btn:hover{transform:translateY(-2px)}
 .code-btn.copied{background:var(--grass-deep);color:#fff}
+.code-manual{display:block;user-select:all;-webkit-user-select:all;cursor:text}
 .code-reward{font-weight:800;color:#3c5a44;margin-top:12px}
 .code-hint{
   font-family:var(--disp);font-weight:600;font-size:.72rem;letter-spacing:.12em;
@@ -350,16 +351,38 @@ footer a{color:rgba(255,255,255,.85)}
 </footer>
 
 <script>
-/* tap-to-copy codes — the traffic magnet has to feel instant */
+/* tap-to-copy codes — COPIED! only ever renders on a REAL copy (Prism: the page must
+   never lie to a kid about its one interaction). Denial path = honest select-mode. */
+function hcShowCopied(b){
+  var t=b.textContent;b.textContent='COPIED!';b.classList.add('copied');
+  setTimeout(function(){b.textContent=t;b.classList.remove('copied');},1200);
+}
+function hcTryExec(code){
+  var ta=document.createElement('textarea');ta.value=code;
+  ta.style.position='fixed';ta.style.opacity='0';
+  document.body.appendChild(ta);ta.select();
+  var ok=false;try{ok=document.execCommand('copy');}catch(e){}
+  document.body.removeChild(ta);return ok;
+}
+function hcFallback(b){
+  var span=document.createElement('span');
+  span.className='code-btn code-manual';
+  span.textContent=b.dataset.code;
+  var card=b.parentNode;
+  card.replaceChild(span,b);
+  var hint=card.querySelector('.code-hint');
+  if(hint)hint.textContent='Select the code & copy it';
+}
 document.querySelectorAll('.code-btn').forEach(function(b){
   b.addEventListener('click',function(){
-    var code=b.dataset.code,done=function(){
-      var t=b.textContent;b.textContent='COPIED!';b.classList.add('copied');
-      setTimeout(function(){b.textContent=t;b.classList.remove('copied');},1200);
-    };
+    var code=b.dataset.code;
     if(navigator.clipboard&&navigator.clipboard.writeText){
-      navigator.clipboard.writeText(code).then(done).catch(done);
-    }else{done();}
+      navigator.clipboard.writeText(code)
+        .then(function(){hcShowCopied(b)})
+        .catch(function(){hcTryExec(code)?hcShowCopied(b):hcFallback(b)});
+    }else{
+      hcTryExec(code)?hcShowCopied(b):hcFallback(b);
+    }
   });
 });
 </script>
