@@ -212,6 +212,13 @@ h1 .plus{color:var(--sun)}
   font-family:var(--disp);font-weight:600;font-size:.76rem;letter-spacing:.14em;
   text-transform:uppercase;color:rgba(255,255,255,.75);
 }
+.slot-live{
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  background:var(--card);color:var(--ink);border-radius:18px;padding:22px 18px;
+  font-family:var(--disp);font-weight:700;font-size:.92rem;text-decoration:none;
+  box-shadow:0 5px 0 rgba(11,11,34,.45);transition:transform .15s ease;
+}
+.slot-live:hover{transform:translateY(-2px)}
 
 /* ===== footer ===== */
 footer{padding:46px 0 60px;color:rgba(255,255,255,.75)}
@@ -238,11 +245,10 @@ footer a{color:rgba(255,255,255,.85)}
     <!-- tagline: client's copy, verbatim -->
     <p class="tagline">Walk to grow your legs — climb 50 rooms, rebirth, and unlock trails, legs &amp; trampolines!</p>
     <div class="hero-ctas">
-      <!-- DROP-IN: his Roblox game link activates this -->
-      <button class="btn btn-play" type="button" disabled>Play on Roblox</button>
+      <!-- Game link: client-supplied 2 Aug, resolves to the game (verified) -->
+      <a class="btn btn-play" href="https://www.roblox.com/games/126825740591320/1-Height-Climb" target="_blank" rel="noopener">Play on Roblox</a>
       <a class="btn btn-ghost" href="#codes">Get the codes</a>
     </div>
-    <p class="play-note">Game link isn’t wired yet — it goes live when FishDev sends it</p>
   </div>
 </header>
 
@@ -328,11 +334,12 @@ footer a{color:rgba(255,255,255,.85)}
       <p>That’s all we’re saying. Keep climbing.</p>
     </div>
 
-    <!-- DROP-IN links/contact: all pending from FishDev -->
+    <!-- Links: game + Discord client-supplied 2 Aug (Discord doubles as follow + contact,
+         his route); TikTok still pending from FishDev -->
     <div class="slots">
-      <div class="slot">Roblox game link — coming from FishDev</div>
+      <a class="slot-live" href="https://www.roblox.com/games/126825740591320/1-Height-Climb" target="_blank" rel="noopener">Play on Roblox</a>
+      <a class="slot-live" href="https://discord.gg/CCuuR8FcQ" target="_blank" rel="noopener">Join the Discord — updates &amp; contact</a>
       <div class="slot">TikTok — coming from FishDev</div>
-      <div class="slot">Contact — coming from FishDev</div>
     </div>
   </div>
 </section>
