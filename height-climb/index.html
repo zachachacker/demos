@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- +1 Height Climb — spec demo for FishDev (commissioned rough: labelled placeholders
+     pass). ALL game copy is the client's own, verbatim from his supplied content —
+     skin is ours, words are his. Links/screenshots/logo = labelled drop-in slots until
+     he sends them. No Roblox brand assets anywhere (trademark) — typographic + original
+     shapes only. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>+1 Height Climb — walk to grow, climb to space</title>
+<meta name="description" content="Private demo — +1 Height Climb, a Roblox climbing simulator by FishDev.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='4' y='4' width='92' height='92' rx='24' fill='%232FA84F'/%3E%3Ctext x='50' y='70' font-family='Arial Black,Arial' font-size='52' font-weight='900' fill='%23fff' text-anchor='middle'%3E%2B1%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400..700&family=Nunito:ital,wght@0,400..900;1,400..700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   +1 HEIGHT CLIMB — the page climbs: grass → sky → space.
+   Fredoka + Nunito (pairing unique to this site per house rule).
+   ============================================================ */
+:root{
+  --ribbon-h:38px;
+  --ink:#123018;
+  --white:#FFFFFF;
+  --grass:#63C74D;--grass-deep:#2FA84F;
+  --sky:#7EC8F2;--sky-deep:#3D9BE9;
+  --dusk:#7A6CE0;
+  --space:#141433;--space-deep:#0B0B22;
+  --sun:#FFD93D;--coin:#FFB93D;
+  --card:#FFFFFF;
+  --disp:'Fredoka',sans-serif;
+  --body:'Nunito',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);color:var(--ink);
+  padding-top:var(--ribbon-h);line-height:1.6;font-size:16.5px;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  /* the climb: ground → sky → dusk → space */
+  background:linear-gradient(to bottom,
+    var(--grass) 0%,var(--grass) 4%,
+    var(--sky) 14%,var(--sky-deep) 46%,
+    var(--dusk) 66%,
+    var(--space) 84%,var(--space-deep) 100%);
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+
+/* ===== demo ribbon ===== */
+.ribbon{
+  position:fixed;top:0;left:0;right:0;height:var(--ribbon-h);z-index:60;
+  background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;gap:.6em;
+  font-size:.78rem;letter-spacing:.02em;font-family:var(--body);
+}
+.ribbon strong{font-weight:900;letter-spacing:.08em;color:var(--sun)}
+.ribbon a{
+  color:var(--ink);background:var(--sun);text-decoration:none;font-weight:900;
+  padding:3px 12px;border-radius:99px;white-space:nowrap;transition:transform .15s ease;
+}
+.ribbon a:hover{transform:translateY(-1px)}
+@media(max-width:520px){.ribbon{font-size:.7rem}.ribbon .rb-hide{display:none}}
+
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+/* ===== altitude markers ===== */
+.alt{
+  font-family:var(--disp);font-weight:600;font-size:.8rem;letter-spacing:.22em;
+  display:flex;align-items:center;gap:12px;margin-bottom:18px;opacity:.85;
+}
+.alt::after{content:'';height:2px;flex:1;border-radius:2px;background:currentColor;opacity:.35}
+
+/* ===== hero (ground level) ===== */
+.hero{padding:64px 0 90px;position:relative;overflow:hidden}
+.cloud{position:absolute;background:#fff;border-radius:99px;opacity:.85}
+.cloud::before,.cloud::after{content:'';position:absolute;background:#fff;border-radius:50%}
+.c1{width:130px;height:40px;top:40px;right:8%}
+.c1::before{width:56px;height:56px;top:-26px;left:22px}
+.c1::after{width:40px;height:40px;top:-16px;left:66px}
+.c2{width:90px;height:30px;top:130px;left:5%;opacity:.7}
+.c2::before{width:40px;height:40px;top:-18px;left:16px}
+.c2::after{width:28px;height:28px;top:-10px;left:46px}
+@media(prefers-reduced-motion:no-preference){
+  .c1{animation:drift 38s linear infinite}
+  .c2{animation:drift 52s linear infinite reverse}
+}
+@keyframes drift{from{transform:translateX(-4vw)}to{transform:translateX(4vw)}}
+.hero-inner{position:relative;text-align:center}
+/* logo slot — labelled drop-in until FishDev sends the real one */
+.logo-slot{
+  width:min(320px,80%);margin:0 auto 26px;aspect-ratio:16/7;border-radius:22px;
+  border:3px dashed rgba(18,48,24,.4);display:flex;align-items:center;justify-content:center;
+  font-family:var(--disp);font-weight:600;font-size:.78rem;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(18,48,24,.65);background:rgba(255,255,255,.35);
+}
+h1{
+  font-family:var(--disp);font-weight:700;line-height:.95;letter-spacing:-.01em;
+  font-size:clamp(2.8rem,9vw,5rem);color:var(--white);
+  text-shadow:0 4px 0 rgba(18,48,24,.25);
+}
+h1 .plus{color:var(--sun)}
+.tagline{
+  font-family:var(--disp);font-weight:600;font-size:clamp(1.05rem,3.4vw,1.4rem);
+  color:var(--white);max-width:34em;margin:16px auto 0;text-shadow:0 2px 0 rgba(18,48,24,.18);
+}
+.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.btn{
+  font-family:var(--disp);font-weight:700;font-size:1.02rem;text-decoration:none;
+  padding:14px 30px;border-radius:99px;display:inline-block;border:0;cursor:pointer;
+  transition:transform .15s ease,box-shadow .15s ease;
+}
+.btn-play{
+  background:var(--sun);color:var(--ink);box-shadow:0 5px 0 rgba(18,48,24,.35);
+}
+.btn-play:hover{transform:translateY(-2px);box-shadow:0 7px 0 rgba(18,48,24,.35)}
+.btn-ghost{background:rgba(255,255,255,.25);color:#fff;box-shadow:0 4px 0 rgba(18,48,24,.2)}
+.btn-ghost:hover{transform:translateY(-2px)}
+/* inert-control note, house register: state what works, promise nothing */
+.play-note{
+  font-family:var(--disp);font-weight:600;font-size:.72rem;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(255,255,255,.9);margin-top:14px;
+}
+
+/* ===== section shells ===== */
+.sec{padding:72px 0}
+.sec-title{
+  font-family:var(--disp);font-weight:700;font-size:clamp(1.7rem,5vw,2.5rem);
+  line-height:1.05;color:var(--white);text-shadow:0 3px 0 rgba(18,48,24,.2);
+}
+.sec-lede{color:rgba(255,255,255,.95);max-width:40em;margin-top:12px;font-weight:600}
+
+/* ===== about ===== */
+.about-cards{display:grid;gap:16px;margin-top:34px;grid-template-columns:1fr}
+@media(min-width:760px){.about-cards{grid-template-columns:1fr 1fr}}
+.acard{
+  background:var(--card);border-radius:20px;padding:26px 24px;
+  box-shadow:0 6px 0 rgba(18,48,24,.18);
+}
+.acard h3{font-family:var(--disp);font-weight:700;font-size:1.3rem;margin-bottom:8px}
+.acard p{color:#3c5a44;font-weight:600}
+.rooms-chip{
+  display:inline-block;font-family:var(--disp);font-weight:700;font-size:.86rem;
+  background:var(--grass-deep);color:#fff;border-radius:99px;padding:6px 16px;margin-top:14px;
+}
+
+/* ===== features ===== */
+.feat-grid{display:grid;gap:14px;margin-top:34px;grid-template-columns:1fr}
+@media(min-width:620px){.feat-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:960px){.feat-grid{grid-template-columns:1fr 1fr 1fr 1fr}}
+.feat{
+  background:var(--card);border-radius:18px;padding:20px 18px;
+  box-shadow:0 5px 0 rgba(18,48,24,.22);
+  transition:transform .15s ease;
+}
+.feat:hover{transform:translateY(-3px)}
+.feat .tag{
+  display:inline-block;font-family:var(--disp);font-weight:700;font-size:.72rem;
+  letter-spacing:.1em;text-transform:uppercase;color:#fff;border-radius:8px;
+  padding:3px 10px;margin-bottom:10px;
+}
+.feat h3{font-family:var(--disp);font-weight:700;font-size:1.06rem;line-height:1.2;margin-bottom:6px}
+.feat p{color:#3c5a44;font-size:.9rem;font-weight:600}
+.t-grow{background:var(--grass-deep)} .t-rebirth{background:var(--dusk)}
+.t-tramp{background:var(--sky-deep)} .t-wins{background:var(--coin);color:var(--ink)}
+.t-cosm{background:#E05FA9} .t-pass{background:#E0563D}
+.t-daily{background:#3DBDB0} .t-boost{background:#8A6CE0}
+.ducks{
+  margin-top:26px;background:rgba(255,255,255,.22);border:2px dashed rgba(255,255,255,.55);
+  border-radius:18px;padding:18px 22px;color:#fff;font-weight:700;font-family:var(--disp);
+}
+
+/* ===== codes (the magnet) ===== */
+.codes-grid{display:grid;gap:16px;margin-top:34px;grid-template-columns:1fr}
+@media(min-width:760px){.codes-grid{grid-template-columns:1fr 1fr 1fr}}
+.code-card{
+  background:var(--card);border-radius:20px;padding:24px 22px;text-align:center;
+  box-shadow:0 6px 0 rgba(11,11,34,.45);
+}
+.code-btn{
+  font-family:var(--disp);font-weight:700;font-size:1.5rem;letter-spacing:.06em;
+  background:var(--space);color:var(--sun);border:0;border-radius:14px;cursor:pointer;
+  padding:14px 26px;width:100%;transition:transform .12s ease,background .12s ease;
+}
+.code-btn:hover{transform:translateY(-2px)}
+.code-btn.copied{background:var(--grass-deep);color:#fff}
+.code-reward{font-weight:800;color:#3c5a44;margin-top:12px}
+.code-hint{
+  font-family:var(--disp);font-weight:600;font-size:.72rem;letter-spacing:.12em;
+  text-transform:uppercase;color:#8a8aa8;margin-top:8px;
+}
+.codes-note{color:rgba(255,255,255,.9);font-weight:700;margin-top:22px;font-family:var(--disp)}
+
+/* ===== coming soon (space) ===== */
+.soon{
+  background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.18);border-radius:22px;
+  padding:30px 26px;margin-top:34px;color:#fff;position:relative;overflow:hidden;
+}
+.soon h3{font-family:var(--disp);font-weight:700;font-size:1.5rem;margin-bottom:8px}
+.soon p{font-weight:700;color:rgba(255,255,255,.85)}
+.star{position:absolute;background:#fff;border-radius:50%;opacity:.8}
+@media(prefers-reduced-motion:no-preference){.star{animation:tw 2.6s ease-in-out infinite}}
+@keyframes tw{0%,100%{opacity:.25}50%{opacity:.95}}
+
+/* ===== links / contact slots ===== */
+.slots{display:grid;gap:14px;margin-top:34px;grid-template-columns:1fr}
+@media(min-width:760px){.slots{grid-template-columns:1fr 1fr 1fr}}
+.slot{
+  border:3px dashed rgba(255,255,255,.4);border-radius:18px;padding:22px 18px;text-align:center;
+  font-family:var(--disp);font-weight:600;font-size:.76rem;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(255,255,255,.75);
+}
+
+/* ===== footer ===== */
+footer{padding:46px 0 60px;color:rgba(255,255,255,.75)}
+footer p{font-size:.82rem;max-width:56em;font-weight:600}
+footer .legal{margin-top:10px;font-size:.72rem;line-height:1.7;color:rgba(255,255,255,.55)}
+footer a{color:rgba(255,255,255,.85)}
+</style>
+</head>
+<body>
+
+<!-- DEMO RIBBON -->
+<div class="ribbon" role="note">
+  <span><strong>DEMO</strong> made by Zach for FishDev. <span class="rb-hide">Want it live?</span></span>
+  <a href="https://wa.me/447543455889?text=Hi%20Zach%2C%20saw%20the%20Height%20Climb%20demo" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<!-- HERO — ground level -->
+<header class="hero">
+  <div class="cloud c1"></div><div class="cloud c2"></div>
+  <div class="wrap hero-inner">
+    <!-- DROP-IN: FishDev's game logo replaces this slot -->
+    <div class="logo-slot">Game logo — coming from FishDev</div>
+    <h1><span class="plus">+1</span> Height Climb</h1>
+    <!-- tagline: client's copy, verbatim -->
+    <p class="tagline">Walk to grow your legs — climb 50 rooms, rebirth, and unlock trails, legs &amp; trampolines!</p>
+    <div class="hero-ctas">
+      <!-- DROP-IN: his Roblox game link activates this -->
+      <button class="btn btn-play" type="button" disabled>Play on Roblox</button>
+      <a class="btn btn-ghost" href="#codes">Get the codes</a>
+    </div>
+    <p class="play-note">Game link isn’t wired yet — it goes live when FishDev sends it</p>
+  </div>
+</header>
+
+<!-- ABOUT — low sky -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <p class="alt" style="color:#fff">ALTITUDE 100m — THE GAME</p>
+    <h2 class="sec-title">The more you walk, the taller you grow.</h2>
+    <div class="about-cards">
+      <div class="acard">
+        <h3>Grow every step</h3>
+        <p>Walking grows your legs — and your height. Keep moving, keep growing, keep climbing.</p>
+      </div>
+      <div class="acard">
+        <h3>50 themed rooms</h3>
+        <p>Climb from Grassland all the way to Space, one room at a time.</p>
+        <span class="rooms-chip">Grassland → Space</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES — mid sky. All feature copy: client's list, verbatim substance -->
+<section class="sec" id="features">
+  <div class="wrap">
+    <p class="alt" style="color:#fff">ALTITUDE 1,000m — WHAT'S INSIDE</p>
+    <h2 class="sec-title">Stacked with stuff to unlock.</h2>
+    <div class="feat-grid">
+      <div class="feat"><span class="tag t-grow">Grow</span><h3>Walk-to-grow legs &amp; height</h3><p>Your legs are the engine — walk to get taller.</p></div>
+      <div class="feat"><span class="tag t-rebirth">Rebirth</span><h3>10 Rebirth tiers</h3><p>Permanent Height &amp; Speed multipliers, ten times over.</p></div>
+      <div class="feat"><span class="tag t-tramp">Bounce</span><h3>Trampolines</h3><p>VIP, Hacker and Ruby tiers to launch you higher.</p></div>
+      <div class="feat"><span class="tag t-wins">Wins</span><h3>Wins + Milestones</h3><p>Stack wins and smash milestones as you climb.</p></div>
+      <div class="feat"><span class="tag t-cosm">Style</span><h3>Trails &amp; Legs cosmetics</h3><p>Including Rainbow — climb with style.</p></div>
+      <div class="feat"><span class="tag t-pass">Passes</span><h3>Gamepasses</h3><p>Auto Rebirth, 2x Height, 2x Speed, 2x Wins and more.</p></div>
+      <div class="feat"><span class="tag t-daily">Daily</span><h3>Daily Rewards</h3><p>Come back every day, get paid every day.</p></div>
+      <div class="feat"><span class="tag t-boost">Squad</span><h3>Friend Boost</h3><p>Climb with friends, grow faster together.</p></div>
+    </div>
+    <!-- his "fun extra", verbatim substance -->
+    <p class="ducks">Secret: rubber ducks are hidden through the map. Find them.</p>
+  </div>
+</section>
+
+<!-- CODES — high sky / the traffic magnet. Codes + rewards: client's list, verbatim -->
+<section class="sec" id="codes">
+  <div class="wrap">
+    <p class="alt" style="color:#fff">ALTITUDE 10,000m — FREE STUFF</p>
+    <h2 class="sec-title">Codes — tap to copy.</h2>
+    <p class="sec-lede">Redeem them in the in-game Codes menu.</p>
+    <div class="codes-grid">
+      <div class="code-card">
+        <button class="code-btn" type="button" data-code="RELEASE">RELEASE</button>
+        <p class="code-reward">Free Red Legs</p>
+        <p class="code-hint">Tap the code to copy</p>
+      </div>
+      <div class="code-card">
+        <button class="code-btn" type="button" data-code="+1">+1</button>
+        <p class="code-reward">500 Free Wins</p>
+        <p class="code-hint">Tap the code to copy</p>
+      </div>
+      <div class="code-card">
+        <button class="code-btn" type="button" data-code="DUCK">DUCK</button>
+        <p class="code-reward">1000 Free Height</p>
+        <p class="code-hint">Tap the code to copy</p>
+      </div>
+    </div>
+    <p class="codes-note">New codes drop with updates — check back.</p>
+  </div>
+</section>
+
+<!-- COMING SOON — space -->
+<section class="sec" id="soon">
+  <div class="wrap">
+    <p class="alt" style="color:rgba(255,255,255,.85)">ALTITUDE ∞ — SPACE</p>
+    <h2 class="sec-title">World 2 is coming.</h2>
+    <div class="soon">
+      <span class="star" style="width:3px;height:3px;top:18px;left:8%"></span>
+      <span class="star" style="width:2px;height:2px;top:44px;left:22%;animation-delay:.6s"></span>
+      <span class="star" style="width:3px;height:3px;top:26px;right:14%;animation-delay:1.1s"></span>
+      <span class="star" style="width:2px;height:2px;bottom:20px;right:30%;animation-delay:.3s"></span>
+      <span class="star" style="width:2px;height:2px;bottom:32px;left:40%;animation-delay:1.6s"></span>
+      <!-- his tease, verbatim -->
+      <h3>Leaks suggest it’s a KEYBOARD world.</h3>
+      <p>That’s all we’re saying. Keep climbing.</p>
+    </div>
+
+    <!-- DROP-IN links/contact: all pending from FishDev -->
+    <div class="slots">
+      <div class="slot">Roblox game link — coming from FishDev</div>
+      <div class="slot">TikTok — coming from FishDev</div>
+      <div class="slot">Contact — coming from FishDev</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <p>+1 Height Climb — a Roblox climbing simulator by FishDev.</p>
+    <p class="legal">
+      Built by Zach as a private demonstration for FishDev — this is not the game’s official site.
+      All game details, features and codes are FishDev’s own descriptions of his game, as supplied by him (2 Aug 2026).
+      Not affiliated with or endorsed by Roblox Corporation ·
+      <a href="https://wa.me/447543455889" target="_blank" rel="noopener">WhatsApp Zach</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+/* tap-to-copy codes — the traffic magnet has to feel instant */
+document.querySelectorAll('.code-btn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var code=b.dataset.code,done=function(){
+      var t=b.textContent;b.textContent='COPIED!';b.classList.add('copied');
+      setTimeout(function(){b.textContent=t;b.classList.remove('copied');},1200);
+    };
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(code).then(done).catch(done);
+    }else{done();}
+  });
+});
+</script>
+</body>
+</html>
