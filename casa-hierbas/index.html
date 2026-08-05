@@ -172,10 +172,14 @@ h1 em{font-style:italic;color:var(--brass)}
 .range-list{list-style:none;margin-top:38px;display:grid;gap:2px;max-width:14em}
 .range-list li{
   font-family:var(--disp);font-weight:300;font-size:clamp(1.9rem,6.2vw,3.4rem);line-height:1.16;
-  display:flex;align-items:baseline;gap:16px;transition:color .3s ease,transform .3s ease;
+  display:flex;align-items:baseline;gap:16px;
 }
+/* reveal for the list items: sits at li-level specificity so nothing outranks it */
+.range-list li.rv{opacity:0;transform:translateX(-28px);
+  transition:opacity .8s cubic-bezier(.16,.84,.28,1),transform .9s cubic-bezier(.16,.84,.28,1)}
+.range-list li.rv.in{opacity:1;transform:none}
+.range-list li.rv .n{transition:opacity .6s ease .2s}
 .range-list li .n{font-family:var(--body);font-size:.6rem;letter-spacing:.2em;color:var(--brass);opacity:.75;min-width:2.4em}
-.range-list li:hover{color:var(--brass);transform:translateX(8px)}
 .range-src{margin-top:34px;font-size:.8rem;color:var(--cream-dim);max-width:32em}
 
 /* ===== gallery ===== */
@@ -419,7 +423,7 @@ footer a{color:rgba(247,241,230,.7)}
       e.target.style.transitionDelay=(Math.min(Math.max(0,sibs.indexOf(e.target)),7)*95)+'ms';
       e.target.classList.add('in');io.unobserve(e.target);
     });
-  },{rootMargin:'0px 0px 30% 0px',threshold:0.01});
+  },{rootMargin:'0px 0px 10% 0px',threshold:0.01});
   items.forEach(function(el){io.observe(el)});
 })();
 
