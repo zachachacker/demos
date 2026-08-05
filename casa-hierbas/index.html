@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="es" data-lang="es">
+<head>
+<!-- LA CASA DE LAS HIERBAS — spec demo, Fuengirola. Customer-facing only.
+     HARD RULES (prospects/la-casa-de-las-hierbas.md):
+       · NO address printed — Google and Instagram disagree; labelled slot until confirmed.
+       · Their real photographs only. Pull came back empty (IG + Maps, 4 Aug) — the fold is
+         built to receive a real photo and carries a labelled slot until one exists.
+         Never line art standing in for a photograph (la-bodeguita), never stock.
+       · 5,0 only ever with "7 reseñas".
+       · Listing facts are RELAYED, not fleet-verified — every one carries its source.
+     Ornament here is abstract atmosphere (light, colour, motion), never a depiction of
+     their products. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>La Casa de las Hierbas — Fuengirola</title>
+<meta name="description" content="Demo privada — La Casa de las Hierbas, herbolario y productos naturales, Fuengirola.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231F3D2B'/%3E%3Cpath d='M50 78C50 52 62 32 80 24 78 50 68 70 50 78Z' fill='%23C9A227'/%3E%3Cpath d='M50 78C50 56 40 40 24 33 26 55 34 71 50 78Z' fill='%238FB08A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..600&family=Jost:ital,wght@0,300..700;1,300..500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   LA CASA DE LAS HIERBAS — apothecary warmth, Moroccan light.
+   Cormorant Garamond + Jost (pairing unique to this site).
+   Motion is the brief ("fancy animations") — all of it guarded
+   by prefers-reduced-motion, all of it CSS/observer, no libraries.
+   ============================================================ */
+:root{
+  --ribbon-h:38px;
+  --ink:#241C14;
+  --sand:#F6EFE4;
+  --sand-2:#EFE3D2;
+  --clay:#C4652F;
+  --clay-deep:#9B4A20;
+  --herb:#1F3D2B;
+  --herb-soft:#8FB08A;
+  --brass:#C9A227;
+  --paper:#FFFBF4;
+  --disp:'Cormorant Garamond',serif;
+  --body:'Jost',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);background:var(--sand);color:var(--ink);
+  padding-top:var(--ribbon-h);line-height:1.65;font-size:16.5px;font-weight:300;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+/* language toggle */
+[data-lang="es"] .l-en,[data-lang="en"] .l-es{display:none}
+
+/* ===== demo ribbon ===== */
+.ribbon{
+  position:fixed;top:0;left:0;right:0;height:var(--ribbon-h);z-index:80;
+  background:var(--herb);color:var(--sand);display:flex;align-items:center;justify-content:center;
+  gap:.6em;font-size:.76rem;letter-spacing:.02em;
+}
+.ribbon strong{color:var(--brass);font-weight:600;letter-spacing:.1em}
+.ribbon a{
+  color:var(--herb);background:var(--brass);text-decoration:none;font-weight:600;
+  padding:3px 12px;border-radius:99px;white-space:nowrap;transition:transform .15s ease;
+}
+.ribbon a:hover{transform:translateY(-1px)}
+@media(max-width:560px){.ribbon{font-size:.68rem}.ribbon .rb-hide{display:none}}
+
+/* ===== header ===== */
+header{
+  position:sticky;top:var(--ribbon-h);z-index:70;
+  background:color-mix(in srgb,var(--sand) 90%,transparent);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(36,28,20,.1);
+}
+.hd{max-width:1080px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.wordmark{font-family:var(--disp);font-weight:600;font-size:1.06rem;letter-spacing:.06em;text-decoration:none;white-space:nowrap}
+.wordmark span{color:var(--clay)}
+nav{display:flex;align-items:center;gap:20px;font-size:.85rem}
+nav a{text-decoration:none;color:rgba(36,28,20,.7);transition:color .15s ease;white-space:nowrap}
+nav a:hover{color:var(--clay)}
+.lang{
+  border:1px solid rgba(36,28,20,.25);background:none;border-radius:99px;cursor:pointer;
+  font-family:var(--body);font-size:.72rem;letter-spacing:.14em;padding:5px 12px;color:var(--ink);
+  transition:background .15s ease,color .15s ease;
+}
+.lang:hover{background:var(--herb);color:var(--sand);border-color:var(--herb)}
+@media(max-width:720px){nav a:not(.lang){display:none}}
+
+/* ===== atmosphere: slow drifting light. Abstract — never a depiction of product. ===== */
+.aura{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5}
+.o1{width:52vw;height:52vw;background:radial-gradient(circle,rgba(143,176,138,.75),transparent 70%);top:-10vw;right:-12vw}
+.o2{width:46vw;height:46vw;background:radial-gradient(circle,rgba(196,101,47,.5),transparent 70%);top:52vh;left:-14vw}
+.o3{width:38vw;height:38vw;background:radial-gradient(circle,rgba(201,162,39,.45),transparent 70%);bottom:-8vw;right:6vw}
+@media(prefers-reduced-motion:no-preference){
+  .o1{animation:float1 34s ease-in-out infinite alternate}
+  .o2{animation:float2 44s ease-in-out infinite alternate}
+  .o3{animation:float1 38s ease-in-out infinite alternate-reverse}
+}
+@keyframes float1{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-4vw,5vh,0) scale(1.12)}}
+@keyframes float2{from{transform:translate3d(0,0,0) scale(1.05)}to{transform:translate3d(5vw,-4vh,0) scale(.95)}}
+
+/* ===== scroll reveal ===== */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.3,1),transform .9s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ===== hero ===== */
+.hero{padding:76px 0 90px;position:relative}
+.eyebrow{
+  font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--clay-deep);
+  display:flex;align-items:center;gap:12px;
+}
+.eyebrow::after{content:'';height:1px;width:64px;background:currentColor;opacity:.45}
+h1{
+  font-family:var(--disp);font-weight:400;font-size:clamp(2.9rem,9vw,5.6rem);line-height:.98;
+  letter-spacing:-.005em;margin:20px 0 0;max-width:11em;
+}
+h1 em{font-style:italic;color:var(--clay)}
+.concept{
+  font-family:var(--disp);font-style:italic;font-size:clamp(1.2rem,3.6vw,1.7rem);
+  color:var(--herb);margin-top:22px;max-width:24em;line-height:1.35;
+}
+.concept-src{font-size:.74rem;letter-spacing:.1em;color:rgba(36,28,20,.5);margin-top:10px;text-transform:uppercase}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.btn{
+  font-family:var(--body);font-weight:500;font-size:.92rem;letter-spacing:.04em;text-decoration:none;
+  padding:14px 30px;border-radius:99px;display:inline-block;transition:transform .18s ease,background .18s ease,color .18s ease;
+}
+.btn-solid{background:var(--herb);color:var(--sand)}
+.btn-solid:hover{background:var(--clay);transform:translateY(-2px)}
+.btn-line{border:1px solid rgba(36,28,20,.3);color:var(--ink)}
+.btn-line:hover{border-color:var(--herb);background:var(--paper);transform:translateY(-2px)}
+
+/* photo slot — built to receive their real photograph */
+.photo-slot{
+  margin-top:52px;border-radius:20px;border:1px dashed rgba(36,28,20,.28);
+  background:linear-gradient(135deg,rgba(255,251,244,.7),rgba(239,227,210,.55));
+  aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;text-align:center;padding:26px;
+}
+.photo-slot .ps-t{font-family:var(--disp);font-size:1.15rem;color:var(--herb)}
+.photo-slot .ps-s{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(36,28,20,.5)}
+
+/* ===== gallery band — receives Zachary's own storefront/interior photographs ===== */
+.gal{display:grid;gap:12px;grid-template-columns:repeat(2,1fr);margin-top:44px}
+@media(min-width:820px){.gal{grid-template-columns:repeat(4,1fr)}
+  .gal .g1{grid-column:span 2;grid-row:span 2}}
+.gslot{
+  border:1px dashed rgba(36,28,20,.26);border-radius:14px;aspect-ratio:1;
+  background:linear-gradient(150deg,rgba(255,251,244,.75),rgba(239,227,210,.5));
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;
+  font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(36,28,20,.45);
+}
+.gal .g1{aspect-ratio:auto;min-height:200px}
+.gal img{width:100%;height:100%;object-fit:cover;border-radius:14px;display:block}
+.gal figure{margin:0;overflow:hidden;border-radius:14px}
+@media(prefers-reduced-motion:no-preference){
+  .gal figure img{transition:transform .8s cubic-bezier(.2,.7,.3,1)}
+  .gal figure:hover img{transform:scale(1.05)}
+}
+
+/* ===== sections ===== */
+.sec{padding:84px 0;position:relative}
+.sec-head{max-width:34em}
+.sec-title{font-family:var(--disp);font-weight:400;font-size:clamp(2rem,5.4vw,3.1rem);line-height:1.05}
+.sec-lede{color:rgba(36,28,20,.72);margin-top:14px}
+
+/* ===== range (from their Google review, cited) ===== */
+.range{display:grid;gap:14px;margin-top:44px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:760px){.range{grid-template-columns:repeat(3,1fr)}}
+.rcard{
+  background:var(--paper);border:1px solid rgba(36,28,20,.09);border-radius:16px;
+  padding:26px 22px 28px;position:relative;overflow:hidden;
+  transition:transform .35s cubic-bezier(.2,.7,.3,1),box-shadow .35s ease;
+}
+.rcard:hover{transform:translateY(-5px);box-shadow:0 18px 40px -24px rgba(36,28,20,.5)}
+.rcard::after{
+  content:'';position:absolute;inset:auto -30% -60% -30%;height:120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(143,176,138,.4),transparent 70%);
+  opacity:0;transition:opacity .4s ease;
+}
+.rcard:hover::after{opacity:1}
+.rcard .gl{width:26px;height:26px;margin-bottom:14px;color:var(--clay)}
+.rcard h3{font-family:var(--disp);font-weight:500;font-size:1.4rem;line-height:1.1}
+.range-src{margin-top:24px;font-size:.78rem;color:rgba(36,28,20,.55);max-width:40em}
+
+/* ===== review ===== */
+.review{background:var(--herb);color:var(--sand);border-radius:24px;padding:52px 34px;margin-top:0;position:relative;overflow:hidden}
+.review::before{
+  content:'';position:absolute;width:300px;height:300px;border-radius:50%;top:-120px;right:-90px;
+  background:radial-gradient(circle,rgba(201,162,39,.35),transparent 70%);
+}
+.stars{display:flex;align-items:center;gap:10px;font-size:.82rem;letter-spacing:.12em;color:var(--brass);position:relative}
+.stars b{font-weight:500}
+.rquote{
+  font-family:var(--disp);font-style:italic;font-weight:300;
+  font-size:clamp(1.4rem,4.2vw,2.15rem);line-height:1.32;margin-top:20px;position:relative;max-width:22em;
+}
+.rattr{margin-top:18px;font-size:.78rem;letter-spacing:.1em;color:rgba(246,239,228,.62);text-transform:uppercase;position:relative}
+
+/* ===== visit ===== */
+.visit-grid{display:grid;gap:18px;margin-top:44px;grid-template-columns:1fr}
+@media(min-width:820px){.visit-grid{grid-template-columns:1fr 1fr}}
+.vcard{background:var(--paper);border:1px solid rgba(36,28,20,.09);border-radius:18px;padding:30px 26px 32px}
+.vcard h3{font-family:var(--disp);font-weight:500;font-size:1.5rem;margin-bottom:16px}
+.hours{display:grid;gap:10px}
+.hrow{display:flex;justify-content:space-between;gap:16px;font-size:.95rem;padding-bottom:9px;border-bottom:1px solid rgba(36,28,20,.08)}
+.hrow .k{color:rgba(36,28,20,.6)}
+.hrow .v{font-weight:400}
+.note{font-size:.78rem;color:rgba(36,28,20,.55);margin-top:16px}
+.addr-slot{
+  border:1px dashed rgba(36,28,20,.28);border-radius:14px;padding:20px;text-align:center;
+  font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(36,28,20,.55);
+}
+.contact-line{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(36,28,20,.22);
+  border-radius:99px;padding:10px 20px;text-decoration:none;font-size:.9rem;
+  transition:background .15s ease,color .15s ease,border-color .15s ease;
+}
+.pill:hover{background:var(--herb);color:var(--sand);border-color:var(--herb)}
+
+/* ===== footer ===== */
+footer{padding:56px 0 64px;border-top:1px solid rgba(36,28,20,.12);margin-top:40px}
+.fbrand{font-family:var(--disp);font-size:1.3rem;margin-bottom:12px}
+footer p{font-size:.84rem;color:rgba(36,28,20,.65);max-width:56em}
+footer .legal{margin-top:14px;font-size:.72rem;line-height:1.75;color:rgba(36,28,20,.5)}
+footer a{color:rgba(36,28,20,.75)}
+</style>
+</head>
+<body>
+
+<!-- DEMO RIBBON -->
+<div class="ribbon" role="note">
+  <span><strong>DEMO</strong>
+    <span class="l-es">hecha por Zach para La Casa de las Hierbas.</span>
+    <span class="l-en">made by Zach for La Casa de las Hierbas.</span>
+    <span class="rb-hide l-es">¿La quieres?</span><span class="rb-hide l-en">Want it live?</span>
+  </span>
+  <a href="https://wa.me/447543455889?text=Hola%20Zach%2C%20vi%20la%20demo%20de%20mi%20tienda" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<!-- ATMOSPHERE (abstract light only) -->
+<div class="aura" aria-hidden="true">
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="hd">
+    <a class="wordmark" href="#top">La Casa de las <span>Hierbas</span></a>
+    <nav>
+      <a href="#productos"><span class="l-es">Productos</span><span class="l-en">Products</span></a>
+      <a href="#visitanos"><span class="l-es">Visítanos</span><span class="l-en">Visit us</span></a>
+      <button class="lang" id="langBtn" type="button">EN</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow rv"><span class="l-es">Herbolario · Fuengirola</span><span class="l-en">Herbal shop · Fuengirola</span></p>
+    <h1 class="rv"><span class="l-es">La magia natural de <em>Marruecos</em>.</span><span class="l-en">The natural magic of <em>Morocco</em>.</span></h1>
+    <!-- their own Instagram bio, verbatim -->
+    <p class="concept rv">“Aceites, hierbas y aromas para tu bienestar.”</p>
+    <p class="concept-src rv"><span class="l-es">Sus palabras, en su Instagram</span><span class="l-en">Their own words, on their Instagram</span></p>
+    <div class="hero-ctas rv">
+      <a class="btn btn-solid" href="#visitanos"><span class="l-es">Cómo visitarnos</span><span class="l-en">How to visit</span></a>
+      <a class="btn btn-line" href="https://www.instagram.com/laca.sadelashierbas/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+
+    <!-- PHOTO SLOT: their real photograph goes here (their Instagram gallery / Google
+         listing photos / a storefront shot). Automated pull returned nothing 4 Aug. -->
+    <figure class="photo-slot rv">
+      <p class="ps-t"><span class="l-es">Aquí va una foto real de la tienda</span><span class="l-en">A real photo of the shop goes here</span></p>
+      <p class="ps-s"><span class="l-es">Espacio reservado — sus propias fotos</span><span class="l-en">Reserved space — their own photographs</span></p>
+    </figure>
+  </div>
+</section>
+
+<!-- RANGE — every item named by their own Google review, cited below -->
+<section class="sec" id="productos">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title rv"><span class="l-es">Lo que encontrarás dentro.</span><span class="l-en">What you'll find inside.</span></h2>
+      <p class="sec-lede rv"><span class="l-es">Productos naturales traídos de Marruecos y de aquí cerca.</span><span class="l-en">Natural products from Morocco and from close to home.</span></p>
+    </div>
+    <div class="range">
+      <article class="rcard rv"><svg class="gl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21c0-7 3-12 9-14-1 8-4 12-9 14Z"/><path d="M12 21c0-6-3-10-8-12 1 7 3 10 8 12Z"/></svg>
+        <h3><span class="l-es">Hierbas ecológicas</span><span class="l-en">Organic herbs</span></h3></article>
+      <article class="rcard rv"><svg class="gl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/><path d="M17 10h2a2 2 0 0 1 0 5h-2"/><path d="M8 3c0 1.5-1 1.5-1 3M12 3c0 1.5-1 1.5-1 3"/></svg>
+        <h3><span class="l-es">Tés e infusiones</span><span class="l-en">Tea &amp; infusions</span></h3></article>
+      <article class="rcard rv"><svg class="gl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 3h8l-1 4H9L8 3Z"/><path d="M9 7h6l1.5 12a2 2 0 0 1-2 2h-5a2 2 0 0 1-2-2L9 7Z"/></svg>
+        <h3><span class="l-es">Especias</span><span class="l-en">Spices</span></h3></article>
+      <article class="rcard rv"><svg class="gl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 3h4v3l3 4v9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-9l3-4V3Z"/><path d="M7 14h10"/></svg>
+        <h3><span class="l-es">Tahini</span><span class="l-en">Tahini</span></h3></article>
+      <article class="rcard rv"><svg class="gl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 8h9a4 4 0 0 1 0 8H6V8Z"/><path d="M6 20h11"/><path d="M9 3c0 1.5-1 1.5-1 3M13 3c0 1.5-1 1.5-1 3"/></svg>
+        <h3><span class="l-es">Café</span><span class="l-en">Coffee</span></h3></article>
+      <article class="rcard rv"><svg class="gl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 3h6v3H9zM8 6h8l1 13a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2L8 6Z"/><path d="M12 11v6"/></svg>
+        <h3><span class="l-es">Miel</span><span class="l-en">Honey</span></h3></article>
+    </div>
+    <p class="range-src rv">
+      <span class="l-es">Los productos que nombra una reseña de Google de la tienda. La gama completa, en el mostrador.</span>
+      <span class="l-en">The products named in a Google review of the shop. The full range is in store.</span>
+    </p>
+  </div>
+</section>
+
+<!-- GALLERY — DROP-IN: Zachary's own photographs of the shop (4 Aug). Each slot is one
+     swap: replace the <div class="gslot"> with
+     <figure><img src="assets/<file>" alt="<what it shows>" loading="lazy"></figure>
+     Order: g1 = the strongest wide shot (storefront or interior), then details. -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="gal">
+      <div class="gslot g1 rv"><span class="l-es">Foto principal — tienda</span><span class="l-en">Main photo — the shop</span></div>
+      <div class="gslot rv"><span class="l-es">Detalle</span><span class="l-en">Detail</span></div>
+      <div class="gslot rv"><span class="l-es">Detalle</span><span class="l-en">Detail</span></div>
+      <div class="gslot rv"><span class="l-es">Detalle</span><span class="l-en">Detail</span></div>
+      <div class="gslot rv"><span class="l-es">Detalle</span><span class="l-en">Detail</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEW — verbatim, cited, count always beside the rating -->
+<section class="sec">
+  <div class="wrap">
+    <div class="review rv">
+      <p class="stars">★★★★★ <b>5,0</b> · <span class="l-es">7 reseñas en Google</span><span class="l-en">7 Google reviews</span></p>
+      <p class="rquote">“Great place, very friendly staff. Great organic herbs, tea, Tahini, spices, coffee. Honey. Well done 👍”</p>
+      <p class="rattr"><span class="l-es">Reseña de Google · agosto 2026</span><span class="l-en">Google review · August 2026</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="sec" id="visitanos">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title rv"><span class="l-es">Visítanos.</span><span class="l-en">Come and see us.</span></h2>
+    </div>
+    <div class="visit-grid">
+      <div class="vcard rv">
+        <h3><span class="l-es">Horario</span><span class="l-en">Opening hours</span></h3>
+        <div class="hours">
+          <p class="hrow"><span class="k"><span class="l-es">Mañanas</span><span class="l-en">Mornings</span></span><span class="v"><span class="l-es">hasta las 15:00</span><span class="l-en">until 15:00</span></span></p>
+          <p class="hrow"><span class="k"><span class="l-es">Tardes</span><span class="l-en">Afternoons</span></span><span class="v"><span class="l-es">desde las 17:00</span><span class="l-en">from 17:00</span></span></p>
+        </div>
+        <p class="note">
+          <span class="l-es">Según su ficha de Google (ago 2026), a confirmar por la tienda.</span>
+          <span class="l-en">Per their Google listing (Aug 2026), to be confirmed by the shop.</span>
+        </p>
+      </div>
+      <div class="vcard rv">
+        <h3><span class="l-es">Dónde estamos</span><span class="l-en">Where we are</span></h3>
+        <!-- ADDRESS SLOT: Google and Instagram list different addresses — nothing printed
+             until the shop confirms which is current. -->
+        <!-- DROP-IN: storefront photo (helps people find the door) -->
+        <div class="gslot" style="aspect-ratio:16/10;margin-bottom:16px"><span class="l-es">Foto de la fachada</span><span class="l-en">Storefront photo</span></div>
+        <div class="addr-slot">
+          <span class="l-es">Dirección — pendiente de confirmar con la tienda</span>
+          <span class="l-en">Address — to be confirmed with the shop</span>
+        </div>
+        <div class="contact-line">
+          <a class="pill" href="tel:+34632997300">+34 632 99 73 00</a>
+          <a class="pill" href="https://www.instagram.com/laca.sadelashierbas/" target="_blank" rel="noopener">@laca.sadelashierbas</a>
+        </div>
+        <p class="note">
+          <span class="l-es">Teléfono según su Instagram.</span>
+          <span class="l-en">Phone per their Instagram.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="fbrand">La Casa de las Hierbas</p>
+    <p><span class="l-es">Herbolario y productos naturales · Fuengirola, Málaga</span><span class="l-en">Herbal shop &amp; natural products · Fuengirola, Málaga</span></p>
+    <p class="legal">
+      <span class="l-es">Demostración privada hecha por Zach — esta no es la web oficial de la tienda. Valoración, horario y datos según su ficha de Google e Instagram (ago 2026), a confirmar por la tienda. La cita es una reseña pública de Google. Las ilustraciones son decorativas; las fotografías de la tienda irán en el espacio reservado ·</span>
+      <span class="l-en">Private demonstration built by Zach — this is not the shop's official site. Rating, hours and details per their Google listing and Instagram (Aug 2026), to be confirmed by the shop. The quote is a public Google review. Illustrations are decorative; the shop's own photographs go in the reserved space ·</span>
+      <a href="https://wa.me/447543455889" target="_blank" rel="noopener">WhatsApp Zach</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+/* language toggle — per-site key */
+(function(){
+  var K='lch-lang',h=document.documentElement,b=document.getElementById('langBtn');
+  var saved=localStorage.getItem(K); if(saved)h.setAttribute('data-lang',saved);
+  function sync(){var es=h.getAttribute('data-lang')==='es';b.textContent=es?'EN':'ES';h.lang=es?'es':'en';}
+  b.addEventListener('click',function(){
+    var next=h.getAttribute('data-lang')==='es'?'en':'es';
+    h.setAttribute('data-lang',next);localStorage.setItem(K,next);sync();
+  });
+  sync();
+})();
+
+/* scroll reveal — staggered within a group, guarded by reduced-motion */
+(function(){
+  var items=[].slice.call(document.querySelectorAll('.rv'));
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window)){
+    items.forEach(function(el){el.classList.add('in')});return;
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting)return;
+      var sibs=[].slice.call(e.target.parentNode.children).filter(function(n){return n.classList.contains('rv')});
+      var i=Math.max(0,sibs.indexOf(e.target));
+      e.target.style.transitionDelay=(Math.min(i,6)*70)+'ms';
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  },{rootMargin:'0px 0px -12% 0px',threshold:.12});
+  items.forEach(function(el){io.observe(el)});
+})();
+</script>
+</body>
+</html>
