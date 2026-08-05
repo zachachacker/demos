@@ -4,8 +4,8 @@
 <!-- LA CASA DE LAS HIERBAS — spec demo, Fuengirola. Customer-facing only.
      HARD RULES (prospects/la-casa-de-las-hierbas.md):
        · NO address printed — Google and Instagram disagree; labelled slot until confirmed.
-       · Their real photographs only. Pull came back empty (IG + Maps, 4 Aug) — the fold is
-         built to receive a real photo and carries a labelled slot until one exists.
+       · Their real photographs only — SATISFIED: seven photographs shot in person by
+         Zachary at the shop, 4 Aug 2026 (storefront, interiors, product detail).
          Never line art standing in for a photograph (la-bodeguita), never stock.
        · 5,0 only ever with "7 reseñas".
        · Listing facts are RELAYED, not fleet-verified — every one carries its source.
@@ -136,15 +136,13 @@ h1 em{font-style:italic;color:var(--clay)}
 .btn-line{border:1px solid rgba(36,28,20,.3);color:var(--ink)}
 .btn-line:hover{border-color:var(--herb);background:var(--paper);transform:translateY(-2px)}
 
-/* photo slot — built to receive their real photograph */
-.photo-slot{
-  margin-top:52px;border-radius:20px;border:1px dashed rgba(36,28,20,.28);
-  background:linear-gradient(135deg,rgba(255,251,244,.7),rgba(239,227,210,.55));
-  aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:10px;text-align:center;padding:26px;
+/* hero photograph — theirs, shot in person */
+.hero-photo{margin:52px 0 0;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -40px rgba(36,28,20,.8)}
+.hero-photo img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:50% 62%}
+@media(prefers-reduced-motion:no-preference){
+  .hero-photo img{animation:heroDrift 30s ease-in-out infinite alternate}
 }
-.photo-slot .ps-t{font-family:var(--disp);font-size:1.15rem;color:var(--herb)}
-.photo-slot .ps-s{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(36,28,20,.5)}
+@keyframes heroDrift{from{transform:scale(1)}to{transform:scale(1.07)}}
 
 /* ===== gallery band — receives Zachary's own storefront/interior photographs ===== */
 .gal{display:grid;gap:12px;grid-template-columns:repeat(2,1fr);margin-top:44px}
@@ -156,9 +154,10 @@ h1 em{font-style:italic;color:var(--clay)}
   display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;
   font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(36,28,20,.45);
 }
-.gal .g1{aspect-ratio:auto;min-height:200px}
-.gal img{width:100%;height:100%;object-fit:cover;border-radius:14px;display:block}
-.gal figure{margin:0;overflow:hidden;border-radius:14px}
+.gal figure{margin:0;overflow:hidden;border-radius:14px;aspect-ratio:1}
+.gal figure img{width:100%;height:100%;object-fit:cover;display:block}
+.gal .g1{aspect-ratio:1}
+@media(min-width:820px){.gal .g1{aspect-ratio:auto;height:100%}}
 @media(prefers-reduced-motion:no-preference){
   .gal figure img{transition:transform .8s cubic-bezier(.2,.7,.3,1)}
   .gal figure:hover img{transform:scale(1.05)}
@@ -277,11 +276,9 @@ footer a{color:rgba(36,28,20,.75)}
       <a class="btn btn-line" href="https://www.instagram.com/laca.sadelashierbas/" target="_blank" rel="noopener">Instagram</a>
     </div>
 
-    <!-- PHOTO SLOT: their real photograph goes here (their Instagram gallery / Google
-         listing photos / a storefront shot). Automated pull returned nothing 4 Aug. -->
-    <figure class="photo-slot rv">
-      <p class="ps-t"><span class="l-es">Aquí va una foto real de la tienda</span><span class="l-en">A real photo of the shop goes here</span></p>
-      <p class="ps-s"><span class="l-es">Espacio reservado — sus propias fotos</span><span class="l-en">Reserved space — their own photographs</span></p>
+    <!-- Real photograph: the shop's own storefront, shot by Zachary in Fuengirola (4 Aug) -->
+    <figure class="hero-photo rv">
+      <img src="assets/fachada.jpg" alt="La fachada de La Casa de las Hierbas, con su rótulo y la tienda abierta a la calle" fetchpriority="high">
     </figure>
   </div>
 </section>
@@ -321,11 +318,11 @@ footer a{color:rgba(36,28,20,.75)}
 <section class="sec" style="padding-top:0">
   <div class="wrap">
     <div class="gal">
-      <div class="gslot g1 rv"><span class="l-es">Foto principal — tienda</span><span class="l-en">Main photo — the shop</span></div>
-      <div class="gslot rv"><span class="l-es">Detalle</span><span class="l-en">Detail</span></div>
-      <div class="gslot rv"><span class="l-es">Detalle</span><span class="l-en">Detail</span></div>
-      <div class="gslot rv"><span class="l-es">Detalle</span><span class="l-en">Detail</span></div>
-      <div class="gslot rv"><span class="l-es">Detalle</span><span class="l-en">Detail</span></div>
+      <figure class="g1 rv"><img src="assets/pasillo.jpg" alt="Pasillo interior de la tienda, con las estanterías llenas hasta el techo" loading="lazy"></figure>
+      <figure class="rv"><img src="assets/especias.jpg" alt="Montones de especias y semillas a granel en el mostrador" loading="lazy"></figure>
+      <figure class="rv"><img src="assets/tarros.jpg" alt="Pared de tarros y productos naturales de la tienda" loading="lazy"></figure>
+      <figure class="rv"><img src="assets/hierbas.jpg" alt="Cajones de hierbas secas con sus etiquetas" loading="lazy"></figure>
+      <figure class="rv"><img src="assets/granel.jpg" alt="Hierbas a granel en un recipiente grande decorado" loading="lazy"></figure>
     </div>
   </div>
 </section>
@@ -363,8 +360,10 @@ footer a{color:rgba(36,28,20,.75)}
         <h3><span class="l-es">Dónde estamos</span><span class="l-en">Where we are</span></h3>
         <!-- ADDRESS SLOT: Google and Instagram list different addresses — nothing printed
              until the shop confirms which is current. -->
-        <!-- DROP-IN: storefront photo (helps people find the door) -->
-        <div class="gslot" style="aspect-ratio:16/10;margin-bottom:16px"><span class="l-es">Foto de la fachada</span><span class="l-en">Storefront photo</span></div>
+        <!-- Storefront from the street — helps people find the door -->
+        <figure style="margin:0 0 16px;border-radius:14px;overflow:hidden">
+          <img src="assets/calle.jpg" alt="La tienda vista desde la calle, con su rótulo verde" loading="lazy" style="width:100%;aspect-ratio:16/10;object-fit:cover">
+        </figure>
         <div class="addr-slot">
           <span class="l-es">Dirección — pendiente de confirmar con la tienda</span>
           <span class="l-en">Address — to be confirmed with the shop</span>
@@ -389,8 +388,8 @@ footer a{color:rgba(36,28,20,.75)}
     <p class="fbrand">La Casa de las Hierbas</p>
     <p><span class="l-es">Herbolario y productos naturales · Fuengirola, Málaga</span><span class="l-en">Herbal shop &amp; natural products · Fuengirola, Málaga</span></p>
     <p class="legal">
-      <span class="l-es">Demostración privada hecha por Zach — esta no es la web oficial de la tienda. Valoración, horario y datos según su ficha de Google e Instagram (ago 2026), a confirmar por la tienda. La cita es una reseña pública de Google. Las ilustraciones son decorativas; las fotografías de la tienda irán en el espacio reservado ·</span>
-      <span class="l-en">Private demonstration built by Zach — this is not the shop's official site. Rating, hours and details per their Google listing and Instagram (Aug 2026), to be confirmed by the shop. The quote is a public Google review. Illustrations are decorative; the shop's own photographs go in the reserved space ·</span>
+      <span class="l-es">Demostración privada hecha por Zach — esta no es la web oficial de la tienda. Valoración, horario y datos según su ficha de Google e Instagram (ago 2026), a confirmar por la tienda. La cita es una reseña pública de Google. Fotografías de la tienda hechas en persona (ago 2026); los iconos son decorativos ·</span>
+      <span class="l-en">Private demonstration built by Zach — this is not the shop's official site. Rating, hours and details per their Google listing and Instagram (Aug 2026), to be confirmed by the shop. The quote is a public Google review. Photographs taken at the shop in person (Aug 2026); the icons are decorative ·</span>
       <a href="https://wa.me/447543455889" target="_blank" rel="noopener">WhatsApp Zach</a>
     </p>
   </div>
