@@ -138,7 +138,7 @@ h1 em{font-style:italic;color:var(--brass)}
 @keyframes cue{0%,100%{opacity:.25;transform:translateX(-50%) scaleY(.6)}50%{opacity:1;transform:translateX(-50%) scaleY(1)}}
 
 /* ===== reveals ===== */
-.rv{opacity:0;transform:translateY(30px);transition:opacity 1s cubic-bezier(.2,.7,.3,1),transform 1s cubic-bezier(.2,.7,.3,1)}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .5s cubic-bezier(.2,.7,.3,1),transform .5s cubic-bezier(.2,.7,.3,1)}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
 
@@ -264,7 +264,7 @@ footer a{color:rgba(247,241,230,.7)}
       <small><span class="l-es">Sus palabras, en su Instagram</span><span class="l-en">Their own words, on their Instagram</span></small>
     </p>
     <div class="hero-ctas">
-      <a class="btn btn-solid" href="#visitanos"><span class="l-es">Cómo llegar</span><span class="l-en">How to visit</span></a>
+      <a class="btn btn-solid" href="#visitanos"><span class="l-es">Ven a vernos</span><span class="l-en">Come and see us</span></a>
       <a class="btn btn-line" href="https://www.instagram.com/laca.sadelashierbas/" target="_blank" rel="noopener">Instagram</a>
     </div>
   </div>
@@ -396,10 +396,10 @@ footer a{color:rgba(247,241,230,.7)}
     es.forEach(function(e){
       if(!e.isIntersecting)return;
       var sibs=[].slice.call(e.target.parentNode.children).filter(function(n){return n.classList.contains('rv')});
-      e.target.style.transitionDelay=(Math.min(Math.max(0,sibs.indexOf(e.target)),7)*80)+'ms';
+      e.target.style.transitionDelay=(Math.min(Math.max(0,sibs.indexOf(e.target)),6)*45)+'ms';
       e.target.classList.add('in');io.unobserve(e.target);
     });
-  },{rootMargin:'0px 0px -10% 0px',threshold:.1});
+  },{rootMargin:'0px 0px 18% 0px',threshold:0.01});
   items.forEach(function(el){io.observe(el)});
 })();
 
