@@ -38,6 +38,11 @@
         </ul>
       </nav>
       <a class="btn btn-gold-ghost head-cta" href="visit.html">Visit us</a>
+      <button class="basket-btn" type="button" data-basket-open aria-haspopup="dialog" aria-controls="basket-drawer" aria-label="Basket — empty">
+        <svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true" focusable="false"><path d="M6.2 7.2V5.4a3.8 3.8 0 0 1 7.6 0v1.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3.6 7.2h12.8l-.9 9a1.6 1.6 0 0 1-1.6 1.4H6.1a1.6 1.6 0 0 1-1.6-1.4Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <span class="basket-count" data-basket-count hidden>0</span>
+        <span class="basket-amount" data-basket-amount>£0.00</span>
+      </button>
     </div>
   </header>
 
@@ -60,8 +65,9 @@
             <p class="eyebrow">Grazing boards</p>
             <h2 id="boards-h">Built for 2, 4, 6 or 8.</h2>
             <p style="max-width:34em;">Artisan cheeses, charcuterie, crackers, chutney, fresh fruit and pickles — layered until the box argues back.</p>
-            <p class="mono" style="font-size:var(--fs-26); font-weight:500;">£35–£92.50</p>
-            <p class="muted" style="max-width:34em;">Collection from the Barn — local delivery by arrangement. Call 01234 831 890 to book yours in.</p>
+            <p class="mono" style="font-size:var(--fs-26); font-weight:500;">£35–£92.50 <span class="muted" style="font-size:var(--fs-15); font-weight:400;">· sized to your table</span></p>
+            <p class="muted" style="max-width:34em; margin:0.25rem 0 0.5rem;">Boards are built fresh and collected from the Barn — local delivery by arrangement, so they're booked by phone rather than basket.</p>
+            <p style="margin:0 0 0.5rem;"><a class="btn btn-secondary" href="tel:+441234831890">Book a board — 01234 831 890</a></p>
           </div>
           <div class="gallery" style="grid-template-columns:1fr 1fr;">
             <figure class="photo">
@@ -113,15 +119,15 @@
         <h2 id="hampers-h">Nine ways to make the post exciting.</h2>
         <div class="occ-split" style="margin-top:2rem;">
           <ul class="price-list">
-            <li>Vegan Cheese Hamper <span class="dots"></span> <span class="mono">£36</span></li>
-            <li>Snowdonia Cheese Hamper <span class="dots"></span> <span class="mono">£42</span></li>
-            <li>Smelly Cheese Hamper <span class="dots"></span> <span class="mono">£50</span></li>
-            <li>Blue Cheese &amp; Port Hamper <span class="dots"></span> <span class="mono">£53.50</span></li>
-            <li>Port &amp; Cheese Hamper <span class="dots"></span> <span class="mono">£55</span></li>
-            <li>Premium Cheese &amp; Port Hamper <span class="dots"></span> <span class="mono">£56.50</span></li>
-            <li>Premium French Hamper <span class="dots"></span> <span class="mono">£58</span></li>
-            <li>Premium Hamper <span class="dots"></span> <span class="mono">£85</span></li>
-            <li>Luxury Christmas Hamper <span class="dots"></span> <span class="mono">£120</span></li>
+            <li>Vegan Cheese Hamper <span class="dots"></span> <span class="mono">£36</span> <button class="add-btn add-btn-ink" type="button" data-add data-id="vegan-cheese-hamper" data-name="Vegan Cheese Hamper" data-price="36.00" data-unit="" aria-label="Add Vegan Cheese Hamper to basket">Add</button></li>
+            <li>Snowdonia Cheese Hamper <span class="dots"></span> <span class="mono">£42</span> <button class="add-btn add-btn-ink" type="button" data-add data-id="snowdonia-cheese-hamper" data-name="Snowdonia Cheese Hamper" data-price="42.00" data-unit="" aria-label="Add Snowdonia Cheese Hamper to basket">Add</button></li>
+            <li>Smelly Cheese Hamper <span class="dots"></span> <span class="mono">£50</span> <button class="add-btn add-btn-ink" type="button" data-add data-id="smelly-cheese-hamper" data-name="Smelly Cheese Hamper" data-price="50.00" data-unit="" aria-label="Add Smelly Cheese Hamper to basket">Add</button></li>
+            <li>Blue Cheese &amp; Port Hamper <span class="dots"></span> <span class="mono">£53.50</span> <button class="add-btn add-btn-ink" type="button" data-add data-id="blue-cheese-port-hamper" data-name="Blue Cheese &amp; Port Hamper" data-price="53.50" data-unit="" aria-label="Add Blue Cheese &amp; Port Hamper to basket">Add</button></li>
+            <li>Port &amp; Cheese Hamper <span class="dots"></span> <span class="mono">£55</span> <button class="add-btn add-btn-ink" type="button" data-add data-id="port-cheese-hamper" data-name="Port &amp; Cheese Hamper" data-price="55.00" data-unit="" aria-label="Add Port &amp; Cheese Hamper to basket">Add</button></li>
+            <li>Premium Cheese &amp; Port Hamper <span class="dots"></span> <span class="mono">£56.50</span> <button class="add-btn add-btn-ink" type="button" data-add data-id="premium-cheese-port-hamper" data-name="Premium Cheese &amp; Port Hamper" data-price="56.50" data-unit="" aria-label="Add Premium Cheese &amp; Port Hamper to basket">Add</button></li>
+            <li>Premium French Hamper <span class="dots"></span> <span class="mono">£58</span> <button class="add-btn add-btn-ink" type="button" data-add data-id="premium-french-hamper" data-name="Premium French Hamper" data-price="58.00" data-unit="" aria-label="Add Premium French Hamper to basket">Add</button></li>
+            <li>Premium Hamper <span class="dots"></span> <span class="mono">£85</span> <button class="add-btn add-btn-ink" type="button" data-add data-id="premium-hamper" data-name="Premium Hamper" data-price="85.00" data-unit="" aria-label="Add Premium Hamper to basket">Add</button></li>
+            <li>Luxury Christmas Hamper <span class="dots"></span> <span class="mono">£120</span> <button class="add-btn add-btn-ink" type="button" data-add data-id="luxury-christmas-hamper" data-name="Luxury Christmas Hamper" data-price="120.00" data-unit="" aria-label="Add Luxury Christmas Hamper to basket">Add</button></li>
           </ul>
           <div class="stack-grid" style="grid-template-columns:1fr 1fr; margin-top:0;">
             <figure class="photo" style="aspect-ratio:3/2;"><img src="assets/hamper-1-md.jpeg" width="640" height="426" loading="lazy" alt="A hamper spread of wine, Christmas pudding, Perl Wen, Godminster cheddar, blue cheese, pâté, pickles and crackers"></figure>
@@ -205,5 +211,6 @@
   </footer>
 
   <script src="main.js"></script>
+  <script src="cart.js"></script>
 </body>
 </html>

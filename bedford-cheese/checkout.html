@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout — The Bedford Cheese Company</title>
+  <meta name="description" content="Checkout for the Bedford Cheese Company ordering demo — click &amp; collect, local delivery or UK courier. Demo preview: payments are switched off.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%231a2742'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-size='38' fill='%23f2edda'%3EB%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..600,80,0;1,9..144,400..600,80,0&family=Karla:ital,wght@0,400;0,500;0,700;1,400&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=2">
+  <style>
+    /* checkout-only styles — tokens from styles.css */
+    .checkout-layout { display: grid; grid-template-columns: 1fr 360px; gap: 3rem; align-items: start; padding: 2.5rem 0 5rem; }
+    .checkout-layout[hidden] { display: none; }
+    .checkout-steps .menu-section { margin-bottom: 2.75rem; }
+    .checkout-steps .menu-section:last-child { margin-bottom: 0; }
+
+    .field { display: grid; gap: 0.3rem; margin-bottom: 1rem; }
+    .field label { font-family: var(--font-mono); font-size: var(--fs-13); font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--warm-gray); }
+    .field input {
+      font-family: var(--font-body); font-size: var(--fs-17); color: var(--ink);
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 0.6rem 0.8rem; width: 100%;
+    }
+    .field input:disabled { background: var(--parchment-2); color: var(--warm-gray); cursor: not-allowed; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .ful-grid { display: grid; gap: 0.8rem; }
+    .ful-card {
+      position: relative; display: grid; grid-template-columns: 1fr auto; gap: 0.1rem 0.8rem;
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1rem 1.2rem; cursor: pointer;
+      transition: border-color 160ms ease, box-shadow 160ms ease;
+    }
+    .ful-card input { position: absolute; opacity: 0; pointer-events: none; }
+    .ful-card:hover { border-color: var(--gold); }
+    .ful-card:has(input:checked) { border-color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold); }
+    .ful-card:has(input:focus-visible) { outline: 2px solid var(--gold); outline-offset: 3px; }
+    .ful-name { font-weight: 700; font-size: var(--fs-17); }
+    .ful-price { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-weight: 500; font-size: var(--fs-15); color: var(--gold-text); align-self: center; white-space: nowrap; }
+    .ful-note { grid-column: 1 / -1; font-size: var(--fs-15); color: var(--warm-gray); }
+
+    .demo-chip { margin: 0 0 1.1rem; }
+    .pay-fields { border: none; margin: 0; padding: 0; }
+    .pay-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; }
+    .pay-grid .field-cardnum { grid-column: 1 / -1; }
+
+    .order-summary { position: sticky; top: calc(var(--head-h) + 24px); }
+    .sum-lines { list-style: none; margin: 0 0 1rem; padding: 0; }
+    .sum-lines li { display: flex; justify-content: space-between; gap: 0.8rem; padding: 0.4rem 0; font-size: var(--fs-15); border-bottom: 1px solid var(--parchment-2); }
+    .sum-lines .mono { white-space: nowrap; font-weight: 500; }
+    .sum-totals { margin-bottom: 1rem; }
+    .sum-total { font-weight: 700; }
+    .sum-total .mono { font-size: var(--fs-21); color: var(--gold-text); }
+    .sum-min { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: var(--fs-13); color: var(--gold-text); margin: 0 0 0.8rem; }
+    .sum-note { font-size: var(--fs-13); color: var(--warm-gray); margin: 0.6rem 0 0; }
+    .place-order { width: 100%; }
+    .place-order[disabled] { opacity: 0.45; cursor: not-allowed; }
+    .link-edit {
+      display: block; width: 100%; margin-top: 0.6rem; padding: 0.5rem;
+      background: none; border: none; cursor: pointer;
+      font-family: var(--font-mono); font-size: var(--fs-13); text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--warm-gray);
+    }
+    .link-edit:hover { color: var(--ink); }
+
+    .confirm-wrap { text-align: center; padding: 5.5rem 0 6rem; }
+    .confirm-wrap h1 { margin: 1.2rem 0 0.4rem; outline: none; }
+    .order-ref { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: var(--fs-21); color: var(--gold-text); margin: 0 0 2.2rem; }
+    .next-list { list-style: none; margin: 0 auto 2.4rem; padding: 0; max-width: 30em; text-align: left; }
+    .next-list li { display: flex; gap: 1rem; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid var(--border); font-size: var(--fs-17); }
+    .next-list li:first-child { border-top: 1px solid var(--border); }
+    .next-list .n { font-family: var(--font-mono); font-size: var(--fs-13); font-weight: 500; color: var(--gold-text); flex: none; }
+
+    .checkout-empty-wrap { text-align: center; padding: 5.5rem 0 6rem; }
+    .checkout-empty-wrap h1 { font-size: clamp(var(--fs-33), 4vw, var(--fs-42)); }
+
+    @media (max-width: 1023px) {
+      .checkout-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .order-summary { position: static; }
+    }
+    @media (max-width: 700px) {
+      .field-row { grid-template-columns: 1fr; gap: 0; }
+      .checkout-layout { padding-top: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-head">
+    <div class="container head-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-roundel"><img src="assets/logo.jpg" alt="The Bedford Cheese Company roundel logo" width="296" height="300"></span>
+        <span class="brand-name">The Bedford<br>Cheese Company</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="cheese.html">Our Cheese</a></li>
+          <li><a href="cafe.html">The Café</a></li>
+          <li><a href="occasions.html">Occasions</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="visit.html">Visit Us</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn-gold-ghost head-cta" href="visit.html">Visit us</a>
+      <button class="basket-btn" type="button" data-basket-open aria-haspopup="dialog" aria-controls="basket-drawer" aria-label="Basket — empty">
+        <svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true" focusable="false"><path d="M6.2 7.2V5.4a3.8 3.8 0 0 1 7.6 0v1.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3.6 7.2h12.8l-.9 9a1.6 1.6 0 0 1-1.6 1.4H6.1a1.6 1.6 0 0 1-1.6-1.4Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <span class="basket-count" data-basket-count hidden>0</span>
+        <span class="basket-amount" data-basket-amount>£0.00</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Intro -->
+    <section class="page-intro grain" data-checkout-intro style="padding-bottom:0;">
+      <div class="container">
+        <p class="eyebrow">Online ordering — demo preview</p>
+        <h1>Checkout</h1>
+      </div>
+    </section>
+
+    <!-- Checkout: three steps + summary -->
+    <div class="container checkout-layout grain" data-checkout>
+      <div class="checkout-steps">
+
+        <!-- Step 1 -->
+        <section class="menu-section" aria-labelledby="step1-h">
+          <div class="menu-section-head">
+            <h2 id="step1-h">Your details</h2>
+            <span class="mono">Step 1 of 3</span>
+          </div>
+          <form id="checkout-details">
+            <div class="field">
+              <label for="co-name">Name</label>
+              <input id="co-name" name="name" type="text" required autocomplete="name">
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="co-email">Email</label>
+                <input id="co-email" name="email" type="email" required autocomplete="email">
+              </div>
+              <div class="field">
+                <label for="co-phone">Phone</label>
+                <input id="co-phone" name="phone" type="tel" required autocomplete="tel">
+              </div>
+            </div>
+          </form>
+        </section>
+
+        <!-- Step 2 -->
+        <section class="menu-section" aria-labelledby="step2-h">
+          <div class="menu-section-head">
+            <h2 id="step2-h">How you’ll get it</h2>
+            <span class="mono">Step 2 of 3</span>
+          </div>
+          <div class="ful-grid" role="radiogroup" aria-labelledby="step2-h">
+            <label class="ful-card">
+              <input type="radio" name="fulfilment" value="collect" checked>
+              <span class="ful-name">Click &amp; collect</span>
+              <span class="ful-price">FREE</span>
+              <span class="ful-note">From the counter at the Barn — usually ready next open day.</span>
+            </label>
+            <label class="ful-card">
+              <input type="radio" name="fulfilment" value="local">
+              <span class="ful-name">Local delivery</span>
+              <span class="ful-price">By arrangement</span>
+              <span class="ful-note">We’ll call to confirm a time and price.</span>
+            </label>
+            <label class="ful-card">
+              <input type="radio" name="fulfilment" value="courier">
+              <span class="ful-name">UK courier</span>
+              <span class="ful-price" data-courier-price>£5.95</span>
+              <span class="ful-note">Next-day courier — FREE on orders over £60.</span>
+            </label>
+          </div>
+        </section>
+
+        <!-- Step 3 -->
+        <section class="menu-section" aria-labelledby="step3-h">
+          <div class="menu-section-head">
+            <h2 id="step3-h">Payment</h2>
+            <span class="mono">Step 3 of 3</span>
+          </div>
+          <p class="chip chip-gold demo-chip">DEMO — payments switched off in this preview</p>
+          <fieldset class="pay-fields" disabled aria-describedby="pay-demo-note">
+            <legend class="skip-link">Card details (disabled in this demo)</legend>
+            <div class="field">
+              <label for="co-cardname">Name on card</label>
+              <input id="co-cardname" name="cardname" type="text" autocomplete="off">
+            </div>
+            <div class="field field-cardnum">
+              <label for="co-cardnum">Card number</label>
+              <input id="co-cardnum" name="cardnum" type="text" placeholder="•••• •••• •••• ••••" autocomplete="off">
+            </div>
+            <div class="pay-grid">
+              <div class="field">
+                <label for="co-expiry">Expiry</label>
+                <input id="co-expiry" name="expiry" type="text" placeholder="MM / YY" autocomplete="off">
+              </div>
+              <div class="field">
+                <label for="co-cvc">CVC</label>
+                <input id="co-cvc" name="cvc" type="text" placeholder="•••" autocomplete="off">
+              </div>
+            </div>
+          </fieldset>
+          <p id="pay-demo-note" class="muted" style="font-size:var(--fs-15); margin:0.25rem 0 0;">Nothing is charged and no card details are taken — this preview stops here on purpose.</p>
+        </section>
+      </div>
+
+      <!-- Order summary -->
+      <aside class="checkout-aside" aria-label="Order summary">
+        <div class="aside-card order-summary">
+          <h3>Order summary</h3>
+          <ul class="sum-lines" data-sum-lines></ul>
+          <ul class="terms-list sum-totals">
+            <li>Subtotal <span class="mono" data-sum-subtotal>£0.00</span></li>
+            <li><span data-sum-delivery-label>Click &amp; collect</span> <span class="mono" data-sum-delivery>FREE</span></li>
+            <li class="sum-total">Total <span class="mono" data-sum-total>£0.00</span></li>
+          </ul>
+          <p class="sum-min mono" data-sum-min hidden></p>
+          <button class="btn place-order" type="button" data-place-order>Place order</button>
+          <button class="link-edit" type="button" data-basket-open>Edit basket</button>
+          <p class="sum-note" data-sum-note hidden>Local delivery is arranged by phone — it isn’t added to the total here.</p>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Confirmation (shown by cart.js after Place order) -->
+    <section class="grain" data-confirm hidden>
+      <div class="narrow confirm-wrap">
+        <p class="chip chip-gold">Demo preview — nothing charged, nothing sent</p>
+        <h1 tabindex="-1">That’s in the queue.</h1>
+        <p class="order-ref" data-order-ref>Order BC-0000</p>
+        <ul class="next-list">
+          <li><span class="n">01</span><span><strong>Confirmation email</strong> — your order and reference, straight to your inbox.</span></li>
+          <li><span class="n">02</span><span><strong>We prep it</strong> — cut, wrapped and packed at the counter.</span></li>
+          <li><span class="n">03</span><span data-next-fulfil><strong>Collect at the counter</strong> — usually ready next open day.</span></li>
+        </ul>
+        <a class="btn" href="index.html">Back to the shop</a>
+      </div>
+    </section>
+
+    <!-- Empty basket -->
+    <section class="grain" data-checkout-empty hidden>
+      <div class="container checkout-empty-wrap">
+        <h1>Nothing on the board yet.</h1>
+        <p class="muted" style="margin-bottom:1.6rem;">Your basket is empty — the counter is this way.</p>
+        <a class="btn" href="cheese.html">Browse the cheese</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="container foot-grid">
+      <div class="foot-roundel"><img src="assets/logo.jpg" alt="The Bedford Cheese Company roundel logo" width="296" height="300" loading="lazy"></div>
+      <div>
+        <h4>Find the Barn</h4>
+        <address>The Barn, Summerhill Farm,<br>Cople Road, Cardington,<br>Bedford MK44 3SH</address>
+      </div>
+      <div>
+        <h4>Opening hours</h4>
+        <ul class="foot-hours">
+          <li><span>Tue–Sat</span><span>9am–4pm</span></li>
+          <li><span>Sunday</span><span>9am–3pm</span></li>
+          <li><span>Monday</span><span>Closed</span></li>
+        </ul>
+        <p style="margin-top:0.6rem;">Kitchen closes one hour before the shop.</p>
+      </div>
+      <div>
+        <h4>Say hello</h4>
+        <p><a href="tel:+441234831890">01234 831 890</a><br>
+        <a href="mailto:sales@bedfordcheesecompany.co.uk">sales@bedfordcheesecompany.co.uk</a><br>
+        <a href="mailto:info@bedfordcheesecompany.co.uk">info@bedfordcheesecompany.co.uk</a><br>
+        <a href="https://www.instagram.com/bedfordcheeseco">Instagram — @bedfordcheeseco</a></p>
+        <p>Wholesale enquiries welcome — 01234 831 890</p>
+      </div>
+    </div>
+    <div class="container foot-terms">
+      Delivery: £20 minimum order · £5.95 UK · FREE over £60 · £14.95 Scotland · free click &amp; collect · next-day courier
+    </div>
+    <div class="container foot-legal">
+      <span>© 2026 The Bedford Cheese Company Ltd</span>
+      <span>Concept redesign — not the live site</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script src="cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Counter — Bedford Cheese back office (demo)</title>
+  <meta name="description" content="Back-office design preview for The Bedford Cheese Company — sample data, not connected to the shop.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%231a2742'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-size='38' fill='%23f2edda'%3EB%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..600,80,0;1,9..144,400..600,80,0&family=Karla:ital,wght@0,400;0,500;0,700;1,400&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="ribbon" role="status">Sample data — design preview, not connected to the shop</div>
+
+  <header class="topbar">
+    <div class="wordmark">
+      <span class="roundel"><img src="assets/logo.jpg" alt="The Bedford Cheese Company roundel logo" width="296" height="300"></span>
+      <span class="wm-text">
+        <span class="wm-title">The Counter</span>
+        <span class="wm-sub">Bedford Cheese back office</span>
+      </span>
+    </div>
+    <a class="site-link" href="../site/index.html">View the site &rarr;</a>
+  </header>
+
+  <div class="app">
+    <nav class="rail" aria-label="Back office sections">
+      <button class="rail-tab" data-tab="orders" aria-current="true">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h5"/></svg>
+        <span>Orders</span>
+      </button>
+      <button class="rail-tab" data-tab="products" aria-current="false">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.6 2.6 21 11a2 2 0 0 1 0 2.8l-7.2 7.2a2 2 0 0 1-2.8 0L2.6 12.6A2 2 0 0 1 2 11.2V4a2 2 0 0 1 2-2h7.2a2 2 0 0 1 1.4.6Z"/><circle cx="7.5" cy="7.5" r="1.6"/></svg>
+        <span>Products</span>
+      </button>
+      <button class="rail-tab" data-tab="subscriptions" aria-current="false">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
+        <span>Subscriptions</span>
+      </button>
+      <button class="rail-tab" data-tab="settings" aria-current="false">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/></svg>
+        <span>Settings</span>
+      </button>
+      <span class="rail-foot">Design preview</span>
+    </nav>
+
+    <main class="main" id="main">
+
+      <!-- ================= Orders ================= -->
+      <section class="panel" id="panel-orders" aria-label="Orders">
+        <header class="panel-head">
+          <div>
+            <p class="eyebrow">Today at the counter</p>
+            <h1>Orders</h1>
+          </div>
+          <p class="panel-meta" id="orders-meta"></p>
+        </header>
+        <div class="order-legend order-grid" aria-hidden="true">
+          <span>Time</span><span>Ref</span><span>Customer</span><span>Fulfilment</span>
+          <span class="num">Items</span><span class="num">Total</span><span class="st">Status</span>
+        </div>
+        <ol class="order-list surface" id="order-list"></ol>
+        <p class="hint">Click a status to move it on: NEW &rarr; PREPARING &rarr; READY &rarr; DONE. Click a row for the full order.</p>
+      </section>
+
+      <!-- ================= Products ================= -->
+      <section class="panel" id="panel-products" aria-label="Products" hidden>
+        <header class="panel-head">
+          <div>
+            <p class="eyebrow">The board, editable</p>
+            <h1>Products</h1>
+          </div>
+          <p class="panel-meta" id="prod-meta"></p>
+        </header>
+        <div class="prod-tools">
+          <input type="search" class="prod-search" id="prod-search" placeholder="Search the board&hellip;" aria-label="Search products">
+          <div class="filter-chips" role="group" aria-label="Filter by category" id="prod-filters">
+            <button class="fchip" data-cat="all" aria-pressed="true">All</button>
+            <button class="fchip" data-cat="Blue" aria-pressed="false">Blue</button>
+            <button class="fchip" data-cat="Hard" aria-pressed="false">Hard</button>
+            <button class="fchip" data-cat="Soft" aria-pressed="false">Soft</button>
+            <button class="fchip" data-cat="Washed Rind" aria-pressed="false">Washed Rind</button>
+            <button class="fchip" data-cat="Vegan" aria-pressed="false">Vegan</button>
+          </div>
+        </div>
+        <p class="pitch">Your team edits this — no developer, no plugin, no monthly fee.</p>
+        <div class="table-wrap surface">
+          <table class="prod-table">
+            <thead>
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Category</th>
+                <th scope="col">Size</th>
+                <th scope="col" class="num">Price</th>
+                <th scope="col">In stock</th>
+                <th scope="col"><span class="visually-hidden">Edit</span></th>
+              </tr>
+            </thead>
+            <tbody id="prod-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= Subscriptions ================= -->
+      <section class="panel" id="panel-subscriptions" aria-label="Subscriptions" hidden>
+        <header class="panel-head">
+          <div>
+            <p class="eyebrow">The Cheese Club</p>
+            <h1>Subscriptions</h1>
+          </div>
+        </header>
+        <p class="panel-note">4&ndash;5 handpicked cuts, delivered the third Thursday or Friday of the month.</p>
+        <div class="tier-cards">
+          <article class="tier-card surface" data-tier="3">
+            <p class="eyebrow">3 months</p>
+            <p class="tier-price"><strong>&pound;32</strong> <span>/ month</span></p>
+            <p class="tier-perk"></p>
+            <p class="tier-next" data-next>Next box: third Thursday</p>
+            <div class="pause-row">
+              <button class="switch" role="switch" aria-checked="false" data-pause aria-labelledby="pl-3"></button>
+              <span class="pause-label" id="pl-3">Pause deliveries this month</span>
+            </div>
+          </article>
+          <article class="tier-card surface" data-tier="6">
+            <p class="eyebrow">6 months</p>
+            <p class="tier-price"><strong>&pound;30</strong> <span>/ month</span></p>
+            <p class="tier-perk">+ free crackers, first box</p>
+            <p class="tier-next" data-next>Next box: third Thursday</p>
+            <div class="pause-row">
+              <button class="switch" role="switch" aria-checked="false" data-pause aria-labelledby="pl-6"></button>
+              <span class="pause-label" id="pl-6">Pause deliveries this month</span>
+            </div>
+          </article>
+          <article class="tier-card surface" data-tier="12">
+            <p class="eyebrow">12 months</p>
+            <p class="tier-price"><strong>&pound;29</strong> <span>/ month</span></p>
+            <p class="tier-perk">+ bonus cheese, first box</p>
+            <p class="tier-next" data-next>Next box: third Thursday</p>
+            <div class="pause-row">
+              <button class="switch" role="switch" aria-checked="false" data-pause aria-labelledby="pl-12"></button>
+              <span class="pause-label" id="pl-12">Pause deliveries this month</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================= Settings ================= -->
+      <section class="panel" id="panel-settings" aria-label="Settings" hidden>
+        <header class="panel-head">
+          <div>
+            <p class="eyebrow">How the shop runs</p>
+            <h1>Settings</h1>
+          </div>
+        </header>
+
+        <section class="set-group surface" aria-labelledby="hours-h">
+          <h2 id="hours-h">Opening hours</h2>
+          <div id="hours-rows"></div>
+          <p class="set-note">Kitchen closes one hour before the shop.</p>
+          <button class="btn set-save" data-save="hours">Save hours</button>
+        </section>
+
+        <section class="set-group surface" aria-labelledby="closures-h">
+          <h2 id="closures-h">Holiday closures</h2>
+          <div class="closure-add">
+            <input type="date" id="closure-date" aria-label="Closure date">
+            <button class="btn-ghost" id="closure-addbtn">Add closure</button>
+          </div>
+          <ul class="closure-list" id="closure-list"></ul>
+          <p class="closure-empty" id="closure-empty">No closures planned.</p>
+        </section>
+
+        <section class="set-group surface" aria-labelledby="delivery-h">
+          <h2 id="delivery-h">Delivery</h2>
+          <div id="delivery-fields">
+            <div class="field-row">
+              <span class="f-label">Minimum online order</span>
+              <span class="field-in"><span class="cur">&pound;</span><input type="text" inputmode="decimal" id="d-min" aria-label="Minimum online order, pounds"></span>
+            </div>
+            <div class="field-row">
+              <span class="f-label">UK courier</span>
+              <span class="field-in"><span class="cur">&pound;</span><input type="text" inputmode="decimal" id="d-uk" aria-label="UK courier charge, pounds"></span>
+            </div>
+            <div class="field-row">
+              <span class="f-label">Free UK delivery over</span>
+              <span class="field-in"><span class="cur">&pound;</span><input type="text" inputmode="decimal" id="d-free" aria-label="Free UK delivery threshold, pounds"></span>
+            </div>
+            <div class="field-row">
+              <span class="f-label">Scotland courier</span>
+              <span class="field-in"><span class="cur">&pound;</span><input type="text" inputmode="decimal" id="d-scot" aria-label="Scotland courier charge, pounds"></span>
+            </div>
+          </div>
+          <button class="btn set-save" data-save="delivery">Save delivery</button>
+        </section>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="admin-foot">
+    <span>&copy; 2026 The Bedford Cheese Company Ltd</span>
+    <span>Design preview — sample data throughout, nothing here reaches the shop</span>
+  </footer>
+
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="drawer" id="drawer" aria-label="Detail" hidden></aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
