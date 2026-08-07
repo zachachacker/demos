@@ -91,12 +91,10 @@ nav a:hover{color:var(--blossom)}
 
 /* ===== hero ===== */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
-.hero-slot{position:absolute;inset:0;z-index:-2;
-  background:
-    radial-gradient(120% 80% at 70% 12%,rgba(227,159,192,.34),transparent 62%),
-    radial-gradient(90% 70% at 18% 82%,rgba(110,143,107,.28),transparent 66%),
-    linear-gradient(to bottom,#25121F,#14090F 70%);
-}
+.hero-media{position:absolute;inset:0;z-index:-2;overflow:hidden}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;transform:scale(1.06)}
+@media(prefers-reduced-motion:no-preference){.hero-media img{animation:breathe 30s ease-in-out infinite alternate}}
+@keyframes breathe{from{transform:scale(1.06)}to{transform:scale(1.15)}}
 /* the canopy: soft blossom drift — abstract light, never a depiction of their stock */
 .petal{position:absolute;border-radius:50% 50% 50% 6%;background:rgba(227,159,192,.5);filter:blur(.4px)}
 @media(prefers-reduced-motion:no-preference){.petal{animation:fall linear infinite}}
@@ -131,6 +129,13 @@ h1 em{font-style:normal;color:var(--blossom)}
 .btn-solid:hover{background:var(--blossom);transform:translateY(-2px)}
 .btn-line{border:1px solid rgba(245,237,230,.4);color:var(--bone)}
 .btn-line:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+
+/* full-bleed photographic band */
+.band{position:relative;overflow:hidden}
+.band-bg{position:absolute;inset:0;z-index:-2}
+.band-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.band-scrim{position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(90deg,rgba(12,5,9,.95) 0%,rgba(12,5,9,.82) 46%,rgba(12,5,9,.55) 100%)}
 
 /* ===== sections ===== */
 .sec{padding:clamp(84px,13vh,150px) 0;position:relative}
@@ -184,11 +189,11 @@ h1 em{font-style:normal;color:var(--blossom)}
 
 <main id="top">
 
-<!-- HERO — photo slot: an interior shot drops in as
-     <div class="hero-media"><img src="assets/…"></div> behind the scrim, replacing the
-     gradient. Until then the fold carries itself with light and type. -->
+<!-- HERO — their storefront, from the photographs published on their Google listing -->
 <section class="hero">
-  <div class="hero-slot" aria-hidden="true"></div>
+  <div class="hero-media">
+    <img src="assets/pasillo.jpg" alt="Pasillo de la tienda bajo un dosel denso de flores rosas, con estanterías a ambos lados" fetchpriority="high">
+  </div>
   <div class="petals" id="petals" aria-hidden="true"></div>
   <div class="hero-scrim"></div>
   <div class="hero-inner">
@@ -227,8 +232,8 @@ h1 em{font-style:normal;color:var(--blossom)}
       </article>
     </div>
     <p class="scene-src rv">
-      <span class="l-es">Descrito a partir de las fotos publicadas en su ficha de Google (ago 2026).</span>
-      <span class="l-en">Described from the photographs published on their Google listing (Aug 2026).</span>
+      <span class="l-es">Fotografías y descripción según su ficha de Google (ago 2026).</span>
+      <span class="l-en">Photographs and description per their Google listing (Aug 2026).</span>
     </p>
   </div>
 </section>
@@ -270,7 +275,11 @@ h1 em{font-style:normal;color:var(--blossom)}
           <span class="l-en">In the heart of Málaga, a step from Plaza de la Constitución.</span>
         </p>
         <!-- Street address held until confirmed with the shop; Instagram card returns with the handle -->
-        <p class="note"><span class="l-es">Ubicación según su ficha de Google (ago 2026).</span><span class="l-en">Location per their Google listing (Aug 2026).</span></p>
+        <figure class="storefront">
+          <img src="assets/fachada.jpg" alt="La entrada de la tienda, con su rótulo iluminado sobre la puerta" loading="lazy">
+          <figcaption><span class="l-es">Búscanos por el rótulo</span><span class="l-en">Look for the sign</span></figcaption>
+        </figure>
+        <p class="note"><span class="l-es">Ubicación y fotografías según su ficha de Google (ago 2026).</span><span class="l-en">Location and photographs per their Google listing (Aug 2026).</span></p>
       </div>
       <div class="vcard rv">
         <h3><span class="l-es">Lo que dicen</span><span class="l-en">What people say</span></h3>
@@ -291,8 +300,8 @@ h1 em{font-style:normal;color:var(--blossom)}
     <p class="fbrand">Spiritual Aromas del Mundo</p>
     <p><span class="l-es">Aromas, inciensos y minerales · Málaga</span><span class="l-en">Aromas, incense &amp; minerals · Málaga</span></p>
     <p class="legal">
-      <span class="l-es">Demostración privada hecha por Zach — esta no es la web oficial de la tienda. La valoración y la descripción del local proceden de su ficha de Google (ago 2026), a confirmar por la tienda. ·</span>
-      <span class="l-en">Private demonstration built by Zach — this is not the shop's official site. The rating and the description of the space come from their Google listing (Aug 2026), to be confirmed by the shop. ·</span>
+      <span class="l-es">Demostración privada hecha por Zach — esta no es la web oficial de la tienda. Las fotografías, la valoración y la descripción del local proceden de su ficha de Google (ago 2026), a confirmar por la tienda. ·</span>
+      <span class="l-en">Private demonstration built by Zach — this is not the shop's official site. The photographs, rating and description of the space come from their Google listing (Aug 2026), to be confirmed by the shop. ·</span>
       <a href="https://wa.me/447543455889" target="_blank" rel="noopener">WhatsApp Zach</a>
     </p>
   </div>
